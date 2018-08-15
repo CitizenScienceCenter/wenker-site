@@ -1,0 +1,43 @@
+<template>
+  <div>
+    <!-- <md-empty-state v-if="choices.length === 0" md-icon="devices_other" md-label="Create your first task" md-description="Creating project, you'll be able to add media and share it with people.">
+        <md-button :to="{name:'CreateTask', params: {id: project_id}}" class="md-primary md-raised">Create first task</md-button>
+    </md-empty-state> -->
+      <md-field>
+        <label for="choices">Select an answer:</label>
+        <md-select v-model="selections" name="choices" id="choices" multiple @md-selected="onSelect">
+          <md-option :key="index" v-for="(c, index) in choiceSelection" value="c.value">{{c.text}}</md-option>
+        </md-select>
+      </md-field>
+  </div>
+</template>
+
+<script>
+import { mapState, mapGetters } from "vuex";
+export default {
+  name: "SubmissionMultipleChoices",
+  props: ["choices", "response", "index"],
+  data() {
+    return {
+      choiceSelection: this.choices,
+      selections: []
+    };
+  },
+  computed: mapState({
+    submission: state => state.submission.submission
+  }),
+  created() {},
+  methods: {  
+    onSelect() {
+      this.content.selection = selections
+      this.$store.commit('submission/SET_SUBMISSION_RESPONSE', this.response, this.index)
+    
+    }
+  }
+};
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped src='@/assets/styles/components/task-multiple-choice.scss'>
+</style>
+

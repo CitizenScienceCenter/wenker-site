@@ -1,0 +1,46 @@
+  // .VueCarousel-slide {
+  //   position: relative;
+  //   background:#f0f0f0;
+  //   color: #fff;
+  //   font-family: Arial;
+  //   font-size: 24px;
+  //   text-align: center;
+  //   min-height: 100px;
+  // }
+
+  // .slide-img {
+  //   max-width: 80%;
+  // }
+  
+  // .md-card {
+  //   width: 320px;
+  //   margin: 4px;
+  //   display: inline-block;
+  //   vertical-align: top;
+  // }
+
+  .VueCarousel-slide {
+    position: relative;
+    min-height: 300px;
+  }
+
+  .md-card {
+    min-height: 300px;
+
+      .md-card-media {
+        // min-height: 300px;
+        // min-height: 100%;
+        min-width: 80%;
+      }
+
+    
+  }
+
+  .project-txt {
+    text-align: right;
+    max-width:25%;
+  }
+
+  .featured-carousel {
+    height: 30%;
+  }
