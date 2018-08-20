@@ -8,6 +8,7 @@ import submission from './modules/submission'
 import media from './modules/media'
 import upload from './modules/upload'
 import settings from './modules/settings'
+import consts from './modules/consts'
 import projectFilter from './modules/components/project-filter'
 import createPersistedState from 'vuex-persistedstate'
 
@@ -20,6 +21,7 @@ export default new Vuex.Store({
     user,
     project,
     api,
+    consts,
     task,
     media,
     upload,

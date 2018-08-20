@@ -44,7 +44,7 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch("project/getProject", this.$route.params.id, true)
+    this.$store.dispatch("project/getProject", [this.$route.params.id, true])
   },
   updated() {
     if (this.activeTaskIndex >= this.tasks.length -1) {

@@ -66,16 +66,13 @@ export default {
   }),
   watch: {
     "$route.params.tid": function(tid) {
-      this.handleTask();
+      //this.handleTask();
     }
   },
   mounted() {
-    console.log(this.project)
-    this.pid = this.$route.params.id;
+    console.log(this.$route)
     this.activeTaskIndex = 0;
-    this.$store.dispatch("project/getProject", this.pid);
-    this.$store.dispatch("task/projectTasks", this.pid);
-    this.handleTask();
+    //this.handleTask();
   },
   updated() {
     if (this.activeTaskIndex >= this.tasks.length -1) {
@@ -90,10 +87,10 @@ export default {
   },
   methods: {
     handleTask(index) {
+      console.log(this.$route)
       const id = this.$route.params.id;
       const tid = this.$route.params.tid;
-      this.$store.dispatch("project/getProject", this.pid);
-      this.$store.dispatch("task/projectTasks", this.pid);
+      this.$store.dispatch("project/getProject", [id, true]);
       this.activeTask = this.tasks.find(task => {
         return task.id === tid;
       });

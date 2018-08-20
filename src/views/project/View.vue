@@ -33,6 +33,19 @@
     </md-card>
     <md-card class="desc md-layout-item md-size-100" v-html="project.description"></md-card>
 
+    <md-card class="prereq md-layout-item md-size-100" v-if="project.name === 'Wenker - Translation'">
+      <md-field>
+        <md-select v-model="userDetails.canton" name="canton" id="canton" placeholder="Region you have spent most of your life">
+          <md-option :key="r.value" v-for="r in swissCantons" value="r.value">{{r.label}}</md-option>
+        </md-select>
+      </md-field>
+      <md-field>
+        <md-select v-model="userDetails.age" name="range" id="range" placeholder="Age Range">
+          <md-option :key="a.value" v-for="a in ageRange" value="a.value">{{a.label}}</md-option>
+        </md-select>
+      </md-field>
+    </md-card>
+
     <button class="md-fab md-primary md-fab-bottom-right" v-on:click="startProject"><md-icon>playlist_play</md-icon></button>
     </div>
 
@@ -45,7 +58,10 @@ export default {
   props: ["projectID"],
   data() {
     return {
-
+      userDetails: {
+        age: undefined,
+        canton: undefined
+      }
     }
   },
   watch: {
@@ -55,7 +71,6 @@ export default {
       }
     },
     'tasks' (to, from) {
-      console.log(to)
     }
   },
   computed: mapState({
@@ -63,16 +78,19 @@ export default {
     loading: state => state.settings.loading,
     user: state => state.user.currentUser,
     tasks: state => state.project.selectedTasks,
-    stats: state => state.project.selectedStats
+    stats: state => state.project.selectedStats,
+    swissCantons: state => state.consts.swissCantons,
+    ageRange: state => state.consts.ageRange
   }),
   mounted() {
-    this.$store.dispatch('project/getProject', this.$route.params.id || this.projectID, true)
+    this.$store.dispatch('project/getProject', [this.$route.params.id || this.projectID, true])
   },
   methods: {
     deleteProject() {
       this.$store.dispatch('project/deleteProject', this.project.id)
     },
     startProject() {
+      console.log(this.userDetails)
       if (this.tasks.length > 0) {
         this.$router.push({'name': 'Submission', 'params': {tid: this.tasks[0].id, id: this.project.id}})
       }

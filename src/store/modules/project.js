@@ -48,10 +48,11 @@ const actions = {
     commit,
     dispatch,
     rootState
-  }, id, associated = true) {
+  }, [id, associated]) {
     commit('settings/SET_LOADING', true, {
       root: true
     })
+    console.log(id)
     rootState.api.client.apis.Projects.get_project({
         id: id
       })

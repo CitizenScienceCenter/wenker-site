@@ -1,10 +1,7 @@
 <template>
    <md-bottom-bar class="md-primary">
-
-        <md-bottom-bar-item md-label="UZH">
-          <md-icon class="md-bottom-bar-icon" md-src="@/assets/img/uzh_logo.svg"></md-icon>
-        </md-bottom-bar-item>
-        <md-bottom-bar-item md-label="ETH" md-icon="@/assets/img/android.svg"></md-bottom-bar-item>
+        <md-bottom-bar-item md-label="UZH" md-icon="account_balance"></md-bottom-bar-item>
+        <md-bottom-bar-item md-label="ETH" md-icon="account_balance"></md-bottom-bar-item>
         <md-bottom-bar-item md-label="2018" md-icon="copyright"></md-bottom-bar-item>
       </md-bottom-bar>
 </template>
