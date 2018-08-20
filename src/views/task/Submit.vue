@@ -2,7 +2,7 @@
 <template>
   <div class="md-layout md-gutter md-alignment-center-space-around">
     <md-progress-bar md-mode="determinate" :md-value="(activeTaskIndex / tasks.length) * 100"></md-progress-bar>
-    <task-submission :task=activeTask :content=content></task-submission>
+    <task-submission :task=activeTask :content=content v-on:submission="progressAfterSubmission"></task-submission>
   </div>
 </template>
 
@@ -32,6 +32,7 @@ export default {
   }),
   watch: {
     "$route.params.tid": function(tid) {
+      this.loadTask()
     },
     'tasks' (to, from) {
         for(let i = 0; i < to.length; i++) {
@@ -44,17 +45,34 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch("project/getProject", [this.$route.params.id, true])
+    this.loadTask()
   },
   updated() {
-    if (this.activeTaskIndex >= this.tasks.length -1) {
-      this.msgText = "Finished";
-      this.activeTaskIndex = this.tasks.length;
-    } else if (this.activeTaskIndex === 0) {
-      this.msgText = `Let's Go`;
-    }
   },
   methods: {
+    loadTask() {
+      // TODO do not need to load all tasks each request, keep them in store once retrieved
+      if (this.tasks.length && this.tasks[0].project_id !== this.project.id) {
+        this.$store.dispatch("project/getProject", [this.$route.params.id, true])
+      }
+      if (this.activeTaskIndex >= this.tasks.length -1) {
+        this.msgText = "Finished";
+        this.activeTaskIndex = this.tasks.length;
+      } else if (this.activeTaskIndex === 0) {
+        this.msgText = `Let's Go`;
+      }
+      for(let i = 0; i < this.tasks.length; i++) {
+          if (this.tasks[i].id == this.$route.params.tid) {
+              this.activeTask = this.tasks[i]
+              this.activeTaskIndex = i
+              break
+          }
+      }
+    },
+    progressAfterSubmission() {
+      console.log('progressing')
+        this.$router.push({'name': 'Submission', 'params': {tid: this.tasks[this.activeTaskIndex + 1].id, id: this.project.id}})
+    }
   }
 };
 </script>

@@ -90,7 +90,6 @@ export default {
       this.$store.dispatch('project/deleteProject', this.project.id)
     },
     startProject() {
-      console.log(this.userDetails)
       if (this.tasks.length > 0) {
         this.$router.push({'name': 'Submission', 'params': {tid: this.tasks[0].id, id: this.project.id}})
       }

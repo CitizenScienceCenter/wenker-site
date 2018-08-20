@@ -73,6 +73,8 @@ export default {
     },
     taskMedia(to, from) {
       to.forEach(m => {
+        console.log(this.task.id)
+        console.log(m.source_id)
         const path = m.path.replace("./static", "http://localhost:8080/static");
         this.items.push(path);
       });
@@ -89,7 +91,10 @@ export default {
     },
     submitTask() {
         this.$store.commit('submission/SET_SUBMISSION_RESPONSES', this.responses)
-        this.$store.dispatch('submission/postSubmission')
+        this.$store.dispatch('submission/postSubmission').then(() => {
+          this.$emit('submission')
+          this.createSubmission()
+        })
     }
   }
 };
