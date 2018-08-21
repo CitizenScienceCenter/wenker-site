@@ -95,6 +95,7 @@
     "v-viewer": "^1.1.0",
     "vue-carousel": "^0.7.3",
     "vue-loader": "^13.3.0",
+    "vue-numeral-filter": "^1.0.6",
     "vue-style-loader": "^3.1.2",
     "vue-template-compiler": "^2.5.2",
     "vuedraggable": "^2.16.0",

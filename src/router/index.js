@@ -118,6 +118,12 @@ const router = new Router({
           meta: {requiresAuth: true, breadcrumb: 'Take Part'},
         },
         {
+          path: ':id/completed',
+          name: 'CompletedProject',
+          component: Project.Complete,
+          meta: {requiresAuth: true, breadcrumb: 'Completed!'}
+        },
+        {
           path: ':id/tasks',
           name: 'ViewTasks',
           component: Task.View,

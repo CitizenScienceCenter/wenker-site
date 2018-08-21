@@ -70,8 +70,12 @@ export default {
       }
     },
     progressAfterSubmission() {
-      console.log('progressing')
+      if (this.activeTaskIndex + 1 >= this.tasks.length) {
+        this.$router.push({'name': 'CompletedProject', 'params': {id: this.project.id}})
+        console.log('finished')
+      } else {
         this.$router.push({'name': 'Submission', 'params': {tid: this.tasks[this.activeTaskIndex + 1].id, id: this.project.id}})
+      }
     }
   }
 };
