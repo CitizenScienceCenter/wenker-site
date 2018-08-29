@@ -5,12 +5,14 @@
       <!-- TODO logo here -->
       <div class="md-toolbar-section-end">
          <md-menu md-direction="bottom-start">
-      <md-button md-menu-trigger>{{locale}}</md-button>
-      <md-menu-content>
-        <md-menu-item @click="setLocale('en')">English</md-menu-item>
-        <md-menu-item @click="setLocale('de')">Deutsch</md-menu-item>
-      </md-menu-content>
-    </md-menu>
+          <md-button md-menu-trigger>{{locale}}</md-button>
+          <md-menu-content>
+            <md-menu-item @click="setLocale('en')">English</md-menu-item>
+            <md-menu-item @click="setLocale('de')">Deutsch</md-menu-item>
+          </md-menu-content>
+            <md-avatar to='/users' class='md-avatar-icon' v-if="user && user.username.indexOf('anon') !== -1">A</md-avatar>
+            <md-avatar to='/users' class='md-avatar-icon' v-if="user && user.username.indexOf('anon') === -1">{{user.username.charAt(0)}}</md-avatar>
+        </md-menu>
       </div>
     </md-toolbar>
     <md-progress-bar md-mode="indeterminate" v-if="loading" />
@@ -47,6 +49,9 @@ export default {
   watch: {
     'err' (to, from) {
       this.showSnack = to !== null ? true : false;
+    },
+    'user' (to, from) {
+      // TODO execute validation here when user changes
     }
   },
   created() {

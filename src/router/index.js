@@ -51,9 +51,11 @@ const router = new Router({
             path: '/dashboard',
           });
         } else {
-          next({
-            path: '/splash',
-          });
+          store.dispatch('user/generateAnon').then(u => {
+            next({
+              path: '/dashboard',
+            });
+          })
         }
       }
     },

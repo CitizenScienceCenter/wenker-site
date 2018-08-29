@@ -1,3 +1,4 @@
+var SHA256 = require("crypto-js/sha256");
 // initial state
 // shape: [{ id, quantity }]
 const state = {
@@ -41,13 +42,26 @@ const actions = {
         })
       })
   },
+  async generateAnon({
+    state,
+    commit,
+    dispatch,
+    rootState
+  }) {
+    commit('settings/SET_LOADING', true, {root: true})
+    const now = '' + Date.now()
+    const id = "anon" + SHA256(now)
+    const pwd  = '' + SHA256(id)
+    let u = await dispatch('register', {'username': id, 'pwd': pwd})
+    return u
+  },
   logout ({
     state,
     commit
   }) {
     commit('SET__CURRENT_USER', null)
   },
-  register({
+  async register({
     state,
     commit,
     rootState
@@ -56,17 +70,13 @@ const actions = {
       root: true
     })
     console.log(user)
-    rootState.api.client.apis.Users.register_user({user: user})
-      .then(r => r.body)
-      .then(user => {
-        console.log(user)
-        // commit('SET_CURRENT_USER', user)
-        commit('settings/SET_LOADING', false, {
-          root: true
-        })
-
-      })
-      .catch(err => {
+    try {
+      let res = await rootState.api.client.apis.Users.register_user({user: user})
+      console.log(JSON.stringify(res))
+      commit('SET_CURRENT_USER', res.body)
+      commit('settings/SET_LOADING', false, {root: true})
+      return res.body
+    } catch(err){
         console.log(err)
         commit('settings/SET_ERROR', err, {
           root: true
@@ -74,7 +84,8 @@ const actions = {
         commit('settings/SET_LOADING', false, {
           root: true
         })
-      })
+        return false
+    }
   },
   getUser ({
     state,
