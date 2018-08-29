@@ -4,7 +4,7 @@ const state = {
   projects: [],
   selectedProject: null,
   selectedMedia: [],
-  selectedStats: null,
+selectedStats: null,
   selectedTasks: []
 }
 

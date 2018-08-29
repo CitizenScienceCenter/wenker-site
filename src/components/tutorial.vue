@@ -1,55 +1,52 @@
 <template>
-  <tutorial v-if="open" :has-mask="mask.enabled" :can-click-mask="mask.click" @toggle="toggleModal">
+  <md-dialog :md-active.sync="options.open" :md-backdrop="options.backdrop">
     <article v-cloak>
-      <md-card>
-      <md-card-header>
-        <md-card-header-text>
-          <div class="md-title">{{d.header}}</div>
-          <div class="md-subhead">{{d.subheader}}</div>
-        </md-card-header-text>
-
-        <md-card-media md-big>
-          <img :src="d.img" v-if="d.img">
-        </md-card-media>
-      </md-card-header>
-
-      <md-card-actions>
-        <md-button :disabled="step === 0" v-if="step > 0" @click="goTo(step -1)">Previous</md-button>
-        <md-button :disabled="step === data.length - 1" v-if="data && step < (data.length)" @click="goTo(step + 1)">Next</md-button>
-      </md-card-actions>
+      <md-card v-if="current">
+        <md-card-header>
+            <md-card-header-text>
+            <div class="md-title">{{current.header}}</div>
+            <div class="md-subhead">{{current.subheader}}</div>
+            </md-card-header-text>
+            <md-card-media md-big v-if="current.img">
+            <img :src="current.img">
+            </md-card-media>
+        </md-card-header>
+        <md-card-content>
+            {{current.content}}
+            <md-progress-bar md-mode="determinate" v-if="data" :md-value="(step + 1)/data.length * 100"></md-progress-bar>
+        </md-card-content>
+        <md-card-actions>
+            <md-button @click="options.open = false">Close</md-button>
+            <md-button :disabled="step === 0" v-if="step > 0" @click="step -= 1">Previous</md-button>
+            <md-button :disabled="step === data.length - 1" v-if="data && step < (data.length)" @click="step += 1">Next</md-button>
+        </md-card-actions>
       </md-card>
-      <section v-for="d in data" :key="d">
-        <h3>{{d.title}}</h3>
-        <div v-html="d.content"></div>
-      </section>
    </article>
-    <footer>
-      <div class="forward-actions">
-<!--         <button class="secondary skip" :disabled="isLastStep" v-show="!isLastStep" @click="skip(2)">Skip</button> -->
-        <button class="primary next" :disabled="step === data.length - 1" v-if="data && step < data.length < 1" @click="next"><i class="fa fa-fw fa-lg" :class="nextIcon"></i></button>
-        <button class="accent save" :disabled="!is" v-if="data && (data.length - 1)=== step" @click="finish"><i class="fa fa-fw fa-lg fa-check"></i></button>
-      </div>
-      <div class="step-dots" v-if="data && data.length > 0">
-        <div class="step-dot" :key="n" v-for="n in data.length" :class="{active: n == step}" @click="goTo(n)"></div>
-      </div>
-      <div class="back-actions">
-        <button class="secondary cancel prev" :disabled="step === 0" :v-if="step > 0" @click="prev"><i class="fa fa-fw fa-lg" :class="backIcon"></i></button>
-      </div>
-    </footer>
-  </tutorial>
+  </md-dialog>
 </template>
 <script>
 export default {
     name: 'tutorial',
-    props: ['data', 'open', 'mask'],
+    props: ['data', 'options'],
     data() {
         return {
-            step: 0
+            step: 0,
+            current: null
         }
+    },
+    watch: {
+      'step' (to, from) {
+
+      }
+    },
+    mounted() {
+      if(this.data.length) {
+        this.goTo(0)
+      }
     },
     methods: {
         goTo(index) {
-
+            this.current = this.data[index]
         }
     }
 }
