@@ -67,13 +67,19 @@ export default {
       opts: {
         esc: true,
         backdrop: true,
-        open: true
+        open: true,
+        closeLast: true // only enable the close button when it is the last one
       },
       data: [
         {
           header: 'Welcome!',
           subheader: 'to the Translation project',
           content: 'In this project, you will need to translate a number of different sentences from their original German meaning to Swiss German now'
+        },
+        {
+          header: 'How?',
+          subheader: "Let's go through the basics",
+          content: "Take a look at the images and choose a sentence"
         }
       ]
     }
