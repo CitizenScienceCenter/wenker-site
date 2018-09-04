@@ -108,6 +108,18 @@ const actions = {
         // TODO set path to login or 404 
       })
   },
+  async updateUser ({
+    state,
+    commit, 
+    rootState
+  }, [id, info]) {
+    try {
+      let res = await rootState.api.client.apis.Users.update_user({id: id, user: info})
+      return res
+    } catch(e) {
+      return e
+    }
+  },
   async validate ({
     state,
     commit,

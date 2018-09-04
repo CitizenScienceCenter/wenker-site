@@ -34,20 +34,21 @@
     <md-card class="desc md-layout-item md-size-100" v-if="project && project.description" v-html="project.description"></md-card>
 
     <md-card class="prereq md-layout-item md-size-100" v-if="project && project.name === 'Wenker - Translation'">
-      <md-field>
+      <md-field v-bind:class="{'md-invalid': !userDetails.canton}">
         <md-select v-model="userDetails.canton" name="canton" id="canton" placeholder="Region you have spent most of your life">
-          <md-option :key="r.value" v-for="r in swissCantons" value="r.value">{{r.label}}</md-option>
+          <md-option :key="r.value" v-for="r in swissCantons" :value="r.value">{{r.label}}</md-option>
         </md-select>
+        <span class="md-error" v-if="!userDetails.canton">Your region is required</span>
       </md-field>
-      <md-field>
+      <md-field v-bind:class="{'md-invalid': !userDetails.age}">
         <md-select v-model="userDetails.age" name="range" id="range" placeholder="Age Range">
-          <md-option :key="a.value" v-for="a in ageRange" value="a.value">{{a.label}}</md-option>
+          <md-option :key="a.value" v-for="a in ageRange" :value="a.value">{{a.label}}</md-option>
         </md-select>
+        <span class="md-error" v-if="!userDetails.age">Your age range is required</span>
       </md-field>
     </md-card>
 
     <button class="md-fab md-primary md-fab-bottom-right" v-on:click="startProject"><md-icon>playlist_play</md-icon></button>
-    <tutorial :data="data" :options="opts"></tutorial>
     </div>
 
 </template>
@@ -64,24 +65,6 @@ export default {
         age: undefined,
         canton: undefined
       },
-      opts: {
-        esc: true,
-        backdrop: true,
-        open: true,
-        closeLast: true // only enable the close button when it is the last one
-      },
-      data: [
-        {
-          header: 'Welcome!',
-          subheader: 'to the Translation project',
-          content: 'In this project, you will need to translate a number of different sentences from their original German meaning to Swiss German now'
-        },
-        {
-          header: 'How?',
-          subheader: "Let's go through the basics",
-          content: "Take a look at the images and choose a sentence"
-        }
-      ]
     }
   },
   watch: {
@@ -91,6 +74,9 @@ export default {
       }
     },
     'tasks' (to, from) {
+    },
+    'userDetails.age' (to, from) {
+      console.log(to)
     }
   },
   components: {
@@ -107,14 +93,23 @@ export default {
   }),
   mounted() {
     this.$store.dispatch('project/getProject', [this.$route.params.id || this.projectID, true])
+    console.log(this.user)
+    if (this.user && this.user.info && this.user.info.age) {
+      this.userDetails = this.user.info
+    }
   },
   methods: {
     deleteProject() {
       this.$store.dispatch('project/deleteProject', this.project.id)
     },
     startProject() {
+
       if (this.tasks.length > 0) {
-        this.$router.push({'name': 'Submission', 'params': {tid: this.tasks[0].id, id: this.project.id}})
+        
+        this.$store.dispatch('user/updateUser', [this.user.id, {info: this.userDetails}]).then(res => {
+          console.log(res)
+          this.$router.push({'name': 'Submission', 'params': {tid: this.tasks[0].id, id: this.project.id}})
+        })
       }
     }
   }

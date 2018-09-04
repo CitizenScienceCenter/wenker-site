@@ -2,13 +2,15 @@
 <template>
   <div class="md-layout md-gutter md-alignment-center-space-around">
     <md-progress-bar md-mode="determinate" :md-value="(activeTaskIndex / tasks.length) * 100"></md-progress-bar>
+    <tutorial :data="tutData" :options="opts"></tutorial>
     <task-submission :task=activeTask :content=content v-on:submission="progressAfterSubmission"></task-submission>
   </div>
 </template>
 
 <script>
 import { mapState } from "vuex";
-import TaskSubmission from "@/components/task-submission.vue";
+import TaskSubmission from "@/components/task-submission.vue"
+import Tutorial from '@/components/tutorial.vue'
 export default {
   name: "Submit",
   data() {
@@ -18,10 +20,28 @@ export default {
       content: undefined,
       activeTaskIndex: undefined,
       activeTask: undefined,
-      msgText: "Let's Go"
+      msgText: "Let's Go",
+      opts: { // TODO add to store
+        esc: true,
+        backdrop: true,
+        open: false,
+        closeLast: true // only enable the close button when it is the last one
+      },
+      tutData: [
+        {
+          header: 'Welcome!',
+          subheader: 'to the Translation project',
+          content: 'In this project, you will need to translate a number of different sentences from their original German meaning to Swiss German now'
+        },
+        {
+          header: 'How?',
+          subheader: "Let's go through the basics",
+          content: "Take a look at the images and choose a sentence"
+        }
+      ]
     };
   },
-  components: { TaskSubmission },
+  components: { TaskSubmission, Tutorial },
   computed: mapState({
     project: state => state.project.selectedProject,
     media: state => state.project.selctedMedia,
@@ -35,13 +55,7 @@ export default {
       this.loadTask()
     },
     'tasks' (to, from) {
-        for(let i = 0; i < to.length; i++) {
-            if (to[i].id == this.$route.params.tid) {
-                this.activeTask = to[i]
-                this.activeTaskIndex = i
-                break
-            }
-        }
+        this.getTaskIndex(to)
     }
   },
   mounted() {
@@ -61,13 +75,7 @@ export default {
       } else if (this.activeTaskIndex === 0) {
         this.msgText = `Let's Go`;
       }
-      for(let i = 0; i < this.tasks.length; i++) {
-          if (this.tasks[i].id == this.$route.params.tid) {
-              this.activeTask = this.tasks[i]
-              this.activeTaskIndex = i
-              break
-          }
-      }
+      this.getTaskIndex(this.tasks)
     },
     progressAfterSubmission() {
       if (this.activeTaskIndex + 1 >= this.tasks.length) {
@@ -76,8 +84,20 @@ export default {
       } else {
         this.$router.push({'name': 'Submission', 'params': {tid: this.tasks[this.activeTaskIndex + 1].id, id: this.project.id}})
       }
+    },
+    getTaskIndex(tasks) {
+      for(let i = 0; i < tasks.length; i++) {
+          if (tasks[i].id == this.$route.params.tid) {
+              this.activeTask = tasks[i]
+              this.activeTaskIndex = i
+              if (this.activeTaskIndex === 0) {
+                this.opts.open = true
+              }
+              break
+          }
+      }
     }
-  }
+  },
 };
 </script>
 <style lang="scss" scoped>
