@@ -2,7 +2,9 @@
 const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
+const Dotenv = require('dotenv-webpack')
 const vueLoaderConfig = require('./vue-loader.conf')
+const env = process.env.NODE_ENV || 'default'
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -24,6 +26,12 @@ module.exports = {
   entry: {
     app: './src/main.js'
   },
+  plugins: [
+    new Dotenv({
+      path: './env/' + env,
+      safe: false
+    })
+  ],
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',

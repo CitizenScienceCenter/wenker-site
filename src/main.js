@@ -29,6 +29,7 @@ VuexRouterSync.sync(store, router)
 
 
 // Load swagger client and SDK is created using tags and operationIds in the JSON
+console.log(process.env.BASE_URI)
 Swagger({url:process.env.BASE_URI,
 requestInterceptor(req) {
   // req.headers['content-type'] = 'application/json'
