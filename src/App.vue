@@ -15,7 +15,7 @@
             <md-avatar md-menu-trigger class='md-avatar-icon' v-if="checkAnon()">A
               <md-tooltip>You are currently an anonymous user</md-tooltip>
             </md-avatar>
-            <md-avatar class='md-avatar-icon' v-if="!checkAnon()"><router-link to="/user">B</router-link></md-avatar>
+            <md-avatar class='md-avatar-icon' v-if="user && !checkAnon()"><router-link to="/user">{{user.email.charAt(0)}}</router-link></md-avatar>
           <md-menu-content>
             <md-menu-item :click="switchAnon" v-if="checkAnon()">Sign up</md-menu-item>
           </md-menu-content>
