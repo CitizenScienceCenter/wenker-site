@@ -51,8 +51,8 @@ export default {
   }),
   watch: {
     'currentUser'(to, from) {
+      console.log(to)
       if (to !== null || to !== undefined) {
-        this.$router.push({name: 'Dashboard'});
       }
     },
   },
@@ -64,6 +64,11 @@ export default {
     login() {
       this.$store
         .dispatch("user/login", { user: { email: this.email, pwd: this.password } })
+        .then(user => {
+          if (user !== false) {
+            this.$router.push({name: 'Dashboard'});
+          }
+        })
     }
   }
 };

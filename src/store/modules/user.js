@@ -16,7 +16,7 @@ const getters = {
 
 // actions
 const actions = {
-  login ({
+  async login ({
     state,
     commit,
     dispatch,
@@ -25,22 +25,22 @@ const actions = {
     commit('settings/SET_LOADING', true, {
       root: true
     })
-    rootState.api.client.apis.Users.login(user)
-      .then(r => r.body)
-      .then(user => {
-        commit('SET_CURRENT_USER', user)
-        commit('settings/SET_LOADING', false, {
-          root: true
-        })
+    try {
+      let res = await rootState.api.client.apis.Users.login(user)
+      commit('SET_CURRENT_USER', res.body)
+      commit('settings/SET_LOADING', false, {
+        root: true
       })
-      .catch(err => {
-        dispatch('settings/setError', {'message': 'Login Failed'}, {
-          root: true
-        })
-        commit('settings/SET_LOADING', false, {
-          root: true
-        })
+      return res.body
+    } catch(err) {
+      dispatch('settings/setError', {'message': 'Login Failed'}, {
+        root: true
       })
+      commit('settings/SET_LOADING', false, {
+        root: true
+      })
+      return err 
+    }
   },
   async generateAnon({
     state,

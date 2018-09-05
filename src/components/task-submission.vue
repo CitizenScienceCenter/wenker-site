@@ -65,6 +65,7 @@ export default {
     task(to, from) {
       if (to) {
         this.$store.dispatch("media/getMedia", this.task.id)
+        this.responses = []
         for (let i = 0; i < to.content.answers.length; i++) {
           this.responses.push({text: ""})
         }

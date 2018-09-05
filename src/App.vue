@@ -10,8 +10,15 @@
             <md-menu-item @click="setLocale('en')">English</md-menu-item>
             <md-menu-item @click="setLocale('de')">Deutsch</md-menu-item>
           </md-menu-content>
-            <md-avatar to='/users' class='md-avatar-icon' v-if="user && user.username.indexOf('anon') !== -1">A</md-avatar>
-            <md-avatar to='/users' class='md-avatar-icon' v-if="user && user.username.indexOf('anon') === -1">{{user.username.charAt(0)}}</md-avatar>
+         </md-menu>
+          <md-menu md-direction="bottom-start">
+            <md-avatar md-menu-trigger class='md-avatar-icon' v-if="checkAnon()">A
+              <md-tooltip>You are currently an anonymous user</md-tooltip>
+            </md-avatar>
+            <md-avatar class='md-avatar-icon' v-if="!checkAnon()"><router-link to="/user">B</router-link></md-avatar>
+          <md-menu-content>
+            <md-menu-item :click="switchAnon" v-if="checkAnon()">Sign up</md-menu-item>
+          </md-menu-content>
         </md-menu>
       </div>
     </md-toolbar>
@@ -56,6 +63,7 @@ export default {
   },
   created() {
     this.$material.theming.theme = this.theme
+    console.log(this.user)
   },
   computed: {
     ...mapState({
@@ -70,6 +78,18 @@ export default {
     setLocale(val) {
       this.$i18n.set(val);
       this.$store.dispatch('settings/setLoc', val);
+    },
+    switchAnon() {
+      this.$store.dispatch('user/logout').then(res => this.$router.push({name:'Register'}))
+    },
+    checkAnon() {
+      if (this.user && this.user.username !== null && this.user.username.lower().indexOf('anon') !== -1) {
+        return true
+      } else if (this.user && this.user.email) {
+        return false
+      } else {
+        return false
+      }
     }
   }
 };
