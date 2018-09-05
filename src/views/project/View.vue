@@ -33,7 +33,7 @@
     </md-card>
     <md-card class="desc md-layout-item md-size-100" v-if="project && project.description" v-html="project.description"></md-card>
 
-    <md-card class="prereq md-layout-item md-size-100" v-if="project && project.name === 'Wenker - Translation'">
+    <md-card class="prereq md-layout-item md-size-100">
       <md-field v-bind:class="{'md-invalid': !userDetails.canton}">
         <md-select v-model="userDetails.canton" name="canton" id="canton" placeholder="Region you have spent most of your life">
           <md-option :key="r.value" v-for="r in swissCantons" :value="r.value">{{r.label}}</md-option>
@@ -93,7 +93,8 @@ export default {
   }),
   mounted() {
     this.$store.dispatch('project/getProject', [this.$route.params.id || this.projectID, true])
-    console.log(this.user)
+    console.log(this.user.api_key)
+    console.log(JSON.stringify(this.user))
     if (this.user && this.user.info && this.user.info.age) {
       this.userDetails = this.user.info
     }

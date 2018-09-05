@@ -115,6 +115,7 @@ const actions = {
   }, [id, info]) {
     try {
       let res = await rootState.api.client.apis.Users.update_user({id: id, user: info})
+      commit('SET_CURRENT_USER', res.body)
       return res
     } catch(e) {
       return e
@@ -127,6 +128,7 @@ const actions = {
   }, id) {
     try {
         let res = await rootState.api.client.apis.Users.validate({key: state.currentUser.api_key})
+        commit('SET_CURRENT_USER', res.body)
         return true
     } catch (e) {
         return false
