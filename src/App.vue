@@ -11,11 +11,11 @@
             <md-menu-item @click="setLocale('de')">Deutsch</md-menu-item>
           </md-menu-content>
          </md-menu>
-          <md-menu md-direction="bottom-start">
+          <md-menu v-if="user" md-direction="bottom-start">
             <md-avatar md-menu-trigger class='md-avatar-icon' v-if="checkAnon()">A
               <md-tooltip>You are currently an anonymous user</md-tooltip>
             </md-avatar>
-            <md-avatar class='md-avatar-icon' v-if="user && !checkAnon()"><router-link to="/user">{{user.email.charAt(0)}}</router-link></md-avatar>
+            <md-avatar class='md-avatar-icon' v-if="!checkAnon()"><router-link to="/user">{{user.username.charAt(0)}}</router-link></md-avatar>
           <md-menu-content>
             <md-menu-item :click="switchAnon" v-if="checkAnon()">Sign up</md-menu-item>
           </md-menu-content>
@@ -83,10 +83,8 @@ export default {
       this.$store.dispatch('user/logout').then(res => this.$router.push({name:'Register'}))
     },
     checkAnon() {
-      if (this.user && this.user.username !== null && this.user.username.lower().indexOf('anon') !== -1) {
+      if (this.user && this.user.username && this.user.username.indexOf('anon') !== -1) {
         return true
-      } else if (this.user && this.user.email) {
-        return false
       } else {
         return false
       }
