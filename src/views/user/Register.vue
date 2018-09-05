@@ -52,7 +52,7 @@ export default {
         pwd: this.password
       }
       this.$store.dispatch('user/register', user).then(r => {
-          this.$router.dispatch('/login')
+          this.$router.push('/login')
         })
     }
   }
