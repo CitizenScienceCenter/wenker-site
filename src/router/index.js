@@ -4,7 +4,6 @@ import * as User from '@/views/user'
 import * as Project from '@/views/project'
 import * as Home from '@/views/home'
 import * as Task from '@/views/task'
-import * as Media from '@/views/media'
 import store from '@/store'
 
 Vue.use(Router)

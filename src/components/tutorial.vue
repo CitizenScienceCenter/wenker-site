@@ -27,7 +27,7 @@
 </template>
 <script>
 /**
- * A tutorial popover using the md-dialog component from vue-material
+ * A tutorial popover using the dialog component from
  * Should have an `options` object and a `data` array as props
  * 
  * @author encima

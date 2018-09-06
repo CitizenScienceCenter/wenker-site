@@ -77,6 +77,6 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped src='@/assets/styles/components/task-multiple-choice.scss'>
+<style scoped src='@/assets/styles/components/upload.scss'>
 </style>
 
