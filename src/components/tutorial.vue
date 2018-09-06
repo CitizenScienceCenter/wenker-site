@@ -1,4 +1,5 @@
 <template>
+  <!-- Set the options for opening and using a cover here -->
   <md-dialog :md-active.sync="options.open" :md-backdrop="options.backdrop">
     <article v-cloak>
       <md-card v-if="current">
@@ -25,12 +26,35 @@
   </md-dialog>
 </template>
 <script>
+/**
+ * A tutorial popover using the md-dialog component from vue-material
+ * Should have an `options` object and a `data` array as props
+ * 
+ * @author encima
+ */
 export default {
     name: 'tutorial',
-    props: ['data', 'options'],
+    props: {
+      /**
+       * Data should be an array of objects containing a `header`, `subheader`, `img`, and `content`
+       * NOTE: the `img` is optional
+       */
+      'data': {type: Array},
+      /**
+       * Options should contain booleans to `open` the tutorial, `backdrop` behind the dialog and
+       * allow it to be closed on pressing the esc key(`closeOnEsc`)
+       */
+      'options': {type: Object}
+    },
     data() {
         return {
+            /**
+             * The current screen that is being shown
+             */
             step: 0,
+            /**
+             * The data for the current screen
+             */
             current: null
         }
     },
