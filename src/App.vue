@@ -19,7 +19,7 @@
         </div>
     </header>
 
-    <article>
+    <article id="app">
       <router-view/>
     </article>
     <CCFooter class='footer'></CCFooter>

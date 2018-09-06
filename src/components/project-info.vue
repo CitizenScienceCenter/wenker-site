@@ -23,11 +23,26 @@
   </div>
 </template>
 <script>
+/**
+ * A header section to display information about a project
+ * and the associated stats
+ * 
+ * @author encima
+ */
 export default {
     name: 'project-info',
     props: {
+        /**
+         * Cover Image
+         */
         img: {type: String},
+        /**
+         * Project Name
+         */
         project_name: {type: String},
+        /**
+         * Statistics from stats API endpoint
+         */
         stats: {type: Object}
     }
 }

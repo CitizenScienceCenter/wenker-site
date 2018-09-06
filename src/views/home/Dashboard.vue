@@ -3,6 +3,7 @@
     <section>
       <img src="@/assets/img/wenker-banner.jpg">
     </section>
+    <h1 class="title">Wenker Project</h1>
   </div>
     
 </template>

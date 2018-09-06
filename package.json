@@ -13,7 +13,7 @@
     "test": "npm run unit && npm run e2e",
     "lint": "eslint --ext .js,.vue src test/unit test/e2e/specs",
     "build": "node build/build.js",
-    "docs": "./node_modules/.bin/vuedoc.md src/components/ccfooter.vue --output docs/"
+    "docs": "./node_modules/.bin/vuedoc.md src/**/*.vue --output docs/"
   },
   "dependencies": {
     "axios": "^0.18.0",
