@@ -3,22 +3,7 @@
     <br>
     <br>
     WORDS!
-    <section class="call-to-action">
-        <img src="@/assets/img/wenker-banner.jpg">
-
-        <span class="title">{{project.name}}</span>
-    </section>
-    <section class="info">
-        <div class="stats tasks" v-if="stats">
-            <span class="sub-title">{{stats.task_count}} Tasks </span>
-        </div>
-        <div class="stats contributors" v-if="stats">
-            <span class="sub-title">{{stats.contributor_count}} Contributors </span>
-        </div>
-        <div class="stats submissions" v-if="stats">
-            <span class="sub-title">{{ stats.submission_count }} Submissions </span>
-        </div>
-    </section>
+    <project-info :stats="stats" :project_name="project.name" img="@/assets/img/wenker-banner.jpg"></project-info>
     <!-- This loads the project description using the `v-html` tag -->
     <div class="desc" v-if="project && project.description" v-html="project.description"></div>
         <div class="prereq">
@@ -43,6 +28,7 @@
 <script>
 import { mapState, mapGetters } from "vuex"
 import Tutorial from '@/components/tutorial.vue'
+import ProjectInfo from "@/components/project-info.vue";
 export default {
   name: "ViewProject",
   props: ["projectID"],
@@ -67,7 +53,7 @@ export default {
     }
   },
   components: {
-    Tutorial,
+    Tutorial, ProjectInfo
   },
   computed: mapState({
     project: state => state.project.selectedProject,

@@ -1,36 +1,32 @@
 <template>
-  <div :md-theme="theme" flex class="page-container md-layout-column">
-    <md-toolbar class="md-primary">
+  <div>
+    <header>
       <span class="home-title md-title"><a href="/"><img src="@/assets/img/logo.png"/></a></span>
       <!-- TODO logo here -->
-      <div class="md-toolbar-section-end">
-         <md-menu md-direction="bottom-start">
-          <md-button md-menu-trigger>{{locale}}</md-button>
-          <md-menu-content>
-            <md-menu-item @click="setLocale('en')">English</md-menu-item>
-            <md-menu-item @click="setLocale('de')">Deutsch</md-menu-item>
-          </md-menu-content>
-         </md-menu>
-          <md-menu v-if="user" md-direction="bottom-start">
-            <md-avatar md-menu-trigger class='md-avatar-icon' v-if="checkAnon()">A
-              <md-tooltip>You are currently an anonymous user</md-tooltip>
-            </md-avatar>
-            <md-avatar class='md-avatar-icon' v-if="!checkAnon()"><router-link to="/user">{{user.username.charAt(0)}}</router-link></md-avatar>
-          <md-menu-content>
-            <md-menu-item :click="switchAnon" v-if="checkAnon()">Sign up</md-menu-item>
-          </md-menu-content>
-        </md-menu>
-      </div>
-    </md-toolbar>
+          <div class="">
+            <span>{{locale}}</span>
+            <ul>
+              <li @click="setLocale('en')">English</li>
+              <li @click="setLocale('de')">Deutsch</li>
+            </ul>
+          </div>
+          <div v-if="user">
+            <span v-if="checkAnon()">A</span>
+            <span v-if="!checkAnon()"><router-link to="/user">{{user.username.charAt(0)}}</router-link></span>
+            <ul>
+              <li :click="switchAnon" v-if="checkAnon()">Sign up</li>
+            </ul>
+        </div>
+    </header>
     <md-progress-bar md-mode="indeterminate" v-if="loading" />
 
-    <md-content>
+    <article>
       <router-view/>
       <!-- <md-divider></md-divider> -->
-      <md-snackbar class="err-bar" :md-active.sync="showSnack" v-if="err">
+      <!-- <md-snackbar class="err-bar" :md-active.sync="showSnack" v-if="err">
         {{err.message}}
-      </md-snackbar>
-    </md-content>
+      </md-snackbar> -->
+    </article>
     <!-- <br><br> -->
     <CCFooter class='footer'></CCFooter>
     

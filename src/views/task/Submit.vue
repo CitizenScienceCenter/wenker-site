@@ -1,7 +1,8 @@
 
 <template>
   <div class="md-layout md-gutter md-alignment-center-space-around">
-    <md-progress-bar md-mode="determinate" :md-value="(activeTaskIndex / tasks.length) * 100"></md-progress-bar>
+    <!-- TODO add progress bar here -->
+    <!-- <md-progress-bar md-mode="determinate" :md-value="(activeTaskIndex / tasks.length) * 100"></md-progress-bar> -->
     <tutorial :data="tutData" :options="opts"></tutorial>
     <task-submission :task=activeTask :content=content v-on:submission="progressAfterSubmission"></task-submission>
   </div>
@@ -9,8 +10,8 @@
 
 <script>
 import { mapState } from "vuex";
-import TaskSubmission from "@/components/task-submission.vue"
-import Tutorial from '@/components/tutorial.vue'
+import TaskSubmission from "@/components/task-submission-raw.vue"
+import Tutorial from '@/components/tutorialraw.vue'
 export default {
   name: "Submit",
   data() {
