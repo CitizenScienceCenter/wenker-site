@@ -1,54 +1,23 @@
 <template>
-  <div class="md-layout md-gutter md-alignment-top-space-between">
-    <md-card class="img-card md-layout-item md-size-100" v-if="project">
-      <md-card-media-cover md-text-scrim>
-        <md-card-media md-medium class="banner">
-          <img src="@/assets/img/wenker-banner.jpg">
-        </md-card-media>
-
-        <md-card-area>
-          <md-card-header>
-            <span class="md-title">{{project.name}}</span>
-          </md-card-header>
-        </md-card-area>
-      </md-card-media-cover>
-    </md-card>
-    <md-card class="stats md-primary md-layout-item md-size-30" v-if="stats">
-      <md-card-header>
-        <span class="md-title">{{stats.task_count}} Tasks </span>
-        <!-- <span class="md-subhead"> Tasks</span> -->
-      </md-card-header>
-    </md-card>
-    <md-card class="stats md-primary md-layout-item md-size-30" v-if="stats">
-      <md-card-header>
-        <span class="md-title">{{stats.contributor_count}} Contributors </span>
-        <!-- <span class="md-subhead">Contributions</span> -->
-      </md-card-header>
-    </md-card>
-    <md-card class="stats md-primary md-layout-item md-size-30" v-if="stats">
-      <md-card-header>
-        <span class="md-title">{{ stats.submission_count }} Submissions </span>
-        <!-- <span class="md-subhead">Volunteers</span> -->
-      </md-card-header>
-    </md-card>
-    <md-card class="desc md-layout-item md-size-100" v-if="project && project.description" v-html="project.description"></md-card>
-
-    <md-card class="prereq md-layout-item md-size-100">
-      <md-field v-bind:class="{'md-invalid': !userDetails.canton}">
-        <md-select v-model="userDetails.canton" name="canton" id="canton" placeholder="Region you have spent most of your life">
-          <md-option :key="r.value" v-for="r in swissCantons" :value="r.value">{{r.label}}</md-option>
-        </md-select>
-        <span class="md-error" v-if="!userDetails.canton">Your region is required</span>
-      </md-field>
-      <md-field v-bind:class="{'md-invalid': !userDetails.age}">
-        <md-select v-model="userDetails.age" name="range" id="range" placeholder="Age Range">
-          <md-option :key="a.value" v-for="a in ageRange" :value="a.value">{{a.label}}</md-option>
-        </md-select>
-        <span class="md-error" v-if="!userDetails.age">Your age range is required</span>
-      </md-field>
-    </md-card>
-
-    <button class="md-fab md-primary md-fab-bottom-right" v-on:click="startProject"><md-icon>playlist_play</md-icon></button>
+<div>
+    <project-info :stats="stats" :project_name="project.name" img="@/assets/img/wenker-banner.jpg"></project-info>
+    <!-- This loads the project description using the `v-html` tag -->
+    <div class="desc" v-if="project && project.description" v-html="project.description"></div>
+        <div class="prereq">
+            <div v-bind:class="{'invalid': !userDetails.canton}">
+                <select v-model="userDetails.canton" name="canton" id="canton" placeholder="Region you have spent most of your life">
+                    <option :key="r.value" v-for="r in swissCantons" :value="r.value">{{r.label}}</option>
+                </select>
+                <span class="error" v-if="!userDetails.canton">Your region is required</span>
+            </div>
+            <div v-bind:class="{'invalid': !userDetails.age}">
+                <select v-model="userDetails.age" name="range" id="range" placeholder="Age Range">
+                    <option :key="a.value" v-for="a in ageRange" :value="a.value">{{a.label}}</option>
+                </select>
+                <span class="error" v-if="!userDetails.age">Your age range is required</span>
+            </div>
+        </div>
+        <button class="startProject" v-on:click="startProject">Start Project</button>
     </div>
 
 </template>
@@ -56,6 +25,7 @@
 <script>
 import { mapState, mapGetters } from "vuex"
 import Tutorial from '@/components/tutorial.vue'
+import ProjectInfo from "@/components/project-info.vue";
 export default {
   name: "ViewProject",
   props: ["projectID"],
@@ -80,7 +50,7 @@ export default {
     }
   },
   components: {
-    Tutorial,
+    Tutorial, ProjectInfo
   },
   computed: mapState({
     project: state => state.project.selectedProject,

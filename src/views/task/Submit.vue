@@ -10,8 +10,8 @@
 
 <script>
 import { mapState } from "vuex";
-import TaskSubmission from "@/components/task-submission-raw.vue"
-import Tutorial from '@/components/tutorialraw.vue'
+import TaskSubmission from "@/components/task-submission.vue"
+import Tutorial from '@/components/tutorial.vue'
 export default {
   name: "Submit",
   data() {

@@ -1,8 +1,5 @@
 <template>
   <div>
-    <!-- <md-empty-state v-if="choices.length === 0" md-icon="devices_other" md-label="Create your first task" md-description="Creating project, you'll be able to add media and share it with people.">
-        <md-button :to="{name:'CreateTask', params: {id: project_id}}" class="md-primary md-raised">Create first task</md-button>
-    </md-empty-state> -->
     <md-list-item :key="index" v-for="(c, index) in choices">
         <md-field>
             <label>Choice</label>

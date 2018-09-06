@@ -1,32 +1,26 @@
 <template>
   <div>
-    <form novalidate class="md-layout" @submit.prevent="upload">
-      <md-card class="md-layout-item md-size-70 md-small-size-100">
-        <md-card-header>
-          <div class="md-title">Upload a File</div>
-        </md-card-header>
+    <form @submit.prevent="upload">
+      <div class="">
+          <span class="title">Upload a File</span>
   
-        <md-card-content>
-          <div class="md-layout">
-            <md-field v-if="!embedded">
+            <div v-if="!embedded">
               <label for="name">ID</label>
-              <md-input type="text" v-model="form.id" name="id" id="id" disabled/>
-            </md-field>
+              <input type="text" v-model="form.id" name="id" id="id" disabled/>
+            </div>
   
-            <md-field>
-              <label>Select Files</label>
-              <md-file v-model="filenames" @md-change="fileSelected($event)" :multiple="multiple" />
-            </md-field>
-          </div>
-        </md-card-content>
+            <div>
+              <label for="file">Select Files</label>
+              <!-- TODO test if this change to file upload affects anything -->
+              <input type="file" name="file" @change="fileSelected($event)" :multiple="multiple" />
+            </div>
+        </div>
   
-        <md-card-actions v-if="!embedded">
-          <md-button type="submit" ref='upload' class="md-primary" :disabled="loading">Upload</md-button>
-        </md-card-actions>
-      </md-card>
+        <button v-if="!embedded" type="submit" ref='upload' class="md-primary" :disabled="loading">Upload</button>
+      </form>
   
-      <md-snackbar :md-active.sync="fileSaved">Your media has been added!</md-snackbar>
-    </form>
+      <!-- TODO implement something like snackbar -->
+      <!-- <md-snackbar :md-active.sync="fileSaved">Your media has been added!</md-snackbar> -->
   </div>
 </template>
 

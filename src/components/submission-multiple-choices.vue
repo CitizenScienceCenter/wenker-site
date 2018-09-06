@@ -1,14 +1,11 @@
 <template>
   <div>
-    <!-- <md-empty-state v-if="choices.length === 0" md-icon="devices_other" md-label="Create your first task" md-description="Creating project, you'll be able to add media and share it with people.">
-        <md-button :to="{name:'CreateTask', params: {id: project_id}}" class="md-primary md-raised">Create first task</md-button>
-    </md-empty-state> -->
-      <md-field>
-        <label for="choices">Select an answer:</label>
-        <md-select v-model="selections" name="choices" id="choices" multiple @md-selected="onSelect">
-          <md-option :key="index" v-for="(c, index) in choiceSelection" value="c.value">{{c.text}}</md-option>
-        </md-select>
-      </md-field>
+    <div>
+      <label for="choices">Select an answer:</label>
+      <select v-model="selections" name="choices" id="choices" multiple @md-selected="onSelect">
+        <option :key="index" v-for="(c, index) in choiceSelection" value="c.value">{{c.text}}</option>
+      </select>
+    </div>
   </div>
 </template>
 

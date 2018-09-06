@@ -18,16 +18,10 @@
             </ul>
         </div>
     </header>
-    <md-progress-bar md-mode="indeterminate" v-if="loading" />
 
     <article>
       <router-view/>
-      <!-- <md-divider></md-divider> -->
-      <!-- <md-snackbar class="err-bar" :md-active.sync="showSnack" v-if="err">
-        {{err.message}}
-      </md-snackbar> -->
     </article>
-    <!-- <br><br> -->
     <CCFooter class='footer'></CCFooter>
     
   </div>
@@ -90,64 +84,4 @@ export default {
 </script>
 
 <style lang="scss">
-@import "~vue-material/dist/theme/engine";
-@import "src/assets/styles/theme.scss";
-body {
-  overflow-x: hidden;
-  min-width: 100%;
-}
-
-.home-title {
-  color: white !important;
-  img {
-    max-width: 20%;
-  }
-}
-
-.err-bar {
-  background-color: red !important;
-}
-
-.md-drawer {
-  width: 230px;
-  max-width: calc(100vw - 125px);
-  color: $acc !important;
-  background-color: $prim !important;
-  .md-list {
-    background-color: $prim !important;
-    color: $acc !important;
-  }
-  .md-list-item-content {
-    color: $acc !important;
-  }
-}
-
-// .footer {
-//   height: 20%;
-//   padding: 0 16px;
-//   position: fixed;
-//   min-width: 100%;
-//   bottom: 0;
-//   z-index: 4;
-//   background-color: #eee;
-// }
-
-
-.footer {
-  // padding-top: 4%;
-  min-width: 100%;
-  width: 100%;
-  background-color: #fff;
-  position: absolute;
-  bottom: 0;
-  // max-height: 3%;
-}
-.page-container {
-  min-height: 100%;
-}
-
-
-// .md-list-item {
-//     color: white !important;
-// }
 </style>

@@ -1,48 +1,20 @@
 <template>
   <div>
-  <div class="md-layout md-gutter md-alignment-center-space-around">
-    <md-card class="title-card md-layout-item md-size-100" v-if="project">
-      <md-card-media v-if="media && media.length">
-        <img :src="media[0]">
-      </md-card-media>
-      <md-card-header>
-        <span class="md-title">{{project.name}}</span>
-      </md-card-header>
-    </md-card>
-    </div>
-    <br><br>
-    <div class="md-layout md-gutter md-alignment-center-space-around" v-if="stats">
-    <md-card class="stats md-layout-item md-size-30">
-      <md-card-header>
-        <span class="md-title">{{stats.task_count}} Tasks </span>
-        <!-- <span class="md-subhead"> Tasks</span> -->
-      </md-card-header>
-    </md-card>
-    <md-card class="stats md-layout-item md-size-30" v-if="tasks">
-      <md-card-header>
-        <span class="md-title">{{stats.contributor_count}} Contributors </span>
-        <!-- <span class="md-subhead">Contributions</span> -->
-      </md-card-header>
-    </md-card>
-    <md-card class="stats md-layout-item md-size-30" v-if="tasks">
-      <md-card-header>
-        <span class="md-title">{{ stats.submission_count }} Submissions </span>
-        <!-- <span class="md-subhead">Volunteers</span> -->
-      </md-card-header>
-    </md-card>
-    <md-progress-bar md-mode="determinate" :md-value="(activeTaskIndex / tasks.length) * 100"></md-progress-bar>
-    <task-submission :task=activeTask :content=content></task-submission>
+    <div class="">
+      <project-info :stats="stats" :project_name="project.name" :img="media[0]"></project-info>
+      <!-- TODO add progress bar here -->
+      <!-- <div md-mode="determinate" :md-value="(activeTaskIndex / tasks.length) * 100"></div> -->
+      <task-submission :task=activeTask :content=content></task-submission>
     </div>
     <div v-html="project.description"></div>
-    <div class="btn-wrapper md-layout">
-      <md-button v-on:click="takePart" class="md-alignment-center-center md-primary md-raised" v-if="tasks.length > 0">{{msgText}}</md-button>
-    </div>
+    <button v-on:click="takePart" v-if="tasks.length > 0">{{msgText}}</button>
   </div>
 </template>
 
 <script>
 import { mapState } from "vuex";
 import TaskSubmission from "@/components/task-submission.vue";
+import ProjectInfo from "@/components/project-info.vue";
 export default {
   name: "Participate",
   data() {
@@ -55,7 +27,7 @@ export default {
       msgText: "Let's Go"
     };
   },
-  components: { TaskSubmission: TaskSubmission },
+  components: { TaskSubmission, ProjectInfo },
   computed: mapState({
     project: state => state.project.selectedProject,
     media: state => state.project.selctedMedia,

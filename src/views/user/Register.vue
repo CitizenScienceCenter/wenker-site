@@ -1,31 +1,20 @@
 <template>
-    <div>
+  <div>
+    <h1 class="title">{{ $t('views.user.register')}}</h1>
     <form novalidate class="md-layout" @submit.prevent="register">
-      <md-card class="md-layout-item">
-        <md-card-header>
-          <div class="md-title">{{ $t('views.user.register')}}</div>
-        </md-card-header>
-
-        <md-card-content>
-          <div class="md-layout">
-          <md-field>
+      <div>
+          <div>
             <label for="email">{{ $t('views.user.email')}}</label>
-            <md-input v-model="email" type="email" name="email" id="email" autocomplete="email" :disabled="loading" />
-          </md-field>
-
-              <md-field>
-                <label for="pwd">{{ $t('views.user.pwd')}}</label>
-                <md-input v-model="password" type="password" id="password" name="password" autocomplete="password" :disabled="loading" />
-              </md-field>
+            <input v-model="email" type="email" name="email" id="email" autocomplete="email" :disabled="loading" />
           </div>
-        </md-card-content>
 
-        <md-card-actions>
-          <md-button type="submit" class="md-primary" :disabled="loading">{{ $t('views.user.register')}}</md-button>
-        </md-card-actions>
-      </md-card>
-
-      <md-snackbar :md-active.sync="userSaved">	{{ $t('views.user.reg_success', {email: email}) }}</md-snackbar>
+          <div>
+            <label for="pwd">{{ $t('views.user.pwd')}}</label>
+            <input v-model="password" type="password" id="password" name="password" autocomplete="password" :disabled="loading" />
+          </div>
+    
+        <button type="submit" class="md-primary" :disabled="loading">{{ $t('views.user.register')}}</button>
+      </div>
     </form>
   </div>
 </template>

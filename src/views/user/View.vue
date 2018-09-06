@@ -1,33 +1,18 @@
 <template>
   <div>
-    <form novalidate class="md-layout" disabled>
-      <md-card class="md-layout-item">
-        <md-card-header>
-          <div class="md-title">User Details</div>
-        </md-card-header>
-  
-        <md-card-content>
-          <div v-if="user" class="md-layout">
-            <md-field>
-              <label for="user.email">Email</label>
-              <md-input v-model="user.email" type="email" name="email" id="email" autocomplete="email" disabled/>
-            </md-field>
+    <h1 class="title">User Details</h1>
+    <form novalidate disabled>
+      <div v-if="user" class="md-layout">
+        <div>
+          <label for="user.email">Email</label>
+          <input v-model="user.email" type="email" name="email" id="email" autocomplete="email" disabled/>
+        </div>
 
-            <md-field>
-              <label for="user.email">API Key</label>
-              <md-input v-model="user.api_key" type="text" name="api" id="api"/>
-            </md-field>
-            
-  
-          </div>
-        </md-card-content>
-  
-  
-        <!-- <md-card-actions>
-              <md-button type="submit" class="md-primary" :disabled="loading">Edit</md-button>
-            </md-card-actions> -->
-      </md-card>
-  
+        <div>
+          <label for="user.email">API Key</label>
+          <input v-model="user.api_key" type="text" name="api" id="api"/>
+        </div>
+      </div>
     </form>
   </div>
 </template>

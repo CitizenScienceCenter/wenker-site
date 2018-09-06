@@ -3,36 +3,30 @@
   <div class="content" v-if="task">
     
       
-        <md-card class="task-title md-layout-item md-size-100">
-          <md-card-header>
-            <div class="featured-title md-title"><b>{{task.content.question.text}}</b></div>
-        </md-card-header> 
-        </md-card>
-      <div class="md-layout-item md-layout md-gutter">
-        <md-card v-if="items.length"  class="md-layout-item sub-card md-size-60"> 
+        <div class="task-title">
+            <span class="featured-title md-title"><b>{{task.content.question.text}}</b></span>
+        </div>
+      <div class="">
+        <!-- TODO left align -->
+        <div v-if="items.length" > 
            <viewer :images="items">
               <img v-for="src in items" :src="src" :key="src">
             </viewer>
-          <!-- <featured-carousel class="featured-carousel" :items=items v-if="items.length > 0"></featured-carousel>                 -->
-        </md-card>
-        <!-- TODO conditional sizing -->
-        <md-card class="sub-card md-layout-item" :class="{'md-class-40': 'items.length > 0', 'md-class-60': 'items.length === 0'}">
-          <md-icon></md-icon>
-          <md-card v-for="(answer, i) in task.content.answers" v-bind:key="i">
+        </div>
+        <div>
+          <div v-for="(answer, i) in task.content.answers" v-bind:key="i">
             <upload v-if="answer.type.indexOf('file') !== -1" :embedded="true" :multiple="answer.type === 'multiple_files'"></upload>
-            <md-field v-if="answer.type === 'text'">
+            <div v-if="answer.type === 'text'">
               <label for="qutxt">{{answer.placeholder || task.content.question.text}}</label>
-              <md-input type="text" v-model="responses[i].text" name="qutxt" id="qutxt" />
-            </md-field>
+              <input type="text" v-model="responses[i].text" name="qutxt" id="qutxt" />
+            </div>
             <submission-multiple-choices :index="i" :content="responses[i]" :choices="answer.choices" :type="answer.type" v-if="answer.type === 'multiple_choice'"></submission-multiple-choices>
-          </md-card>
-           <md-card-actions>
-            <md-button v-on:click="submitTask" class="md-list-action" title="Take Part!">
+          </div>
+            <button v-on:click="submitTask" title="Take Part!">
                 Submit
-            </md-button> 
-          </md-card-actions>
+            </button> 
           
-        </md-card>
+        </div>
 
       </div>
   </div>
@@ -41,9 +35,8 @@
 
 <script>
 import { mapState } from "vuex";
-import Upload from "@/components/upload.vue";
-import FeaturedCarousel from "@/components/featured-carousel.vue";
-import SubmissionMultipleChoices from "@/components/submission-multiple-choices.vue";
+import Upload from "@/components/upload.vue"
+import SubmissionMultipleChoices from "@/components/submission-multiple-choices.vue"
 
 export default {
   name: "task-submission",
@@ -54,7 +47,7 @@ export default {
       responses: []
     }
   },
-  components: { Upload, SubmissionMultipleChoices, FeaturedCarousel },
+  components: { Upload, SubmissionMultipleChoices },
   computed: mapState({
     loading: state => state.project.loading,
     submission: state => state.submission.submission,

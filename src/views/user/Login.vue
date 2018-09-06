@@ -1,32 +1,18 @@
 <template>
     <div>
-    <form novalidate class="md-layout" @submit.prevent="login">
-      <md-card class="md-layout-item">
-        <md-card-header>
-          <div class="md-title">{{ $t("views.user.login") }}</div>
-        </md-card-header>
+      <h1 class="title">{{ $t("views.user.login") }}</h1>
+      <form @submit.prevent="login">
+        <div>
+          <label for="email">{{ $t("views.user.email") }}</label>
+          <input v-model="email" type="email" name="email" id="email" autocomplete="email" :disabled="loading" />
+        </div>
 
-        <md-card-content>
-          <div class="md-layout">
-          <md-field>
-            <label for="email">{{ $t("views.user.email") }}</label>
-            <md-input v-model="email" type="email" name="email" id="email" autocomplete="email" :disabled="loading" />
-          </md-field>
+        <div>
+          <label for="pwd">{{ $t("views.user.pwd") }}</label>
+          <md-input v-model="password" type="password" id="password" name="password" autocomplete="password" :disabled="loading" />
+        </div>
 
-              <md-field>
-                <label for="pwd">{{ $t("views.user.pwd") }}</label>
-                <md-input v-model="password" type="password" id="password" name="password" autocomplete="password" :disabled="loading" />
-              </md-field>
-          </div>
-        </md-card-content>
-
-        <md-card-actions>
-          <md-button type="submit" class="md-primary" :disabled="loading">{{ $t("views.user.login") }}</md-button>
-        </md-card-actions>
-      </md-card>
-
-      <!-- <md-snackbar :md-active.sync="currentUser">Welcome, {{currentUser.email}}</md-snackbar>
-      <md-snackbar :md-active.sync="error">Login Failed</md-snackbar> -->
+        <button type="submit" class="md-primary" :disabled="loading">{{ $t("views.user.login") }}</button>
     </form>
   </div>
 </template>
