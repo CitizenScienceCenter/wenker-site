@@ -9,6 +9,8 @@
       <a href="https://twitter.com/home?status=Look%20at%20me!%20I%20just%20contributed%20to%20Citizen%20Science%20using%20C3S.%20So,%20yeah,%20I'm%20kind%20of%20a%20big%20deal%20now.">Tweet!</a>
     </div>
 
+    <register-form></register-form>
+
     <button class="" to="/">Home</button>
   </div>
 
@@ -16,16 +18,13 @@
 
 <script>
 import { mapState, mapGetters } from "vuex";
-import ProjectInfo from "@/components/project-info.vue";
+import ProjectInfo from "@/components/project-info.vue"
+import RegisterForm from "@/components/register-form.vue"
 export default {
   name: "CompletedProject",
   props: ["projectID"],
   data() {
     return {
-      userDetails: {
-        age: undefined,
-        canton: undefined
-      }
     };
   },
   watch: {
@@ -35,6 +34,9 @@ export default {
       }
     },
     tasks(to, from) {}
+  },
+  components: {
+    RegisterForm
   },
   computed: mapState({
     project: state => state.project.selectedProject,
