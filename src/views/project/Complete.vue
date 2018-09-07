@@ -9,6 +9,7 @@
       <a href="https://twitter.com/home?status=Look%20at%20me!%20I%20just%20contributed%20to%20Citizen%20Science%20using%20C3S.%20So,%20yeah,%20I'm%20kind%20of%20a%20big%20deal%20now.">Tweet!</a>
     </div>
 
+  <!-- TODO only show for non signed in users -->
     <register-form></register-form>
 
     <button class="" to="/">Home</button>
