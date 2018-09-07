@@ -26,6 +26,11 @@ const router = new Router({
       component: User.Register
     },
     {
+      path: '/welcome',
+      name: 'Welcome',
+      component: User.Welcome
+    },
+    {
       path: '/logout',
       name: 'Logout',
       component: User.Login,

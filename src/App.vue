@@ -52,7 +52,6 @@ export default {
     }
   },
   created() {
-    this.$material.theming.theme = this.theme
     console.log(this.user)
   },
   computed: {
