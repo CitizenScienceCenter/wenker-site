@@ -51,14 +51,28 @@
         </div>
         <div class="row">
           <div class="col col-action">
+            <img src="@/assets/img/content/transcribe.svg" />
             <h3>Transkribieren</h3>
             <p>1700 Bögen Schweizer Wenkersätze / die Antworten sind handgeschrieben vor 100 Jahren / nicht maschinell lesbar sind / Helfen Sie mit bei deren Digitalisierung</p>
             <button class="primary">Transkribieren</button>
           </div>
           <div class="col col-action">
+            <img src="@/assets/img/content/translate.svg" />
             <h3>Übersetzen</h3>
             <p>einen Einblick in die moderne Mundart /  Möglichkeit, die Wenkersätze neu zu übersetzen / schreiben Sie Ihren Dialekt einfach so, wie Sie es gewohnt sind</p>
             <button class="primary">Übersetzen</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-content section-content-dark">
+      <div class="content-wrapper">
+        <div class="row">
+          <div class="col">
+            <h3>Georg Wenker</h3>
+            <p>1700 Bögen Schweizer Wenkersätze / die Antworten sind handgeschrieben vor 100 Jahren / nicht maschinell lesbar sind / Helfen Sie mit bei deren Digitalisierung</p>
+            <button class="secondary">Transkribieren</button>
           </div>
         </div>
       </div>
