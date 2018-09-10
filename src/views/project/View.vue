@@ -2,7 +2,7 @@
   <div>
 
     <section class="section-content">
-
+asdf
       <project-info :stats="stats" :project_name="project.name"></project-info>
 
       <div class="row">
