@@ -2,27 +2,31 @@
    <footer>
 
      <section class="section-content section-content-sharing">
-       <div class="row">
-         <div class="col col-title">
-           <h2>Teilen Sie das Projekt.</h2>
+       <div class="content-wrapper">
+         <div class="row">
+           <div class="col col-title">
+             <h2>Teilen Sie das Projekt.</h2>
+           </div>
          </div>
-       </div>
-       <div class="row">
-         <div class="col col-sharing">
-           <a href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site http://wenker.citizenscience.ch." title="Share by Email"><img src="@/assets/img/icons/envelope.svg" alt="Email"/></a>
-           <a href="https://twitter.com/intent/tweet?text=Check out this site http://wenker.citizenscience.ch."><img src="@/assets/img/icons/twitter.svg" alt="Twitter"/></a>
-           <a href="https://www.facebook.com/sharer/sharer.php?u=wenker.citizenscience.ch"><img src="@/assets/img/icons/facebook-f.svg" alt="Facebook"/></a>
+         <div class="row">
+           <div class="col col-sharing">
+             <a href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site http://wenker.citizenscience.ch." title="Share by Email"><img src="@/assets/img/icons/envelope.svg" alt="Email"/></a>
+             <a href="https://twitter.com/intent/tweet?text=Check out this site http://wenker.citizenscience.ch."><img src="@/assets/img/icons/twitter.svg" alt="Twitter"/></a>
+             <a href="https://www.facebook.com/sharer/sharer.php?u=wenker.citizenscience.ch"><img src="@/assets/img/icons/facebook-f.svg" alt="Facebook"/></a>
+           </div>
          </div>
        </div>
      </section>
 
      <section class="section-content section-content-footer">
-       <div class="row">
-         <div class="col col-footer-left">
-           <img src="@/assets/img/cscc_logo.png" alt="Citizen Science Center Zurich"/>
-         </div>
-         <div class="col col-footer-right">
-           <span>© 2018</span>
+       <div class="content-wrapper">
+         <div class="row">
+           <div class="col col-footer-left">
+             <img src="@/assets/img/cscc_logo.png" alt="Citizen Science Center Zurich"/>
+           </div>
+           <div class="col col-footer-right">
+             <span>© 2018</span>
+           </div>
          </div>
        </div>
      </section>

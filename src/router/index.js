@@ -49,6 +49,18 @@ const router = new Router({
       // meta: {requiresAuth: true, breadcrumb: 'Home'}
     },
     {
+      path: '/wenker',
+      name: 'Wenker',
+      component: Home.Wenker,
+      // meta: {requiresAuth: true, breadcrumb: 'Home'}
+    },
+    {
+      path: '/faq',
+      name: 'FAQ',
+      component: Home.FAQ,
+      // meta: {requiresAuth: true, breadcrumb: 'Home'}
+    },
+    {
       path: '/',
       beforeEnter: (to, from, next) => {
         if (store.state.user.currentUser !== null && 'api_key' in store.state.user.currentUser && store.state.user.currentUser.api_key) {

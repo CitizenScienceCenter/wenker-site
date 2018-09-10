@@ -27,8 +27,8 @@
         <li><router-link to="/projects/e4b5ebc5-47a2-430b-84a9-a03b1d4dda34">Transcribe</router-link></li>
         <li><a href="#">Übersetzen</a></li>
         <li><router-link to="/about">Das Projekt</router-link></li>
-        <li><a href="#">Georg Wenker</a></li>
-        <li><a href="#">FAQ</a></li>
+        <li><router-link to="/wenker">Georg Wenker</router-link></li>
+        <li><router-link to="/faq">FAQ</router-link></li>
         <li class="separated"><a href="#">Anmelden</a></li>
       </ul>
     </header>

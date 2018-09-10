@@ -66,6 +66,14 @@ label {
   font-size: 1rem;
   line-height: 1;
 }
+figure {
+  font-size: 0;
+}
+figcaption {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  margin-top: 8px;
+}
 
 // Grid Basics
 
@@ -281,6 +289,9 @@ header {
   p {
     margin-bottom: 24px;
   }
+  figure {
+    margin-bottom: 24px;
+  }
 
   .col-action {
     width: 50%;
@@ -293,6 +304,11 @@ header {
 
   .col-text {
     width: 50%;
+
+    img {
+      width: 100%;
+    }
+
   }
 
   .col-sharing {
