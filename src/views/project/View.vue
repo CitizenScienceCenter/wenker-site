@@ -1,9 +1,24 @@
 <template>
-<div>
-    <project-info :stats="stats" :project_name="project.name" img="@/assets/img/wenker-banner.jpg"></project-info>
-    <!-- This loads the project description using the `v-html` tag -->
-    <div class="desc" v-if="project && project.description" v-html="project.description"></div>
-        <div class="prereq">
+  <div>
+
+    <section class="section-content">
+
+      <project-info :stats="stats" :project_name="project.name"></project-info>
+
+      <div class="row">
+        <div class="col">
+
+          <!-- This loads the project description using the `v-html` tag -->
+          <div class="desc" v-if="project && project.description" v-html="project.description"></div>
+
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col">
+
+          <div class="prereq">
             <div v-bind:class="{'invalid': !userDetails.canton}">
                 <select v-model="userDetails.canton" name="canton" id="canton" placeholder="Region you have spent most of your life">
                     <option :key="r.value" v-for="r in swissCantons" :value="r.value">{{r.label}}</option>
@@ -16,9 +31,16 @@
                 </select>
                 <span class="error" v-if="!userDetails.age">Your age range is required</span>
             </div>
+          </div>
+
+          <button class="startProject" v-on:click="startProject">Start Project</button>
+
         </div>
-        <button class="startProject" v-on:click="startProject">Start Project</button>
-    </div>
+      </div>
+
+    </section>
+
+  </div>
 
 </template>
 
@@ -76,7 +98,7 @@ export default {
     startProject() {
 
       if (this.tasks.length > 0) {
-        
+
         this.$store.dispatch('user/updateUser', [this.user.id, {info: this.userDetails}]).then(res => {
           console.log(res)
           this.$router.push({'name': 'Submission', 'params': {tid: this.tasks[0].id, id: this.project.id}})

@@ -1,14 +1,19 @@
 <template>
-    <div>
-    <section>
-        <div>
-          <img :src="img">
-        </div>
+  <div>
 
+    <div class="row">
+      <div class="col col-title">
+        <h2>{{project_name}}</h2>
+      </div>
+    </div>
+
+    <!--
+    <section>
         <div>
           <span class="title">{{project_name}}</span>
         </div>
-      </section>
+    </section>
+
     <section class="info" v-if="stats">
         <div class="stats tasks">
             <span class="sub-title">{{stats.task_count}} Tasks </span>
@@ -20,13 +25,15 @@
             <span class="sub-title">{{ stats.submission_count }} Submissions </span>
         </div>
     </section>
+    -->
+
   </div>
 </template>
 <script>
 /**
  * A header section to display information about a project
  * and the associated stats
- * 
+ *
  * @author encima
  */
 export default {
@@ -50,4 +57,3 @@ export default {
 <style lang="scss" scoped>
 
 </style>
-

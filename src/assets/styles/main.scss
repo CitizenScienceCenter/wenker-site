@@ -2,7 +2,7 @@
 
 // Variables
 $color-primary: #6F7A9D;
-$color-primary-bright: #D4D7E2;
+$color-primary-light: #D4D7E2;
 $color-primary-dark: #646E8D;
 $color-text: $color-primary-dark;
 
@@ -188,11 +188,15 @@ header {
       }
       &:hover {
         a {
-          color: $color-primary-bright;
+          color: $color-primary-light;
         }
       }
     }
   }
+}
+
+#app {
+  margin-top: 80px;
 }
 
 .section-cover {
@@ -201,7 +205,6 @@ header {
   background-size: cover;
   background-position: 50% 35%;
   position: relative;
-  margin-top: 80px;
 
   .row {
     height: 100%;
@@ -249,8 +252,16 @@ header {
 .section-content {
   padding: 48px 0;
 
+  &.section-content-sharing {
+    background-color: $color-primary-light;
+  }
+  &.section-content-footer {
+    background-color: $color-primary-dark;
+  }
+
   .col-title {
     width: 50%;
+    text-align: center;
   }
 
   h2 {
@@ -262,17 +273,58 @@ header {
   p {
     margin-bottom: 24px;
   }
-}
 
-.section-actions {
-  .col {
-    text-align: center;
-  }
   .col-action {
     width: 50%;
     width: 33.333%;
+    text-align: center;
     &:first-child {
       margin-right: 16.667%;
+    }
+  }
+
+  .col-sharing {
+    text-align: center;
+
+    a {
+      display: inline-block;
+      width: 48px;
+      height: 48px;
+      font-size: 0;
+      margin-right:48px;
+      &:last-child {
+        margin-right: 0;
+      }
+      img {
+        max-width: 48px;
+        max-height: 48px;
+      }
+
+      &:hover {
+        img {
+          fill: $color-primary;
+        }
+      }
+    }
+  }
+
+  .col-footer-left {
+    width: 50%;
+    img {
+      display: inline-block;
+      height: 48px;
+    }
+  }
+  .col-footer-right {
+    width: 50%;
+    color: white;
+    display: flex;
+    align-items: center;
+
+    span {
+      display: block;
+      width: 100%;
+      text-align: right;
     }
   }
 }

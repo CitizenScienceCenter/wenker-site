@@ -10,14 +10,14 @@
   </div>
   -->
   <div>
-    
+
     <section class="section-cover">
       <div class="row">
         <div class="col col-cover-text">
           <h2 class="cover-title">Schweizer&shy;deutsch<br/>1930 / 2020</h2>
           <p class="cover-text">Helfen Sie mit, den Schatz der Schweizer Wenkersätze zu digitalisieren und neu zu übersetzen.</p>
-          <button class="primary">Transkribieren</button>
-          <button class="primary">Übersetzen</button>
+          <router-link to="/projects/transcribe" tag="button" class="primary">Transkribieren</router-link>
+          <router-link to="/projects/translate" tag="button" class="primary">Übersetzen</router-link>
         </div>
       </div>
     </section>
@@ -31,7 +31,7 @@
                 <div class="text-box">
                   <h3>Die 40 Wenker-Sätze</h3>
                   <p>Im Rahmen eines sprachwissenschaftlichen Forschungsprojekts haben Lehrer mit ihren Schülern in den 1930er Jahren an vielen Schulen der Deutschschweiz 40 hochdeutsche Sätze in den jeweiligen Dorfdialekt übersetzt.</p>
-                  <button class="secondary">Mehr zum Projekt</button>
+                  <router-link to="/about" tag="button" class="secondary">Mehr zum Projekt</router-link>
                 </div>
               </div>
             </div>
@@ -40,7 +40,7 @@
       </div>
     </section>
 
-    <section class="section-content section-actions">
+    <section class="section-content">
       <div class="row">
         <div class="col col-title">
           <h2>Helfen Sie mit.</h2>

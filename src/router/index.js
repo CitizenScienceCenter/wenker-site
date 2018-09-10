@@ -40,7 +40,13 @@ const router = new Router({
       path: '/dashboard',
       name: 'Dashboard',
       component: Home.Dashboard,
-      meta: {requiresAuth: true, breadcrumb: 'Home'}
+      // meta: {requiresAuth: true, breadcrumb: 'Home'}
+    },
+    {
+      path: '/about',
+      name: 'About',
+      component: Home.About,
+      // meta: {requiresAuth: true, breadcrumb: 'Home'}
     },
     {
       path: '/',
@@ -61,13 +67,13 @@ const router = new Router({
     {
       path: '/projects',
       component: Project.Root,
-      meta: {requiresAuth: true, breadcrumb: 'Projects'},
+      // meta: {requiresAuth: true, breadcrumb: 'Projects'},
       children: [
         {
           path: ':id',
           name: 'ViewProject',
           component: Project.View,
-          meta: {requiresAuth: true, breadcrumb: 'View Project'}
+          // meta: {requiresAuth: true, breadcrumb: 'View Project'}
         },
         {
           path: 'translate',
@@ -83,19 +89,19 @@ const router = new Router({
           path: ':id/participate/:tid',
           name: 'Submission',
           component: Task.Submit,
-          meta: {requiresAuth: true, breadcrumb: 'Take Part'}
+          // meta: {requiresAuth: true, breadcrumb: 'Take Part'}
         },
         {
           path: ':id/participate',
           name: 'TakePart',
           component: Project.Participate,
-          meta: {requiresAuth: true, breadcrumb: 'Take Part'}
+          // meta: {requiresAuth: true, breadcrumb: 'Take Part'}
         },
         {
           path: ':id/completed',
           name: 'CompletedProject',
           component: Project.Complete,
-          meta: {requiresAuth: true, breadcrumb: 'Completed!'}
+          // meta: {requiresAuth: true, breadcrumb: 'Completed!'}
         }
       ]
     },

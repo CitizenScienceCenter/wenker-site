@@ -1,6 +1,32 @@
 <template>
    <footer>
-     copyright 2018
+
+     <section class="section-content section-content-sharing">
+       <div class="row">
+         <div class="col col-title">
+           <h2>Teilen Sie das Projekt.</h2>
+         </div>
+       </div>
+       <div class="row">
+         <div class="col col-sharing">
+           <a href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site http://www.website.com." title="Share by Email"><img src="@/assets/img/icons/envelope.svg" alt="Email"/></a>
+           <a href="#"><img src="@/assets/img/icons/twitter.svg" alt="Twitter"/></a>
+           <a href="#"><img src="@/assets/img/icons/facebook-f.svg" alt="Facebook"/></a>
+         </div>
+       </div>
+     </section>
+
+     <section class="section-content section-content-footer">
+       <div class="row">
+         <div class="col col-footer-left">
+           <img src="@/assets/img/cscc_logo.png" alt="Citizen Science Center Zurich"/>
+         </div>
+         <div class="col col-footer-right">
+           <span>© 2018</span>
+         </div>
+       </div>
+     </section>
+
     </footer>
 </template>
 
