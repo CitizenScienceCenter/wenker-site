@@ -1,8 +1,8 @@
 <template>
   <div>
+    <!--
     <header>
       <span class="home-title md-title"><a href="/"><img src="@/assets/img/logo.png"/></a></span>
-      <!-- TODO logo here -->
           <div class="">
             <span>{{locale}}</span>
             <ul>
@@ -18,14 +18,30 @@
             </ul>
         </div>
     </header>
+  -->
+
+    <header>
+      <h1><a href="#" class="logo"><img src="@/assets/img/logo.png" alt="Wenker Project – Citizen Science Center Zurich"/></a></h1>
+      <ul class="navigation">
+        <li class="active"><a href="#">Active</a></li>
+        <li><a href="#">Transkribieren</a></li>
+        <li><a href="#">Übersetzen</a></li>
+        <li><a href="#">Das Projekt</a></li>
+        <li><a href="#">Georg Wenker</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li class="separated"><a href="#">Anmelden</a></li>
+      </ul>
+    </header>
+
 
     <article id="app">
       <router-view/>
     </article>
+
     <CCFooter class='footer'></CCFooter>
-    
+
   </div>
-  
+
 </template>
 
 <script>
@@ -82,5 +98,8 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" src="@/assets/styles/main.scss">
+
+
+
 </style>

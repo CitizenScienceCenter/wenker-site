@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA;EACG;EACD,WAAW,EAAE,MAAM;;AAErB,EAAG;EACD,eAAe,EAAE,IAAI;EACrB,OAAO,EAAE,CAAC;;AAEZ,EAAG;EACD,OAAO,EAAE,YAAY;EACrB,MAAM,EAAE,MAAM;;AAEhB,CAAE;EACA,KAAK,EAAE,OAAO;;ACXhB,OAAQ;EACN,OAAO,EAAE,GAAG;EACZ,cAAc,EAAE,IAAI",
+"sources": ["../main.scss","task-multiple-choice.scss"],
+"names": [],
+"file": "task-multiple-choice.css"
+}
