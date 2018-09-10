@@ -2,8 +2,8 @@
   <div>
 
     <section class="section-content">
-      
-      <project-info :stats="stats" :project_name="project.name"></project-info>
+
+      <project-info :stats="stats" v-if="project" :project_name="project.name"></project-info>
 
       <div class="row">
         <div class="col">
@@ -84,26 +84,28 @@ export default {
     ageRange: state => state.consts.ageRange
   }),
   mounted() {
+    /*
     this.$store.dispatch('project/getProject', [this.$route.params.id || this.projectID, true])
     console.log(this.user.api_key)
     console.log(JSON.stringify(this.user))
     if (this.user && this.user.info && this.user.info.age) {
       this.userDetails = this.user.info
     }
+    */
   },
   methods: {
     deleteProject() {
-      this.$store.dispatch('project/deleteProject', this.project.id)
+      //this.$store.dispatch('project/deleteProject', this.project.id)
     },
     startProject() {
 
-      if (this.tasks.length > 0) {
-
-        this.$store.dispatch('user/updateUser', [this.user.id, {info: this.userDetails}]).then(res => {
-          console.log(res)
-          this.$router.push({'name': 'Submission', 'params': {tid: this.tasks[0].id, id: this.project.id}})
-        })
-      }
+      // if (this.tasks.length > 0) {
+      //
+      //   this.$store.dispatch('user/updateUser', [this.user.id, {info: this.userDetails}]).then(res => {
+      //     console.log(res)
+      //     this.$router.push({'name': 'Submission', 'params': {tid: this.tasks[0].id, id: this.project.id}})
+      //   })
+      // }
     }
   }
 };
