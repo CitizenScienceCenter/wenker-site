@@ -24,8 +24,8 @@
       <h1><router-link to="/dashboard" class="logo"><img src="@/assets/img/uzh_eth_logo.svg" alt="Wenker Project – Citizen Science Center Zurich"/></router-link></h1>
       <ul class="navigation">
         <li><router-link to="/Dashboard">Home</router-link></li>
-        <li><router-link to="/projects/transcribe">Transkribieren</router-link></li>
-        <li><router-link to="/projects/translate" href="#">Übersetzen</router-link></li>
+        <li><router-link to="/projects/e4b5ebc5-47a2-430b-84a9-a03b1d4dda34">Transkribieren</router-link></li>
+        <li><router-link to="/projects/507b3f89-aff1-4fa3-8f28-9c8399811539" href="#">Übersetzen</router-link></li>
         <li><router-link to="/about">Das Projekt</router-link></li>
         <li><router-link to="/wenker">Georg Wenker</router-link></li>
         <li><router-link to="/faq">FAQ</router-link></li>
@@ -66,9 +66,6 @@ export default {
     'user' (to, from) {
       // TODO execute validation here when user changes
     },
-    '$route' (to, from) {
-      console.log(to)
-    }
   },
   created() {
     console.log(this.user)

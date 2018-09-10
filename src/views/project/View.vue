@@ -90,6 +90,16 @@ export default {
     },
     'userDetails.age' (to, from) {
       console.log(to)
+    },
+    '$route.params.id' (to, from) {
+      this.$store.dispatch('project/getProject', [to || this.projectID, true]).then(res => {
+        console.log(res)
+      })
+      // console.log(this.user.api_key)
+      // console.log(JSON.stringify(this.user))
+      if (this.user && this.user.info && this.user.info.age) {
+        this.userDetails = this.user.info
+      }
     }
   },
   components: {
@@ -102,17 +112,16 @@ export default {
     tasks: state => state.project.selectedTasks,
     stats: state => state.project.selectedStats,
     swissCantons: state => state.consts.swissCantons,
-    ageRange: state => state.consts.ageRange
+    ageRange: state => state.consts.ageRange,
+    route: state => state.route
   }),
   mounted() {
-    /*
     this.$store.dispatch('project/getProject', [this.$route.params.id || this.projectID, true])
-    console.log(this.user.api_key)
-    console.log(JSON.stringify(this.user))
+    // console.log(this.user.api_key)
+    // console.log(JSON.stringify(this.user))
     if (this.user && this.user.info && this.user.info.age) {
       this.userDetails = this.user.info
     }
-    */
   },
   methods: {
     deleteProject() {

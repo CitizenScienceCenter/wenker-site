@@ -89,7 +89,7 @@ const router = new Router({
         },
         {
           path: 'translate',
-          name: 'TranslateeProject',
+          name: 'TranslateProject',
           redirect: '/projects/507b3f89-aff1-4fa3-8f28-9c8399811539'
         },
         {
