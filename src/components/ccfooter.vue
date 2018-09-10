@@ -9,9 +9,9 @@
        </div>
        <div class="row">
          <div class="col col-sharing">
-           <a href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site http://www.website.com." title="Share by Email"><img src="@/assets/img/icons/envelope.svg" alt="Email"/></a>
-           <a href="#"><img src="@/assets/img/icons/twitter.svg" alt="Twitter"/></a>
-           <a href="#"><img src="@/assets/img/icons/facebook-f.svg" alt="Facebook"/></a>
+           <a href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site http://wenker.citizenscience.ch." title="Share by Email"><img src="@/assets/img/icons/envelope.svg" alt="Email"/></a>
+           <a href="https://twitter.com/intent/tweet?text=Check out this site http://wenker.citizenscience.ch."><img src="@/assets/img/icons/twitter.svg" alt="Twitter"/></a>
+           <a href="https://www.facebook.com/sharer/sharer.php?u=wenker.citizenscience.ch"><img src="@/assets/img/icons/facebook-f.svg" alt="Facebook"/></a>
          </div>
        </div>
      </section>

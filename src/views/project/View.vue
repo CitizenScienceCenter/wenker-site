@@ -2,6 +2,27 @@
   <div>
 
     <section class="section-content">
+      <div class="content-wrapper">
+        <div class="row">
+          <div class="col">
+            <!-- form styles -->
+            <label for="example-input">Type something
+              <input type="text" id="example-input">
+            </label>
+            <label for="example-select">Type something
+              <select id="example-select">
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="mercedes">Mercedes</option>
+                <option value="audi">Audi</option>
+              </select>
+            </label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-content">
 
       <project-info :stats="stats" v-if="project" :project_name="project.name"></project-info>
 
@@ -33,7 +54,7 @@
             </div>
           </div>
 
-          <button class="startProject" v-on:click="startProject">Start Project</button>
+          <button class="startProject primary" v-on:click="startProject">Start Project</button>
 
         </div>
       </div>

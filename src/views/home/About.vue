@@ -11,10 +11,22 @@
   -->
   <div>
 
-      <section class="section-content">
-      <div class="row">
-        <div class="col">
-          Blabla
+    <section class="section-content">
+      <div class="content-wrapper">
+        <div class="row">
+          <div class="col col-title">
+            <h2>Über das Projekt</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col col-text">
+            <h3>Unsere Sprachliche Entwicklung verstehen</h3>
+            <p>
+              Viele Menschen sind überzeugt, dass die schweizerdeutschen Mundarten in den letzten Jahrzehnten zahlreiche ihrer Merkmale verloren haben. Die Frage nach der Veränderung der Mundarten kann bisher oft nicht wissenschaftlich fundiert beantwortet werden, weil Kenntnisse darüber, wie die Mundart früher gestaltet war, fehlen.
+  Mit dem Transkribieren der Wenkerbögen helfen Sie Forschenden, diese Wissenslücke zu schliessen. Und Sie erhalten selbst einen Einblick in die sprachliche Vergangenheit der Schweiz, vielleicht sogar in die Geschichte Ihres eigenen Dialekts. Sie lernen alte Ausdrücke kennen und staunen wahrscheinlich über die in dem Bogen aus Ihrem Ort festgehaltene Aussprache mancher Wörter.
+  Helfen Sie mit, diesen Schatz der Schweizer Wenkersätze zu digitalisieren, indem Sie sie transkribieren, korrigieren oder neu übersetzen. Somit leisten Sie einen wertvollen Beitrag zur Erforschung des Schweizerdeutschen von vor 100 Jahren.
+            </p>
+          </div>
         </div>
       </div>
     </section>
