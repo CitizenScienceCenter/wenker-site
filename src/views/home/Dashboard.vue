@@ -12,12 +12,14 @@
   <div>
 
     <section class="section-cover">
-      <div class="row">
-        <div class="col col-cover-text">
-          <h2 class="cover-title">Schweizer&shy;deutsch<br/>1930 / 2020</h2>
-          <p class="cover-text">Helfen Sie mit, den Schatz der Schweizer Wenkersätze zu digitalisieren und neu zu übersetzen.</p>
-          <router-link to="/projects/e4b5ebc5-47a2-430b-84a9-a03b1d4dda34" tag="button" class="primary">Transkribieren</router-link>
-          <router-link to="/projects/507b3f89-aff1-4fa3-8f28-9c8399811539" tag="button" class="primary">Übersetzen</router-link>
+      <div class="content-wrapper">
+        <div class="row">
+          <div class="col col-cover-text">
+            <h2 class="cover-title">Schweizer&shy;deutsch<br/>1930 / 2020</h2>
+            <p class="cover-text">Helfen Sie mit, den Schatz der Schweizer Wenkersätze zu digitalisieren und neu zu übersetzen.</p>
+            <router-link to="/projects/e4b5ebc5-47a2-430b-84a9-a03b1d4dda34" tag="button" class="primary">Transkribieren</router-link>
+            <router-link to="/projects/507b3f89-aff1-4fa3-8f28-9c8399811539" tag="button" class="primary">Übersetzen</router-link>
+          </div>
         </div>
       </div>
       <a href="https://citizenscience.ch/"><img class="cscc_logo" src="@/assets/img/cscc_logo.png" alt="Citizen Science Center Zurich"/></a>

@@ -18,8 +18,6 @@
         <div class="row">
           <div class="col">
 
-            <div class="">
-              <!-- TODO left align -->
               <div v-if="items.length" >
                 <div class="imageBox" style="width:200px;height:200px;overflow:hidden;">
                   <!-- <img v-for="src in items" :src="src" :key="src"> -->
@@ -38,9 +36,8 @@
                   <button v-on:click="submitTask" title="Take Part!">
                       Submit
                   </button>
-
               </div>
-            </div>
+
 
           </div>
         </div>
