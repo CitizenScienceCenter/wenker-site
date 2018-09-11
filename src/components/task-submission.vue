@@ -3,11 +3,15 @@
   <div v-if="task">
 
     <section class="section-content">
+
+      <project-info :stats="stats" v-if="project" :project_name="project.name"></project-info>
+
       <div class="content-wrapper">
 
         <div class="row">
           <div class="col col-title">
             <h3>{{task.content.question.text}}</h3>
+            asfasdf
           </div>
         </div>
 
@@ -17,9 +21,10 @@
             <div class="">
               <!-- TODO left align -->
               <div v-if="items.length" >
-                 <viewer :images="items">
-                    <img v-for="src in items" :src="src" :key="src">
-                  </viewer>
+                <div class="imageBox" style="width:200px;height:200px;overflow:hidden;">
+                  <!-- <img v-for="src in items" :src="src" :key="src"> -->
+                  <img src="@/assets/img/content/klassenzimmer.jpg" />
+                </div>
               </div>
               <div>
                 <div v-for="(answer, i) in task.content.answers" v-bind:key="i">
@@ -51,6 +56,7 @@
 import { mapState } from "vuex";
 import Upload from "@/components/upload.vue"
 import SubmissionMultipleChoices from "@/components/submission-multiple-choices.vue"
+import ProjectInfo from "@/components/project-info.vue"
 
 export default {
   name: "task-submission",
@@ -61,8 +67,10 @@ export default {
       responses: []
     }
   },
-  components: { Upload, SubmissionMultipleChoices },
+  components: { Upload, SubmissionMultipleChoices, ProjectInfo },
   computed: mapState({
+    project: state => state.project.selectedProject,
+    stats: state => state.project.selectedStats,
     loading: state => state.project.loading,
     submission: state => state.submission.submission,
     userId: state => state.user.user,

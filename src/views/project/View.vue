@@ -11,20 +11,24 @@
           <div class="form-section">
 
             <h3>Ihre Angaben</h3>
-            <div class="desc" v-if="project && project.description" v-html="project.description"></div>
+            <!-- <div class="desc" v-if="project && project.description" v-html="project.description"></div> -->
 
             <div class="prereq">
               <div v-bind:class="{'invalid': !userDetails.canton}">
-                  <select v-model="userDetails.canton" name="canton" id="canton" placeholder="Region you have spent most of your life">
-                      <option :key="r.value" v-for="r in swissCantons" :value="r.value">{{r.label}}</option>
-                  </select>
+                  <div class="select-wrapper">
+                    <select v-model="userDetails.canton" name="canton" id="canton" placeholder="Region you have spent most of your life">
+                        <option :key="r.value" v-for="r in swissCantons" :value="r.value">{{r.label}}</option>
+                    </select>
+                  </div>
                   <span class="error" v-if="!userDetails.canton">Your region is required</span>
               </div>
               <div v-bind:class="{'invalid': !userDetails.age}">
+                <div class="select-wrapper">
                   <select v-model="userDetails.age" name="range" id="range" placeholder="Age Range">
                       <option :key="a.value" v-for="a in ageRange" :value="a.value">{{a.label}}</option>
                   </select>
-                  <span class="error" v-if="!userDetails.age">Your age range is required</span>
+                </div>
+                <span class="error" v-if="!userDetails.age">Your age range is required</span>
               </div>
             </div>
 

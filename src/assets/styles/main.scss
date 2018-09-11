@@ -7,11 +7,19 @@ $color-primary-lighter: #DAD3C1;
 $color-primary-dark: #726646;
 $color-text: $color-primary-dark;
 
-$grid-margin: 64px;
+$break-medium: 1280px;
+$break-small: 1024px;
+$break-mobile: 768px;
+$break-mobile-small: 400px;
+
+$grid-margin-large: 64px;
+$grid-margin-medium: 32px;
+$grid-margin-small: 16px;
 $grid-gutter: 32px;
 
 $transition-timing-function: cubic-bezier(0.420, 0.000, 0.580, 1.000);
 $transition-duration: 0.15s;
+
 
 // Basics
 
@@ -84,13 +92,51 @@ figcaption {
   margin-top: 8px;
 }
 
+.select-wrapper {
+  position: relative;
+
+  select {
+    appearance: none;
+    width: 100%;
+    display: block;
+    background: none;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid $color-primary;
+    height: 48px;
+    font-size: 1rem;
+    outline: none;
+
+    &:hover, &:focus {
+      border-color: $color-primary-dark;
+    }
+  }
+
+  &::after {
+    display: block;
+    content: "▾";
+    width: 1rem;
+    height: 1rem;
+    position: absolute;
+    right: 0;
+    top: calc( (48px - 1rem)/2 );
+    right: 0.5rem;
+    color: $color-primary;
+    text-align: center;
+  }
+}
+input {
+  width: 100%;
+  display: block;
+}
+
 // Grid Basics
 
 .content-wrapper {
   max-width: 1440px;
   box-sizing: border-box;
   margin: auto;
-  padding: 0 $grid-margin;
+  padding: 0 $grid-margin-large;
 }
 .row {
   box-sizing: border-box;
@@ -175,6 +221,16 @@ button {
         margin-bottom: 24px;
       }
     }
+  }
+}
+
+.zoombox {
+  width: 200px;
+  height: 200px;
+  overflow: scroll;
+  cursor: grab;
+  img {
+    width: 200%;
   }
 }
 
@@ -265,6 +321,7 @@ header {
     text-align: center;
     font-size: 0;
     text-shadow: 0px 1px 8px rgba(0, 0, 0, 0.5);
+    z-index: 999;
 
     .cover-title {
       margin-bottom: 16px;
@@ -371,10 +428,10 @@ header {
 
     .form-section {
       text-align: center;
-      margin-bottom: 24px;
+      margin-bottom: 48px;
 
       select {
-        width: 100%;
+        margin-bottom: 16px;
       }
     }
   }
@@ -433,6 +490,116 @@ header {
         text-decoration: none;
         &:hover {
           color: $color-primary-light;
+        }
+      }
+    }
+  }
+}
+
+
+// Media Queries
+
+@media screen and (max-width: $break-medium) {
+
+  header {
+    .navigation {
+      li {
+        a {
+          padding: 32px 8px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $break-small) {
+
+  .content-wrapper {
+    padding: 0 $grid-margin-medium;
+  }
+
+  header {
+    .navigation {
+      li {
+        display: none;
+        &:last-child {
+          display: inline-block;
+        }
+      }
+    }
+  }
+
+  .section-cover {
+    .col-cover-text {
+      width: 66.667%;
+    }
+  }
+}
+
+@media screen and (max-width: $break-mobile) {
+
+  .content-wrapper {
+    padding: 0 $grid-margin-small;
+  }
+
+  header {
+    height: 64px;
+
+    .logo {
+      margin: 16px;
+      img {
+        height: 32px;
+      }
+    }
+
+    .navigation {
+      li {
+        a {
+          padding: 24px 16px;
+        }
+      }
+    }
+  }
+
+  #app {
+    margin-top: 64px;
+  }
+
+  h2 {
+    &.cover-title {
+      font-size: 2.441rem;
+    }
+    font-size: 2.441rem;
+  }
+  .cover-text {
+    font-size: 1.25rem;
+    line-height: 1.2;
+    font-weight: 300;
+  }
+  h3 {
+    font-size: 1.953rem;
+    line-height: 1.2;
+    font-weight: 300;
+  }
+
+  .section-cover {
+    height: 480px;
+
+    .col-cover-text {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: $break-mobile-small) {
+  .section-cover {
+    .col-cover-text {
+      button {
+        margin-right: 8px;
+        margin-left: 8px;
+        margin-bottom: 16px;
+        &:last-child {
+          margin-bottom: 0;
         }
       }
     }
