@@ -124,17 +124,19 @@ export default {
       //this.$store.dispatch('project/deleteProject', this.project.id)
     },
     startProject() {
-      if (project.info && project.info.task_count > 1 && project.info.task_selection === "random") {
+ /*     console.log(this.project.info.task_selection)
+      if (this.project.info && this.project.info.task_count > 1 && this.project.info.task_selection === "random") {
         this.$store.dispatch('task/randomProjectTask', [this.project.id, this.userDetails.canton]).then(task => {
           this.$router.push({'name': 'Submission', 'params': {tid: task.id, id: this.project.id}})
         })
       } else if (this.tasks.length > 0) {
-        //TODO only update if not saved in user
+        //TODO only update if not saved in user*/
+        console.log(this.tasks)
          this.$store.dispatch('user/updateUser', [this.user.id, {info: this.userDetails}]).then(res => {
            console.log(res)
            this.$router.push({'name': 'Submission', 'params': {tid: this.tasks[0].id, id: this.project.id}})
          })
-      }
+      //}
     }
   }
 };
