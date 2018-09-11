@@ -93,10 +93,8 @@ export default {
     },
     '$route.params.id' (to, from) {
       this.$store.dispatch('project/getProject', [to || this.projectID, true]).then(res => {
-        console.log(res)
+       console.log(res.body)
       })
-      // console.log(this.user.api_key)
-      // console.log(JSON.stringify(this.user))
       if (this.user && this.user.info && this.user.info.age) {
         this.userDetails = this.user.info
       }
@@ -117,8 +115,6 @@ export default {
   }),
   mounted() {
     this.$store.dispatch('project/getProject', [this.$route.params.id || this.projectID, true])
-    // console.log(this.user.api_key)
-    // console.log(JSON.stringify(this.user))
     if (this.user && this.user.info && this.user.info.age) {
       this.userDetails = this.user.info
     }
@@ -128,14 +124,17 @@ export default {
       //this.$store.dispatch('project/deleteProject', this.project.id)
     },
     startProject() {
-
-      // if (this.tasks.length > 0) {
-      //
-      //   this.$store.dispatch('user/updateUser', [this.user.id, {info: this.userDetails}]).then(res => {
-      //     console.log(res)
-      //     this.$router.push({'name': 'Submission', 'params': {tid: this.tasks[0].id, id: this.project.id}})
-      //   })
-      // }
+      if (project.info && project.info.task_count > 1 && project.info.task_selection === "random") {
+        this.$store.dispatch('task/randomProjectTask', [this.project.id, this.userDetails.canton]).then(task => {
+          this.$router.push({'name': 'Submission', 'params': {tid: task.id, id: this.project.id}})
+        })
+      } else if (this.tasks.length > 0) {
+        //TODO only update if not saved in user
+         this.$store.dispatch('user/updateUser', [this.user.id, {info: this.userDetails}]).then(res => {
+           console.log(res)
+           this.$router.push({'name': 'Submission', 'params': {tid: this.tasks[0].id, id: this.project.id}})
+         })
+      }
     }
   }
 };

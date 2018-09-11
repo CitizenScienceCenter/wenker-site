@@ -50,6 +50,17 @@ const actions = {
                 }
             })
     },
+    async randomProjectTask({state, commit, rootState}, [id, search]) {
+        commit('settings/SET_LOADING', true, {root: true})
+        try {
+            let task = rootState.api.client.apis.Tasks.get_random({id:id, search: search})
+            commit('settings/SET_LOADING', false, {root: true})
+            return task
+        } catch(err) {
+            commit('settings/SET_LOADING', false, {root: true})
+            return err
+        }
+    },
     projectTasks({ state, commit, rootState }, id) {
         commit('settings/SET_LOADING', true, {root: true})
         rootState.api.client.apis.Projects.project_tasks({
