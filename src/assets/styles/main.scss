@@ -1,9 +1,10 @@
 @import 'reset.min.css';
 
 // Variables
-$color-primary: #6F7A9D;
-$color-primary-light: #D4D7E2;
-$color-primary-dark: #4E556E;
+$color-primary: #A39264;
+$color-primary-light: #BFB392;
+$color-primary-lighter: #DAD3C1;
+$color-primary-dark: #726646;
 $color-text: $color-primary-dark;
 
 $grid-margin: 64px;
@@ -19,6 +20,9 @@ html {
   color: $color-text;
   font-family: 'Nunito Sans', sans-serif;
   color: $color-text;
+}
+body {
+  background-color: $color-primary-dark;
 }
 
 // Text Styles
@@ -57,6 +61,11 @@ h2 {
 h3 {
   font-size: 1.953rem;
   line-height: 1.2;
+  font-weight: 300;
+}
+h4 {
+  font-size: 1.25rem;
+  line-height: 1.5;
   font-weight: 300;
 }
 p {
@@ -136,8 +145,8 @@ button {
     border-color: white;
     color: white;
     &:hover {
-      border-color: $color-primary-light;
-      color: $color-primary-light;
+      border-color: $color-primary-lighter;
+      color: $color-primary-lighter;
     }
   }
 
@@ -274,18 +283,29 @@ header {
       }
     }
   }
+
+  .cscc_logo {
+    height: 48px;
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+  }
 }
 
 
 .section-content {
   padding: 64px 0;
+  background-color: white;
 
   &.section-content-dark {
     background-color: $color-primary;
     color: white;
   }
   &.section-content-sharing {
-    background-color: $color-primary-light;
+    background-color: $color-primary-lighter;
+    .col-title h2 {
+      color: $color-primary-dark;
+    }
   }
   &.section-content-footer {
     background-color: $color-primary-dark;
@@ -300,6 +320,9 @@ header {
     margin-bottom: 72px;
   }
   h3 {
+    margin-bottom: 24px;
+  }
+  h4 {
     margin-bottom: 24px;
   }
   p {
@@ -320,6 +343,39 @@ header {
       width: 50%;
       font-size: 0;
       margin-bottom: 24px;
+    }
+  }
+
+  .col-wenker-image {
+    width: 33.333%;
+    margin-left: 8.333%;
+    margin-right: 8.333%;
+    .wenker-portrait {
+      border-radius: 50%;
+      overflow: hidden;
+      border: 16px solid $color-primary-light;
+      img {
+        width: 100%;
+      }
+    }
+  }
+  .col-wenker-text {
+    width: 33.333%;
+    margin-right: 16.667%;
+    display: flex;
+    align-items: center;
+  }
+
+  .col-form {
+    width: 33.333%;
+
+    .form-section {
+      text-align: center;
+      margin-bottom: 24px;
+
+      select {
+        width: 100%;
+      }
     }
   }
 
@@ -350,9 +406,7 @@ header {
       }
 
       &:hover {
-        img {
-          fill: $color-primary;
-        }
+        opacity: 0.8;
       }
     }
   }
@@ -370,10 +424,17 @@ header {
     display: flex;
     align-items: center;
 
-    span {
-      display: block;
+    div {
       width: 100%;
       text-align: right;
+      a {
+        margin-right: 16px;
+        color: white;
+        text-decoration: none;
+        &:hover {
+          color: $color-primary-light;
+        }
+      }
     }
   }
 }

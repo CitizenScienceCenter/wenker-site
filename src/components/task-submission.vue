@@ -1,36 +1,50 @@
  <template>
- 
-  <div class="content" v-if="task">
-    
-      
-        <div class="task-title">
-            <span class="featured-title md-title"><b>{{task.content.question.text}}</b></span>
-        </div>
-      <div class="">
-        <!-- TODO left align -->
-        <div v-if="items.length" > 
-           <viewer :images="items">
-              <img v-for="src in items" :src="src" :key="src">
-            </viewer>
-        </div>
-        <div>
-          <div v-for="(answer, i) in task.content.answers" v-bind:key="i">
-            <upload v-if="answer.type.indexOf('file') !== -1" :embedded="true" :multiple="answer.type === 'multiple_files'"></upload>
-            <div v-if="answer.type === 'text'">
-              <label for="qutxt">{{answer.placeholder || task.content.question.text}}</label>
-              <input type="text" v-model="responses[i].text" name="qutxt" id="qutxt" />
-            </div>
-            <submission-multiple-choices :index="i" :content="responses[i]" :choices="answer.choices" :type="answer.type" v-if="answer.type === 'multiple_choice'"></submission-multiple-choices>
+
+  <div v-if="task">
+
+    <section class="section-content">
+      <div class="content-wrapper">
+
+        <div class="row">
+          <div class="col col-title">
+            <h3>{{task.content.question.text}}</h3>
           </div>
-            <button v-on:click="submitTask" title="Take Part!">
-                Submit
-            </button> 
-          
+        </div>
+
+        <div class="row">
+          <div class="col">
+
+            <div class="">
+              <!-- TODO left align -->
+              <div v-if="items.length" >
+                 <viewer :images="items">
+                    <img v-for="src in items" :src="src" :key="src">
+                  </viewer>
+              </div>
+              <div>
+                <div v-for="(answer, i) in task.content.answers" v-bind:key="i">
+                  <upload v-if="answer.type.indexOf('file') !== -1" :embedded="true" :multiple="answer.type === 'multiple_files'"></upload>
+                  <div v-if="answer.type === 'text'">
+                    <label for="qutxt">{{answer.placeholder || task.content.question.text}}</label>
+                    <input type="text" v-model="responses[i].text" name="qutxt" id="qutxt" />
+                  </div>
+                  <submission-multiple-choices :index="i" :content="responses[i]" :choices="answer.choices" :type="answer.type" v-if="answer.type === 'multiple_choice'"></submission-multiple-choices>
+                </div>
+                  <button v-on:click="submitTask" title="Take Part!">
+                      Submit
+                  </button>
+
+              </div>
+            </div>
+
+          </div>
         </div>
 
       </div>
+    </section>
+
   </div>
-    
+
 </template>
 
 <script>
@@ -62,7 +76,7 @@ export default {
         for (let i = 0; i < to.content.answers.length; i++) {
           this.responses.push({text: ""})
         }
-        this.createSubmission()  
+        this.createSubmission()
       }
     },
     taskMedia(to, from) {

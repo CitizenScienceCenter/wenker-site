@@ -16,10 +16,11 @@
         <div class="col col-cover-text">
           <h2 class="cover-title">Schweizer&shy;deutsch<br/>1930 / 2020</h2>
           <p class="cover-text">Helfen Sie mit, den Schatz der Schweizer Wenkersätze zu digitalisieren und neu zu übersetzen.</p>
-          <router-link to="/projects/transcribe" tag="button" class="primary">Transkribieren</router-link>
-          <router-link to="/projects/translate" tag="button" class="primary">Übersetzen</router-link>
+          <router-link to="/projects/e4b5ebc5-47a2-430b-84a9-a03b1d4dda34" tag="button" class="primary">Transkribieren</router-link>
+          <router-link to="/projects/507b3f89-aff1-4fa3-8f28-9c8399811539" tag="button" class="primary">Übersetzen</router-link>
         </div>
       </div>
+      <a href="https://citizenscience.ch/"><img class="cscc_logo" src="@/assets/img/cscc_logo.png" alt="Citizen Science Center Zurich"/></a>
     </section>
 
     <section class="section-content">
@@ -54,13 +55,13 @@
             <img src="@/assets/img/content/transcribe.svg" />
             <h3>Transkribieren</h3>
             <p>1700 Bögen Schweizer Wenkersätze / die Antworten sind handgeschrieben vor 100 Jahren / nicht maschinell lesbar sind / Helfen Sie mit bei deren Digitalisierung</p>
-            <button class="primary">Transkribieren</button>
+            <router-link to="/projects/e4b5ebc5-47a2-430b-84a9-a03b1d4dda34" tag="button" class="primary">Transkribieren</router-link>
           </div>
           <div class="col col-action">
             <img src="@/assets/img/content/translate.svg" />
             <h3>Übersetzen</h3>
             <p>einen Einblick in die moderne Mundart /  Möglichkeit, die Wenkersätze neu zu übersetzen / schreiben Sie Ihren Dialekt einfach so, wie Sie es gewohnt sind</p>
-            <button class="primary">Übersetzen</button>
+            <router-link to="/projects/507b3f89-aff1-4fa3-8f28-9c8399811539" tag="button" class="primary">Übersetzen</router-link>
           </div>
         </div>
       </div>
@@ -69,10 +70,17 @@
     <section class="section-content section-content-dark">
       <div class="content-wrapper">
         <div class="row">
-          <div class="col">
-            <h3>Georg Wenker</h3>
-            <p>1700 Bögen Schweizer Wenkersätze / die Antworten sind handgeschrieben vor 100 Jahren / nicht maschinell lesbar sind / Helfen Sie mit bei deren Digitalisierung</p>
-            <button class="secondary">Transkribieren</button>
+          <div class="col col-wenker-image">
+            <div class="wenker-portrait">
+              <img class="cscc_logo" src="@/assets/img/content/wenker_square.jpg" alt="Citizen Science Center Zurich"/>
+            </div>
+          </div>
+          <div class="col col-wenker-text">
+            <div class="wenker-text">
+              <h3>Georg Wenker</h3>
+              <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+              <router-link to="/wenker" tag="button" class="secondary">Mehr zu Georg Wenker</router-link>
+            </div>
           </div>
         </div>
       </div>

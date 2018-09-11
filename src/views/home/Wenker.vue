@@ -20,11 +20,11 @@
         </div>
         <div class="row">
           <div class="col col-text">
-            <h3>Die Geschichte eines Dialektliebhabers</h3>
             <figure>
               <img src="@/assets/img/content/klassenzimmer.jpg" />
               <figcaption>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</figcaption>
             </figure>
+            <h3>Die Geschichte eines Dialektliebhabers</h3>
             <p>
               Viele Menschen sind überzeugt, dass die schweizerdeutschen Mundarten in den letzten Jahrzehnten zahlreiche ihrer Merkmale verloren haben. Die Frage nach der Veränderung der Mundarten kann bisher oft nicht wissenschaftlich fundiert beantwortet werden, weil Kenntnisse darüber, wie die Mundart früher gestaltet war, fehlen.
 Mit dem Transkribieren der Wenkerbögen helfen Sie Forschenden, diese Wissenslücke zu schliessen. Und Sie erhalten selbst einen Einblick in die sprachliche Vergangenheit der Schweiz, vielleicht sogar in die Geschichte Ihres eigenen Dialekts. Sie lernen alte Ausdrücke kennen und staunen wahrscheinlich über die in dem Bogen aus Ihrem Ort festgehaltene Aussprache mancher Wörter.

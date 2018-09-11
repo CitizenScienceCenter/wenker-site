@@ -22,10 +22,10 @@
        <div class="content-wrapper">
          <div class="row">
            <div class="col col-footer-left">
-             <img src="@/assets/img/cscc_logo.png" alt="Citizen Science Center Zurich"/>
+             <a href="https://citizenscience.ch/"><img class="cscc_logo" src="@/assets/img/cscc_logo.png" alt="Citizen Science Center Zurich"/></a>
            </div>
            <div class="col col-footer-right">
-             <span>© 2018</span>
+             <div><a href="https://citizenscience.ch/" target="_blank">citizenscience.ch</a> © 2018</div>
            </div>
          </div>
        </div>

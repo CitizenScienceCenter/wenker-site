@@ -1,9 +1,9 @@
 
 <template>
-  <div class="md-layout md-gutter md-alignment-center-space-around">
+  <div>
     <!-- TODO add progress bar here -->
     <!-- <md-progress-bar md-mode="determinate" :md-value="(activeTaskIndex / tasks.length) * 100"></md-progress-bar> -->
-    <tutorial :data="tutData" :options="opts"></tutorial>
+    <!-- <tutorial :data="tutData" :options="opts"></tutorial> -->
     <task-submission :task=activeTask :content=content v-on:submission="progressAfterSubmission"></task-submission>
   </div>
 </template>

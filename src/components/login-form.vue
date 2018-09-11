@@ -1,5 +1,9 @@
 <template>
     <div>
+
+
+
+      
       <h1 class="title">{{ $t("views.user.login") }}</h1>
       <form @submit.prevent="login">
         <div>

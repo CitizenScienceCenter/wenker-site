@@ -111,21 +111,4 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.banner {
-  height: 10%;
-}
-.stats {
-  background-color: red;
-  color: white;
-}
-.title-card {
-  text-align: center;
-}
-.btn-wrapper {
-  text-align: center;
-  .md-button {
-    position: relative;
-    left: 50%;
-  }
-}
 </style>

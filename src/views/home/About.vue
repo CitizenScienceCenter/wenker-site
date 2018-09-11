@@ -20,31 +20,31 @@
         </div>
         <div class="row">
           <div class="col col-text">
-            <h3>Unsere Sprachliche Entwicklung verstehen</h3>
             <figure>
               <img src="@/assets/img/content/klassenzimmer.jpg" />
               <figcaption>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</figcaption>
             </figure>
+            <h3>Unsere Sprachliche Entwicklung verstehen</h3>
             <p>
               Viele Menschen sind überzeugt, dass die schweizerdeutschen Mundarten in den letzten Jahrzehnten zahlreiche ihrer Merkmale verloren haben. Die Frage nach der Veränderung der Mundarten kann bisher oft nicht wissenschaftlich fundiert beantwortet werden, weil Kenntnisse darüber, wie die Mundart früher gestaltet war, fehlen.
   Mit dem Transkribieren der Wenkerbögen helfen Sie Forschenden, diese Wissenslücke zu schliessen. Und Sie erhalten selbst einen Einblick in die sprachliche Vergangenheit der Schweiz, vielleicht sogar in die Geschichte Ihres eigenen Dialekts. Sie lernen alte Ausdrücke kennen und staunen wahrscheinlich über die in dem Bogen aus Ihrem Ort festgehaltene Aussprache mancher Wörter.
   Helfen Sie mit, diesen Schatz der Schweizer Wenkersätze zu digitalisieren, indem Sie sie transkribieren, korrigieren oder neu übersetzen. Somit leisten Sie einen wertvollen Beitrag zur Erforschung des Schweizerdeutschen von vor 100 Jahren.
             </p>
-            <h3>Trockene Blätter und Kochlöffel - Die Geschichte der Wenkerbögen</h3>
             <figure>
               <img src="@/assets/img/content/schreiben.jpg" />
               <figcaption>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</figcaption>
             </figure>
+            <h3>Trockene Blätter und Kochlöffel - Die Geschichte der Wenkerbögen</h3>
             <p>
               Im Rahmen eines sprachwissenschaftlichen Forschungsprojekts haben Lehrer mit ihren Schülern in den 1930er Jahren an vielen Schulen der Deutschschweiz 40 hochdeutsche Sätze in den jeweiligen Dorfdialekt übersetzt. Es waren Phrasen wie: „Im Winter fliegen die trockenen Blätter in der Luft herum“ oder „ich schlage dich gleich mit dem Kochlöffel um die Ohren, du Affe.“
 Die Sätze werden nach ihrem „Erfinder“ Georg Wenker „Wenkersätze“ genannt und erscheinen zum Teil kurios. Sie waren eben dazu da, die wichtigsten Merkmale und Unterschiede der Mundarten darzustellen.
 Das Ergebnis der Übersetzungen wurde pro Ort auf einem Blatt Papier, einem sogenannten Wenkerbogen, zusammengestellt. Die dort festgehaltenen Sätze geben einen einzigartigen Einblick in die jeweiligen Dialekte der damaligen Zeit. Für viele deutschschweizer Orte gibt es kaum ältere Zeugnisse der Dorfmundarten, da auch Tonaufnahmen gerade erst aufkamen und teure und umständliche Unternehmungen darstellten.
             </p>
-            <h3>Ein kultureller Schatz</h3>
             <figure>
               <img src="@/assets/img/content/schueler.jpg" />
               <figcaption>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</figcaption>
             </figure>
+            <h3>Ein kultureller Schatz</h3>
             <p>
               Die etwa 1700 Bögen Schweizer Wenkersätze bilden einen kulturellen Schatz, der noch seiner Auswertung durch die Wissenschaft harrt. Denn die meisten dieser handgeschriebenen Wenkerbögen sind bis heute nicht in moderne, maschinenlesbare Druckbuchstaben-Schrift transkribiert worden. Das ist nicht nur eine zeitaufwendige Aufgabe, sondern auch eine inhaltliche Herausforderung, da für Dialekte keine schriftliche Norm, d.h. keine Rechtschreibung besteht.  Die Lehrer bedienten sich der verschiedensten Mittel, um die Mundart möglichst exakt festzuhalten. Eine genaueste Wiedergabe der übersetzten Wenkersätze ist für die wissenschaftliche Auswertung daher ein Muss und erfordert hohe Konzentration beim Transkribieren.
             </p>
