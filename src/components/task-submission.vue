@@ -23,7 +23,15 @@
               <div v-if="items.length" >
                 <div class="imageBox" style="width:200px;height:200px;overflow:hidden;">
                   <!-- <img v-for="src in items" :src="src" :key="src"> -->
-                  <img src="@/assets/img/content/klassenzimmer.jpg" />
+                  <croppa v-model="croppaSettings" canvas-color="transparent"
+                        :width="250" 
+                        :height="250"
+                        :prevent-white-space="true"
+                        :show-remove-button="false"
+                        :accept="'image/*'"
+                        :placeholder="'Bild wird nicht geladen'"
+                        initial-image="https://zhanziyang.github.io/vue-croppa/static/500.jpeg">
+                  </croppa>
                 </div>
               </div>
               <div>
@@ -64,7 +72,9 @@ export default {
   data() {
     return {
       items: [],
-      responses: []
+      responses: [],
+      croppaSettings: {
+      }
     }
   },
   components: { Upload, SubmissionMultipleChoices, ProjectInfo },
@@ -91,10 +101,14 @@ export default {
       to.forEach(m => {
         console.log(this.task.id)
         console.log(m.source_id)
-        const path = m.path.replace("./static", "http://localhost:8080/static");
+        const path = m.path.replace("./static", "172.23.52.127:8080/static");
+        console.log(path)
         this.items.push(path);
       });
     }
+  },
+  mounted() {
+    console.log(this.croppaSettings.hasImage())
   },
   methods: {
     createSubmission() {

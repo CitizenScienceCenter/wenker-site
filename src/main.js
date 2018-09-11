@@ -9,12 +9,12 @@ import './assets/styles/theme.scss'
 import VuexRouterSync from 'vuex-router-sync'
 import * as loc from './localisation/index'
 import vuexI18n from 'vuex-i18n'
-import 'viewerjs/dist/viewer.css'
-import Viewer from 'v-viewer'
+import Croppa from 'vue-croppa';
+import 'vue-croppa/dist/vue-croppa.css';
 import vueNumeralFilterInstaller from 'vue-numeral-filter'
 
 Vue.config.productionTip = false
-Vue.use(Viewer)
+Vue.use(Croppa)
 Vue.use(vueNumeralFilterInstaller)
 
 Vue.use(vuexI18n.plugin, store)
