@@ -5,7 +5,7 @@
        <div class="content-wrapper">
          <div class="row">
            <div class="col col-title">
-             <h2>Teilen Sie das Projekt.</h2>
+             <h2>Laden Sie Bekannte ein, mit zu machen.</h2>
            </div>
          </div>
          <div class="row">

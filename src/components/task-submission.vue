@@ -13,8 +13,8 @@
         </div>
 
         <div class="row">
-          <div class="col col-text">
-            <h4>{{task.content.question.text}}</h4>
+          <div class="col col-title">
+            <p>{{task.content.question.text}}</p>
           </div>
         </div>
 
@@ -23,29 +23,31 @@
 
             <div class="task-box">
 
-              <div v-if="items.length" class="image-browser">
-                <!-- <img v-for="src in items" :src="src" :key="src"> -->
-                <!-- <croppa v-model="croppaSettings" canvas-color="transparent"
-                      :width="250"
-                      :height="250"
-                      :prevent-white-space="true"
-                      :show-remove-button="false"
-                      :accept="'image/*'"
-                      :placeholder="'Bild wird nicht geladen'"
-                      initial-image="https://zhanziyang.github.io/vue-croppa/static/500.jpeg">
-                </croppa> -->
-                <croppa v-model="croppaSettings" canvas-color="transparent"
-                      :width="600"
-                      :height="500"
-                      :prevent-white-space="true"
-                      :show-remove-button="false"
-                      :accept="'image/*'"
-                      :placeholder="'Bild wird nicht geladen'"
-                      initial-image="https://zhanziyang.github.io/vue-croppa/static/500.jpeg">
-                </croppa>
+              <div class="image-browser">
+                <div v-if="items.length" class="image-browser-frame">
+                  <!-- <img v-for="src in items" :src="src" :key="src"> -->
+                  <!-- <croppa v-model="croppaSettings" canvas-color="transparent"
+                        :width="250"
+                        :height="250"
+                        :prevent-white-space="true"
+                        :show-remove-button="false"
+                        :accept="'image/*'"
+                        :placeholder="'Bild wird nicht geladen'"
+                        initial-image="https://zhanziyang.github.io/vue-croppa/static/500.jpeg">
+                  </croppa> -->
+                  <croppa v-model="croppaSettings" canvas-color="transparent"
+                        :width="600"
+                        :height="500"
+                        :prevent-white-space="true"
+                        :show-remove-button="false"
+                        :accept="'image/*'"
+                        :placeholder="'Bild wird nicht geladen'"
+                        initial-image="https://zhanziyang.github.io/vue-croppa/static/500.jpeg">
+                  </croppa>
 
-                <button class="primary zoom zoom-in">+<img src="@/assets/img/icons/plus.svg" alt="Twitter"></button>
-                <button class="primary zoom zoom-out">-<img src="@/assets/img/icons/minus.svg" alt="Twitter"/></button>
+                  <button class="primary zoom zoom-in">+<img src="@/assets/img/icons/plus.svg" alt="Twitter"></button>
+                  <button class="primary zoom zoom-out">-<img src="@/assets/img/icons/minus.svg" alt="Twitter"/></button>
+                </div>
               </div>
               <div class="form">
                 <div v-for="(answer, i) in task.content.answers" v-bind:key="i">
@@ -64,7 +66,7 @@
         </div>
 
         <div class="row">
-          <div class="col col-task-actions">
+          <div class="col col-subtitle col-task-actions">
             <button v-on:click="submitTask" class="secondary">Vorheriger ***</button>
             <button v-on:click="submitTask" class="secondary">Beenden</button>
             <button v-on:click="submitTask" class="primary">Nächster ***</button>
