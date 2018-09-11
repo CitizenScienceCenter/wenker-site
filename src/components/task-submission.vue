@@ -44,8 +44,8 @@
                       initial-image="https://zhanziyang.github.io/vue-croppa/static/500.jpeg">
                 </croppa>
 
-                <button class="primary zoom zoom-in">+<img src="@/assets/img/icons/plus.svg" alt="Twitter"></button>
-                <button class="primary zoom zoom-out">-<img src="@/assets/img/icons/minus.svg" alt="Twitter"/></button>
+                <button  @click="zoom(true)" class="primary zoom zoom-in">+<img src="@/assets/img/icons/plus.svg" alt="Twitter"></button>
+                <button @click="zoom(false)" class="primary zoom zoom-out">-<img src="@/assets/img/icons/minus.svg" alt="Twitter"/></button>
               </div>
               <div class="form">
                 <div v-for="(answer, i) in task.content.answers" v-bind:key="i">
@@ -91,8 +91,7 @@ export default {
     return {
       items: [],
       responses: [],
-      croppaSettings: {
-      }
+      croppaSettings: {}
     }
   },
   components: { Upload, SubmissionMultipleChoices, ProjectInfo },
@@ -126,7 +125,6 @@ export default {
     }
   },
   mounted() {
-    console.log(this.croppaSettings.hasImage())
   },
   methods: {
     createSubmission() {
@@ -143,6 +141,13 @@ export default {
           this.$emit('submission')
           this.createSubmission()
         })
+    },
+    zoom(inFlag) {
+      if (inFlag) {
+        this.croppaSettings.zoomIn()
+      } else {
+        this.croppaSettings.zoomOut()
+      }
     }
   }
 };
