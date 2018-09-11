@@ -1,11 +1,7 @@
 <template>
   <div>
 
-    <div class="row">
-      <div class="col col-title">
-        <h2>{{project_name}}</h2>
-      </div>
-    </div>
+    <h2>{{project_name}}</h2>
 
     <!--
     <section>

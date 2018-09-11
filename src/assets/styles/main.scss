@@ -68,7 +68,7 @@ h2 {
 }
 h3 {
   font-size: 1.953rem;
-  line-height: 1.2;
+  line-height: 1.35;
   font-weight: 300;
 }
 h4 {
@@ -224,13 +224,50 @@ button {
   }
 }
 
-.zoombox {
-  width: 200px;
-  height: 200px;
-  overflow: scroll;
-  cursor: grab;
-  img {
-    width: 200%;
+.transcription-box {
+  display: flex;
+  height: 480px;
+
+  .image-browser {
+    width: 66.667%;
+    height: 100%;
+    position: relative;
+
+    .croppa-container {
+      width: 100%;
+      height: 100%;
+      canvas {
+        width: 100%!important;
+        height: 480px!important
+      }
+    }
+    button.zoom {
+      font-size: 0;
+      width: 48px;
+      position: absolute;
+      &.zoom-in {
+        bottom: 16px;
+        left: 16px;
+      }
+      &.zoom-out {
+        bottom: 16px;
+        left: calc( 16px + 48px + 16px);
+      }
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50%;
+        height: 50%;
+        left: 25%;
+        top: 25%;
+      }
+    }
+  }
+  .transcription-form {
+    width: 33.333%;
+    height: 100%;
+    overflow: scroll;
   }
 }
 
@@ -376,21 +413,25 @@ header {
     width: 50%;
     text-align: center;
   }
+  .col-subtitle {
+    width: 66.667%;
+    text-align: center;
+  }
 
   h2 {
     margin-bottom: 72px;
   }
   h3 {
-    margin-bottom: 24px;
+    margin-bottom: 48px;
   }
   h4 {
-    margin-bottom: 24px;
+    margin-bottom: 48px;
   }
   p {
-    margin-bottom: 24px;
+    margin-bottom: 48px;
   }
   figure {
-    margin-bottom: 24px;
+    margin-bottom: 48px;
   }
 
   .col-action {

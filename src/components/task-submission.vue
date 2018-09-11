@@ -4,35 +4,50 @@
 
     <section class="section-content">
 
-      <project-info :stats="stats" v-if="project" :project_name="project.name"></project-info>
-
       <div class="content-wrapper">
 
         <div class="row">
           <div class="col col-title">
+            <project-info :stats="stats" v-if="project" :project_name="project.name"></project-info>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col col-subtitle">
             <h3>{{task.content.question.text}}</h3>
-            asfasdf
           </div>
         </div>
 
         <div class="row">
           <div class="col">
 
-              <div v-if="items.length" >
-                <div class="imageBox" style="width:200px;height:200px;overflow:hidden;">
-                  <!-- <img v-for="src in items" :src="src" :key="src"> -->
-                  <croppa v-model="croppaSettings" canvas-color="transparent"
-                        :width="250" 
-                        :height="250"
-                        :prevent-white-space="true"
-                        :show-remove-button="false"
-                        :accept="'image/*'"
-                        :placeholder="'Bild wird nicht geladen'"
-                        initial-image="https://zhanziyang.github.io/vue-croppa/static/500.jpeg">
-                  </croppa>
-                </div>
+            <div class="transcription-box">
+
+              <div v-if="items.length" class="image-browser">
+                <!-- <img v-for="src in items" :src="src" :key="src"> -->
+                <!-- <croppa v-model="croppaSettings" canvas-color="transparent"
+                      :width="250"
+                      :height="250"
+                      :prevent-white-space="true"
+                      :show-remove-button="false"
+                      :accept="'image/*'"
+                      :placeholder="'Bild wird nicht geladen'"
+                      initial-image="https://zhanziyang.github.io/vue-croppa/static/500.jpeg">
+                </croppa> -->
+                <croppa v-model="croppaSettings" canvas-color="transparent"
+                      :width="600"
+                      :height="500"
+                      :prevent-white-space="true"
+                      :show-remove-button="false"
+                      :accept="'image/*'"
+                      :placeholder="'Bild wird nicht geladen'"
+                      initial-image="https://zhanziyang.github.io/vue-croppa/static/500.jpeg">
+                </croppa>
+
+                <button class="primary zoom zoom-in">+<img src="@/assets/img/icons/plus.svg" alt="Twitter"></button>
+                <button class="primary zoom zoom-out">-<img src="@/assets/img/icons/minus.svg" alt="Twitter"/></button>
               </div>
-              <div>
+              <div class="transcription-form">
                 <div v-for="(answer, i) in task.content.answers" v-bind:key="i">
                   <upload v-if="answer.type.indexOf('file') !== -1" :embedded="true" :multiple="answer.type === 'multiple_files'"></upload>
                   <div v-if="answer.type === 'text'">
@@ -41,11 +56,10 @@
                   </div>
                   <submission-multiple-choices :index="i" :content="responses[i]" :choices="answer.choices" :type="answer.type" v-if="answer.type === 'multiple_choice'"></submission-multiple-choices>
                 </div>
-                  <button v-on:click="submitTask" title="Take Part!">
-                      Submit
-                  </button>
+                  <button v-on:click="submitTask" title="Take Part!">Submit</button>
               </div>
 
+            </div>
 
           </div>
         </div>

@@ -3,44 +3,52 @@
 
     <section class="section-content">
 
-      <project-info :stats="stats" v-if="project" :project_name="project.name"></project-info>
+      <div class="content-wrapper">
 
-      <div class="row">
-        <div class="col col-form">
+        <div class="row">
+          <div class="col col-title">
+            <project-info :stats="stats" v-if="project" :project_name="project.name"></project-info>
+            <p>1700 Bögen Schweizer Wenkersätze / die Antworten sind handgeschrieben vor 100 Jahren / nicht maschinell lesbar sind / Helfen Sie mit bei deren Digitalisierung</p>
+          </div>
+        </div>
 
-          <div class="form-section">
+        <div class="row">
+          <div class="col col-form">
 
-            <h3>Ihre Angaben</h3>
-            <!-- <div class="desc" v-if="project && project.description" v-html="project.description"></div> -->
+            <div class="form-section">
 
-            <div class="prereq">
-              <div v-bind:class="{'invalid': !userDetails.canton}">
+              <h3>Ihre Angaben</h3>
+              <!-- <div class="desc" v-if="project && project.description" v-html="project.description"></div> -->
+
+              <div class="prereq">
+                <div v-bind:class="{'invalid': !userDetails.canton}">
+                    <div class="select-wrapper">
+                      <select v-model="userDetails.canton" name="canton" id="canton" placeholder="Region you have spent most of your life">
+                          <option :key="r.value" v-for="r in swissCantons" :value="r.value">{{r.label}}</option>
+                      </select>
+                    </div>
+                    <span class="error" v-if="!userDetails.canton">Your region is required</span>
+                </div>
+                <div v-bind:class="{'invalid': !userDetails.age}">
                   <div class="select-wrapper">
-                    <select v-model="userDetails.canton" name="canton" id="canton" placeholder="Region you have spent most of your life">
-                        <option :key="r.value" v-for="r in swissCantons" :value="r.value">{{r.label}}</option>
+                    <select v-model="userDetails.age" name="range" id="range" placeholder="Age Range">
+                        <option :key="a.value" v-for="a in ageRange" :value="a.value">{{a.label}}</option>
                     </select>
                   </div>
-                  <span class="error" v-if="!userDetails.canton">Your region is required</span>
-              </div>
-              <div v-bind:class="{'invalid': !userDetails.age}">
-                <div class="select-wrapper">
-                  <select v-model="userDetails.age" name="range" id="range" placeholder="Age Range">
-                      <option :key="a.value" v-for="a in ageRange" :value="a.value">{{a.label}}</option>
-                  </select>
+                  <span class="error" v-if="!userDetails.age">Your age range is required</span>
                 </div>
-                <span class="error" v-if="!userDetails.age">Your age range is required</span>
               </div>
+
+              <button class="startProject primary" v-on:click="startProject">Start Project</button>
+
             </div>
 
-            <button class="startProject primary" v-on:click="startProject">Start Project</button>
+            <div class="form-section">
+              <h4>Sie haben sich schon registiert?</h4>
+              <router-link to="/login" tag="button" class="secondary">Anmelden</router-link>
+            </div>
 
           </div>
-
-          <div class="form-section">
-            <h4>Sie haben sich schon registiert?</h4>
-            <router-link to="/login" tag="button" class="secondary">Anmelden</router-link>
-          </div>
-
         </div>
       </div>
 
