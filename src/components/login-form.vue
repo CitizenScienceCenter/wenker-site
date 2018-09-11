@@ -1,23 +1,33 @@
 <template>
-    <div>
+  <div>
+    <section class="section-content">
+      <div class="content-wrapper">
+
+        <div class="row">
+          <div class="col col-title">
 
 
+            <h2 class="title">{{ $t("views.user.login") }}</h2>
+            <form @submit.prevent="login">
+              <div>
+                <label for="email">{{ $t("views.user.email") }}</label>
+                <input v-model="email" type="email" name="email" id="email" autocomplete="email" :disabled="loading" />
+              </div>
 
-      
-      <h1 class="title">{{ $t("views.user.login") }}</h1>
-      <form @submit.prevent="login">
-        <div>
-          <label for="email">{{ $t("views.user.email") }}</label>
-          <input v-model="email" type="email" name="email" id="email" autocomplete="email" :disabled="loading" />
+              <div>
+                <label for="pwd">{{ $t("views.user.pwd") }}</label>
+                <input v-model="password" type="password" id="password" name="password" autocomplete="password" :disabled="loading" />
+              </div>
+
+              <button type="submit" class="md-primary" :disabled="loading">{{ $t("views.user.login") }}</button>
+            </form>
+
+          </div>
         </div>
 
-        <div>
-          <label for="pwd">{{ $t("views.user.pwd") }}</label>
-          <input v-model="password" type="password" id="password" name="password" autocomplete="password" :disabled="loading" />
-        </div>
+      </div>
+    </section>
 
-        <button type="submit" class="md-primary" :disabled="loading">{{ $t("views.user.login") }}</button>
-    </form>
   </div>
 </template>
 

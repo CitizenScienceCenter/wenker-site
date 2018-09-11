@@ -13,15 +13,15 @@
         </div>
 
         <div class="row">
-          <div class="col col-subtitle">
-            <h3>{{task.content.question.text}}</h3>
+          <div class="col col-text">
+            <h4>{{task.content.question.text}}</h4>
           </div>
         </div>
 
         <div class="row">
           <div class="col">
 
-            <div class="transcription-box">
+            <div class="task-box">
 
               <div v-if="items.length" class="image-browser">
                 <!-- <img v-for="src in items" :src="src" :key="src"> -->
@@ -47,20 +47,27 @@
                 <button class="primary zoom zoom-in">+<img src="@/assets/img/icons/plus.svg" alt="Twitter"></button>
                 <button class="primary zoom zoom-out">-<img src="@/assets/img/icons/minus.svg" alt="Twitter"/></button>
               </div>
-              <div class="transcription-form">
+              <div class="form">
                 <div v-for="(answer, i) in task.content.answers" v-bind:key="i">
                   <upload v-if="answer.type.indexOf('file') !== -1" :embedded="true" :multiple="answer.type === 'multiple_files'"></upload>
-                  <div v-if="answer.type === 'text'">
+                  <div v-if="answer.type === 'text'" class="form-field">
                     <label for="qutxt">{{answer.placeholder || task.content.question.text}}</label>
                     <input type="text" v-model="responses[i].text" name="qutxt" id="qutxt" />
                   </div>
                   <submission-multiple-choices :index="i" :content="responses[i]" :choices="answer.choices" :type="answer.type" v-if="answer.type === 'multiple_choice'"></submission-multiple-choices>
                 </div>
-                  <button v-on:click="submitTask" title="Take Part!">Submit</button>
               </div>
 
             </div>
 
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col col-task-actions">
+            <button v-on:click="submitTask" class="secondary">Vorheriger ***</button>
+            <button v-on:click="submitTask" class="secondary">Beenden</button>
+            <button v-on:click="submitTask" class="primary">Nächster ***</button>
           </div>
         </div>
 

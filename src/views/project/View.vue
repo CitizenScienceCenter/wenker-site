@@ -8,6 +8,11 @@
         <div class="row">
           <div class="col col-title">
             <project-info :stats="stats" v-if="project" :project_name="project.name"></project-info>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col col-text">
             <p>1700 Bögen Schweizer Wenkersätze / die Antworten sind handgeschrieben vor 100 Jahren / nicht maschinell lesbar sind / Helfen Sie mit bei deren Digitalisierung</p>
           </div>
         </div>
@@ -21,7 +26,8 @@
               <!-- <div class="desc" v-if="project && project.description" v-html="project.description"></div> -->
 
               <div class="prereq">
-                <div v-bind:class="{'invalid': !userDetails.canton}">
+                <div v-bind:class="{'invalid': !userDetails.canton}" class="form-field">
+                    <label>Region Ihres Dialekts</label>
                     <div class="select-wrapper">
                       <select v-model="userDetails.canton" name="canton" id="canton" placeholder="Region you have spent most of your life">
                           <option :key="r.value" v-for="r in swissCantons" :value="r.value">{{r.label}}</option>
@@ -29,7 +35,8 @@
                     </div>
                     <span class="error" v-if="!userDetails.canton">Your region is required</span>
                 </div>
-                <div v-bind:class="{'invalid': !userDetails.age}">
+                <div v-bind:class="{'invalid': !userDetails.age}" class="form-field">
+                  <label>Alter</label>
                   <div class="select-wrapper">
                     <select v-model="userDetails.age" name="range" id="range" placeholder="Age Range">
                         <option :key="a.value" v-for="a in ageRange" :value="a.value">{{a.label}}</option>
@@ -39,7 +46,7 @@
                 </div>
               </div>
 
-              <button class="startProject primary" v-on:click="startProject">Start Project</button>
+              <button class="startProject primary" v-on:click="startProject">Starten</button>
 
             </div>
 

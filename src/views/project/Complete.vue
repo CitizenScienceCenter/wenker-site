@@ -1,20 +1,37 @@
 <template>
   <div>
-  
-    <div class="desc">
-      <h1> Thank you! You are the {{ stats.contributor_count  | ordinal }} contributor! </h1>
-    </div>
 
-    <div class="share">
-      <a href="https://twitter.com/home?status=Look%20at%20me!%20I%20just%20contributed%20to%20Citizen%20Science%20using%20C3S.%20So,%20yeah,%20I'm%20kind%20of%20a%20big%20deal%20now.">Tweet!</a>
-    </div>
+    <section class="section-content">
+        <div class="content-wrapper">
 
-  <!-- TODO only show for non signed in users -->
-    <register-form></register-form>
+          <div class="row">
+            <div class="col col-title">
 
-    <button class="" to="/">Home</button>
+              <div class="desc">
+                <h2> Thank you! You are the {{ stats.contributor_count  | ordinal }} contributor! </h2>
+              </div>
+
+            </div>
+          </div>
+          <div class="row">
+            <div class="col col-form">
+
+              <div class="form-section">
+
+                <!-- TODO only show for non signed in users -->
+                <register-form></register-form>
+
+              </div>
+
+              <button class="secondary" to="/">Zurück zur Startseite</button>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
   </div>
-
 </template>
 
 <script>

@@ -21,7 +21,7 @@
         <div class="row">
           <div class="col col-text">
             <figure>
-              <img src="@/assets/img/content/klassenzimmer.jpg" />
+              <img src="@/assets/img/content/wenker.jpg" />
               <figcaption>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</figcaption>
             </figure>
             <h3>Die Geschichte eines Dialektliebhabers</h3>

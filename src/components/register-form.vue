@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="title">{{ $t('views.user.register')}}</h1>
+    <h3 class="title">{{ $t('views.user.register')}}</h3>
     <form novalidate class="md-layout" @submit.prevent="register">
       <div>
           <div>
@@ -12,8 +12,8 @@
             <label for="pwd">{{ $t('views.user.pwd')}}</label>
             <input v-model="password" type="password" id="password" name="password" autocomplete="password" :disabled="loading" />
           </div>
-    
-        <button type="submit" class="md-primary" :disabled="loading">{{ $t('views.user.register')}}</button>
+
+        <button type="submit" class="primary" :disabled="loading">{{ $t('views.user.register')}}</button>
       </div>
     </form>
   </div>
