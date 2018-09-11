@@ -24,16 +24,6 @@
             <div class="task-box">
 
               <div v-if="items.length > 0" class="image-browser">
-                <!-- <img v-for="src in items" :src="src" :key="src"> -->
-                <!-- <croppa v-model="croppaSettings" canvas-color="transparent"
-                      :width="250"
-                      :height="250"
-                      :prevent-white-space="true"
-                      :show-remove-button="false"
-                      :accept="'image/*'"
-                      :placeholder="'Bild wird nicht geladen'"
-                      initial-image="https://zhanziyang.github.io/vue-croppa/static/500.jpeg">
-                </croppa> -->
                 <croppa v-model="croppaSettings" canvas-color="transparent"
                       :width="600"
                       :height="500"
