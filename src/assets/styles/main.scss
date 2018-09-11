@@ -205,6 +205,9 @@ header {
         box-sizing: border-box;
         height: 80px;
         transition: color $transition-duration $transition-timing-function;
+        &.router-link-active {
+          border-bottom: 4px solid white;
+        }
       }
       &.active {
         a {

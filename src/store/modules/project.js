@@ -43,7 +43,7 @@ const actions = {
         })
       })
   },
-  getProject({
+  async getProject({
     state,
     commit,
     dispatch,
@@ -53,29 +53,29 @@ const actions = {
       root: true
     })
     console.log(id)
-    rootState.api.client.apis.Projects.get_project({
-        id: id
+    try {
+      let res = await rootState.api.client.apis.Projects.get_project({id: id})
+      console.log(res.body)
+      commit('SET_PROJECT', res.body)
+      commit('settings/SET_LOADING', false, {
+        root: true
       })
-      .then(req => {
-        commit('SET_PROJECT', req.body)
-        commit('settings/SET_LOADING', false, {
-          root: true
-        })
-        console.log(associated)
-        if (associated) {
-          dispatch('getMedia', id)
-          dispatch('getTasks', id)
-          dispatch('getStats', id)
-        }
+      if (associated) {
+        dispatch('getMedia', id)
+        dispatch('getTasks', id)
+        dispatch('getStats', id)
+      }
+      return res
+    } catch(err) {
+      console.log(err)
+      commit('settings/SET_LOADING', false, {
+        root: true
       })
-      .catch(err => {
-        commit('settings/SET_LOADING', false, {
-          root: true
-        })
-        commit('settings/SET_ERROR', err, {
-          root: true
-        })
+      commit('settings/SET_ERROR', err, {
+        root: true
       })
+      return err
+    }
   },
   getTasks({state, commit, rootState}, id) {
     commit('settings/SET_LOADING', true, {
