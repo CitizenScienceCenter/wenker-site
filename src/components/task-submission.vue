@@ -23,7 +23,7 @@
 
             <div class="task-box">
 
-              <div v-if="items.length" class="image-browser">
+              <div v-if="items.length > 0" class="image-browser">
                 <!-- <img v-for="src in items" :src="src" :key="src"> -->
                 <!-- <croppa v-model="croppaSettings" canvas-color="transparent"
                       :width="250"
@@ -41,7 +41,7 @@
                       :show-remove-button="false"
                       :accept="'image/*'"
                       :placeholder="'Bild wird nicht geladen'"
-                      initial-image="https://zhanziyang.github.io/vue-croppa/static/500.jpeg">
+                      :initial-image="items[0]">
                 </croppa>
 
                 <button  @click="zoom(true)" class="primary zoom zoom-in">+<img src="@/assets/img/icons/plus.svg" alt="Twitter"></button>
@@ -118,7 +118,7 @@ export default {
       to.forEach(m => {
         console.log(this.task.id)
         console.log(m.source_id)
-        const path = m.path.replace("./static", "172.23.52.127:8080/static");
+        const path = m.path.replace("./static", "http://172.23.52.127:8080/static");
         console.log(path)
         this.items.push(path);
       });
