@@ -20,6 +20,7 @@ export default {
       userID: undefined,
       content: undefined,
       activeTaskIndex: undefined,
+      totalTasks: 0,
       activeTask: undefined,
       msgText: "Let's Go",
       opts: { // TODO add to store
@@ -57,6 +58,11 @@ export default {
     },
     'tasks' (to, from) {
         this.getTaskIndex(to)
+    },
+    'project' (to, from) {
+      if (to.info) {
+        this.totalTasks = to.info.totalTasks
+      }
     }
   },
   mounted() {
@@ -69,7 +75,7 @@ export default {
       // TODO do not need to load all tasks each request, keep them in store once retrieved
       this.$store.dispatch("project/getProject", [this.$route.params.id, true]).then(p => {
         if(p.info && p.info.task_selection === "linear") {
-          if (this.activeTaskIndex >= this.tasks.length -1) {
+          if (this.activeTaskIndex >= this.totalTasks) {
             this.msgText = "Finished";
             this.activeTaskIndex = this.tasks.length;
           } else if (this.activeTaskIndex === 0) {
