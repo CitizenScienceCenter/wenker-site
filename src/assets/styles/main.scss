@@ -16,12 +16,12 @@ $break-xsmall: 398px;
 $grid-margin-large: 64px;
 $grid-margin-medium: 32px;
 $grid-margin-small: 16px;
-$grid-margin-xsmall: 8px;
+$grid-margin-xsmall: 12px;
 
 $grid-gutter-large: 32px;
 $grid-gutter-medium: 24px;
 $grid-gutter-small: 16px;
-$grid-gutter-xsmall: 8px;
+$grid-gutter-xsmall: 12px;
 
 $transition-timing-function: cubic-bezier(0.420, 0.000, 0.580, 1.000);
 $transition-duration: 0.15s;
@@ -811,6 +811,10 @@ a {
 }
 
 @media screen and (max-width: $break-small) {
+
+  html {
+    font-size: 17px;
+  }
 
 
   // Text Styles
