@@ -22,13 +22,57 @@
           <div class="col col-text">
             <figure>
               <img src="@/assets/img/content/wenker.jpg" />
-              <figcaption>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</figcaption>
+              <figcaption><a href="http://www.diwa.info/Geschichte/Kartierungsverfahren.aspx" target="_blank">© Regionalsprache.de (REDE)</a></figcaption>
             </figure>
             <h3>Die Geschichte eines Dialektliebhabers</h3>
             <p>
-              Viele Menschen sind überzeugt, dass die schweizerdeutschen Mundarten in den letzten Jahrzehnten zahlreiche ihrer Merkmale verloren haben. Die Frage nach der Veränderung der Mundarten kann bisher oft nicht wissenschaftlich fundiert beantwortet werden, weil Kenntnisse darüber, wie die Mundart früher gestaltet war, fehlen.
-Mit dem Transkribieren der Wenkerbögen helfen Sie Forschenden, diese Wissenslücke zu schliessen. Und Sie erhalten selbst einen Einblick in die sprachliche Vergangenheit der Schweiz, vielleicht sogar in die Geschichte Ihres eigenen Dialekts. Sie lernen alte Ausdrücke kennen und staunen wahrscheinlich über die in dem Bogen aus Ihrem Ort festgehaltene Aussprache mancher Wörter.
-Helfen Sie mit, diesen Schatz der Schweizer Wenkersätze zu digitalisieren, indem Sie sie transkribieren, korrigieren oder neu übersetzen. Somit leisten Sie einen wertvollen Beitrag zur Erforschung des Schweizerdeutschen von vor 100 Jahren.
+              Die Wenkersätze wurden in den 1930er Jahren zur Dokumentation des Schweizerdeutschen eingesetzt und haben eine interessante Vorgeschichte. Der junge Sprachwissenschaftler Georg Wenker plante im Jahr 1876 in Verbindung mit seiner Dissertation «Über die Verschiebung des Stammsilbenauslautes im Germanischen» eigene empirische Untersuchungen, die es ihm er-möglichen sollten, typische lautliche und ausgewählte grammatische Eigenschaften der Mundart der Umgebung seiner Heimatstadt Düsseldorf zu analysieren. Dafür wollte er anhand von Fra-gebogen Mundartproben jedes einzelnen Ortes sammeln, um die örtliche Verteilung der Laut-verschiebungen festzuhalten. Er kreierte dazu die sogenannten 42 rheinischen Sätze in Schrift-sprache, die er durch die Lehrer des jeweiligen Regierungsbezirkes zusammen mit ihren Schü-lern in die dort vorherrschende Mundart übertragen liess. Um seine Ergebnisse sichtbar zu ma-chen, plante er, einerseits eigens ausführliche Dialektkarten und einen Sprachatlas anzufertigen.
+            </p>
+            <h4>Die Wenkersätze</h4>
+            <p>
+              Die 40 Sätze Nord- und Mitteldeutschlands sowie der späteren Erhebung Süddeutschlands und der Schweiz
+            </p>
+            <p>
+              1.	Im Winter fliegen die trocknen Blätter durch die Luft herum.
+              2.	Es hört gleich auf zu schneien, dann wird das Wetter wieder besser.
+              3.	Thu Kohlen in den Ofen, daß die Milch bald an zu kochen fängt.
+              4.	Der gute alte Mann ist mit dem Pferde durch´s Eis gebrochen und in das kalte Wasser gefallen.
+              5.	Er ist vor vier oder sechs Wochen gestorben.
+              6.	Das Feuer war zu stark/heiß, die Kuchen sind ja unten ganz schwarz gebrannt.
+              7.	Er ißt die Eier immer ohne Salz und Pfeffer.
+              8.	Die Füße thun mir sehr weh, ich glaube, ich habe sie durchgelaufen.
+              9.	Ich bin bei der Frau gewesen und habe es ihr gesagt, und sie sagte, sie wollte es auch ihrer Tochter sagen.
+              10.	Ich will es auch nicht mehr wieder thun!
+              11.	Ich schlage Dich gleich mit dem Kochlöffel um die Ohren, Du Affe!
+              12.	Wo gehst Du hin? Sollen wir mit Dir gehn?
+              13.	Es sind schlechte Zeiten.
+              14.	Mein liebes Kind, bleib hier unten stehn, die bösen Gänse beißen Dich todt.
+              15.	Du hast heute am meisten gelernt und bist artig gewesen, Du darfst früher nach Hause gehn als die Andern.
+              16.	Du bist noch nicht groß genug, um eine Flasche Wein auszutrinken, Du mußt erst noch ein Ende/etwas wachsen und größer werden.
+              17.	Geh, sei so gut und sag Deiner Schwester, sie sollte die Kleider für eure Mutter fertig nähen und mit der Bürste rein machen.
+              18.	Hättest Du ihn gekannt! dann wäre es anders gekommen, und es thäte besser um ihn stehen.
+              19.	Wer hat mir meinen Korb mit Fleisch gestohlen?
+              20.	Er that so, als hätten sie ihn zum dreschen bestellt; sie haben es aber selbst gethan.
+              21.	Wem hat er die neue Geschichte erzählt?
+              22.	Man muß laut schreien, sonst versteht er uns nicht.
+              23.	Wir sind müde und haben Durst.
+              24.	Als wir gestern Abend zurück kamen, da lagen die Andern schon zu Bett und waren fest am schlafen.
+              25.	Der Schnee ist diese Nacht bei uns liegen geblieben, aber heute Morgen ist er geschmolzen.
+              26.	Hinter unserm Hause stehen drei schöne Apfelbäumchen mit rothen Aepfelchen.
+              27.	Könnt ihr nicht noch ein Augenblickchen auf uns warten, dann gehn wir mit euch.
+              28.	Ihr dürft nicht solche Kindereien treiben!
+              29.	Unsere Berge sind nicht sehr hoch, die euren sind viel höher.
+              30.	Wieviel Pfund Wurst und wieviel Brod wollt ihr haben?
+              31.	Ich verstehe euch nicht, ihr müßt ein bißchen lauter sprechen.
+              32.	Habt ihr kein Stückchen weiße Seife für mich auf meinem Tische gefunden?
+              33.	Sein Bruder will sich zwei schöne neue Häuser in eurem Garten bauen.
+              34.	Das Wort kam ihm von Herzen!
+              35.	Das war recht von ihnen!
+              36.	Was sitzen da für Vögelchen oben auf dem Mäuerchen?
+              37.	Die Bauern hatten fünf Ochsen und neun Kühe und zwölf Schäfchen vor das Dorf gebracht, die wollten sie verkaufen.
+              38.	Die Leute sind heute alle draußen auf dem Felde und mähen/hauen.
+              39.	Geh nur, der braune Hund thut Dir nichts.
+              40.	Ich bin mit den Leuten da hinten über die Wiese ins Korn gefahren.
             </p>
           </div>
         </div>

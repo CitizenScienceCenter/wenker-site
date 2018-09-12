@@ -22,7 +22,7 @@
           <div class="col col-text">
             <figure>
               <img src="@/assets/img/content/klassenzimmer.jpg" />
-              <figcaption>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</figcaption>
+              <figcaption><a href="http://archiv.sgv-sstp.ch/resource/431874" target="_blank">© Schweizerische Gesellschaft für Volkskunde</a></figcaption>
             </figure>
             <h3>Unsere Sprachliche Entwicklung verstehen</h3>
             <p>
@@ -53,6 +53,22 @@ Das Ergebnis der Übersetzungen wurde pro Ort auf einem Blatt Papier, einem soge
               Wir wollen diese Fragebögen allen Forschenden und Interessierten zugänglich machen. Dabei stellt sich aber ein grosses Problem: die Antworten sind handgeschrieben, so dass sie nicht maschinell lesbar sind. Menschen können aber glücklicherweise Handschriften entziffern. Daher suchen wir Freiwillige, die interessiert sind, für die Umschrift dieser wertvollen Daten etwas Zeit und Energie einzusetzen, damit sie dann öffentlich zur Verfügung gestellt werden können.
   Einige hundert Wenkerbögen sind bereits transkribiert, hier können Sie helfen Abschreibefehler zu finden und  uns zu melden.
   Wenn Sie jedoch den Eindruck haben, der Lehrer (es waren praktisch nur Männer!) habe vor 100 Jahren seine Arbeit schlecht gemacht oder wenn Sie uns einen Einblick in die moderne Mundart geben wollen, haben Sie auch die Möglichkeit, die Wenkersätze neu zu übersetzen. Auch dafür sind wir Ihnen sehr dankbar. Die Schreibweise ist Ihnen freigestellt, schreiben Sie Ihren Dialekt einfach so, wie Sie es gewohnt sind, etwa in SMS oder WhatsApp-Nachrichten.
+            </p>
+            <h3>Projektmitarbeitende</h3>
+            <h4>Elvira Glaser</h4>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/oFAI4rgYkt0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <p>
+              Elvira Glaser ist Professorin für Sprachwissenschaft am Deutschen Seminar der Universität Zürich und leitet das Citizen Science Projekt "Schweizerdeutsch 1930 / 2020".
+            </p>
+            <h4>Sandro Bachmann</h4>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/fdMTLXTvcts" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <p>
+              Sandro ist Assistent am Lehrstuhl für Dialektologie der Universität Zürich und Mitarbeiter des Citizen Science Projekts "Schweizerdeutsch 1930 / 2020".
+            </p>
+            <h4>Carmen Raggenbass</h4>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/X_tBMBNGtGg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <p>
+              Carmen hat an der Universität Zürich Germanistik und Romanistik studiert und ist Mitarbeiterin des Citizen Science Projekts "Schweizerdeutsch 1930 / 2020".
             </p>
           </div>
         </div>

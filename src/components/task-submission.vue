@@ -23,22 +23,21 @@
 
             <div class="task-box">
 
-              <div class="image-browser-frame">
-                <div v-if="items.length > 0" class="image-browser">
-                  <croppa v-model="croppaSettings" canvas-color="transparent"
-                        :width="600"
-                        :height="500"
-                        :prevent-white-space="true"
-                        :show-remove-button="false"
-                        :accept="'image/*'"
-                        :placeholder="'Bild wird nicht geladen'"
-                        :initial-image="items[0]">
-                  </croppa>
+              <div v-if="items.length > 0" class="image-browser">
+                <croppa v-model="croppaSettings" canvas-color="transparent"
+                      :prevent-white-space="true"
+                      :show-remove-button="false"
+                      :accept="'image/*'"
+                      :placeholder="'Bild wird nicht geladen'"
+                      :initial-image="items[0]"
+                      :initial-position="'top left'"
+                      auto-sizing>
+                </croppa>
 
-                  <button @click="zoom(true)" class="primary zoom zoom-in">sdaf<img src="@/assets/img/icons/plus.svg"></button>
-                  <button @click="zoom(false)" class="primary zoom zoom-out">dsafasdf<img src="@/assets/img/icons/minus.svg"/></button>
-                </div>
+                <button @click="zoom(true)" class="primary zoom zoom-in">+<img src="@/assets/img/icons/plus.svg"></button>
+                <button @click="zoom(false)" class="primary zoom zoom-out">-<img src="@/assets/img/icons/minus.svg"/></button>
               </div>
+
               <div class="form" v-if="responses.length">
                 <div v-for="(answer, i) in task.content.answers" v-bind:key="i">
                   <upload v-if="answer.type.indexOf('file') !== -1" :embedded="true" :multiple="answer.type === 'multiple_files'"></upload>
@@ -59,7 +58,7 @@
           <div class="col col-task-actions">
             <!-- <button v-on:click="submitTask" class="secondary">Vorheriger ***</button> -->
             <button v-on:click="endTask" class="secondary">Beenden</button>
-            <button v-on:click="submitTask" class="primary">Nächster ***</button>
+            <button v-on:click="submitTask" class="primary">Nächster</button>
           </div>
         </div>
 
