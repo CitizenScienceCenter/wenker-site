@@ -336,7 +336,7 @@ button {
     box-sizing: border-box;
     overflow: scroll;
     padding: 48px;
-    padding-bottom: 72px;
+    margin-bottom: 24px;
   }
 }
 .col-task-actions {
@@ -528,10 +528,11 @@ header {
   text-align: center;
 }
 .col-transcription-rules {
-  margin-top: 48px;
+  margin-top: 72px;
   text-align: left;
   h4 {
     margin-bottom: 24px;
+    text-align: center;
   }
   ul {
     list-style-type: circle;
