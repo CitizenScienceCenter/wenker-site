@@ -20,21 +20,17 @@
         </div>
         <div class="row">
           <div class="col col-text">
-            <h3>Lorem Ipsum is simply dummy text of the printing and typesetting industry?</h3>
+            <h3>Was tun, wenn man ein Wort/Buchstabe nicht erkennt?</h3>
             <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+              Wenn ein Wort oder ein Buchstabe nicht entziffert werden kann, wird folgender Platzhalter eingefügt: [...] --> siehe Transkriptionskonventionen
             </p>
-            <h3>Lorem Ipsum is simply dummy text of the printing and typesetting industry?</h3>
+            <h3>Was tun, wenn man ein Sonderzeichen nicht transkribieren kann?</h3>
             <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+              Schauen Sie in der vorhandenen Sonderzeichentabelle nach. Falls das gewünschte Sonderzeichen nicht vorhanden ist, schreiben Sie eine Mail an info@citizenscience.ch.
             </p>
-            <h3>Lorem Ipsum is simply dummy text of the printing and typesetting industry?</h3>
+            <h3>Ich komme von X, ich möchte den Bogen von Y transkribieren, ist das möglich?</h3>
             <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            </p>
-            <h3>Lorem Ipsum is simply dummy text of the printing and typesetting industry?</h3>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+              Grundsätzlich ist das möglich, ja. Sie können so viele Bögen transkribieren, wie Sie möchten. Nur die eigene Übersetzung der 40 Sätze kann nur einmal erfolgen.
             </p>
           </div>
         </div>
