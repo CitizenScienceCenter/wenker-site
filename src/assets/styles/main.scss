@@ -500,6 +500,22 @@ header {
   width: 66.667%;
   text-align: center;
 }
+.col-transcription-rules {
+  margin-top: 48px;
+  text-align: left;
+  h4 {
+    margin-bottom: 24px;
+  }
+  ul {
+    list-style-type: circle;
+    padding-left: 24px;
+    li {
+      margin-top: 8px;
+      line-height: 1.5;
+      font-size: 0.8rem;
+    }
+  }
+}
 
 h2 {
   margin-bottom: 72px;

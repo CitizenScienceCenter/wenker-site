@@ -67,6 +67,20 @@
           </div>
         </div>
 
+        <div v-if="project.name === 'Transkribieren'" class="row">
+          <div class="col col-subtitle col-transcription-rules">
+            <h4>Transkriptionskonventionen</h4>
+            <ul>
+              <li>Ein vermuteter Wortlaut wird in eckigen Klammern [] geschrieben, z. B. [T]ue das mache...</li>
+              <li>Wenn ein Wort oder ein Buchstabe nicht entziffert werden kann, wird folgender Platzhalter eingefügt: [...]</li>
+              <li>Falls ein Wort nicht vollständig entziffert werden kann, kann folgender Platzhalter eingefügt werden: [unvollst.]</li>
+              <li>Grundsatz: Die Transkription soll möglichst nahe am Original sein!</li>
+              <li>Alle Sonderzeichen sollten transkribiert werden! (Falls nicht möglich, siehe FAQs).</li>
+              <li>Kommentare können Sie in dem Kommentarfeld hinterlassen.</li>
+            </ul>
+          </div>
+        </div>
+
       </div>
     </section>
 
