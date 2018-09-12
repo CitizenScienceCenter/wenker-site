@@ -33,12 +33,13 @@ Swagger({ url: process.env.BASE_URI,
     return req
   }}).then((client) => {
   client.spec.host = process.env.HOST
+  console.log(process.env.HOST)
 
   Vue.prototype.$ac = client
   Vue.i18n.set('en')
 
   // Vue.$material.theming.theme = t;
-  store.dispatch('api/setClient', client)
+  store.commit('api/SET_API', client)
   /* eslint-disable no-new */
   new Vue({
     el: '#app',

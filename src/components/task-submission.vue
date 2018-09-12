@@ -75,7 +75,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapGetters } from "vuex";
 import Upload from "@/components/upload.vue"
 import SubmissionMultipleChoices from "@/components/submission-multiple-choices.vue"
 import ProjectInfo from "@/components/project-info.vue"
@@ -92,15 +92,19 @@ export default {
     }
   },
   components: { Upload, SubmissionMultipleChoices, ProjectInfo },
-  computed: mapState({
-    project: state => state.project.selectedProject,
-    stats: state => state.project.selectedStats,
-    loading: state => state.project.loading,
-    submission: state => state.submission.submission,
-    taskMedia: state => state.media.media,
-    user: state => state.user.currentUser,
-    progress: state => state.user.taskProgress
-  }),
+  computed: {
+    ...mapState({
+      project: state => state.project.selectedProject,
+      stats: state => state.project.selectedStats,
+      loading: state => state.project.loading,
+      submission: state => state.submission.submission,
+      taskMedia: state => state.media.media,
+      user: state => state.user.currentUser,
+      progress: state => state.user.taskProgress
+    }),
+    ...mapGetters({
+    })
+  },
   watch: {
     task(to, from) {
       if (to) {
@@ -115,8 +119,9 @@ export default {
     taskMedia (to, from) {
       if (to.length > 0) {
         const m = to[0]
-        const path = m.path.replace("./static", "http://172.23.52.127:8080/static");
+        const path = m.path.replace("./static",  'http://' + process.env.HOST + "/static");
         this.img = path
+        console.log(path)
         if (this.croppaSettings.refresh) {
           this.croppaSettings.refresh()
         }
