@@ -13,8 +13,8 @@
         </div>
 
         <div class="row">
-          <div class="col col-title">
-            <p>{{task.content.question.text}}</p>
+          <div class="col col-text">
+            <h4>{{task.content.question.text}}</h4>
           </div>
         </div>
 
@@ -23,31 +23,19 @@
 
             <div class="task-box">
 
-              <div class="image-browser">
-                <div v-if="items.length" class="image-browser-frame">
-                  <!-- <img v-for="src in items" :src="src" :key="src"> -->
-                  <!-- <croppa v-model="croppaSettings" canvas-color="transparent"
-                        :width="250"
-                        :height="250"
-                        :prevent-white-space="true"
-                        :show-remove-button="false"
-                        :accept="'image/*'"
-                        :placeholder="'Bild wird nicht geladen'"
-                        initial-image="https://zhanziyang.github.io/vue-croppa/static/500.jpeg">
-                  </croppa> -->
-                  <croppa v-model="croppaSettings" canvas-color="transparent"
-                        :width="600"
-                        :height="500"
-                        :prevent-white-space="true"
-                        :show-remove-button="false"
-                        :accept="'image/*'"
-                        :placeholder="'Bild wird nicht geladen'"
-                        initial-image="https://zhanziyang.github.io/vue-croppa/static/500.jpeg">
-                  </croppa>
+              <div v-if="items.length > 0" class="image-browser">
+                <croppa v-model="croppaSettings" canvas-color="transparent"
+                      :width="600"
+                      :height="500"
+                      :prevent-white-space="true"
+                      :show-remove-button="false"
+                      :accept="'image/*'"
+                      :placeholder="'Bild wird nicht geladen'"
+                      :initial-image="items[0]">
+                </croppa>
 
-                  <button class="primary zoom zoom-in">+<img src="@/assets/img/icons/plus.svg" alt="Twitter"></button>
-                  <button class="primary zoom zoom-out">-<img src="@/assets/img/icons/minus.svg" alt="Twitter"/></button>
-                </div>
+                <button  @click="zoom(true)" class="primary zoom zoom-in">+<img src="@/assets/img/icons/plus.svg" alt="Twitter"></button>
+                <button @click="zoom(false)" class="primary zoom zoom-out">-<img src="@/assets/img/icons/minus.svg" alt="Twitter"/></button>
               </div>
               <div class="form">
                 <div v-for="(answer, i) in task.content.answers" v-bind:key="i">
@@ -66,7 +54,7 @@
         </div>
 
         <div class="row">
-          <div class="col col-subtitle col-task-actions">
+          <div class="col col-task-actions">
             <button v-on:click="submitTask" class="secondary">Vorheriger ***</button>
             <button v-on:click="submitTask" class="secondary">Beenden</button>
             <button v-on:click="submitTask" class="primary">Nächster ***</button>
@@ -93,8 +81,7 @@ export default {
     return {
       items: [],
       responses: [],
-      croppaSettings: {
-      }
+      croppaSettings: {}
     }
   },
   components: { Upload, SubmissionMultipleChoices, ProjectInfo },
@@ -121,14 +108,13 @@ export default {
       to.forEach(m => {
         console.log(this.task.id)
         console.log(m.source_id)
-        const path = m.path.replace("./static", "172.23.52.127:8080/static");
+        const path = m.path.replace("./static", "http://172.23.52.127:8080/static");
         console.log(path)
         this.items.push(path);
       });
     }
   },
   mounted() {
-    console.log(this.croppaSettings.hasImage())
   },
   methods: {
     createSubmission() {
@@ -145,6 +131,13 @@ export default {
           this.$emit('submission')
           this.createSubmission()
         })
+    },
+    zoom(inFlag) {
+      if (inFlag) {
+        this.croppaSettings.zoomIn()
+      } else {
+        this.croppaSettings.zoomOut()
+      }
     }
   }
 };
