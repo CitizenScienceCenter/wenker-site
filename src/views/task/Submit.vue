@@ -69,6 +69,7 @@ export default {
   },
   mounted() {
     this.loadTask()
+    this.$store.commit('user/SET_TASK_PROGRESS', 0)
   },
   updated() {
   },
@@ -79,7 +80,7 @@ export default {
         if(p.info && p.info.task_selection === "linear") {
           if (this.progress >= this.totalTasks) {
             this.msgText = "Finished";
-            this.store.commit('user/SET_TASK_PROGRESS', this.totalTasks)
+            this.$store.commit('user/SET_TASK_PROGRESS', this.totalTasks)
           } else if (this.progress === 0) {
             this.msgText = `Let's Go`;
           }
@@ -92,19 +93,18 @@ export default {
       })
     },
     progressAfterSubmission() {
-      if (this.progress + 1 >= this.totalTasks) {
+      this.$store.commit('user/SET_TASK_PROGRESS', this.progress + 1)
+      if (this.progress >= this.totalTasks) {
         this.$router.push({'name': 'CompletedProject', 'params': {id: this.project.id}})
+        this.$store.commit('user/SET_TASK_PROGRESS', 0)
         console.log('finished')
       } else {
-        if(this.project.info.task_selection = "random") {
+        if(this.project.info.task_selection === "random") {
           this.$store.dispatch('task/randomProjectTask', [this.project.id, this.user.info.canton]).then(task => {
             this.$router.push({'name': 'Submission', 'params': {tid: task.id, id: this.project.id}})
           })
         } else {
-          this.store.commit('user/SET_TASK_PROGRESS', this.progress + 1)
-          this.$store.dispatch('task/getTasks', {'limit': 1, 'search': {
-            'offset': this.progress
-          }}).then(tasks => {
+          this.$store.dispatch('project/getTasks', [this.project.id, 1, this.progress]).then(tasks => {
             this.$router.push({'name': 'Submission', 'params': {tid: this.tasks[0].id, id: this.project.id}})
           })
           

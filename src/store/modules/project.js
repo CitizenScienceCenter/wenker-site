@@ -60,7 +60,7 @@ const actions = {
       })
       if (associated) {
         dispatch('getMedia', id)
-        dispatch('getTasks', id)
+        dispatch('getTasks', [id, 1, 0])
         dispatch('getStats', id)
       }
       return res.body
@@ -75,25 +75,28 @@ const actions = {
       return err
     }
   },
-  getTasks ({state, commit, rootState}, id) {
+  async getTasks ({state, commit, rootState}, [id, limit = 20, offset = 0]) {
     commit('settings/SET_LOADING', true, {
       root: true
     })
-    rootState.api.client.apis.Projects.project_tasks({
-      id: id
-    })
-      .then(req => {
-        commit('settings/SET_LOADING', false, {
-          root: true
-        })
-        commit('SET_TASKS', req.body)
-      }).catch(err => {
-        commit('settings/SET_LOADING', false, {
-          root: true
-        })
-        commit('settings/SET_LOADING', false, {root: true})
-        console.log(err)
+    try {
+      let tasks = await rootState.api.client.apis.Projects.project_tasks({
+        id: id, limit: limit, offset: offset
       })
+      console.log(id)
+      commit('settings/SET_LOADING', false, {
+        root: true
+      })
+      commit('SET_TASKS', tasks.body)
+      return tasks.body
+    } catch (err) {
+      commit('settings/SET_LOADING', false, {
+        root: true
+      })
+      commit('settings/SET_LOADING', false, {root: true})
+      console.log(err)
+      return err
+    }
   },
   getStats ({state, commit, rootState}, id) {
     commit('settings/SET_LOADING', true, {

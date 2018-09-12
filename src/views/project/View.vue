@@ -89,14 +89,12 @@ export default {
     'tasks' (to, from) {
     },
     'userDetails.age' (to, from) {
-      console.log(to)
     },
     '$route.params.id' (to, from) {
-      this.$store.dispatch('project/getProject', [to || this.projectID, true]).then(res => {
-       console.log(res.body)
-      })
+      console.log(to)
+      this.$store.dispatch('project/getProject', [to || this.projectID, false])
       if (this.user && this.user.info && this.user.info.age) {
-        this.userDetails = this.user.info
+        this.userDetails = Object.assign({}, this.user.info)
       }
     }
   },
@@ -114,7 +112,9 @@ export default {
     route: state => state.route
   }),
   mounted() {
-    this.$store.dispatch('project/getProject', [this.$route.params.id || this.projectID, true])
+    this.$store.dispatch('project/getProject', [this.$route.params.id || this.projectID, false]).then(p => {
+      console.log(p.id)
+    })
     if (this.user && this.user.info && this.user.info.age) {
       this.userDetails = this.user.info
     }
@@ -125,8 +125,12 @@ export default {
     },
     startProject() {
       this.$store.dispatch('user/updateUser', [this.user.id, {info: this.userDetails}]).then(res => {
+        console.log(this.project)
         if (this.project.info && this.project.info.task_selection === "linear") {
-          this.$router.push({'name': 'Submission', 'params': {tid: this.tasks[0].id, id: this.project.id}})
+          this.$store.dispatch('project/getTasks', [this.project.id, 1, this.progress]).then(tasks => {
+            console.log(tasks)
+            this.$router.push({'name': 'Submission', 'params': {tid: this.tasks[0].id, id: this.project.id}})
+          })
         } else {
           this.$store.dispatch('task/randomProjectTask', [this.project.id, this.userDetails.canton]).then(task => {
             this.$router.push({'name': 'Submission', 'params': {tid: task.id, id: this.project.id}})
