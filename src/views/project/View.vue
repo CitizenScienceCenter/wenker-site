@@ -32,8 +32,8 @@
                       <select v-model="userDetails.canton" name="canton" id="canton" placeholder="Region you have spent most of your life">
                           <option :key="r.value" v-for="r in swissCantons" :value="r.value">{{r.label}}</option>
                       </select>
+                      <span class="error" v-if="!userDetails.canton">Your region is required</span>
                     </div>
-                    <span class="error" v-if="!userDetails.canton">Your region is required</span>
                 </div>
                 <div v-bind:class="{'invalid': !userDetails.age}" class="form-field">
                   <label>Alter</label>
@@ -41,8 +41,8 @@
                     <select v-model="userDetails.age" name="range" id="range" placeholder="Age Range">
                         <option :key="a.value" v-for="a in ageRange" :value="a.value">{{a.label}}</option>
                     </select>
+                    <span class="error" v-if="!userDetails.age">Your age range is required</span>
                   </div>
-                  <span class="error" v-if="!userDetails.age">Your age range is required</span>
                 </div>
               </div>
 

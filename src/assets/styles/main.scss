@@ -6,6 +6,7 @@ $color-primary-light: #BFB392;
 $color-primary-lighter: #DAD3C1;
 $color-primary-dark: #726646;
 $color-text: $color-primary-dark;
+$color-error: #A36464;
 
 $break-large: 1278px;
 $break-medium: 1022px;
@@ -75,6 +76,11 @@ figcaption {
   font-size: 0.8rem;
   line-height: 1.5;
   margin-top: 8px;
+}
+.error {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: $color-error;
 }
 
 
@@ -182,6 +188,11 @@ input {
     color: $color-primary;
     text-align: center;
   }
+}
+
+.error {
+  display: block;
+  margin-top: 8px;
 }
 
 // Global Elements
