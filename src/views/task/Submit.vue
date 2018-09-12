@@ -4,7 +4,7 @@
     <!-- TODO add progress bar here -->
     <!-- <md-progress-bar md-mode="determinate" :md-value="(activeTaskIndex / tasks.length) * 100"></md-progress-bar> -->
     <!-- <tutorial :data="tutData" :options="opts"></tutorial> -->
-    <task-submission v-if="activeTask" :task=activeTask :content=content v-on:submission="progressAfterSubmission"></task-submission>
+    <task-submission v-if="activeTask" :totalTasks="totalTasks" :task=activeTask :content=content v-on:submission="progressAfterSubmission"></task-submission>
   </div>
 </template>
 
@@ -50,18 +50,20 @@ export default {
     stats: state => state.project.selectedStats,
     tasks: state => state.project.selectedTasks,
     submission: state => state.submission.submission,
-    loading: state => state.settings.loading
+    loading: state => state.settings.loading,
+    user: state => state.user.currentUser,
+    progress: state => state.user.taskProgress,
   }),
   watch: {
     "$route.params.tid": function(tid) {
       this.loadTask()
     },
     'tasks' (to, from) {
-        this.getTaskIndex(to)
+      this.getTaskIndex(to)
     },
     'project' (to, from) {
       if (to.info) {
-        this.totalTasks = to.info.totalTasks
+        this.totalTasks = to.info.task_count
       }
     }
   },
@@ -73,12 +75,12 @@ export default {
   methods: {
     loadTask() {
       // TODO do not need to load all tasks each request, keep them in store once retrieved
-      this.$store.dispatch("project/getProject", [this.$route.params.id, true]).then(p => {
+      this.$store.dispatch("project/getProject", [this.$route.params.id, false]).then(p => {
         if(p.info && p.info.task_selection === "linear") {
-          if (this.activeTaskIndex >= this.totalTasks) {
+          if (this.progress >= this.totalTasks) {
             this.msgText = "Finished";
-            this.activeTaskIndex = this.tasks.length;
-          } else if (this.activeTaskIndex === 0) {
+            this.store.commit('user/SET_TASK_PROGRESS', this.totalTasks)
+          } else if (this.progress === 0) {
             this.msgText = `Let's Go`;
           }
           this.getTaskIndex(this.tasks)
@@ -90,11 +92,23 @@ export default {
       })
     },
     progressAfterSubmission() {
-      if (this.activeTaskIndex + 1 >= this.tasks.length) {
+      if (this.progress + 1 >= this.totalTasks) {
         this.$router.push({'name': 'CompletedProject', 'params': {id: this.project.id}})
         console.log('finished')
       } else {
-        this.$router.push({'name': 'Submission', 'params': {tid: this.tasks[this.activeTaskIndex + 1].id, id: this.project.id}})
+        if(this.project.info.task_selection = "random") {
+          this.$store.dispatch('task/randomProjectTask', [this.project.id, this.user.info.canton]).then(task => {
+            this.$router.push({'name': 'Submission', 'params': {tid: task.id, id: this.project.id}})
+          })
+        } else {
+          this.store.commit('user/SET_TASK_PROGRESS', this.progress + 1)
+          this.$store.dispatch('task/getTasks', {'limit': 1, 'search': {
+            'offset': this.progress
+          }}).then(tasks => {
+            this.$router.push({'name': 'Submission', 'params': {tid: this.tasks[0].id, id: this.project.id}})
+          })
+          
+        }
       }
     },
     getTaskIndex(tasks) {

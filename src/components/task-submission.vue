@@ -17,27 +17,33 @@
             <h4>{{task.content.question.text}}</h4>
           </div>
         </div>
+<div class="row">
+          <div class="col col-text">
+        <div>Task {{progress + 1}} von {{totalTasks}}</div>
+          </div>
+</div>
 
         <div class="row">
           <div class="col">
 
             <div class="task-box">
 
-              <div v-if="items.length > 0" class="image-browser">
-                <croppa v-model="croppaSettings" canvas-color="transparent"
-                      :prevent-white-space="true"
-                      :show-remove-button="false"
-                      :accept="'image/*'"
-                      :placeholder="'Bild wird nicht geladen'"
-                      :initial-image="items[0]"
-                      :initial-position="'top left'"
-                      auto-sizing>
-                </croppa>
+              <div class="image-browser-frame">
+                <div v-if="img" class="image-browser">
+                  <croppa v-model="croppaSettings" canvas-color="transparent"
+                        :width="600"
+                        :height="500"
+                        :prevent-white-space="true"
+                        :show-remove-button="false"
+                        :accept="'image/*'"
+                        :placeholder="'Bild wird nicht geladen'"
+                        :initial-image="img">
+                  </croppa>
 
-                <button @click="zoom(true)" class="primary zoom zoom-in">+<img src="@/assets/img/icons/plus.svg"></button>
-                <button @click="zoom(false)" class="primary zoom zoom-out">-<img src="@/assets/img/icons/minus.svg"/></button>
+                  <button @click="zoom(true)" class="primary zoom zoom-in"><img src="@/assets/img/icons/plus.svg"></button>
+                  <button @click="zoom(false)" class="primary zoom zoom-out"><img src="@/assets/img/icons/minus.svg"/></button>
+                </div>
               </div>
-
               <div class="form" v-if="responses.length">
                 <div v-for="(answer, i) in task.content.answers" v-bind:key="i">
                   <upload v-if="answer.type.indexOf('file') !== -1" :embedded="true" :multiple="answer.type === 'multiple_files'"></upload>
@@ -58,7 +64,7 @@
           <div class="col col-task-actions">
             <!-- <button v-on:click="submitTask" class="secondary">Vorheriger ***</button> -->
             <button v-on:click="endTask" class="secondary">Beenden</button>
-            <button v-on:click="submitTask" class="primary">Nächster</button>
+            <button v-on:click="submitTask" class="primary">Nächster ***</button>
           </div>
         </div>
 
@@ -77,11 +83,12 @@ import ProjectInfo from "@/components/project-info.vue"
 
 export default {
   name: "task-submission",
-  props: ["task"],
+  props: ["task", "totalTasks"],
   data() {
     return {
       items: [],
       responses: [],
+      img: undefined,
       croppaSettings: {}
     }
   },
@@ -91,13 +98,13 @@ export default {
     stats: state => state.project.selectedStats,
     loading: state => state.project.loading,
     submission: state => state.submission.submission,
-    userId: state => state.user.user,
-    taskMedia: state => state.media.media
+    taskMedia: state => state.media.media,
+    user: state => state.user.currentUser,
+    progress: state => state.user.taskProgress
   }),
   watch: {
     task(to, from) {
       if (to) {
-        console.log(to.content.answers)
         this.$store.dispatch("media/getMedia", this.task.id)
         this.responses = []
         for (let i = 0; i < to.content.answers.length; i++) {
@@ -107,17 +114,17 @@ export default {
       }
     },
     taskMedia (to, from) {
-      to.forEach(m => {
-        console.log(this.task.id)
-        console.log(m.source_id)
+      if (to.length > 0) {
+        const m = to[0]
         const path = m.path.replace("./static", "http://172.23.52.127:8080/static");
-        console.log(path)
-        this.items.push(path);
-      });
+        this.img = path
+        if (this.croppaSettings.refresh) {
+          this.croppaSettings.refresh()
+        } 
+      }
     }
   },
   mounted() {
-    console.log(this.task.content.answers)
     this.$store.dispatch("media/getMedia", this.task.id)
     this.responses = []
     for (let i = 0; i < this.task.content.answers.length; i++) {

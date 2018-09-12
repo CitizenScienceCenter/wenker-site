@@ -52,7 +52,6 @@ const actions = {
     commit('settings/SET_LOADING', true, {
       root: true
     })
-    console.log(id)
     try {
       let res = await rootState.api.client.apis.Projects.get_project({id: id})
       commit('SET_PROJECT', res.body)

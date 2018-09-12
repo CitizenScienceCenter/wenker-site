@@ -15,7 +15,6 @@ const getters = {
 const actions = {
   postSubmission ({ state, commit, rootState, dispatch }) {
     commit('settings/SET_LOADING', true, {root: true})
-    console.log(Object.assign({}, state.submission.content))
     rootState.api.client.apis.Submissions.create_submission({submission: state.submission})
       .then(res => {
         commit('settings/SET_LOADING', false, {root: true})
