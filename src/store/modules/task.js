@@ -15,26 +15,24 @@ const getters = {
 
 // actions
 const actions = {
-  getTasks ({ state, commit, rootState }, search) {
-    commit('settings/SET_LOADING', true, {root: true})
-    console.log(search)
-    rootState.api.client.apis.Tasks.get_tasks({
-      search_term: search || undefined
-    })
-      .then(res => {
-        commit('SET_TASKS', res.body)
+  async getTasks ({ state, commit, rootState }, search) {
+    try {
+        commit('settings/SET_LOADING', true, {root: true})
+        console.log(search)
+        let tasks = await rootState.api.client.apis.Tasks.get_tasks({ search_term: search || undefined })
+        commit('SET_TASKS', tasks.body)
         commit('settings/SET_LOADING', false, {root: true})
-      })
-      .catch(err => {
+        return tasks.body
+    } catch (err) {
         console.error(err)
         commit('settings/SET_LOADING', false, {root: true})
-      })
+        return err
+    }
   },
   async getTask ({ state, commit, rootState }, id) {
     commit('settings/SET_LOADING', true, {root: true})
     try {
       let task = await rootState.api.client.apis.Tasks.get_task({ id: id })
-    //   task.body['content_str'] = JSON.stringify(task.body.content)
       commit('SET_TASK', task.body)
       commit('settings/SET_LOADING', false, {root: true})
       return task.body

@@ -79,9 +79,8 @@ export default {
         if(p.info && p.info.task_selection === "linear") {
           if (this.progress >= this.totalTasks) {
             this.msgText = "Finished";
-            this.activeTaskIndex = this.tasks.length;
             this.store.commit('user/SET_TASK_PROGRESS', this.totalTasks)
-          } else if (this.user.taskProgress === 0) {
+          } else if (this.progress === 0) {
             this.msgText = `Let's Go`;
           }
           this.getTaskIndex(this.tasks)
@@ -102,9 +101,14 @@ export default {
             this.$router.push({'name': 'Submission', 'params': {tid: task.id, id: this.project.id}})
           })
         } else {
-          this.$router.push({'name': 'Submission', 'params': {tid: this.tasks[this.activeTaskIndex + 1].id, id: this.project.id}})
+          this.store.commit('user/SET_TASK_PROGRESS', this.progress + 1)
+          this.$store.dispatch('task/getTasks', {'limit': 1, 'search': {
+            'offset': this.progress
+          }}).then(tasks => {
+            this.$router.push({'name': 'Submission', 'params': {tid: this.tasks[0].id, id: this.project.id}})
+          })
+          
         }
-        // TODO handle task count to stop at x
       }
     },
     getTaskIndex(tasks) {
