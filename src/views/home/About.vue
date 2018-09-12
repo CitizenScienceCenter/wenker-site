@@ -56,17 +56,23 @@ Das Ergebnis der Übersetzungen wurde pro Ort auf einem Blatt Papier, einem soge
             </p>
             <h3>Projektmitarbeitende</h3>
             <h4>Elvira Glaser</h4>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/oFAI4rgYkt0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <div class='embed-container'>
+              <iframe src='https://www.youtube.com/embed/oFAI4rgYkt0' frameborder='0' allowfullscreen></iframe>
+            </div>
             <p>
               Elvira Glaser ist Professorin für Sprachwissenschaft am Deutschen Seminar der Universität Zürich und leitet das Citizen Science Projekt "Schweizerdeutsch 1930 / 2020".
             </p>
             <h4>Sandro Bachmann</h4>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/fdMTLXTvcts" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <div class='embed-container'>
+              <iframe src='https://www.youtube.com/embed/fdMTLXTvcts' frameborder='0' allowfullscreen></iframe>
+            </div>
             <p>
               Sandro ist Assistent am Lehrstuhl für Dialektologie der Universität Zürich und Mitarbeiter des Citizen Science Projekts "Schweizerdeutsch 1930 / 2020".
             </p>
             <h4>Carmen Raggenbass</h4>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/X_tBMBNGtGg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <div class='embed-container'>
+              <iframe src='https://www.youtube.com/embed/X_tBMBNGtGg' frameborder='0' allowfullscreen></iframe>
+            </div>
             <p>
               Carmen hat an der Universität Zürich Germanistik und Romanistik studiert und ist Mitarbeiterin des Citizen Science Projekts "Schweizerdeutsch 1930 / 2020".
             </p>

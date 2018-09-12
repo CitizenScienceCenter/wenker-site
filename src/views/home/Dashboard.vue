@@ -88,6 +88,23 @@
       </div>
     </section>
 
+    <section class="section-content">
+      <div class="content-wrapper">
+        <div class="row">
+          <div class="col col-title">
+            <h2>Prof. Elvira Glaser erklärt</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col col-subtitle">
+            <div class='embed-container'>
+              <iframe src='https://www.youtube.com/embed/oFAI4rgYkt0' frameborder='0' allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </div>
 </template>
 

@@ -29,51 +29,48 @@
               Die Wenkersätze wurden in den 1930er Jahren zur Dokumentation des Schweizerdeutschen eingesetzt und haben eine interessante Vorgeschichte. Der junge Sprachwissenschaftler Georg Wenker plante im Jahr 1876 in Verbindung mit seiner Dissertation «Über die Verschiebung des Stammsilbenauslautes im Germanischen» eigene empirische Untersuchungen, die es ihm er-möglichen sollten, typische lautliche und ausgewählte grammatische Eigenschaften der Mundart der Umgebung seiner Heimatstadt Düsseldorf zu analysieren. Dafür wollte er anhand von Fra-gebogen Mundartproben jedes einzelnen Ortes sammeln, um die örtliche Verteilung der Laut-verschiebungen festzuhalten. Er kreierte dazu die sogenannten 42 rheinischen Sätze in Schrift-sprache, die er durch die Lehrer des jeweiligen Regierungsbezirkes zusammen mit ihren Schü-lern in die dort vorherrschende Mundart übertragen liess. Um seine Ergebnisse sichtbar zu ma-chen, plante er, einerseits eigens ausführliche Dialektkarten und einen Sprachatlas anzufertigen.
             </p>
             <h4>Die Wenkersätze</h4>
-            <p>
-              Die 40 Sätze Nord- und Mitteldeutschlands sowie der späteren Erhebung Süddeutschlands und der Schweiz
-            </p>
-            <p>
-              1.	Im Winter fliegen die trocknen Blätter durch die Luft herum.
-              2.	Es hört gleich auf zu schneien, dann wird das Wetter wieder besser.
-              3.	Thu Kohlen in den Ofen, daß die Milch bald an zu kochen fängt.
-              4.	Der gute alte Mann ist mit dem Pferde durch´s Eis gebrochen und in das kalte Wasser gefallen.
-              5.	Er ist vor vier oder sechs Wochen gestorben.
-              6.	Das Feuer war zu stark/heiß, die Kuchen sind ja unten ganz schwarz gebrannt.
-              7.	Er ißt die Eier immer ohne Salz und Pfeffer.
-              8.	Die Füße thun mir sehr weh, ich glaube, ich habe sie durchgelaufen.
-              9.	Ich bin bei der Frau gewesen und habe es ihr gesagt, und sie sagte, sie wollte es auch ihrer Tochter sagen.
-              10.	Ich will es auch nicht mehr wieder thun!
-              11.	Ich schlage Dich gleich mit dem Kochlöffel um die Ohren, Du Affe!
-              12.	Wo gehst Du hin? Sollen wir mit Dir gehn?
-              13.	Es sind schlechte Zeiten.
-              14.	Mein liebes Kind, bleib hier unten stehn, die bösen Gänse beißen Dich todt.
-              15.	Du hast heute am meisten gelernt und bist artig gewesen, Du darfst früher nach Hause gehn als die Andern.
-              16.	Du bist noch nicht groß genug, um eine Flasche Wein auszutrinken, Du mußt erst noch ein Ende/etwas wachsen und größer werden.
-              17.	Geh, sei so gut und sag Deiner Schwester, sie sollte die Kleider für eure Mutter fertig nähen und mit der Bürste rein machen.
-              18.	Hättest Du ihn gekannt! dann wäre es anders gekommen, und es thäte besser um ihn stehen.
-              19.	Wer hat mir meinen Korb mit Fleisch gestohlen?
-              20.	Er that so, als hätten sie ihn zum dreschen bestellt; sie haben es aber selbst gethan.
-              21.	Wem hat er die neue Geschichte erzählt?
-              22.	Man muß laut schreien, sonst versteht er uns nicht.
-              23.	Wir sind müde und haben Durst.
-              24.	Als wir gestern Abend zurück kamen, da lagen die Andern schon zu Bett und waren fest am schlafen.
-              25.	Der Schnee ist diese Nacht bei uns liegen geblieben, aber heute Morgen ist er geschmolzen.
-              26.	Hinter unserm Hause stehen drei schöne Apfelbäumchen mit rothen Aepfelchen.
-              27.	Könnt ihr nicht noch ein Augenblickchen auf uns warten, dann gehn wir mit euch.
-              28.	Ihr dürft nicht solche Kindereien treiben!
-              29.	Unsere Berge sind nicht sehr hoch, die euren sind viel höher.
-              30.	Wieviel Pfund Wurst und wieviel Brod wollt ihr haben?
-              31.	Ich verstehe euch nicht, ihr müßt ein bißchen lauter sprechen.
-              32.	Habt ihr kein Stückchen weiße Seife für mich auf meinem Tische gefunden?
-              33.	Sein Bruder will sich zwei schöne neue Häuser in eurem Garten bauen.
-              34.	Das Wort kam ihm von Herzen!
-              35.	Das war recht von ihnen!
-              36.	Was sitzen da für Vögelchen oben auf dem Mäuerchen?
-              37.	Die Bauern hatten fünf Ochsen und neun Kühe und zwölf Schäfchen vor das Dorf gebracht, die wollten sie verkaufen.
-              38.	Die Leute sind heute alle draußen auf dem Felde und mähen/hauen.
-              39.	Geh nur, der braune Hund thut Dir nichts.
-              40.	Ich bin mit den Leuten da hinten über die Wiese ins Korn gefahren.
-            </p>
+            <ol class="list-sentences">
+              <li>Im Winter fliegen die trocknen Blätter durch die Luft herum.</li>
+              <li>Es hört gleich auf zu schneien, dann wird das Wetter wieder besser.</li>
+              <li>Thu Kohlen in den Ofen, daß die Milch bald an zu kochen fängt.</li>
+              <li>Der gute alte Mann ist mit dem Pferde durch´s Eis gebrochen und in das kalte Wasser gefallen.</li>
+              <li>Er ist vor vier oder sechs Wochen gestorben.</li>
+              <li>Das Feuer war zu stark/heiß, die Kuchen sind ja unten ganz schwarz gebrannt.</li>
+              <li>Er ißt die Eier immer ohne Salz und Pfeffer.</li>
+              <li>Die Füße thun mir sehr weh, ich glaube, ich habe sie durchgelaufen.</li>
+              <li>Ich bin bei der Frau gewesen und habe es ihr gesagt, und sie sagte, sie wollte es auch ihrer Tochter sagen.</li>
+              <li>Ich will es auch nicht mehr wieder thun!</li>
+              <li>Ich schlage Dich gleich mit dem Kochlöffel um die Ohren, Du Affe!</li>
+              <li>Wo gehst Du hin? Sollen wir mit Dir gehn?</li>
+              <li>Es sind schlechte Zeiten.</li>
+              <li>Mein liebes Kind, bleib hier unten stehn, die bösen Gänse beißen Dich todt.</li>
+              <li>Du hast heute am meisten gelernt und bist artig gewesen, Du darfst früher nach Hause gehn als die Andern.</li>
+              <li>Du bist noch nicht groß genug, um eine Flasche Wein auszutrinken, Du mußt erst noch ein Ende/etwas wachsen und größer werden.</li>
+              <li>Geh, sei so gut und sag Deiner Schwester, sie sollte die Kleider für eure Mutter fertig nähen und mit der Bürste rein machen.</li>
+              <li>Hättest Du ihn gekannt! dann wäre es anders gekommen, und es thäte besser um ihn stehen.</li>
+              <li>Wer hat mir meinen Korb mit Fleisch gestohlen?</li>
+              <li>Er that so, als hätten sie ihn zum dreschen bestellt; sie haben es aber selbst gethan.</li>
+              <li>Wem hat er die neue Geschichte erzählt?</li>
+              <li>Man muß laut schreien, sonst versteht er uns nicht.</li>
+              <li>Wir sind müde und haben Durst.</li>
+              <li>Als wir gestern Abend zurück kamen, da lagen die Andern schon zu Bett und waren fest am schlafen.</li>
+              <li>Der Schnee ist diese Nacht bei uns liegen geblieben, aber heute Morgen ist er geschmolzen.</li>
+              <li>Hinter unserm Hause stehen drei schöne Apfelbäumchen mit rothen Aepfelchen.</li>
+              <li>Könnt ihr nicht noch ein Augenblickchen auf uns warten, dann gehn wir mit euch.</li>
+              <li>Ihr dürft nicht solche Kindereien treiben!</li>
+              <li>Unsere Berge sind nicht sehr hoch, die euren sind viel höher.</li>
+              <li>Wieviel Pfund Wurst und wieviel Brod wollt ihr haben?</li>
+              <li>Ich verstehe euch nicht, ihr müßt ein bißchen lauter sprechen.</li>
+              <li>Habt ihr kein Stückchen weiße Seife für mich auf meinem Tische gefunden?</li>
+              <li>	Sein Bruder will sich zwei schöne neue Häuser in eurem Garten bauen.</li>
+              <li>Das Wort kam ihm von Herzen!</li>
+              <li>Das war recht von ihnen!</li>
+              <li>Was sitzen da für Vögelchen oben auf dem Mäuerchen?</li>
+              <li>Die Bauern hatten fünf Ochsen und neun Kühe und zwölf Schäfchen vor das Dorf gebracht, die wollten sie verkaufen.</li>
+              <li>Die Leute sind heute alle draußen auf dem Felde und mähen/hauen.</li>
+              <li>Geh nur, der braune Hund thut Dir nichts.</li>
+              <li>Ich bin mit den Leuten da hinten über die Wiese ins Korn gefahren.</li>
+            </ol>
           </div>
         </div>
       </div>
