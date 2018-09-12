@@ -67,7 +67,6 @@ export default {
     },
   },
   created() {
-    console.log(this.user)
   },
   computed: {
     ...mapState({
