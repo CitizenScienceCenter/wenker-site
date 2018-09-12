@@ -4,7 +4,7 @@ const state = {
   projects: [],
   selectedProject: null,
   selectedMedia: [],
-selectedStats: null,
+  selectedStats: null,
   selectedTasks: []
 }
 
@@ -15,19 +15,18 @@ const getters = {
 
 // actions
 const actions = {
-  getProjects({
+  getProjects ({
     state,
     commit,
     dispatch,
     rootState
   }, search) {
-
     commit('settings/SET_LOADING', true, {
       root: true
     })
     rootState.api.client.apis.Projects.get_projects({
-        search_term: search || undefined
-      })
+      search_term: search || undefined
+    })
       .then(req => {
         commit('SET_PROJECTS', req.body)
         commit('settings/SET_LOADING', false, {
@@ -41,9 +40,10 @@ const actions = {
         commit('settings/SET_ERROR', err, {
           root: true
         })
+        console.log(err)
       })
   },
-  async getProject({
+  async getProject ({
     state,
     commit,
     dispatch,
@@ -55,7 +55,6 @@ const actions = {
     console.log(id)
     try {
       let res = await rootState.api.client.apis.Projects.get_project({id: id})
-      console.log(res.body)
       commit('SET_PROJECT', res.body)
       commit('settings/SET_LOADING', false, {
         root: true
@@ -65,8 +64,8 @@ const actions = {
         dispatch('getTasks', id)
         dispatch('getStats', id)
       }
-      return res
-    } catch(err) {
+      return res.body
+    } catch (err) {
       console.log(err)
       commit('settings/SET_LOADING', false, {
         root: true
@@ -77,63 +76,61 @@ const actions = {
       return err
     }
   },
-  getTasks({state, commit, rootState}, id) {
+  getTasks ({state, commit, rootState}, id) {
     commit('settings/SET_LOADING', true, {
       root: true
     })
     rootState.api.client.apis.Projects.project_tasks({
       id: id
     })
-    .then(req => {
-      commit('settings/SET_LOADING', false, {
+      .then(req => {
+        commit('settings/SET_LOADING', false, {
           root: true
         })
-      commit('SET_TASKS', req.body)
-    }).catch(err => {
-      commit('settings/SET_ERROR', err, {
-        root: true
+        commit('SET_TASKS', req.body)
+      }).catch(err => {
+        commit('settings/SET_LOADING', false, {
+          root: true
+        })
+        commit('settings/SET_LOADING', false, {root: true})
+        console.log(err)
       })
-      // TODO set path to login or 404 
-    })
   },
-  getStats({state, commit, rootState}, id) {
+  getStats ({state, commit, rootState}, id) {
     commit('settings/SET_LOADING', true, {
       root: true
     })
     rootState.api.client.apis.Projects.get_stats({
       id: id
     })
-    .then(req => {
-      commit('settings/SET_LOADING', false, {
+      .then(req => {
+        commit('settings/SET_LOADING', false, {
           root: true
         })
-      commit('SET_STATS', req.body)
-    }).catch(err => {
-      commit('settings/SET_ERROR', err, {
-        root: true
+        commit('SET_STATS', req.body)
+      }).catch(err => {
+        commit('settings/SET_LOADING', false, {
+          root: true
+        })
+        commit('settings/SET_LOADING', false, {root: true})
+        console.log(err)
       })
-      // TODO set path to login or 404 
-    })
   },
-  getMedia({state, commit, rootState }, search) {
-
+  getMedia ({ state, commit, rootState }, search) {
     commit('settings/SET_LOADING', true, {root: true})
     rootState.api.client.apis.Media.get_media({
-        search_term: search || undefined
+      search_term: search || undefined
     })
       .then(req => {
         commit('SET_MEDIA', req.body)
         commit('settings/SET_LOADING', false, {root: true})
       })
       .catch(err => {
-        if (err.response.status === 404) {
-          // TODO load 404 page
-        } else {
-          // TODO show errror
-        }
+        commit('settings/SET_LOADING', false, {root: true})
+        console.log(err)
       })
-},
-  createProject({
+  },
+  createProject ({
     state,
     commit,
     rootState
@@ -142,8 +139,8 @@ const actions = {
       root: true
     })
     rootState.api.client.apis.Projects.create_project({
-        project: project
-      })
+      project: project
+    })
       .then(req => {
         console.log(req)
         commit('settings/SET_LOADING', false, {
@@ -155,12 +152,11 @@ const actions = {
         commit('settings/SET_ERROR', err, {
           root: true
         })
-        commit('settings/SET_LOADING', false, {
-          root: true
-        })
-      });
+        commit('settings/SET_LOADING', false, {root: true})
+        console.log(err)
+      })
   },
-  deleteProject({
+  deleteProject ({
     state,
     commit,
     rootState
@@ -169,8 +165,8 @@ const actions = {
       root: true
     })
     rootState.api.client.apis.Projects.delete_project({
-        id: pid
-      })
+      id: pid
+    })
       .then(req => {
         commit('SET_PROJECT', null)
         commit('settings/SET_LOADING', false, {
@@ -181,28 +177,27 @@ const actions = {
         commit('settings/SET_LOADING', false, {
           root: true
         })
-        commit('settings/SET_ERROR', err, {
-          root: true
-        })
-      });
+        commit('settings/SET_LOADING', false, {root: true})
+        console.log(err)
+      })
   }
 }
 
 // mutations
 const mutations = {
-  SET_PROJECTS(state, projects) {
+  SET_PROJECTS (state, projects) {
     state.projects = projects
   },
-  SET_PROJECT(state, project) {
+  SET_PROJECT (state, project) {
     state.selectedProject = project
   },
-  SET_STATS(state, stats) {
+  SET_STATS (state, stats) {
     state.selectedStats = stats
   },
-  SET_MEDIA(state, media) {
+  SET_MEDIA (state, media) {
     state.selectedMedia = media
   },
-  SET_TASKS(state, tasks) {
+  SET_TASKS (state, tasks) {
     state.selectedTasks = tasks
   }
 }

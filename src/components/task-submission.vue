@@ -37,7 +37,7 @@
                 <button  @click="zoom(true)" class="primary zoom zoom-in">+<img src="@/assets/img/icons/plus.svg" alt="Twitter"></button>
                 <button @click="zoom(false)" class="primary zoom zoom-out">-<img src="@/assets/img/icons/minus.svg" alt="Twitter"/></button>
               </div>
-              <div class="form">
+              <div class="form" v-if="responses.length">
                 <div v-for="(answer, i) in task.content.answers" v-bind:key="i">
                   <upload v-if="answer.type.indexOf('file') !== -1" :embedded="true" :multiple="answer.type === 'multiple_files'"></upload>
                   <div v-if="answer.type === 'text'" class="form-field">
@@ -55,8 +55,8 @@
 
         <div class="row">
           <div class="col col-task-actions">
-            <button v-on:click="submitTask" class="secondary">Vorheriger ***</button>
-            <button v-on:click="submitTask" class="secondary">Beenden</button>
+            <!-- <button v-on:click="submitTask" class="secondary">Vorheriger ***</button> -->
+            <button v-on:click="endTask" class="secondary">Beenden</button>
             <button v-on:click="submitTask" class="primary">Nächster ***</button>
           </div>
         </div>
@@ -96,6 +96,7 @@ export default {
   watch: {
     task(to, from) {
       if (to) {
+        console.log(to.content.answers)
         this.$store.dispatch("media/getMedia", this.task.id)
         this.responses = []
         for (let i = 0; i < to.content.answers.length; i++) {
@@ -104,7 +105,7 @@ export default {
         this.createSubmission()
       }
     },
-    taskMedia(to, from) {
+    taskMedia (to, from) {
       to.forEach(m => {
         console.log(this.task.id)
         console.log(m.source_id)
@@ -115,6 +116,13 @@ export default {
     }
   },
   mounted() {
+    console.log(this.task.content.answers)
+    this.$store.dispatch("media/getMedia", this.task.id)
+    this.responses = []
+    for (let i = 0; i < this.task.content.answers.length; i++) {
+      this.responses.push({text: ""})
+    }
+    this.createSubmission()
   },
   methods: {
     createSubmission() {
@@ -131,6 +139,11 @@ export default {
           this.$emit('submission')
           this.createSubmission()
         })
+    },
+    endTask() {
+      this.$store.dispatch('submission/postSubmission').then(() => {
+        this.$router.push({'name': 'CompletedProject', 'params': {id: this.project.id}})
+      })
     },
     zoom(inFlag) {
       if (inFlag) {

@@ -23,7 +23,7 @@
 
               </div>
 
-              <button class="secondary" to="/">Zurück zur Startseite</button>
+              <router-link to="/"><button class="secondary">Zurück zur Startseite</button></router-link>
 
             </div>
           </div>
