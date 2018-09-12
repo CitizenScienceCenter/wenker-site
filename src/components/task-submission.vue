@@ -31,13 +31,12 @@
               <div class="image-browser-frame">
                 <div v-if="img" class="image-browser">
                   <croppa v-model="croppaSettings" canvas-color="transparent"
-                        :width="600"
-                        :height="500"
                         :prevent-white-space="true"
                         :show-remove-button="false"
                         :accept="'image/*'"
                         :placeholder="'Bild wird nicht geladen'"
-                        :initial-image="img">
+                        :initial-image="img"
+                        auto-sizing>
                   </croppa>
 
                   <button @click="zoom(true)" class="primary zoom zoom-in"><img src="@/assets/img/icons/plus.svg"></button>
@@ -64,7 +63,7 @@
           <div class="col col-task-actions">
             <!-- <button v-on:click="submitTask" class="secondary">Vorheriger ***</button> -->
             <button v-on:click="endTask" class="secondary">Beenden</button>
-            <button v-on:click="submitTask" class="primary">Nächster ***</button>
+            <button v-on:click="submitTask" class="primary">Nächster</button>
           </div>
         </div>
 
@@ -120,7 +119,7 @@ export default {
         this.img = path
         if (this.croppaSettings.refresh) {
           this.croppaSettings.refresh()
-        } 
+        }
       }
     }
   },
