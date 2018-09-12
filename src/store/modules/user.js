@@ -5,6 +5,7 @@ const state = {
   user: null,
   currentUser: null,
   settings: null, // TODO split this out into separate store
+  taskProgress: 0
 }
 
 // getters
@@ -117,7 +118,7 @@ const actions = {
       let res = await rootState.api.client.apis.Users.update_user({id: id, user: info})
       commit('SET_CURRENT_USER', res.body)
       return res
-    } catch(e) {
+    } catch (e) {
       return e
     }
   },
@@ -144,6 +145,9 @@ const mutations = {
   SET_CURRENT_USER(state, user) {
     state.currentUser = user
   },
+  SET_TASK_PROGRESS(state, prog) {
+    state.taskProgress = prog
+  }
 }
 
 export default {

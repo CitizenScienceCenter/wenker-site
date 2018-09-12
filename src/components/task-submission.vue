@@ -24,7 +24,7 @@
             <div class="task-box">
 
               <div class="image-browser-frame">
-                <div v-if="items.length > 0" class="image-browser">
+                <div v-if="img" class="image-browser">
                   <croppa v-model="croppaSettings" canvas-color="transparent"
                         :width="600"
                         :height="500"
@@ -32,11 +32,11 @@
                         :show-remove-button="false"
                         :accept="'image/*'"
                         :placeholder="'Bild wird nicht geladen'"
-                        :initial-image="items[0]">
+                        :initial-image="img">
                   </croppa>
 
-                  <button @click="zoom(true)" class="primary zoom zoom-in">sdaf<img src="@/assets/img/icons/plus.svg"></button>
-                  <button @click="zoom(false)" class="primary zoom zoom-out">dsafasdf<img src="@/assets/img/icons/minus.svg"/></button>
+                  <button @click="zoom(true)" class="primary zoom zoom-in"><img src="@/assets/img/icons/plus.svg"></button>
+                  <button @click="zoom(false)" class="primary zoom zoom-out"><img src="@/assets/img/icons/minus.svg"/></button>
                 </div>
               </div>
               <div class="form" v-if="responses.length">
@@ -83,6 +83,7 @@ export default {
     return {
       items: [],
       responses: [],
+      img: undefined,
       croppaSettings: {}
     }
   },
@@ -92,13 +93,11 @@ export default {
     stats: state => state.project.selectedStats,
     loading: state => state.project.loading,
     submission: state => state.submission.submission,
-    userId: state => state.user.user,
     taskMedia: state => state.media.media
   }),
   watch: {
     task(to, from) {
       if (to) {
-        console.log(to.content.answers)
         this.$store.dispatch("media/getMedia", this.task.id)
         this.responses = []
         for (let i = 0; i < to.content.answers.length; i++) {
@@ -108,17 +107,17 @@ export default {
       }
     },
     taskMedia (to, from) {
-      to.forEach(m => {
-        console.log(this.task.id)
-        console.log(m.source_id)
+      if (to.length > 0) {
+        const m = to[0]
         const path = m.path.replace("./static", "http://172.23.52.127:8080/static");
-        console.log(path)
-        this.items.push(path);
-      });
+        this.img = path
+        if (this.croppaSettings.refresh) {
+          this.croppaSettings.refresh()
+        } 
+      }
     }
   },
   mounted() {
-    console.log(this.task.content.answers)
     this.$store.dispatch("media/getMedia", this.task.id)
     this.responses = []
     for (let i = 0; i < this.task.content.answers.length; i++) {

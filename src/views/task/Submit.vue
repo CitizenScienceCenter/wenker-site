@@ -50,14 +50,15 @@ export default {
     stats: state => state.project.selectedStats,
     tasks: state => state.project.selectedTasks,
     submission: state => state.submission.submission,
-    loading: state => state.settings.loading
+    loading: state => state.settings.loading,
+    user: state => state.user.currentUser,
   }),
   watch: {
     "$route.params.tid": function(tid) {
       this.loadTask()
     },
     'tasks' (to, from) {
-        this.getTaskIndex(to)
+      this.getTaskIndex(to)
     },
     'project' (to, from) {
       if (to.info) {
@@ -73,12 +74,13 @@ export default {
   methods: {
     loadTask() {
       // TODO do not need to load all tasks each request, keep them in store once retrieved
-      this.$store.dispatch("project/getProject", [this.$route.params.id, true]).then(p => {
+      this.$store.dispatch("project/getProject", [this.$route.params.id, false]).then(p => {
         if(p.info && p.info.task_selection === "linear") {
-          if (this.activeTaskIndex >= this.totalTasks) {
+          if (this.user.taskProgress >= this.totalTasks) {
             this.msgText = "Finished";
             this.activeTaskIndex = this.tasks.length;
-          } else if (this.activeTaskIndex === 0) {
+            this.store.commit('user/SET_TASK_PROGRESS', this.totalTasks)
+          } else if (this.user.taskProgress === 0) {
             this.msgText = `Let's Go`;
           }
           this.getTaskIndex(this.tasks)
@@ -90,11 +92,18 @@ export default {
       })
     },
     progressAfterSubmission() {
-      if (this.activeTaskIndex + 1 >= this.tasks.length) {
+      if (this.activeTaskIndex + 1 >= this.totalTasks) {
         this.$router.push({'name': 'CompletedProject', 'params': {id: this.project.id}})
         console.log('finished')
       } else {
-        this.$router.push({'name': 'Submission', 'params': {tid: this.tasks[this.activeTaskIndex + 1].id, id: this.project.id}})
+        if(this.project.info.task_selection = "random") {
+          this.$store.dispatch('task/randomProjectTask', [this.project.id, this.user.info.canton]).then(task => {
+            this.$router.push({'name': 'Submission', 'params': {tid: task.id, id: this.project.id}})
+          })
+        } else {
+          this.$router.push({'name': 'Submission', 'params': {tid: this.tasks[this.activeTaskIndex + 1].id, id: this.project.id}})
+        }
+        // TODO handle task count to stop at x
       }
     },
     getTaskIndex(tasks) {
