@@ -22,7 +22,8 @@
           </div>
         </div>
       </div>
-      <a href="https://citizenscience.ch/"><img class="cscc_logo" src="@/assets/img/cscc_logo.png" alt="Citizen Science Center Zurich"/></a>
+      <a href="https://citizenscience.ch/" class="cscc_logo"><img src="@/assets/img/cscc_logo.png" alt="Citizen Science Center Zurich"/></a>
+      <a href="http://archiv.sgv-sstp.ch/resource/447395" target="_blank" class="copyright">© Bild Copyright</a>
     </section>
 
     <section class="section-content">

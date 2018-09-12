@@ -22,7 +22,7 @@
           <div class="col col-text">
             <figure>
               <img src="@/assets/img/content/klassenzimmer.jpg" />
-              <figcaption><a href="http://archiv.sgv-sstp.ch/resource/431874" target="_blank">© Schweizerische Gesellschaft für Volkskunde</a></figcaption>
+              <figcaption><a href="http://archiv.sgv-sstp.ch/resource/431874" target="_blank">© Bild Copyright</a></figcaption>
             </figure>
             <h3>Unsere Sprachliche Entwicklung verstehen</h3>
             <p>
@@ -32,7 +32,7 @@
             </p>
             <figure>
               <img src="@/assets/img/content/schreiben.jpg" />
-              <figcaption>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</figcaption>
+              <figcaption><a href="http://archiv.sgv-sstp.ch/resource/425896" target="_blank">© Bild Copyright</a></figcaption>
             </figure>
             <h3>Trockene Blätter und Kochlöffel - Die Geschichte der Wenkerbögen</h3>
             <p>
@@ -42,7 +42,7 @@ Das Ergebnis der Übersetzungen wurde pro Ort auf einem Blatt Papier, einem soge
             </p>
             <figure>
               <img src="@/assets/img/content/schueler.jpg" />
-              <figcaption>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</figcaption>
+              <figcaption><a href="http://archiv.sgv-sstp.ch/resource/447400" target="_blank">© Bild Copyright</a></figcaption>
             </figure>
             <h3>Ein kultureller Schatz</h3>
             <p>

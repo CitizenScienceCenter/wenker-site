@@ -22,7 +22,7 @@
           <div class="col col-text">
             <figure>
               <img src="@/assets/img/content/wenker.jpg" />
-              <figcaption><a href="http://www.diwa.info/Geschichte/Kartierungsverfahren.aspx" target="_blank">© Regionalsprache.de (REDE)</a></figcaption>
+              <figcaption><a href="http://www.diwa.info/Geschichte/Kartierungsverfahren.aspx" target="_blank">© Bild Copyright</a></figcaption>
             </figure>
             <h3>Die Geschichte eines Dialektliebhabers</h3>
             <p>

@@ -13,15 +13,15 @@
         </div>
 
         <div class="row">
-          <div class="col col-text">
+          <div class="col col-subtitle">
             <h4>{{task.content.question.text}}</h4>
           </div>
         </div>
-<div class="row">
-          <div class="col col-text">
-        <div>Task {{progress + 1}} von {{totalTasks}}</div>
+        <div class="row">
+          <div class="col col-text col-progress">
+            <div>Task {{progress + 1}} von {{totalTasks}}</div>
           </div>
-</div>
+        </div>
 
         <div class="row">
           <div class="col">

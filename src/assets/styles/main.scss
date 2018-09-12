@@ -442,10 +442,22 @@ header {
   }
 
   .cscc_logo {
-    height: 48px;
     position: absolute;
     bottom: 24px;
     right: 24px;
+    img {
+      height: 48px;
+    }
+  }
+  .copyright {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    font-size: 0.8rem;
+    color: $color-primary-lighter;
+    &:hover {
+      color: $color-primary-light;
+    }
   }
 }
 
@@ -492,6 +504,13 @@ p {
 }
 figure {
   margin-bottom: 48px;
+}
+a {
+  color: $color-primary;
+  text-decoration: none;
+  &:hover {
+    color: $color-primary-dark;
+  }
 }
 
 .col-action {
@@ -548,6 +567,10 @@ figure {
   }
 
 }
+.col-progress {
+  text-align: center;
+  margin-bottom: 24px;
+}
 
 .col-sharing {
   text-align: center;
@@ -591,7 +614,6 @@ figure {
     a {
       margin-right: 16px;
       color: white;
-      text-decoration: none;
       &:hover {
         color: $color-primary-light;
       }
@@ -643,6 +665,12 @@ figure {
 
   .content-wrapper {
     padding: 0 $grid-margin-medium;
+  }
+
+  .task-box {
+    .form {
+      width: 100%;
+    }
   }
 
   header {
@@ -804,10 +832,9 @@ figure {
       padding-bottom: 80px;
     }
     .cscc_logo {
-      height: 32px;
-      position: absolute;
-      bottom: 24px;
-      right: 24px;
+      img {
+        height: 32px;
+      }
     }
   }
 
@@ -834,6 +861,10 @@ figure {
     img {
       margin-bottom: 48px;
     }
+  }
+
+  .col-task-actions {
+    width: 66.667%;
   }
 
   .col-wenker-image {
