@@ -3,22 +3,25 @@
 // Variables
 $color-primary: #A39264;
 $color-primary-light: #BFB392;
-$color-primary-lighter: #DAD3C1;
+$color-primary-lighter: #EDE9E0;
 $color-primary-dark: #726646;
 $color-text: $color-primary-dark;
 $color-error: #A36464;
 
 $break-large: 1278px;
 $break-medium: 1022px;
-$break-small: 766px;
+$break-small: 698px;
 $break-xsmall: 398px;
 
 $grid-margin-large: 64px;
 $grid-margin-medium: 32px;
 $grid-margin-small: 16px;
+$grid-margin-xsmall: 8px;
+
 $grid-gutter-large: 32px;
 $grid-gutter-medium: 24px;
 $grid-gutter-small: 16px;
+$grid-gutter-xsmall: 8px;
 
 $transition-timing-function: cubic-bezier(0.420, 0.000, 0.580, 1.000);
 $transition-duration: 0.15s;
@@ -62,11 +65,12 @@ h3 {
   font-weight: 300;
 }
 h4 {
-  font-size: 1.25rem;
+  font-size: 1.563rem;
   line-height: 1.5;
   font-weight: 400;
 }
 p {
+  font-size: 1rem;
   line-height: 1.5;
 }
 figure {
@@ -82,6 +86,30 @@ figcaption {
   line-height: 1.5;
   color: $color-error;
 }
+label {
+  color: $color-primary;
+  font-size: 0.8rem;
+  line-height: 1;
+  font-weight: 500;
+}
+.section-cover {
+  .copyright {
+    font-size: 0.8rem;
+    color: $color-primary-lighter;
+    opacity: 0.5;
+    &:hover {
+      color: white;
+    }
+  }
+}
+.col-transcription-rules {
+  ul {
+    li {
+      line-height: 1.5;
+      font-size: 0.8rem;
+    }
+  }
+}
 
 
 // Basics
@@ -92,15 +120,7 @@ html {
   font-family: 'Nunito Sans', sans-serif;
   color: $color-text;
 }
-body {
-  background-color: $color-primary-dark;
-}
-label {
-  color: $color-primary;
-  font-size: 0.8rem;
-  line-height: 1;
-  font-weight: 500;
-}
+
 
 
 // Grid Basics
@@ -122,6 +142,7 @@ label {
   padding: 0 $grid-gutter-large;
   box-sizing: border-box;
   width: 100%;
+  overflow: hidden;
 
   .row {
     margin-left: -$grid-gutter-large;
@@ -152,6 +173,10 @@ input {
   font-size: 1rem;
   outline: none;
   margin-bottom: 24px;
+
+  &:focus, &:hover {
+    border-bottom: 1px solid $color-primary-dark;
+  }
 }
 
 .select-wrapper {
@@ -170,10 +195,6 @@ input {
     height: 48px;
     font-size: 1rem;
     outline: none;
-
-    &:hover, &:focus {
-      border-color: $color-primary-dark;
-    }
   }
 
   &::after {
@@ -187,6 +208,15 @@ input {
     right: 0.5rem;
     color: $color-primary;
     text-align: center;
+  }
+
+  &:focus-within, &:hover {
+    select {
+      border-bottom: 1px solid $color-primary-dark;
+    }
+    &::after {
+      color: $color-primary-dark;
+    }
   }
 }
 
@@ -249,6 +279,7 @@ button {
   }
   .col-text-box {
     width: 58.333%;
+    overflow: hidden;
     .text-box {
       padding: $grid-gutter-large*2;
       margin: $grid-gutter-large*2;
@@ -306,7 +337,6 @@ button {
     overflow: scroll;
     padding: 48px;
     padding-bottom: 72px;
-    border-bottom: 1px solid $color-primary-dark;
   }
 }
 .col-task-actions {
@@ -338,6 +368,7 @@ button {
   li {
     line-height: 1.5;
     padding-bottom: 16px;
+    padding-left: 16px;
   }
 }
 
@@ -388,7 +419,7 @@ header {
       }
       &:hover {
         a {
-          color: $color-primary-light;
+          color: $color-primary-lighter;
         }
       }
     }
@@ -464,11 +495,6 @@ header {
     position: absolute;
     bottom: 24px;
     left: 24px;
-    font-size: 0.8rem;
-    color: $color-primary-lighter;
-    &:hover {
-      color: $color-primary-light;
-    }
   }
 }
 
@@ -511,8 +537,6 @@ header {
     padding-left: 24px;
     li {
       margin-top: 8px;
-      line-height: 1.5;
-      font-size: 0.8rem;
     }
   }
 }
@@ -571,6 +595,10 @@ a {
   margin-right: 16.667%;
   display: flex;
   align-items: center;
+  h2 {
+    color: white;
+    margin-bottom: 48px;
+  }
 }
 
 .col-form {
@@ -675,6 +703,16 @@ a {
     }
   }
 
+  .col-wenker-image {
+    width: 41.667%;
+    margin-left: 8.333%;
+    margin-right: 0;
+  }
+  .col-wenker-text {
+    width: 41.667%;
+    margin-right: 8.333%;
+  }
+
   .col-form {
     width: 41.667%;
   }
@@ -731,6 +769,7 @@ a {
         padding: $grid-gutter-medium*2;
         margin: $grid-gutter-medium*2;
         margin-top: $grid-gutter-medium*6;
+        margin-bottom: $grid-gutter-medium*6;
       }
     }
   }
@@ -771,6 +810,56 @@ a {
 
 @media screen and (max-width: $break-small) {
 
+
+  // Text Styles
+
+  .navigation {
+    a {
+      font-size: 0.833rem;
+    }
+  }
+  button {
+    font-size: 0.833rem;
+  }
+  h2 {
+    &.cover-title {
+      font-size: 2.488rem;
+    }
+    font-size: 2.074rem;
+  }
+  .cover-text {
+    font-size: 1.44rem;
+  }
+  h3 {
+    font-size: 1.728rem;
+  }
+  h4 {
+    font-size: 1.44rem;
+  }
+  figcaption {
+    font-size: 0.833rem;
+  }
+  .error {
+    font-size: 0.833rem;
+  }
+  label {
+    font-size: 0.833rem;
+  }
+  .section-cover {
+    .copyright {
+      font-size: 0.833rem;
+    }
+  }
+  .col-transcription-rules {
+    ul {
+      li {
+        font-size: 0.833rem;
+      }
+    }
+  }
+
+
+  // Other Stuff
 
   h2 {
     margin-bottom: 48px;
@@ -823,23 +912,6 @@ a {
     margin-top: 64px;
   }
 
-  h2 {
-    &.cover-title {
-      font-size: 2.441rem;
-    }
-    font-size: 2.441rem;
-  }
-  .cover-text {
-    font-size: 1.25rem;
-    line-height: 1.2;
-    font-weight: 300;
-  }
-  h3 {
-    font-size: 1.953rem;
-    line-height: 1.2;
-    font-weight: 300;
-  }
-
   .col-title {
     width: 100%;
   }
@@ -872,6 +944,7 @@ a {
         padding: $grid-gutter-small*2;
         margin: $grid-gutter-small*2;
         margin-top: $grid-gutter-small*6;
+        margin-bottom: $grid-gutter-small*6;
       }
     }
   }
@@ -914,15 +987,52 @@ a {
 }
 
 @media screen and (max-width: $break-xsmall) {
+
+  html {
+    font-size: 16px;
+  }
+
+
+  .col {
+    padding: 0 $grid-gutter-xsmall;
+    .row {
+      margin-left: -$grid-gutter-xsmall;
+      margin-right: -$grid-gutter-xsmall;
+    }
+  }
+
+  .content-wrapper {
+    padding: 0 $grid-margin-xsmall;
+  }
+
+
+
+  header {
+    .navigation {
+      right: 8px;
+    }
+  }
+
   .section-cover {
     .col-cover-text {
       button {
-        margin-right: 8px;
-        margin-left: 8px;
+        display: block;
+        margin: auto;
         margin-bottom: 16px;
         &:last-child {
-          margin-bottom: 0;
+          margin-right: auto;
         }
+      }
+    }
+  }
+
+  .image-box {
+    .col-text-box {
+      .text-box {
+        padding: $grid-gutter-xsmall*2;
+        margin: $grid-gutter-xsmall*2;
+        margin-top: $grid-gutter-xsmall*6;
+        margin-bottom: $grid-gutter-xsmall*6;
       }
     }
   }

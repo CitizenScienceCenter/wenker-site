@@ -80,7 +80,7 @@
           </div>
           <div class="col col-wenker-text">
             <div class="wenker-text">
-              <h3>Georg Wenker</h3>
+              <h2>Georg Wenker</h2>
               <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
               <router-link to="/wenker" tag="button" class="secondary">Mehr zu Georg Wenker</router-link>
             </div>
