@@ -22,7 +22,6 @@
           <div class="col">
 
             <div class="task-box">
-
               <div v-if="items.length > 0" class="image-browser">
                 <croppa v-model="croppaSettings" canvas-color="transparent"
                       :width="600"
@@ -34,8 +33,8 @@
                       :initial-image="items[0]">
                 </croppa>
 
-                <button  @click="zoom(true)" class="primary zoom zoom-in">+<img src="@/assets/img/icons/plus.svg" alt="Twitter"></button>
-                <button @click="zoom(false)" class="primary zoom zoom-out">-<img src="@/assets/img/icons/minus.svg" alt="Twitter"/></button>
+                <button @click="zoom(true)" class="primary zoom zoom-in"><img src="@/assets/img/icons/plus.svg"></button>
+                <button @click="zoom(false)" class="primary zoom zoom-out"><img src="@/assets/img/icons/minus.svg"/></button>
               </div>
               <div class="form" v-if="responses.length">
                 <div v-for="(answer, i) in task.content.answers" v-bind:key="i">

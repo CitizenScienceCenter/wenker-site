@@ -9,8 +9,8 @@ import './assets/styles/theme.scss'
 import VuexRouterSync from 'vuex-router-sync'
 import * as loc from './localisation/index'
 import vuexI18n from 'vuex-i18n'
-import Croppa from 'vue-croppa';
-import 'vue-croppa/dist/vue-croppa.css';
+import Croppa from 'vue-croppa'
+import 'vue-croppa/dist/vue-croppa.css'
 import vueNumeralFilterInstaller from 'vue-numeral-filter'
 
 Vue.config.productionTip = false
@@ -32,9 +32,11 @@ Swagger({ url: process.env.BASE_URI,
     }
     return req
   }}).then((client) => {
+  client.spec.host = process.env.HOST
+
   Vue.prototype.$ac = client
   Vue.i18n.set('en')
-  
+
   // Vue.$material.theming.theme = t;
   store.dispatch('api/setClient', client)
   /* eslint-disable no-new */
