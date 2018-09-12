@@ -17,6 +17,11 @@
             <h4>{{task.content.question.text}}</h4>
           </div>
         </div>
+<div class="row">
+          <div class="col col-text">
+        <div>Task {{progress + 1}} von {{totalTasks}}</div>
+          </div>
+</div>
 
         <div class="row">
           <div class="col">
@@ -78,7 +83,7 @@ import ProjectInfo from "@/components/project-info.vue"
 
 export default {
   name: "task-submission",
-  props: ["task"],
+  props: ["task", "totalTasks"],
   data() {
     return {
       items: [],
@@ -93,7 +98,9 @@ export default {
     stats: state => state.project.selectedStats,
     loading: state => state.project.loading,
     submission: state => state.submission.submission,
-    taskMedia: state => state.media.media
+    taskMedia: state => state.media.media,
+    user: state => state.user.currentUser,
+    progress: state => state.user.taskProgress
   }),
   watch: {
     task(to, from) {

@@ -4,7 +4,7 @@
     <!-- TODO add progress bar here -->
     <!-- <md-progress-bar md-mode="determinate" :md-value="(activeTaskIndex / tasks.length) * 100"></md-progress-bar> -->
     <!-- <tutorial :data="tutData" :options="opts"></tutorial> -->
-    <task-submission v-if="activeTask" :task=activeTask :content=content v-on:submission="progressAfterSubmission"></task-submission>
+    <task-submission v-if="activeTask" :totalTasks="totalTasks" :task=activeTask :content=content v-on:submission="progressAfterSubmission"></task-submission>
   </div>
 </template>
 
@@ -52,6 +52,7 @@ export default {
     submission: state => state.submission.submission,
     loading: state => state.settings.loading,
     user: state => state.user.currentUser,
+    progress: state => state.user.taskProgress,
   }),
   watch: {
     "$route.params.tid": function(tid) {
@@ -62,7 +63,7 @@ export default {
     },
     'project' (to, from) {
       if (to.info) {
-        this.totalTasks = to.info.totalTasks
+        this.totalTasks = to.info.task_count
       }
     }
   },
@@ -76,7 +77,7 @@ export default {
       // TODO do not need to load all tasks each request, keep them in store once retrieved
       this.$store.dispatch("project/getProject", [this.$route.params.id, false]).then(p => {
         if(p.info && p.info.task_selection === "linear") {
-          if (this.user.taskProgress >= this.totalTasks) {
+          if (this.progress >= this.totalTasks) {
             this.msgText = "Finished";
             this.activeTaskIndex = this.tasks.length;
             this.store.commit('user/SET_TASK_PROGRESS', this.totalTasks)
@@ -92,7 +93,7 @@ export default {
       })
     },
     progressAfterSubmission() {
-      if (this.activeTaskIndex + 1 >= this.totalTasks) {
+      if (this.progress + 1 >= this.totalTasks) {
         this.$router.push({'name': 'CompletedProject', 'params': {id: this.project.id}})
         console.log('finished')
       } else {
