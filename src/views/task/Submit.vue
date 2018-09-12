@@ -4,7 +4,7 @@
     <!-- TODO add progress bar here -->
     <!-- <md-progress-bar md-mode="determinate" :md-value="(activeTaskIndex / tasks.length) * 100"></md-progress-bar> -->
     <!-- <tutorial :data="tutData" :options="opts"></tutorial> -->
-    <task-submission :task=activeTask :content=content v-on:submission="progressAfterSubmission"></task-submission>
+    <task-submission v-if="activeTask" :task=activeTask :content=content v-on:submission="progressAfterSubmission"></task-submission>
   </div>
 </template>
 
@@ -67,16 +67,21 @@ export default {
   methods: {
     loadTask() {
       // TODO do not need to load all tasks each request, keep them in store once retrieved
-      if (this.tasks.length && this.tasks[0].project_id !== this.project.id) {
-        this.$store.dispatch("project/getProject", [this.$route.params.id, true])
-      }
-      if (this.activeTaskIndex >= this.tasks.length -1) {
-        this.msgText = "Finished";
-        this.activeTaskIndex = this.tasks.length;
-      } else if (this.activeTaskIndex === 0) {
-        this.msgText = `Let's Go`;
-      }
-      this.getTaskIndex(this.tasks)
+      this.$store.dispatch("project/getProject", [this.$route.params.id, true]).then(p => {
+        if(p.info && p.info.task_selection === "linear") {
+          if (this.activeTaskIndex >= this.tasks.length -1) {
+            this.msgText = "Finished";
+            this.activeTaskIndex = this.tasks.length;
+          } else if (this.activeTaskIndex === 0) {
+            this.msgText = `Let's Go`;
+          }
+          this.getTaskIndex(this.tasks)
+        } else {
+          this.$store.dispatch('task/getTask', this.$route.params.tid).then(t => {
+            this.activeTask = t
+          })
+        }
+      })
     },
     progressAfterSubmission() {
       if (this.activeTaskIndex + 1 >= this.tasks.length) {
