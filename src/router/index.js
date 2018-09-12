@@ -113,6 +113,10 @@ const router = new Router({
           path: ':id/completed',
           name: 'CompletedProject',
           component: Project.Complete,
+          beforeEnter: (to, from, next) => {
+            store.commit('user/SET_TASK_PROGRESS', 0)
+            next()
+          }
           // meta: {requiresAuth: true, breadcrumb: 'Completed!'}
         }
       ]
