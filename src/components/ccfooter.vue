@@ -5,7 +5,7 @@
        <div class="content-wrapper">
          <div class="row">
            <div class="col col-title">
-             <h2>Laden Sie zum Mitmachen ein.</h2>
+             <h2>Lade zum Mitmachen ein.</h2>
            </div>
          </div>
          <div class="row">
