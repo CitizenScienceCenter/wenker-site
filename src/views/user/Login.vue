@@ -1,5 +1,23 @@
 <template>
-    <login-form></login-form>
+
+  <div>
+
+    <section class="section-content">
+      <div class="content-wrapper">
+
+        <div class="row">
+          <div class="col col-form">
+
+            <h2 class="title">{{ $t("views.user.login") }}</h2>
+            <login-form></login-form>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
 </template>
 
 <script>

@@ -2,34 +2,39 @@
   <div>
 
     <section class="section-content">
-        <div class="content-wrapper">
+      <div class="content-wrapper">
 
-          <div class="row">
-            <div class="col col-title">
+        <div class="row">
+          <div class="col col-title">
 
-              <div class="desc">
-                <h2> Thank you! You are the {{ stats.contributor_count  | ordinal }} contributor! </h2>
-              </div>
-
+            <div class="desc">
+              <h2> Thank you! You are the {{ stats.contributor_count  | ordinal }} contributor! </h2>
             </div>
+
           </div>
-          <div class="row">
-            <div class="col col-form">
-
-              <div class="form-section">
-
-                <!-- TODO only show for non signed in users -->
-                <register-form></register-form>
-
-              </div>
-
-              <router-link to="/"><button class="secondary">Zurück zur Startseite</button></router-link>
-
-            </div>
-          </div>
-
         </div>
-      </section>
+
+        <div class="row">
+          <div class="col col-form">
+
+            <div class="form-section">
+              <h3 class="title">{{ $t("views.user.register") }}</h3>
+              <register-form></register-form>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col col-form">
+
+            <router-link to="/"><button class="secondary">Zurück zur Startseite</button></router-link>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
 
   </div>
 </template>

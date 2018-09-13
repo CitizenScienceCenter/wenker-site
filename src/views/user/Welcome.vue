@@ -1,14 +1,32 @@
 <template>
-<div>
-    <div>
-        <login-form></login-form>
-        <br/><br/>
-        
-    </div>
-    <div>
-    <register-form></register-form>
-    </div>
-</div>
+  <div>
+
+    <section class="section-content">
+      <div class="content-wrapper">
+
+        <div class="row">
+          <div class="col col-form">
+
+            <div class="form-section">
+
+              <h2 class="title">{{ $t("views.user.login") }}</h2>
+              <register-form></register-form>
+
+            </div>
+            <div class="form-section">
+
+              <h3 class="title">{{ $t("views.user.register") }}</h3>
+              <login-form></login-form>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
 </template>
 <script>
 import RegisterForm from "@/components/login-form.vue";
