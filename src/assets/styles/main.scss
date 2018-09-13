@@ -707,16 +707,6 @@ a {
 
 @media screen and (max-width: $break-large) {
 
-  header {
-    .navigation {
-      li {
-        a {
-          padding: 32px 8px;
-        }
-      }
-    }
-  }
-
   .section-cover {
     .col-cover-text {
       width: 75%;
@@ -965,7 +955,7 @@ a {
     .col-cover-text {
       width: 100%;
       padding-top: 64px;
-      padding-bottom: 80px;
+      padding-bottom: 96px;
     }
     .cscc_logo {
       img {
@@ -1045,6 +1035,9 @@ a {
 
   .section-cover {
     .col-cover-text {
+      width: 100%;
+      padding-top: 48px;
+      padding-bottom: 72px;
       button {
         display: block;
         margin: auto;

@@ -50,7 +50,7 @@
       <div class="content-wrapper">
         <div class="row">
           <div class="col col-title">
-            <h2>Hilf mit.</h2>
+            <h2>Deine Hilfe ist gefragt:</h2>
           </div>
         </div>
         <div class="row">

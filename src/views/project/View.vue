@@ -53,7 +53,7 @@
 
             <div class="form-section">
               <h4>Sie haben sich schon registiert?</h4>
-              <router-link to="/welcome" tag="button" class="secondary">Registieren</router-link>
+              <router-link to="/welcome" tag="button" class="secondary">Anmelden</router-link>
             </div>
 
           </div>
