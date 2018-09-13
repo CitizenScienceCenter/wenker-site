@@ -10,10 +10,14 @@ Vue.use(Router)
 
 const logout = (to, from, next) => {
   localStorage.removeItem('user')
-  return store.dispatch('user/logout').then(() => next('/login'))
+  store.commit('user/SET_CURRENT_USER', null)
+  next('/dashboard')
 }
 
 const router = new Router({
+  scrollBehavior (to, from, savedPosition) {
+    return { x: 0, y: 0 }
+  },
   routes: [
     {
       path: '/login',

@@ -33,7 +33,7 @@
                       <select v-model="userDetails.canton" name="canton" id="canton" placeholder="Region you have spent most of your life">
                           <option :key="r.value" v-for="r in swissCantons" :value="r.value">{{r.label}}</option>
                       </select>
-                      <span class="error" v-if="!userDetails.canton">Your region is required</span>
+                      <span class="error" v-if="errors.canton">Ihre Region ist erforderlich</span>
                     </div>
                 </div>
                 <div v-bind:class="{'invalid': !userDetails.age}" class="form-field">
@@ -42,7 +42,7 @@
                     <select v-model="userDetails.age" name="range" id="range" placeholder="Age Range">
                         <option :key="a.value" v-for="a in ageRange" :value="a.value">{{a.label}}</option>
                     </select>
-                    <span class="error" v-if="!userDetails.age">Your age range is required</span>
+                    <span class="error" v-if="errors.age">Ihre Altersgruppe ist erforderlich</span>
                   </div>
                 </div>
               </div>
@@ -79,6 +79,10 @@ export default {
         age: undefined,
         canton: undefined
       },
+      errors: {
+        canton: false,
+        age: false
+      }
     }
   },
   watch: {
@@ -125,22 +129,27 @@ export default {
       //this.$store.dispatch('project/deleteProject', this.project.id)
     },
     startProject() {
-      this.$store.dispatch('user/updateUser', [this.user.id, {info: this.userDetails}]).then(res => {
-        console.log(this.project)
-        if (this.project.info && this.project.info.task_selection === "linear") {
-          this.$store.dispatch('project/getTasks', [this.project.id, 1, this.progress]).then(tasks => {
-            console.log(tasks)
-            this.$router.push({'name': 'Submission', 'params': {tid: this.tasks[0].id, id: this.project.id}})
-          })
-        } else {
-          this.$store.dispatch('task/randomProjectTask', [this.project.id, this.userDetails.canton]).then(task => {
-            this.$router.push({'name': 'Submission', 'params': {tid: task.id, id: this.project.id}})
-          })
-        }
-      })
+      if(this.userDetails.age && this.userDetails.canton) {
+        this.$store.dispatch('user/updateUser', [this.user.id, {info: this.userDetails}]).then(res => {
+          console.log(this.project)
+          if (this.project.info && this.project.info.task_selection === "linear") {
+            this.$store.dispatch('project/getTasks', [this.project.id, 1, this.progress]).then(tasks => {
+              console.log(tasks)
+              this.$router.push({'name': 'Submission', 'params': {tid: this.tasks[0].id, id: this.project.id}})
+            })
+          } else {
+            this.$store.dispatch('task/randomProjectTask', [this.project.id, this.userDetails.canton]).then(task => {
+              this.$router.push({'name': 'Submission', 'params': {tid: task.id, id: this.project.id}})
+            })
+          }
+        })
+      } else {
+        this.errors.age = this.userDetails.age === undefined
+        this.errors.canton = this.userDetails.canton === undefined
+      }
     }
   }
-};
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
