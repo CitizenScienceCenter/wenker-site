@@ -1,9 +1,14 @@
 <template>
+<div>
     <div>
         <login-form></login-form>
         <br/><br/>
-        <register-form></register-form>
+        
     </div>
+    <div>
+    <register-form></register-form>
+    </div>
+</div>
 </template>
 <script>
 import RegisterForm from "@/components/login-form.vue";
@@ -17,5 +22,5 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scoped src='@/assets/styles/main.scss'>
+<style lang="scss" scoped>
 </style>

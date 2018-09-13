@@ -43,7 +43,7 @@ const actions = {
       return err 
     }
   },
-  async generateAnon({
+  async generateAnon ({
     state,
     commit,
     dispatch,
@@ -51,8 +51,8 @@ const actions = {
   }) {
     commit('settings/SET_LOADING', true, {root: true})
     const now = '' + Date.now()
-    const id = "anon" + SHA256(now)
-    const pwd  = '' + SHA256(id)
+    const id = 'anon' + SHA256(now)
+    const pwd = '' + SHA256(id)
     let u = await dispatch('register', {'username': id, 'pwd': pwd})
     return u
   },
