@@ -11,7 +11,7 @@ Vue.use(Router)
 const logout = (to, from, next) => {
   localStorage.removeItem('user')
   store.commit('user/SET_CURRENT_USER', null)
-  next('/dashboard')
+  next('/home')
 }
 
 const router = new Router({
@@ -41,8 +41,8 @@ const router = new Router({
       beforeEnter: logout
     },
     {
-      path: '/dashboard',
-      name: 'Dashboard',
+      path: '/home',
+      name: 'home',
       component: Home.Dashboard,
       meta: {requiresAuth: true, breadcrumb: 'Home'}
     },
@@ -69,12 +69,12 @@ const router = new Router({
       beforeEnter: (to, from, next) => {
         if (store.state.user.currentUser !== null && 'api_key' in store.state.user.currentUser && store.state.user.currentUser.api_key) {
           next({
-            path: '/dashboard'
+            path: '/home'
           })
         } else {
           store.dispatch('user/generateAnon').then(u => {
             next({
-              path: '/dashboard'
+              path: '/home'
             })
           })
         }

@@ -127,5 +127,5 @@ export default {
 }
 </script>
 
-<style scoped src='@/assets/styles/home/dashboard.scss'>
+<style scoped src='@/assets/styles/home/home.scss'>
 </style>
