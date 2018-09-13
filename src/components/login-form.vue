@@ -51,7 +51,7 @@ export default {
   }),
   watch: {
     'currentUser'(to, from) {
-      console.log(to)
+      // console.log(to)
       if (to !== null || to !== undefined) {
       }
     },

@@ -11,8 +11,8 @@ const state = {
 // getters
 const getters = {
   user: state => state.user,
-  currentUser: state => state.currentUser,
-  id: state => state.currentUser.id
+  currentUser: state => state.currentUser
+  // id: state => state.currentUser.id
 }
 
 // actions

@@ -33,6 +33,7 @@
                   <croppa v-model="croppaSettings" canvas-color="transparent"
                         :prevent-white-space="true"
                         :show-remove-button="false"
+                        :show-loading="true"
                         :accept="'image/*'"
                         :placeholder="'Bild wird nicht geladen'"
                         :initial-image="img"
