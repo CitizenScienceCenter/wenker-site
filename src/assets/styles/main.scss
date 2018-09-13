@@ -674,27 +674,30 @@ a {
 }
 
 .col-footer-left {
-  width: 50%;
+  width: 25%;
+  overflow: visible;
   img {
     display: inline-block;
     height: 48px;
   }
 }
 .col-footer-right {
-  width: 50%;
-  color: white;
-  display: flex;
-  align-items: center;
+  width: 75%;
 
-  div {
-    width: 100%;
+  span {
+    display: block;
     text-align: right;
+    line-height: 24px;
+
     a {
-      margin-right: 16px;
       color: white;
       &:hover {
         color: $color-primary-light;
       }
+    }
+
+    &.copyright {
+      color: white;
     }
   }
 }

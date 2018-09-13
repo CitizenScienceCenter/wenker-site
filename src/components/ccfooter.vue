@@ -25,7 +25,8 @@
              <a href="https://citizenscience.ch/"><img class="cscc_logo" src="@/assets/img/cscc_logo.png" alt="Citizen Science Center Zurich"/></a>
            </div>
            <div class="col col-footer-right">
-             <div><a href="maitlo:info@citizenscience.ch">info@citizenscience.ch</a>© 2018</div>
+             <span class="contact"><a href="maitlo:info@citizenscience.ch">info@citizenscience.ch</a></span>
+             <span class="copyright">© 2018</span>
            </div>
          </div>
        </div>
