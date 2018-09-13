@@ -61,8 +61,8 @@ const actions = {
       if (associated) {
         dispatch('getMedia', id)
         dispatch('getTasks', [id, 1, 0])
-        dispatch('getStats', id)
       }
+      dispatch('getStats', id)
       return res.body
     } catch (err) {
       console.log(err)
