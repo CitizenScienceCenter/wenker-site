@@ -1,21 +1,32 @@
 <template>
   <div>
-    <h3 class="title">{{ $t('views.user.register')}}</h3>
-    <form novalidate class="md-layout" @submit.prevent="register">
-      <div>
-          <div>
-            <label for="email">{{ $t('views.user.email')}}</label>
-            <input v-model="email" type="email" name="email" id="email" autocomplete="email" :disabled="loading" />
-          </div>
+    <section class="section-content">
+      <div class="content-wrapper">
 
-          <div>
-            <label for="pwd">{{ $t('views.user.pwd')}}</label>
-            <input v-model="password" type="password" id="password" name="password" autocomplete="password" :disabled="loading" />
-          </div>
+        <div class="row">
+          <div class="col col-title">
 
-        <button type="submit" class="primary" :disabled="loading">{{ $t('views.user.register')}}</button>
+
+            <h2 class="title">{{ $t("views.user.register") }}</h2>
+            <form @submit.prevent="register">
+              <div>
+                <label for="email">{{ $t("views.user.email") }}</label>
+                <input v-model="email" type="email" name="email" id="email" autocomplete="email" :disabled="loading" />
+              </div>
+
+              <div>
+                <label for="pwd">{{ $t("views.user.pwd") }}</label>
+                <input v-model="password" type="password" id="password" name="password" autocomplete="password" :disabled="loading" />
+              </div>
+
+              <button type="submit" class="md-primary" :disabled="loading">{{ $t("views.user.register") }}</button>
+            </form>
+
+          </div>
+        </div>
+
       </div>
-    </form>
+    </section>
   </div>
 </template>
 
@@ -50,5 +61,5 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scoped src='@/assets/styles/main.scss'>
+<style lang="scss" scoped>
 </style>

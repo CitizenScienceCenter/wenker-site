@@ -34,6 +34,7 @@
                         :prevent-white-space="true"
                         :show-remove-button="false"
                         :show-loading="true"
+                        :zoom-speed="5"
                         :accept="'image/*'"
                         :placeholder="'Bild wird nicht geladen'"
                         :initial-image="img"

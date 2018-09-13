@@ -44,7 +44,7 @@ const router = new Router({
       path: '/dashboard',
       name: 'Dashboard',
       component: Home.Dashboard,
-      // meta: {requiresAuth: true, breadcrumb: 'Home'}
+      meta: {requiresAuth: true, breadcrumb: 'Home'}
     },
     {
       path: '/about',
@@ -83,13 +83,13 @@ const router = new Router({
     {
       path: '/projects',
       component: Project.Root,
-      // meta: {requiresAuth: true, breadcrumb: 'Projects'},
+      meta: {requiresAuth: true, breadcrumb: 'Projects'},
       children: [
         {
           path: ':id',
           name: 'ViewProject',
           component: Project.View,
-          // meta: {requiresAuth: true, breadcrumb: 'View Project'}
+          meta: {requiresAuth: true, breadcrumb: 'View Project'}
         },
         {
           path: 'translate',
@@ -105,13 +105,13 @@ const router = new Router({
           path: ':id/participate/:tid',
           name: 'Submission',
           component: Task.Submit,
-          // meta: {requiresAuth: true, breadcrumb: 'Take Part'}
+          meta: {requiresAuth: true, breadcrumb: 'Take Part'}
         },
         {
           path: ':id/participate',
           name: 'TakePart',
           component: Project.Participate,
-          // meta: {requiresAuth: true, breadcrumb: 'Take Part'}
+          meta: {requiresAuth: true, breadcrumb: 'Take Part'}
         },
         {
           path: ':id/completed',
@@ -120,8 +120,8 @@ const router = new Router({
           beforeEnter: (to, from, next) => {
             store.commit('user/SET_TASK_PROGRESS', 0)
             next()
-          }
-          // meta: {requiresAuth: true, breadcrumb: 'Completed!'}
+          },
+          meta: {requiresAuth: true, breadcrumb: 'Completed!'}
         }
       ]
     },
@@ -138,18 +138,25 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
   // TODO call needed every time? could check on first call and then add to store?
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    store.dispatch('user/validate').then(v => {
-      if (v) {
+    if (store.state.user.currentUser !== null && 'api_key' in store.state.user.currentUser && store.state.user.currentUser.api_key) {
+      store.dispatch('user/validate').then(v => {
+        if (v) {
+          next()
+        } else {
+          next({
+            path: '/login',
+            query: {
+              redirect: to.fullPath
+            }
+          })
+        }
+      })
+    } else {
+      store.dispatch('user/generateAnon').then(u => {
         next()
-      } else {
-        next({
-          path: '/login',
-          query: {
-            redirect: to.fullPath
-          }
-        })
-      }
-    })
+      })
+    }
+    
   } else {
     next()
   }

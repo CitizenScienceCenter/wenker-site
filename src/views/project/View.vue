@@ -130,6 +130,7 @@ export default {
     },
     startProject() {
       if(this.userDetails.age && this.userDetails.canton) {
+        console.log(this.user)
         this.$store.dispatch('user/updateUser', [this.user.id, {info: this.userDetails}]).then(res => {
           console.log(this.project)
           if (this.project.info && this.project.info.task_selection === "linear") {
