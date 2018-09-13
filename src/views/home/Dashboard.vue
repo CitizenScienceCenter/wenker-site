@@ -35,7 +35,7 @@
                 <div class="col col-text-box">
                   <div class="text-box">
                     <h3>Die 40 Wenker-Sätze</h3>
-                    <p>Im Rahmen eines sprachwissenschaftlichen Forschungsprojekts wurden vor rund 100 Jahren die 40 hochdeutsche Sätze in die lokalen Dialekte der Schweiz übersetzt. Diese Daten wurden jedoch nie umfassend ausgewertet. Hilf uns, diesen Schatz zu heben.</p>
+                    <p>Im Rahmen eines sprachwissenschaftlichen Forschungsprojekts wurden vor rund 100 Jahren 40 hochdeutsche Sätze in die lokalen Dialekte der Schweiz übersetzt. Diese Daten wurden jedoch nie umfassend ausgewertet. Hilf uns, diesen Schatz zu heben.</p>
                     <router-link to="/about" tag="button" class="secondary">Mehr zum Projekt</router-link>
                   </div>
                 </div>

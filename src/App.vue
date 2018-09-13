@@ -21,7 +21,7 @@
   -->
 
     <header>
-      <h1><router-link to="/dashboard" class="logo"><img src="@/assets/img/uzh_eth_logo.svg" alt="Wenker Project – Citizen Science Center Zurich"/></router-link></h1>
+      <h1><router-link to="/dashboard"><span class="project-title">Projekt Wenker</span><img src="@/assets/img/uzh_eth_logo.svg" alt="Wenker Project – Citizen Science Center Zurich"/></router-link></h1>
       <ul class="navigation">
         <li><router-link to="/projects/e4b5ebc5-47a2-430b-84a9-a03b1d4dda34">Transkribieren</router-link></li>
         <li><router-link to="/projects/507b3f89-aff1-4fa3-8f28-9c8399811539" href="#">Übersetzen</router-link></li>
