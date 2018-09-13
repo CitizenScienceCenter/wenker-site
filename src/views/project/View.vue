@@ -13,8 +13,8 @@
 
         <div class="row">
           <div class="col col-subtitle">
-            <p v-if="project.name === 'Transkribieren'">T 1700 Bögen Schweizer Wenkersätze / die Antworten sind handgeschrieben vor 100 Jahren / nicht maschinell lesbar sind / Helfen Sie mit bei deren Digitalisierung</p>
-            <p v-if="project.name === 'Übersetzen'">Ü 1700 Bögen Schweizer Wenkersätze / die Antworten sind handgeschrieben vor 100 Jahren / nicht maschinell lesbar sind / Helfen Sie mit bei deren Digitalisierung</p>
+            <p v-if="project.name === 'Transkribieren'">Die 1700 handgeschriebenen Schweizer Wenker-Bögen müssen genau abgeschrieben werden, um sie digital aufzubereiten. Dafür brauchen wir deine Unterstützung!</p>
+            <p v-if="project.name === 'Übersetzen'">Übersetze die originalen Wenker-Sätze in deinen Dialekt, wie du ihn heute sprichst. So können wir das Schweizerdeutsch von heute mit dem der 1930er Jahre vergleichen.</p>
           </div>
         </div>
 
