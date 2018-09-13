@@ -13,7 +13,8 @@
 
         <div class="row">
           <div class="col col-subtitle">
-            <p>1700 Bögen Schweizer Wenkersätze / die Antworten sind handgeschrieben vor 100 Jahren / nicht maschinell lesbar sind / Helfen Sie mit bei deren Digitalisierung</p>
+            <p v-if="project.name === 'Transkribieren'">T 1700 Bögen Schweizer Wenkersätze / die Antworten sind handgeschrieben vor 100 Jahren / nicht maschinell lesbar sind / Helfen Sie mit bei deren Digitalisierung</p>
+            <p v-if="project.name === 'Übersetzen'">Ü 1700 Bögen Schweizer Wenkersätze / die Antworten sind handgeschrieben vor 100 Jahren / nicht maschinell lesbar sind / Helfen Sie mit bei deren Digitalisierung</p>
           </div>
         </div>
 

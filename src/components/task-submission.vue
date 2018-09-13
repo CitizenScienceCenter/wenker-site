@@ -70,7 +70,7 @@
         </div>
 
         <div v-if="project.name === 'Transkribieren'" class="row">
-          <div class="col col-subtitle col-transcription-rules">
+          <div class="col col-text col-transcription-rules">
             <h4>Transkriptionskonventionen</h4>
             <ul>
               <li>Ein vermuteter Wortlaut wird in eckigen Klammern [] geschrieben, z. B. [T]ue das mache...</li>
