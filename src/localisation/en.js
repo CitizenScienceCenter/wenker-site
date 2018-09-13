@@ -55,6 +55,7 @@ export const en = {
         register: 'Register',
         email: 'E-mail',
         pwd: 'Password',
+        conf_pwd: 'Confirm Password',
         reg_success: 'The user {email} was saved with success',
 
       }
