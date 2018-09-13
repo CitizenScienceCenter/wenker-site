@@ -34,10 +34,11 @@
                         :prevent-white-space="true"
                         :show-remove-button="false"
                         :show-loading="true"
+                        :loading-size="100"
                         :zoom-speed="5"
                         :accept="'image/*'"
-                        :placeholder="'Bild wird nicht geladen'"
                         :initial-image="img"
+                        initial-position="top left"
                         auto-sizing>
                   </croppa>
 
@@ -49,8 +50,9 @@
                 <div v-for="(answer, i) in task.content.answers" v-bind:key="i">
                   <upload v-if="answer.type.indexOf('file') !== -1" :embedded="true" :multiple="answer.type === 'multiple_files'"></upload>
                   <div v-if="answer.type === 'text'" class="form-field">
-                    <label for="qutxt">{{answer.placeholder || task.content.question.text}}</label>
-                    <input type="text" v-model="responses[i].text" name="qutxt" id="qutxt" />
+                    <!-- <label for="qutxt">{{answer.placeholder || task.content.question.text}}</label> -->
+                    <label for="qutxt">{{answer.placeholder || "In Ihrem Dialekt"}}</label>
+                    <input type="text" v-on:keyup="changeNext" v-model="responses[i].text" name="qutxt" id="qutxt" />
                   </div>
                   <submission-multiple-choices :index="i" :content="responses[i]" :choices="answer.choices" :type="answer.type" v-if="answer.type === 'multiple_choice'"></submission-multiple-choices>
                 </div>
@@ -65,7 +67,7 @@
           <div class="col col-task-actions">
             <!-- <button v-on:click="submitTask" class="secondary">Vorheriger ***</button> -->
             <button v-on:click="endTask" class="secondary">Beenden</button>
-            <button v-on:click="submitTask" class="primary">Nächster</button>
+            <button v-on:click="submitTask" class="primary">{{nextTxt}}</button>
           </div>
         </div>
 
@@ -104,6 +106,7 @@ export default {
       items: [],
       responses: [],
       img: undefined,
+      nextTxt: "Überspringen",
       croppaSettings: {}
     }
   },
@@ -142,7 +145,7 @@ export default {
           this.croppaSettings.refresh()
         }
       }
-    }
+    },
   },
   mounted() {
     this.$store.dispatch("media/getMedia", this.task.id)
@@ -179,6 +182,17 @@ export default {
       } else {
         this.croppaSettings.zoomOut()
       }
+    },
+    changeNext() {
+      // TODO could check if all responses are empty
+      for (let i = 0; i < this.responses.length; i++) {
+        const t = this.responses[i]['text']
+        if (t.length !== 0) {
+          this.nextTxt = "Nächster"
+          return
+        }
+      }
+      this.nextTxt = "Überspringen"
     }
   }
 };
