@@ -1,4 +1,4 @@
-var SHA256 = require("crypto-js/sha256");
+var SHA256 = require('crypto-js/sha256')
 // initial state
 // shape: [{ id, quantity }]
 const state = {
@@ -108,22 +108,20 @@ const actions = {
     commit('settings/SET_LOADING', true, {
       root: true
     })
-    console.log(user)
     try {
       let res = await rootState.api.client.apis.Users.register_user({user: user})
-      console.log(JSON.stringify(res))
       commit('SET_CURRENT_USER', res.body)
       commit('settings/SET_LOADING', false, {root: true})
       return res.body
-    } catch(err) {
-        console.log(err)
-        commit('settings/SET_ERROR', err, {
-          root: true
-        })
-        commit('settings/SET_LOADING', false, {
-          root: true
-        })
-        return false
+    } catch (err) {
+      console.log(err)
+      commit('settings/SET_ERROR', err, {
+        root: true
+      })
+      commit('settings/SET_LOADING', false, {
+        root: true
+      })
+      return false
     }
   },
   getUser ({
@@ -132,24 +130,23 @@ const actions = {
     rootState
   }, id) {
     rootState.api.client.apis.Users.get_user({
-        id: id
-      })
+      id: id
+    })
       .then(req => {
         commit('settings/SET_LOADING', false, {
-            root: true
-          })
+          root: true
+        })
         commit('SET_USER', req.body)
       }).catch(err => {
-        console.error(err.response.status)
+        console.error(err)
         commit('settings/SET_ERROR', err, {
           root: true
         })
-        // TODO set path to login or 404 
       })
   },
   async updateUser ({
     state,
-    commit, 
+    commit,
     rootState
   }, [id, info]) {
     try {
@@ -157,6 +154,9 @@ const actions = {
       commit('SET_CURRENT_USER', res.body)
       return res
     } catch (e) {
+      commit('settings/SET_ERROR', e, {
+        root: true
+      })
       return false
     }
   },
@@ -166,24 +166,24 @@ const actions = {
     rootState
   }, id) {
     try {
-        let res = await rootState.api.client.apis.Users.validate({key: state.currentUser.api_key})
-        commit('SET_CURRENT_USER', res.body)
-        return true
+      let res = await rootState.api.client.apis.Users.validate({key: state.currentUser.api_key})
+      commit('SET_CURRENT_USER', res.body)
+      return true
     } catch (e) {
-        return false
+      return false
     }
   }
 }
 
 // mutations
 const mutations = {
-  SET_USER(state, user) {
+  SET_USER (state, user) {
     state.user = user
   },
-  SET_CURRENT_USER(state, user) {
+  SET_CURRENT_USER (state, user) {
     state.currentUser = user
   },
-  SET_TASK_PROGRESS(state, prog) {
+  SET_TASK_PROGRESS (state, prog) {
     state.taskProgress = prog
   }
 }
