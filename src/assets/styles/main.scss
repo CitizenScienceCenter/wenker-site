@@ -42,7 +42,7 @@ button {
   font-size: 0.8rem;
   line-height: 1;
   text-transform: uppercase;
-  font-weight: 500;
+  font-weight: 600;
 }
 h2 {
   &.cover-title {
@@ -98,7 +98,7 @@ label {
   color: $color-primary;
   font-size: 0.8rem;
   line-height: 1;
-  font-weight: 500;
+  font-weight: 600;
 }
 .section-cover {
   .copyright {
@@ -114,6 +114,15 @@ label {
   ul {
     li {
       line-height: 1.5;
+      font-size: 0.8rem;
+    }
+  }
+}
+.task-box {
+  .special-characters {
+    button {
+      font-family: sans-serif;
+      line-height: 1;
       font-size: 0.8rem;
     }
   }
@@ -170,6 +179,7 @@ html {
 }
 
 input {
+  font-family: sans-serif;
   width: 100%;
   display: block;
   background: none;
@@ -344,11 +354,36 @@ button {
     overflow: scroll;
     padding: 48px;
     border: 1px solid $color-primary-lighter;
+    border-top: none;
+  }
+  .special-characters {
+    text-align: center;
+    margin-top: 16px;
+    label {
+      margin-right: 8px;
+    }
+    button {
+      height: 32px;
+      padding: 0 8px;
+      display: inline-block;
+      margin-right: 4px;
+      margin-bottom: 4px;
+      background-color: white;
+      color: $color-primary-light;
+      border: 1px solid $color-primary-lighter;
+      &:hover {
+        color: $color-primary;
+        border-color: $color-primary-light;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
   }
 }
 .col-task-actions {
   width: 50%;
-  margin-top: 48px;
+  margin-top: 32px;
   display: flex;
   justify-content: space-between;
 }
@@ -602,7 +637,7 @@ ul {
   }
   li {
     .col-text & {
-      margin-bottom: 8px;
+      margin-bottom: 16px;
     }
   }
 }
@@ -897,6 +932,13 @@ ul {
       }
     }
   }
+  .task-box {
+    .special-characters {
+      button {
+        font-size: 0.833rem;
+      }
+    }
+  }
 
 
   // Other Stuff
@@ -1011,7 +1053,7 @@ ul {
   }
 
   .col-task-actions {
-    width: 66.667%;
+    width: 100%;
   }
 
   .col-wenker-image {

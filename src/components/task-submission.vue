@@ -46,12 +46,6 @@
                   <button @click="zoom(false)" class="primary zoom zoom-out"><img src="@/assets/img/icons/minus.svg"/></button>
                 </div>
               </div>
-              <div>
-                <table>
-                  <tr><th>Special Characters</th></tr>
-                  <tr><th v-on:click="insertChar(char)" :key="char" v-for="char in specialChars">{{char}}</th></tr>
-                </table>
-              </div>
               <div class="form" v-if="responses.length">
                 <div v-for="(answer, i) in task.content.answers" v-bind:key="i">
                   <upload v-if="answer.type.indexOf('file') !== -1" :embedded="true" :multiple="answer.type === 'multiple_files'"></upload>
@@ -62,6 +56,10 @@
                   </div>
                   <submission-multiple-choices :index="i" :content="responses[i]" :choices="answer.choices" :type="answer.type" v-if="answer.type === 'multiple_choice'"></submission-multiple-choices>
                 </div>
+              </div>
+              <div class="special-characters">
+                <label>Special Characters</label>
+                <button v-on:click="insertChar(char)" :key="char" v-for="char in specialChars">{{char}}</button>
               </div>
 
             </div>
@@ -170,7 +168,7 @@ export default {
         task_id: this.task.id,
         content: {}
       }
-      
+
       this.$store.commit("submission/SET_SUBMISSION", submission)
     },
     submitTask() {
