@@ -9,13 +9,13 @@
 
             <div class="form-section">
 
-              <h2 class="title">{{ $t("views.user.login") }}</h2>
+              <h2 class="title">Anmelden</h2>
               <register-form></register-form>
 
             </div>
             <div class="form-section">
 
-              <h3 class="title">{{ $t("views.user.register") }}</h3>
+              <h3 class="title">Registrieren</h3>
               <login-form></login-form>
 
             </div>

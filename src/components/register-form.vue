@@ -18,7 +18,7 @@
       <span class="error" v-if="errors.match">Passwörter stimmen nicht überein</span>
     </div>
 
-    <button type="submit" class="primary" :disabled="loading">{{ $t("views.user.register") }}</button>
+    <button type="submit" class="primary" :disabled="loading">Registrieren</button>
   </form>
 
 </template>

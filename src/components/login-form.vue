@@ -12,7 +12,7 @@
       </div>
       <span class="error" v-if="error">{{error}}</span>
 
-      <button type="submit" class="primary" :disabled="loading">{{ $t("views.user.login") }}</button>
+      <button type="submit" class="primary" :disabled="loading">Anmelden</button>
     </form>
     <br>
     <button @click="reset" class="primary" :disabled="loading">Vergessen?</button>
