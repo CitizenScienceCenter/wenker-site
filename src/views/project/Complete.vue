@@ -8,7 +8,7 @@
           <div class="col col-title">
 
             <div class="desc">
-              <h2> Thank you! You are the {{ stats.contributor_count  | ordinal }} contributor! </h2>
+              <h2> Danke. Du bist der {{ stats.contributor_count }}. Teilnehmer. </h2>
             </div>
 
           </div>
@@ -18,7 +18,7 @@
           <div class="col col-form">
 
             <div class="form-section">
-              <h3 class="title">{{ $t("views.user.register") }}</h3>
+              <h3 class="title">Registrieren</h3>
               <register-form></register-form>
             </div>
 
