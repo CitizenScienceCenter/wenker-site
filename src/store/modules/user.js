@@ -65,12 +65,17 @@ const actions = {
   async requestReset ({
     state,
     commit,
+    dispatch,
     rootState
   }, email) {
     try {
       let res = await rootState.api.client.apis.Users.reset({email: email})
       return res
     } catch (e) {
+      console.error(e)
+      dispatch('settings/setError', e, {
+        root: true
+      })
       return false
     }
   },

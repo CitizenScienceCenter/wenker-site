@@ -15,7 +15,7 @@
               </div>
               <button type="submit" class="primary" :disabled="loading">Zurücksetzen</button>
           </form>
-          <p v-if="success">Email sent!</p>
+          <p v-if="success">Bitte überprüfe deine E-Mails</p>
 
           </div>
         </div>
@@ -47,7 +47,9 @@ export default {
     request() {
       this.$store.dispatch('user/requestReset', this.email).then(res => {
         console.log(res)
-        this.success = true
+        if (res) {
+          this.success = true
+        }
       })
     }
   }
