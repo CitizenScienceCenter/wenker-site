@@ -335,7 +335,9 @@ button {
 
     button.zoom {
       font-size: 0;
-      width: 48px;
+      width: 40px;
+      height: 40px;
+      padding: 0;
       position: absolute;
       &.zoom-in {
         bottom: 16px;
@@ -343,7 +345,7 @@ button {
       }
       &.zoom-out {
         bottom: 16px;
-        left: calc( 16px + 48px + 8px);
+        left: calc( 16px + 40px + 8px);
       }
       img {
         position: absolute;
