@@ -169,7 +169,8 @@ const state = {
       'value': '75+',
       'label': 'Over 75'
     }
-  ]
+  ],
+  specialChars: [ "e̊", "ĕ", "nbsp;͜" ,"i̇̄,", "üö", "öü", "'", "ạ̈", "m̄", ">", "&", "e̍", "eh", "e̥", "?", "!" ]
 }
 
 export default {

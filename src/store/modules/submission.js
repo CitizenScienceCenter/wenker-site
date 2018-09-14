@@ -19,7 +19,6 @@ const actions = {
       .then(res => {
         commit('settings/SET_LOADING', false, {root: true})
         commit('SET_SUBMISSION', Object.assign({}, res.body))
-        // console.log(rootState.upload.content)
         if (rootState.upload.content.length > 0) {
           dispatch('upload/addID', res.body.id, {root: true})
         }
@@ -32,7 +31,7 @@ const actions = {
   },
   putSubmission ({state, commit, rootState}, submission) {
     commit('settings/SET_LOADING', true, {root: true})
-    console.log(submission)
+    console.log(this.user)
     rootState.api.client.apis.Submissions.put_submission({id: submission.id, submission: submission})
       .then(req => {
         commit('settings/SET_LOADING', false, {root: true})

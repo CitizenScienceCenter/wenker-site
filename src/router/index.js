@@ -46,7 +46,7 @@ const router = new Router({
       component: User.RequestReset
     },
     {
-      path: '/reset/:token/:id',
+      path: '/reset/:token',
       name: 'Reset',
       component: User.Reset
     },
@@ -101,12 +101,14 @@ const router = new Router({
         {
           path: 'translate',
           name: 'TranslateProject',
-          redirect: '/projects/507b3f89-aff1-4fa3-8f28-9c8399811539'
+          redirect: '/projects/507b3f89-aff1-4fa3-8f28-9c8399811539',
+          meta: {requiresAuth: true, breadcrumb: 'Translate'}
         },
         {
           path: 'transcribe',
           name: 'TranscribeProject',
-          redirect: '/projects/e4b5ebc5-47a2-430b-84a9-a03b1d4dda34'
+          redirect: '/projects/e4b5ebc5-47a2-430b-84a9-a03b1d4dda34',
+          meta: {requiresAuth: true, breadcrumb: 'Transcribe'}
         },
         {
           path: ':id/participate/:tid',
@@ -145,7 +147,7 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
   // TODO call needed every time? could check on first call and then add to store?
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (store.state.user.currentUser !== null && 'api_key' in store.state.user.currentUser && store.state.user.currentUser.api_key) {
+    if (store.state.user.currentUser !== undefined) {
       store.dispatch('user/validate').then(v => {
         if (v) {
           next()

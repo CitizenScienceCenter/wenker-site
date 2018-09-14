@@ -46,13 +46,19 @@
                   <button @click="zoom(false)" class="primary zoom zoom-out"><img src="@/assets/img/icons/minus.svg"/></button>
                 </div>
               </div>
+              <div>
+                <table>
+                  <tr><th>Special Characters</th></tr>
+                  <tr><th v-on:click="insertChar(char)" :key="char" v-for="char in specialChars">{{char}}</th></tr>
+                </table>
+              </div>
               <div class="form" v-if="responses.length">
                 <div v-for="(answer, i) in task.content.answers" v-bind:key="i">
                   <upload v-if="answer.type.indexOf('file') !== -1" :embedded="true" :multiple="answer.type === 'multiple_files'"></upload>
                   <div v-if="answer.type === 'text'" class="form-field">
                     <!-- <label for="qutxt">{{answer.placeholder || task.content.question.text}}</label> -->
                     <label for="qutxt">{{answer.placeholder || "In Ihrem Dialekt"}}</label>
-                    <input type="text" v-on:keyup="changeNext" v-model="responses[i].text" name="qutxt" id="qutxt" />
+                    <input type="text" v-on:focus="focus(i)" v-on:keyup="changeNext" v-model="responses[i].text" name="qutxt" id="qutxt" />
                   </div>
                   <submission-multiple-choices :index="i" :content="responses[i]" :choices="answer.choices" :type="answer.type" v-if="answer.type === 'multiple_choice'"></submission-multiple-choices>
                 </div>
@@ -107,7 +113,8 @@ export default {
       responses: [],
       img: undefined,
       nextTxt: "Überspringen",
-      croppaSettings: {}
+      croppaSettings: {},
+      focussed: undefined
     }
   },
   components: { Upload, SubmissionMultipleChoices, ProjectInfo },
@@ -119,7 +126,8 @@ export default {
       submission: state => state.submission.submission,
       taskMedia: state => state.media.media,
       user: state => state.user.currentUser,
-      progress: state => state.user.taskProgress
+      progress: state => state.user.taskProgress,
+      specialChars: state => state.consts.specialChars
     }),
     ...mapGetters({
     })
@@ -158,10 +166,11 @@ export default {
   methods: {
     createSubmission() {
       const submission = {
-        user_id: this.$store.getters["user/id"],
+        user_id: this.user.id,
         task_id: this.task.id,
         content: {}
       }
+      
       this.$store.commit("submission/SET_SUBMISSION", submission)
     },
     submitTask() {
@@ -193,8 +202,14 @@ export default {
         }
       }
       this.nextTxt = "Überspringen"
+    },
+    insertChar(char) {
+      this.responses[this.focussed].text += char
+    },
+    focus (i) {
+      this.focussed = i
     }
-  }
+   }
 };
 </script>
 <style lang="scss" scoped>
