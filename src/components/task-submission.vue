@@ -59,7 +59,7 @@
                 </div>
               </div>
               <div class="special-characters">
-                <label>Special Characters</label>
+                <label>Sonderzeichen</label>
                 <button v-on:click="insertChar(char)" :key="char" v-for="char in specialChars">{{char}}</button>
               </div>
 
