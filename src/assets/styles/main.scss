@@ -73,6 +73,14 @@ p {
   font-size: 1rem;
   line-height: 1.5;
 }
+ul {
+  li {
+    .col-text & {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+  }
+}
 figure {
   font-size: 0;
 }
@@ -583,6 +591,19 @@ a {
   text-decoration: none;
   &:hover {
     color: $color-primary-dark;
+  }
+  .col-text & {
+    text-decoration: underline;
+  }
+}
+ul {
+  .col-text & {
+    margin-bottom: 48px;
+  }
+  li {
+    .col-text & {
+      margin-bottom: 8px;
+    }
   }
 }
 

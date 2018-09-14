@@ -43,9 +43,14 @@
               Im Jahr 1912 übernahm Wenkers ehemaliger Hilfsarbeiter Ferdinand Wrede die Leitung des Sprachatlas. Unter seiner Führung wurden zwischen 1926 und 1933 Nacherhebungen für deutschsprachige Gebiete auch ausserhalb des Deutschen Reiches durchgeführt, so auch in der Schweiz. Die Schweizer Wenkerbogen wurden zwar wie alle anderen in einem aufwändigen Prozess digitalisiert und auf dem Server des Langzeitforschungsprojektes <a href="https://www.regionalsprache.de/" target="_blank">REDE</a> der Universität Marburg publiziert. Inhaltlich aufbereitet und ausgewertet wurden sie jedoch nie. Das möchten wir in unserem <router-link to="/home">Citizen Science Projekt</router-link> mit deiner Hilfe ändern.
             </p>
             <h4>Weiterführende Links</h4>
-            <p>
-              <a href="http://www.diwa.info/Geschichte/Kartierungsverfahren.aspx" target="_blank">Beschreibung des Kartierungsverfahrens des Deutschen Sprachatlas</a>
-            </p>
+            <ul>
+              <li>
+                <a href="http://www.diwa.info/Geschichte/Kartierungsverfahren.aspx" target="_blank">Beschreibung des Kartierungsverfahrens des Deutschen Sprachatlas</a>
+              </li>
+              <li>
+                <a href="/static/downloads/Auszug_Raggenbass_E.pdf" target="_blank">Auszug aus der Masterarbeit von Carmen Raggenbass zu den Wenkermaterialien aus dem Appenzell (Deutsches Seminar der Universität Zürich 2018)</a>
+              </li>
+            </ul>
             <h4>Die Wenkersätze</h4>
             <ol class="list-sentences">
               <li>Im Winter fliegen die trocknen Blätter durch die Luft herum.</li>
