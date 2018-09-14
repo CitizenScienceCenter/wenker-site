@@ -19,7 +19,7 @@
         </div>
         <div class="row">
           <div class="col col-text col-progress">
-            <div>Task {{progress + 1}} von {{totalTasks}}</div>
+            <div>{{task_type}} {{progress + 1}} von {{totalTasks}}</div>
           </div>
         </div>
 
@@ -113,7 +113,8 @@ export default {
       img: undefined,
       nextTxt: "Überspringen",
       croppaSettings: {},
-      focussed: undefined
+      focussed: undefined,
+      task_type: 'Bogen'
     }
   },
   components: { Upload, SubmissionMultipleChoices, ProjectInfo },
@@ -156,6 +157,9 @@ export default {
   },
   mounted() {
     this.$store.dispatch("media/getMedia", this.task.id)
+    if (this.project.name === 'Übersetzen') {
+      this.task_type = 'Satz'
+    }
     this.responses = []
     for (let i = 0; i < this.task.content.answers.length; i++) {
       this.responses.push({text: ""})
