@@ -15,7 +15,7 @@
               </div>
               <button type="submit" class="primary" :disabled="loading">Zurücksetzen</button>
           </form>
-          <p v-if="success">Bitte überprüfe deine E-Mails</p>
+          <p v-if="success" class="success">Bitte überprüfe deine E-Mails</p>
 
           </div>
         </div>

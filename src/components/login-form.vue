@@ -15,7 +15,7 @@
       <button type="submit" class="primary" :disabled="loading">{{ $t("views.user.login") }}</button>
     </form>
     <br>
-    <button @click="reset" class="primary" :disabled="loading">Vergessen?</button>
+    <button @click="reset" class="secondary" :disabled="loading">Vergessen?</button>
 </div>
 </template>
 
