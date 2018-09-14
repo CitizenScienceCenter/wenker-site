@@ -124,6 +124,7 @@ label {
       font-family: sans-serif;
       line-height: 1;
       font-size: 0.8rem;
+      font-weight: 400;
     }
   }
 }
@@ -172,9 +173,14 @@ html {
 .form-field {
   text-align: left;
   position: relative;
+  margin-bottom: 24px;
 
   label {
     display: block;
+  }
+
+  .error, .success {
+    margin-bottom: 0;
   }
 }
 
@@ -189,7 +195,6 @@ input {
   height: 48px;
   font-size: 1rem;
   outline: none;
-  margin-bottom: 24px;
 
   &:focus, &:hover {
     border-bottom: 1px solid $color-primary-dark;
@@ -240,6 +245,12 @@ input {
 .error {
   display: block;
   margin-top: 8px;
+  margin-bottom: 16px;
+}
+.success {
+  display: block;
+  margin-top: 8px;
+  margin-bottom: 16px;
 }
 
 // Global Elements
@@ -354,7 +365,6 @@ button {
     overflow: scroll;
     padding: 48px;
     border: 1px solid $color-primary-lighter;
-    border-top: none;
   }
   .special-characters {
     text-align: center;
@@ -1035,6 +1045,17 @@ ul {
         margin-top: $grid-gutter-small*6;
         margin-bottom: $grid-gutter-small*6;
       }
+    }
+  }
+
+  .task-box {
+    .image-browser {
+      .croppa-container {
+        height: 240px;
+      }
+    }
+    .form {
+      max-height: 160px;
     }
   }
 
