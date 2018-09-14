@@ -147,16 +147,13 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
   // TODO call needed every time? could check on first call and then add to store?
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (store.state.user.currentUser !== undefined) {
+    if (store.state.user.currentUser) {
       store.dispatch('user/validate').then(v => {
         if (v) {
           next()
         } else {
-          next({
-            path: '/login',
-            query: {
-              redirect: to.fullPath
-            }
+          store.dispatch('user/generateAnon').then(u => {
+            next()
           })
         }
       })
@@ -165,7 +162,6 @@ router.beforeEach((to, from, next) => {
         next()
       })
     }
-    
   } else {
     next()
   }

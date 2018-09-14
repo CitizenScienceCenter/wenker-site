@@ -67,7 +67,7 @@ export default {
         }
         this.$store.dispatch('user/resetPwd', reset).then(r => {
             if(r !== false) {
-                this.$router.push('/login')
+                this.$router.push('/welcome')
             }
           })
       } else {

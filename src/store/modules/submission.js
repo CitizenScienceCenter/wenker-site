@@ -38,7 +38,7 @@ const actions = {
         commit('SET_SUBMISSION', req.body)
       })
       .catch(err => {
-        commit('settings/SET_ERROR', 'Could not modify Submission', {root: true})
+        // commit('settings/SET_ERROR', 'Could not modify Submission', {root: true})
         commit('settings/SET_LOADING', false, {root: true})
         console.log(err)
       })
