@@ -2,7 +2,7 @@ const state = {
     showNavigation: false,
     showSidepanel: false,
     loading: false,
-    err: null,
+    error: null,
     errTimeout: 5000,
     theme: 'default',
     locale: 'en'
@@ -15,6 +15,7 @@ const getters = {
 
 const actions = {
     setError({state, commit, rootState }, err) {
+        console.log(err)
         commit('SET_ERROR', err)
         setTimeout(() => {
             commit('SET_ERROR', null)
@@ -37,7 +38,7 @@ const mutations = {
         state.showSidepanel = flag
     },
     SET_ERROR(state, err) {
-        state.err = err
+        state.error = err
     },
     SET_THEME(state, theme) {
         state.theme = theme

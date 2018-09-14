@@ -72,7 +72,7 @@ const actions = {
       commit('settings/SET_ERROR', err, {
         root: true
       })
-      return err
+      return false
     }
   },
   async getTasks ({state, commit, rootState}, [id, limit = 20, offset = 0]) {
@@ -95,7 +95,7 @@ const actions = {
       })
       commit('settings/SET_LOADING', false, {root: true})
       console.log(err)
-      return err
+      return false
     }
   },
   getStats ({state, commit, rootState}, id) {

@@ -25,8 +25,9 @@ const actions = {
         return tasks.body
     } catch (err) {
         console.error(err)
+        commit('settings/SET_ERROR', 'Could not get Tasks', {root: true})
         commit('settings/SET_LOADING', false, {root: true})
-        return err
+        return false
     }
   },
   async getTask ({ state, commit, rootState }, id) {
@@ -37,8 +38,9 @@ const actions = {
       commit('settings/SET_LOADING', false, {root: true})
       return task.body
     } catch (err) {
+      commit('settings/SET_ERROR', 'Could not get Task', {root: true})
       commit('settings/SET_LOADING', false, {root: true})
-      return err
+      return false
     }
   },
   async randomProjectTask ({state, commit, rootState}, [id, search]) {
@@ -48,8 +50,9 @@ const actions = {
       commit('settings/SET_LOADING', false, {root: true})
       return task.body.task
     } catch (err) {
+      commit('settings/SET_ERROR', 'Could not get random task', {root: true})
       commit('settings/SET_LOADING', false, {root: true})
-      return err
+      return false
     }
   },
   projectTasks ({ state, commit, rootState }, id) {
@@ -66,6 +69,7 @@ const actions = {
       })
       .catch(err => {
         console.log(err)
+        commit('settings/SET_ERROR', 'Could not get Tasks for Project', {root: true})
         commit('settings/SET_LOADING', false, {root: true})
       })
   },
@@ -95,6 +99,7 @@ const actions = {
         commit('settings/SET_LOADING', false, {root: true})
       })
       .catch(e => {
+        commit('settings/SET_ERROR', 'Could not delete Tasks', {root: true})
         commit('settings/SET_LOADING', false, {root: true})
         console.error(e)
       })

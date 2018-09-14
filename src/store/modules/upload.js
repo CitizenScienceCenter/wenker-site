@@ -10,7 +10,7 @@ const getters = {}
 
 // actions
 const actions = {
-  addID({
+  addID ({
     state,
     commit,
     rootState
@@ -24,12 +24,12 @@ const actions = {
       })
       console.log(state.content[i])
       rootState.api.client.apis.Media.put_medium({
+        id: state.content[i],
+        media: {
           id: state.content[i],
-          media: {
-            id: state.content[i],
-            'source_id': id || state.id
-          }
-        })
+          'source_id': id || state.id
+        }
+      })
         .then(req => {
           console.log(req)
           commit('settings/SET_LOADING', false, {
@@ -51,15 +51,15 @@ const actions = {
 
 // mutations
 const mutations = {
-  SET_ID(state, id) {
+  SET_ID (state, id) {
     state.id = id
   },
-  ADD_CONTENT(state, entry) {
+  ADD_CONTENT (state, entry) {
     console.log(entry)
     state.content.push(entry)
     console.log(state.content)
   },
-  CLEAR(state) {
+  CLEAR (state) {
     state.id = null
     state.content = []
   }

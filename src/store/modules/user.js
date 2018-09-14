@@ -33,14 +33,14 @@ const actions = {
         root: true
       })
       return res.body
-    } catch(err) {
-      dispatch('settings/setError', {'message': 'Login Failed'}, {
+    } catch (err) {
+      dispatch('settings/setError', 'Anmeldung fehlgeschlagen', {
         root: true
       })
       commit('settings/SET_LOADING', false, {
         root: true
       })
-      return err 
+      return false
     }
   },
   async generateAnon ({
@@ -62,7 +62,41 @@ const actions = {
   }) {
     commit('SET__CURRENT_USER', null)
   },
-  async register({
+  async requestReset ({
+    state,
+    commit,
+    rootState
+  }, email) {
+    try {
+      let res = await rootState.api.client.apis.Users.reset({email: email})
+      commit('SET_CURRENT_USER', null)
+      return res
+    } catch (e) {
+      return false
+    }
+  },
+  async resetPwd ({
+    state,
+    commit,
+    rootState
+  }, reset) {
+    try {
+      let res = await rootState.api.client.apis.Users.verify_reset({reset: reset})
+      console.log(res)
+      commit('SET_CURRENT_USER', null)
+      return res
+    } catch (e) {
+      console.log(e)
+      commit('settings/SET_ERROR', 'Token ungültig oder Systemfehler', {
+        root: true
+      })
+      commit('settings/SET_LOADING', false, {
+        root: true
+      })
+      return false
+    }
+  },
+  async register ({
     state,
     commit,
     rootState
@@ -77,7 +111,7 @@ const actions = {
       commit('SET_CURRENT_USER', res.body)
       commit('settings/SET_LOADING', false, {root: true})
       return res.body
-    } catch(err){
+    } catch(err) {
         console.log(err)
         commit('settings/SET_ERROR', err, {
           root: true
@@ -119,7 +153,7 @@ const actions = {
       commit('SET_CURRENT_USER', res.body)
       return res
     } catch (e) {
-      return e
+      return false
     }
   },
   async validate ({

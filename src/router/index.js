@@ -41,28 +41,35 @@ const router = new Router({
       beforeEnter: logout
     },
     {
+      path: '/reset',
+      name: 'ResetRequest',
+      component: User.RequestReset
+    },
+    {
+      path: '/reset/:token/:id',
+      name: 'Reset',
+      component: User.Reset
+    },
+    {
       path: '/home',
-      name: 'home',
+      name: 'Home',
       component: Home.Dashboard,
       meta: {requiresAuth: true, breadcrumb: 'Home'}
     },
     {
       path: '/about',
       name: 'About',
-      component: Home.About,
-      // meta: {requiresAuth: true, breadcrumb: 'Home'}
+      component: Home.About
     },
     {
       path: '/wenker',
       name: 'Wenker',
-      component: Home.Wenker,
-      // meta: {requiresAuth: true, breadcrumb: 'Home'}
+      component: Home.Wenker
     },
     {
       path: '/faq',
       name: 'FAQ',
-      component: Home.FAQ,
-      // meta: {requiresAuth: true, breadcrumb: 'Home'}
+      component: Home.FAQ
     },
     {
       path: '/',

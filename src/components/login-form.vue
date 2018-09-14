@@ -1,5 +1,5 @@
 <template>
-
+<div>
     <form @submit.prevent="login">
       <div class="form-field">
         <label for="email">{{ $t("views.user.email") }}</label>
@@ -10,10 +10,13 @@
         <label for="pwd">{{ $t("views.user.pwd") }}</label>
         <input v-model="password" type="password" id="password" name="password" autocomplete="password" :disabled="loading" />
       </div>
+      <span class="error" v-if="error">{{error}}</span>
 
       <button type="submit" class="primary" :disabled="loading">{{ $t("views.user.login") }}</button>
     </form>
-
+    <br>
+    <button @click="reset" class="primary" :disabled="loading">Vergessen?</button>
+</div>
 </template>
 
 <script>
@@ -32,14 +35,15 @@ export default {
   computed: mapState({
     currentUser: state => state.user.currentUser,
     loading: state => state.user.loading,
-    error: state => state.settings.error
+    error: state => state.settings.error,
+    client: state => state.client.api
   }),
   watch: {
     'currentUser'(to, from) {
       // console.log(to)
       if (to !== null || to !== undefined) {
       }
-    },
+    }
   },
   mounted() {
     // TODO errors should be in a global state and cleared on load
@@ -51,9 +55,12 @@ export default {
         .dispatch("user/login", { user: { email: this.email, pwd: this.password } })
         .then(user => {
           if (user !== false) {
-            this.$router.push({name: 'Dashboard'});
+            this.$router.push({name: 'Home'});
           }
         })
+    },
+    reset() {
+      this.$router.push({name: 'ResetRequest'});
     }
   }
 };
