@@ -69,7 +69,6 @@ const actions = {
   }, email) {
     try {
       let res = await rootState.api.client.apis.Users.reset({email: email})
-      commit('SET_CURRENT_USER', null)
       return res
     } catch (e) {
       return false

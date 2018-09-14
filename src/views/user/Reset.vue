@@ -10,12 +10,6 @@
             <h2 class="title">Ändern</h2>
             <form @submit.prevent="reset">
                 <div class="form-field">
-                <label for="old">Old Password</label>
-                <input v-model="oldPassword" type="password" name="old" id="password" autocomplete="password" :disabled="loading" />
-                <span class="error" v-if="errors.empty"></span>
-                </div>
-
-                <div class="form-field">
                 <label for="pwd">{{ $t("views.user.pwd") }}</label>
                 <input v-model="password" type="password" id="password" name="password" autocomplete="password" :disabled="loading" />
                 <span class="error" v-if="errors.len">Muss mehr als 8 Zeichen lang sein.</span>
@@ -27,6 +21,7 @@
                 </div>
 
                 <button type="submit" class="primary" :disabled="loading">Ändern</button>
+                <span class="error" v-if="error">{{error}}</span>
             </form>
 
           </div>
@@ -55,7 +50,8 @@ export default {
       }
   },
   computed: mapState({
-    loading: state => state.settings.loading
+    loading: state => state.settings.loading,
+    error: state => state.settings.error
   }),
   mounted() {const id = this.$route.params.token.split('.')[0]
         console.log(id)
@@ -70,9 +66,9 @@ export default {
           pwd: this.password
         }
         this.$store.dispatch('user/resetPwd', reset).then(r => {
-            // TODO error handling
-            // this.$router.push('/login')
-            console.log(r)
+            if(r !== false) {
+                this.$router.push('/login')
+            }
           })
       } else {
         this.errors.match = this.password !== this.confPassword
