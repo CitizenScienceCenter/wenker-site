@@ -36,6 +36,7 @@
                         :show-loading="true"
                         :loading-size="100"
                         :zoom-speed="5"
+                        :placeholder="' '"
                         :accept="'image/*'"
                         :initial-image="img"
                         initial-position="top left"

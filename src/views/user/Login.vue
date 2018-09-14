@@ -8,7 +8,7 @@
         <div class="row">
           <div class="col col-form">
 
-            <h2 class="title">{{ $t("views.user.login") }}</h2>
+            <h2 class="title">Anmelden</h2>
             <login-form></login-form>
 
           </div>

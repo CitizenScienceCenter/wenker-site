@@ -134,40 +134,40 @@ const state = {
   ],
   ageRange: [
     {
-      'value': '0-12',
-      'label': '12 or under'
+      'value': '0-11',
+      'label': 'Unter 12'
     },
     {
       'value': '12-17',
-      'label': 'Between 12 and 17'
+      'label': 'Zwischen 12 und 17'
     },
     {
       'value': '18-24',
-      'label': 'Between 18 and 24'
+      'label': 'Zwischen 18 und 24'
     },
     {
       'value': '25-34',
-      'label': 'Between 25 and 34'
+      'label': 'Zwischen 25 und 34'
     },
     {
       'value': '35-44',
-      'label': 'Between 35 and 44'
+      'label': 'Zwischen 35 und 44'
     },
     {
       'value': '45-54',
-      'label': 'Between 45 and 54'
+      'label': 'Zwischen 45 und 54'
     },
     {
       'value': '55-64',
-      'label': 'Between 55 and 64'
+      'label': 'Zwischen 55 und 64'
     },
     {
       'value': '65-74',
-      'label': 'Between 65 and 74'
+      'label': 'Zwischen 65 und 74'
     },
     {
       'value': '75+',
-      'label': 'Over 75'
+      'label': 'Über 75'
     }
   ],
   specialChars: [ "e̊", "ĕ", "nbsp;͜" ,"i̇̄", "üö", "öü", "'", "ạ̈", "m̄", ">", "&", "e̍", "eh", "e̥", "?", "!" ]
