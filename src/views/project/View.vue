@@ -31,7 +31,7 @@
                     <label>Region Ihres Dialekts</label>
                     <div class="select-wrapper">
                       <select v-model="userDetails.canton" name="canton" id="canton" placeholder="Region you have spent most of your life">
-                          <option :key="r.value" v-for="r in swissCantons" :value="r.value">{{r.label}}</option>
+                          <option :key="r.value" v-for="r in regions" :value="r.value">{{r.label}}</option>
                       </select>
                       <span class="error" v-if="errors.canton">Ihre Region ist erforderlich</span>
                     </div>
@@ -82,7 +82,8 @@ export default {
       errors: {
         canton: false,
         age: false
-      }
+      },
+      regions: []
     }
   },
   watch: {
@@ -90,10 +91,17 @@ export default {
       if (to === null) {
         this.$router.push('/projects')
       }
+      console.log(to.name)
+      if (to.name !== 'Übersetzen') {
+        this.regions = this.regions.concat(this.otherRegions)
+      } else {
+        this.regions =  this.swissCantons
+      }
     },
     'tasks' (to, from) {
     },
-    'userDetails.age' (to, from) {
+    'userDetails.canton' (to, from) {
+
     },
     '$route.params.id' (to, from) {
       console.log(to)
@@ -113,6 +121,7 @@ export default {
     tasks: state => state.project.selectedTasks,
     stats: state => state.project.selectedStats,
     swissCantons: state => state.consts.swissCantons,
+    otherRegions: state => state.consts.otherRegions,
     ageRange: state => state.consts.ageRange,
     route: state => state.route
   }),
@@ -120,6 +129,7 @@ export default {
     this.$store.dispatch('project/getProject', [this.$route.params.id || this.projectID, false]).then(p => {
       console.log(p.id)
     })
+    this.regions = this.swissCantons
     if (this.user && this.user.info && this.user.info.age) {
       this.userDetails = this.user.info
     }

@@ -60,7 +60,9 @@ const actions = {
     state,
     commit
   }) {
-    commit('SET__CURRENT_USER', null)
+    commit('user/SET_CURRENT_USER', null, {
+      root: true
+    })
   },
   async requestReset ({
     state,

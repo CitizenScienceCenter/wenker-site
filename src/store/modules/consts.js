@@ -36,11 +36,6 @@ const state = {
       'lang': 'DE'
     },
     {
-      'value': 'GE',
-      'label': 'Geneva',
-      'lang': 'FR'
-    },
-    {
       'value': 'GL',
       'label': 'Glarus',
       'lang': 'DE'
@@ -59,11 +54,6 @@ const state = {
       'value': 'LU',
       'label': 'Luzern',
       'lang': 'DE'
-    },
-    {
-      'value': 'NE',
-      'label': 'Neuchatel',
-      'lang': 'FR'
     },
     {
       'value': 'SG',
@@ -130,6 +120,23 @@ const state = {
       'value': 'ZH',
       'label': 'Zurich',
       'lang': 'DE'
+    }
+  ],
+  otherRegions: [
+    {
+      'value': 'ANDERES',
+      'label': '<b>Anderes Land</b>',
+      'lang': '?'
+    },
+    {
+      'value': 'GE',
+      'label': 'Geneva',
+      'lang': 'FR'
+    },
+    {
+      'value': 'NE',
+      'label': 'Neuchatel',
+      'lang': 'FR'
     }
   ],
   ageRange: [

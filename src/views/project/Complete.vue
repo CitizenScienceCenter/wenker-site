@@ -28,7 +28,7 @@
         <div class="row">
           <div class="col col-form">
 
-            <router-link to="/"><button class="secondary">Zurück zur Startseite</button></router-link>
+            <button @click="startPage" class="secondary">Zurück zur Startseite</button>
 
           </div>
         </div>
@@ -87,6 +87,12 @@ export default {
           params: { tid: this.tasks[0].id, id: this.project.id }
         });
       }
+    },
+    startPage() {
+      console.log('start')
+      this.$store.dispatch('user/logout').then(() => {
+        this.$router.push({name: 'Home'})
+      })
     }
   }
 };
