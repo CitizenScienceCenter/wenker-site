@@ -125,7 +125,7 @@ const state = {
   otherRegions: [
     {
       'value': 'ANDERES',
-      'label': '<b>Anderes Land</b>',
+      'label': 'Anderes Land',
       'lang': '?'
     },
     {
