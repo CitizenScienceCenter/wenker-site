@@ -15,6 +15,7 @@
           <div class="col col-subtitle">
             <p v-if="project.name === 'Transkribieren'">Die 1700 handgeschriebenen Schweizer Wenker-Bögen müssen genau abgeschrieben werden, um sie digital aufzubereiten. Dafür brauchen wir deine Unterstützung!</p>
             <p v-if="project.name === 'Übersetzen'">Übersetze die originalen Wenker-Sätze in deinen Dialekt, wie du ihn heute sprichst. So können wir das Schweizerdeutsch von heute mit dem der 1930er Jahre vergleichen.</p>
+            <p>{{stats.submission_count}} Vorlagen</p>
           </div>
         </div>
 
@@ -129,6 +130,7 @@ export default {
     this.$store.dispatch('project/getProject', [this.$route.params.id || this.projectID, false]).then(p => {
       console.log(p.id)
     })
+    console.log(this.stats)
     this.regions = this.swissCantons
     if (this.user && this.user.info && this.user.info.age) {
       this.userDetails = this.user.info
