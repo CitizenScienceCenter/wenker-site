@@ -14,6 +14,7 @@
         </div>
       </div>
     </form>
+
   </div>
 </template>
 
@@ -23,17 +24,21 @@ export default {
   name: "ViewUser",
   data() {
     return {
-      userId: this.$route.params.id || this.$store.getters["user/id"]
+      userId: this.$route.params.id
     };
   },
   computed: mapState({
-    user: state => state.user.user,
+    user: state => state.user.currentUser,
     loading: state => state.settings.loading
   }),
   mounted() {
-    if (this.userId !== this.user.id) {
+    console.log(this.user)
+    if (this.userId !== undefined && this.userId !== this.user.id) {
       this.$store.dispatch("user/getUser", this.userId);
     }
+    this.$store.dispatch("user/getSubs", this.user.id).then(subs => {
+      console.log(subs)
+    })
   },
   methods: {}
 };

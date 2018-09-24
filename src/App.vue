@@ -30,7 +30,7 @@
         <li><router-link to="/faq">FAQ</router-link></li>
         <li class="separated">
           <router-link v-if="!user || (user && user.username && user.username.indexOf('anon')!==-1)" to="/welcome">Anmelden</router-link>
-          <router-link v-if="(user && user.username && user.username.indexOf('anon')===-1)" to="/logout">Abmelden</router-link>
+          <router-link v-if="(user && user.username && user.username.indexOf('anon')===-1)" to="/user">Profil Anzeigen</router-link>
         </li>
       </ul>
     </header>
@@ -94,6 +94,9 @@ export default {
       } else {
         return false
       }
+    },
+    viewUser() {
+      this.$router.push('/users/' + this.user.id)
     }
   }
 };

@@ -126,6 +126,28 @@ const actions = {
       return false
     }
   },
+  async getSubs ({
+    state, rootState, commit
+  }, id) {
+    commit('settings/SET_LOADING', true, {
+      root: true
+    })
+    try {
+      console.log(id)
+      let res = await rootState.api.client.apis.Users.get_subs({id: id})
+      return res.body
+    } catch (err) {
+      console.log(err)
+      commit('settings/SET_ERROR', err, {
+        root: true
+      })
+      return false
+    } finally {
+      commit('settings/SET_LOADING', false, {
+        root: true
+      })
+    }
+  },
   getUser ({
     state,
     commit,
