@@ -11,6 +11,7 @@ import settings from './modules/settings'
 import consts from './modules/consts'
 import projectFilter from './modules/components/project-filter'
 import createPersistedState from 'vuex-persistedstate'
+import * as Cookies from 'js-cookie'
 
 Vue.use(Vuex)
 
@@ -30,5 +31,7 @@ export default new Vuex.Store({
     projectFilter
   },
   strict: debug,
-  plugins: [createPersistedState()]
+  plugins: [createPersistedState({
+    storage: window.sessionStorage,
+  }),]
 })

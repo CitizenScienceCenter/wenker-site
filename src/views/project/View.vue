@@ -3,7 +3,7 @@
 
     <section class="section-content">
 
-      <div class="content-wrapper">
+      <div class="content-wrapper" v-if="project">
 
         <div class="row">
           <div class="col col-title">
@@ -12,10 +12,13 @@
         </div>
 
         <div class="row">
-          <div class="col col-subtitle">
+          <div class="col col-subtitle" v-if="project.name === 'Transkribieren'">
             <p v-if="project.name === 'Transkribieren'">Die 1700 handgeschriebenen Schweizer Wenker-Bögen müssen genau abgeschrieben werden, um sie digital aufzubereiten. Dafür brauchen wir deine Unterstützung!</p>
-            <p v-if="project.name === 'Übersetzen'">Übersetze die originalen Wenker-Sätze in deinen Dialekt, wie du ihn heute sprichst. So können wir das Schweizerdeutsch von heute mit dem der 1930er Jahre vergleichen.</p>
-            <p>{{stats.submission_count}} Vorlagen</p>
+            <p v-if="stats">Bis jetzt <b class='bold'>{{stats.submission_count}}</b> von <b class='bold'>1700</b> transkribiert. <br> Das entspricht <b class='bold'>{{(stats.submission_count / stats.task_count) | numeral('0.[00]%')}}</b></p>
+          </div>
+          <div class="col col-subtitle" v-if="project.name === 'Übersetzen'">
+            <p>Übersetze die originalen Wenker-Sätze in deinen Dialekt, wie du ihn heute sprichst. So können wir das Schweizerdeutsch von heute mit dem der 1930er Jahre vergleichen.</p>
+            <p v-if="stats">Bis jetzt <b class='bold'>{{stats.submission_count}}</b> Übersetzungen.</p>
           </div>
         </div>
 
@@ -130,7 +133,6 @@ export default {
     this.$store.dispatch('project/getProject', [this.$route.params.id || this.projectID, false]).then(p => {
       console.log(p.id)
     })
-    console.log(this.stats)
     this.regions = this.swissCantons
     if (this.user && this.user.info && this.user.info.age) {
       this.userDetails = this.user.info

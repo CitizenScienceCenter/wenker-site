@@ -49,6 +49,7 @@ const actions = {
     dispatch,
     rootState
   }, [id, associated]) {
+    commit('SET_STATS', null)
     commit('settings/SET_LOADING', true, {
       root: true
     })

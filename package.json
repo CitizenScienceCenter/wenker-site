@@ -1,7 +1,7 @@
 {
   "name": "vuecs",
   "version": "1.0.0",
-  "description": "CCCS Sample Client App",
+  "description": "Wenker Project Frontend",
   "author": "encima <encima@gmail.com>",
   "private": true,
   "scripts": {
@@ -16,9 +16,11 @@
     "docs": "./node_modules/.bin/vuedoc.md src/**/*.vue --output docs/"
   },
   "dependencies": {
+    "@types/js-cookie": "^2.2.0",
     "axios": "^0.18.0",
     "crypto-js": "^3.1.9-1",
     "extract-text-webpack-plugin": "^3.0.0",
+    "js-cookie": "^2.2.0",
     "sinon": "^5.1.1",
     "superagent": "^3.8.3",
     "vue": "^2.5.17",

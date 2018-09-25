@@ -60,7 +60,7 @@
               </div>
               <div class="special-characters">
                 <label>Sonderzeichen</label>
-                <button v-on:click="insertChar(char)" :key="char" v-for="char in specialChars">{{char}}</button>
+                <button class="special-btn" v-on:click="insertChar(char)" :key="char" v-for="char in specialChars">{{char}}</button>
               </div>
 
             </div>
@@ -227,5 +227,10 @@ export default {
 
 .content {
   width: 90%;
+}
+
+.special-btn {
+  font-family: initial !important;
+  text-transform: lowercase;
 }
 </style>
