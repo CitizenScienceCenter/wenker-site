@@ -1,2 +1,2 @@
-BASE_URI=http://wenker.citizenscience.ch:8080/api/v1/swagger.json
-HOST=wenker.citizenscience.ch:8080
+BASE_URI=https://wenker.citizenscience.ch/api/v1/swagger.json
+HOST=https://wenker.citizenscience.ch

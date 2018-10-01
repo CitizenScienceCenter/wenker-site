@@ -39,7 +39,7 @@
     <article id="app">
       <router-view/>
     </article>
-
+    <Ribbon position='bottom-left' colour='uzh' text='Beta'></Ribbon>
     <CCFooter class='footer'></CCFooter>
 
   </div>
@@ -49,6 +49,7 @@
 <script>
 import CCFooter from '@/components/ccfooter.vue'
 import Breadcrumbs from '@/components/breadcrumb.vue'
+import Ribbon from '@/components/ribbon.vue'
 import { mapState, mapGetters } from "vuex"
 export default {
   name:"app",
@@ -59,7 +60,8 @@ export default {
   }),
   components: {
     CCFooter,
-    Breadcrumbs
+    Breadcrumbs,
+    Ribbon
   },
   watch: {
     'err' (to, from) {
