@@ -146,7 +146,7 @@ export default {
     taskMedia (to, from) {
       if (to.length > 0) {
         const m = to[0]
-        const path = m.path.replace("./static",  'http://' + process.env.HOST + "/static");
+        const path = m.path.replace("./static",  'https://' + process.env.HOST + "/files");
         this.img = path
         console.log(path)
         if (this.croppaSettings.refresh) {
