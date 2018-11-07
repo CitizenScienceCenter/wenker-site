@@ -26,11 +26,11 @@ export default {
 
 </script>
 
-<style lang="scss" src="@/main.scss"></style>
+<style lang="scss" src="@/styles/shared/main.scss"></style>
 
 <style lang="scss">
 
-@import '@/variables.scss';
+@import '@/styles/shared/variables.scss';
 
 #app {
   opacity: 0;
