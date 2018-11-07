@@ -1,10 +1,10 @@
 <i18n>
 {
   "en": {
-    "cover-heading": "The People's Way of Research",
-    "cover-subheading": "Citizen Science Center Zurich",
-    "cover-button-projects": "Start contributing",
-    "cover-button-your-project": "Suggest a project",
+    "cover-heading": "Schweizer­deutsch 1930 / 2020",
+    "cover-subheading": "Finde deinen Dialekt in den 40 Wenker-Sätzen.",
+    "cover-button-projects": "Transkribieren",
+    "cover-button-your-project": "Übersetzen",
 
     "section-explanation-heading": "Our Purpose",
     "section-explanation-text": "The Citizen Science Center Zurich supports the collaboration of scientists and the general public in co-creating and conducting scientific research projects.",
@@ -40,7 +40,7 @@
 <template>
   <div>
 
-    <app-cover>
+    <app-cover imageUrl="img/cover.jpg">
       <h2 class="cover-heading scroll-effect">{{ $t('cover-heading') }}</h2>
       <p class="cover-subheading scroll-effect scroll-effect-delayed-1">{{ $t('cover-subheading') }}</p>
       <p class="centered scroll-effect scroll-effect-delayed-2">
