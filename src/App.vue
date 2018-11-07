@@ -1,28 +1,42 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" class="parallax">
+    <app-header></app-header>
+    <div class="content-area">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import Header from './components/shared/Header.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    'app-header': Header
+  },
+  mounted: function() {
+    var app = this.$el;
+    window.setTimeout(function() {
+      app.classList.add("show");
+    }, 1);
   }
 }
+
 </script>
 
-<style>
+<style lang="scss" src="@/main.scss"></style>
+
+<style lang="scss">
+
+@import '@/variables.scss';
+
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  opacity: 0;
+  transition: all $transition-duration-super-long $transition-timing-function;
+  &.show {
+    opacity: 1;
+  }
 }
 </style>
