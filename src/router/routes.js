@@ -24,9 +24,11 @@ const FAQ = resolve => {
   });
 };
 
+import { i18n } from '../i18n.js';
+
 export const routes = [
-    { path: '/', component: Home, meta: {title: 'Homepage'} },
-    { path: '/activities', component: Project, meta: {title: 'Project'} },
-    { path: '/offer', component: Wenker, meta: {title: 'Wenker'} },
-    { path: '/about', component: FAQ, meta: {title: 'FAQ'} }
+    { path: '/', component: Home, meta: {page: 'page-homepage'} },
+    { path: '/project', component: Project, meta: {page: 'page-project'} },
+    { path: '/wenker', component: Wenker, meta: {page: 'page-wenker'} },
+    { path: '/faq', component: FAQ, meta: {page: 'page-faq'} }
 ]
