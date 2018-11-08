@@ -1,6 +1,6 @@
 <i18n>
 {
-  "en": {
+  "de": {
     "cover-heading": "Schweizer­deutsch\n1930 / 2020",
     "cover-subheading": "Finde deinen Dialekt in den 40 Wenker-Sätzen.",
     "cover-button-projects": "Transkribieren",

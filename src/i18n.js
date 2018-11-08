@@ -43,19 +43,19 @@ export const i18n = new VueI18n({
     'de': {
       'page-homepage': {
         'link': 'Home',
-        'title': 'Project Wenker – Citizen Science Center Zurich'
+        'title': 'Projekt Wenker – Citizen Science Center Zurich'
       },
       'page-project': {
-        'link': 'The Project',
-        'title': 'The Project – Project Wenker – Citizen Science Center Zürich'
+        'link': 'Das Projekt',
+        'title': 'Das Projekt – Projekt Wenker – Citizen Science Center Zürich'
       },
       'page-wenker': {
         'link': 'Georg Wenker',
-        'title': 'Georg Wenker – Project Wenker – Citizen Science Center Zürich'
+        'title': 'Georg Wenker – Projekt Wenker – Citizen Science Center Zürich'
       },
       'page-faq': {
         'link': 'FAQ',
-        'title': 'FAQ – Project Wenker – Citizen Science Center Zurich'
+        'title': 'FAQ – Projekt Wenker – Citizen Science Center Zurich'
       }
     }
   }
