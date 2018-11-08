@@ -1,28 +1,22 @@
 <i18n>
 {
   "en": {
-    "cover-heading": "Schweizer­deutsch 1930 / 2020",
+    "cover-heading": "Schweizer­deutsch\n1930 / 2020",
     "cover-subheading": "Finde deinen Dialekt in den 40 Wenker-Sätzen.",
     "cover-button-projects": "Transkribieren",
     "cover-button-your-project": "Übersetzen",
 
-    "section-explanation-heading": "Our Purpose",
-    "section-explanation-text": "The Citizen Science Center Zurich supports the collaboration of scientists and the general public in co-creating and conducting scientific research projects.",
-    "section-explanation-text-2": "Citizen Science projects provide new and co-created knowledge to tackle problems from fundamental physics to human health, from climate change to gender equality.",
-    "section-explanation-text-3": "The Center aims at producing excellent science and quality open data that can help citizens, communities and governments to assess and monitor the UN SDGs.",
-    "section-explanation-button": "Learn more",
+    "section-explanation-heading": "Die 40 Wenker-Sätze",
+    "section-explanation-text": "Im Rahmen eines sprachwissenschaftlichen Forschungsprojekts wurden vor rund 100 Jahren 40 hochdeutsche Sätze in die lokalen Dialekte der Schweiz übersetzt. Diese Daten wurden jedoch nie umfassend ausgewertet. Hilf uns, diesen Schatz zu heben.",
+    "section-explanation-button": "Mehr zum Projekt",
 
-    "section-projects-heading": "Get involved",
-    "section-projects-text": "Our first Citizen Science Project (now in beta) is in the field of linguistics. By transcribing and translating swiss sentences from the 1930s, you help researchers understand how Swiss German changed during the past 100 years.",
-
-    "section-offer-heading": "What we offer",
-    "section-offer-1-heading": "Platform",
-    "section-offer-1-text": "Web and mobile open tools (now in beta) and a shared database to support scientists and citizens with the planning, implementation and evaluation of Citizen Science projects.",
-    "section-offer-2-heading": "Community",
-    "section-offer-2-text": "A community of citizen and scientists to strengthen cooperation and cultivate dialogue between the public, academia, industry, and politics.",
-    "section-offer-3-heading": "Knowledge",
-    "section-offer-3-text": "Theoretical, practical, legal and ethical guidelines and standards for the implementation of Citizen Science projects.",
-    "section-offer-button": "Learn more",
+    "section-contribute-heading": "Deine Hilfe ist gefragt:",
+    "section-contribute-1-heading": "Transkribieren",
+    "section-contribute-1-text": "Die 1700 handgeschriebenen Schweizer Wenker-Bögen müssen genau abgeschrieben werden, um sie digital aufzubereiten. Dafür brauchen wir deine Unterstützung!",
+    "section-contribute-1-button": "Transkribieren",
+    "section-contribute-2-heading": "Übersetzen",
+    "section-contribute-2-text": "Übersetze die originalen Wenker-Sätze in deinen Dialekt, wie du ihn heute sprichst. So können wir das Schweizerdeutsch von heute mit dem der 1930er Jahre vergleichen.",
+    "section-contribute-2-button": "Übersetzen",
 
     "section-build-project-heading": "Do you have a project in mind? We can help you.",
     "section-build-project-text": "If you have an idea for a Citizen Science project, get in touch with us. We can help you evaluate your idea and potentially provide you with expertise and tools to develop, set up, and run your project.",
@@ -41,22 +35,26 @@
   <div>
 
     <app-cover imageUrl="img/cover.jpg">
-      <h2 class="cover-heading scroll-effect">{{ $t('cover-heading') }}</h2>
-      <p class="cover-subheading scroll-effect scroll-effect-delayed-1">{{ $t('cover-subheading') }}</p>
-      <p class="centered scroll-effect scroll-effect-delayed-2">
-        <button class="button button-primary" v-scroll-to="'#projects'">{{ $t('cover-button-projects') }}</button>
-        <button class="button button-secondary button-secondary-inverted" v-scroll-to="'#start-project'">{{ $t('cover-button-your-project') }}</button>
-      </p>
+      <div class="row row-centered">
+        <div class="col col-large-8">
+          <h2 class="cover-heading scroll-effect" style="white-space: pre-wrap">{{ $t('cover-heading') }}</h2>
+          <p class="cover-subheading scroll-effect scroll-effect-delayed-1">{{ $t('cover-subheading') }}</p>
+          <p class="centered scroll-effect scroll-effect-delayed-2">
+            <button class="button button-primary" v-scroll-to="'#projects'">{{ $t('cover-button-projects') }}</button>
+            <button class="button button-primary" v-scroll-to="'#start-project'">{{ $t('cover-button-your-project') }}</button>
+          </p>
+        </div>
+      </div>
     </app-cover>
 
     <app-content-section>
       <div class="content-wrapper">
         <div class="row row-centered row-middle">
 
-          <div class="col col-10 col-large-6 col-wrapping scroll-effect">
+          <div class="col col-10 col-large-6 col-wrapping col-large-no-bottom-margin scroll-effect">
             <div>
               <div class="extra-padding-large-h">
-                <img src="img/graphic-citizen-science.png"/>
+                <img src="img/wenker-text.jpg" style="border-radius:50%" />
               </div>
             </div>
           </div>
@@ -64,9 +62,7 @@
           <div class="col col-large-5 col-large-after-1 col-wrapping col-large-no-bottom-margin scroll-effect scroll-effect-delayed-2">
             <div>
               <h2 class="heading centered left-aligned-large">{{ $t('section-explanation-heading') }}</h2>
-              <p>{{ $t('section-explanation-text') }}<br/>
-              {{ $t('section-explanation-text-2') }}</p>
-              <p>{{ $t('section-explanation-text-3') }}</p>
+              <p>{{ $t('section-explanation-text') }}</p>
               <p class="centered left-aligned-large">
                 <router-link tag="button" to="/activities" class="button button-secondary">{{ $t('section-explanation-button') }}</router-link>
               </p>
@@ -74,7 +70,6 @@
           </div>
 
         </div>
-
       </div>
     </app-content-section>
 
@@ -83,29 +78,19 @@
         <div class="row row-centered">
 
           <div class="col col-large-10 scroll-effect">
-            <h2 class="heading centered">{{ $t('section-offer-heading') }}</h2>
+            <h2 class="heading centered">{{ $t('section-contribute-heading') }}</h2>
           </div>
 
-          <div class="col col-tablet-portrait-10 col-large-4 col-wrapping  col-large-no-bottom-margin scroll-effect scroll-effect-delayed-1">
-            <div class="row row-centered">
-              <div class="col col-6 col-tablet-portrait-4 col-large-6 extra-margin-bottom">
-                <img src="img/graphic-platform.png"/>
-              </div>
-            </div>
-            <h3 class="subheading centered">{{ $t('section-offer-1-heading') }}</h3>
-            <p class="">
-              {{ $t('section-offer-1-text') }}
-            </p>
-          </div>
           <div class="col col-tablet-portrait-10 col-large-4 col-wrapping col-large-no-bottom-margin scroll-effect scroll-effect-delayed-2">
             <div class="row row-centered">
               <div class="col col-6 col-tablet-portrait-4 col-large-6 extra-margin-bottom">
                 <img src="img/graphic-community.png"/>
               </div>
             </div>
-            <h3 class="subheading centered">{{ $t('section-offer-2-heading') }}</h3>
-            <p class="">
-              {{ $t('section-offer-2-text') }}
+            <h3 class="subheading centered">{{ $t('section-contribute-1-heading') }}</h3>
+            <p>{{ $t('section-contribute-1-text') }}</p>
+            <p class="centered">
+              <router-link tag="button" to="/offer" class="button button-primary">{{ $t('section-contribute-1-button') }}</router-link>
             </p>
           </div>
           <div class="col col-tablet-portrait-10 col-large-4 col-wrapping col-no-bottom-margin scroll-effect scroll-effect-delayed-3">
@@ -114,43 +99,13 @@
                 <img src="img/graphic-knowledge.png"/>
               </div>
             </div>
-            <h3 class="subheading centered">{{ $t('section-offer-3-heading') }}</h3>
-            <p class="">
-              {{ $t('section-offer-3-text') }}
+            <h3 class="subheading centered">{{ $t('section-contribute-2-heading') }}</h3>
+            <p>{{ $t('section-contribute-2-text') }}</p>
+            <p class="centered">
+              <router-link tag="button" to="/offer" class="button button-primary">{{ $t('section-contribute-2-button') }}</router-link>
             </p>
           </div>
 
-          <div class="col">
-            <p class="centered extra-margin-top">
-              <router-link tag="button" to="/offer" class="button button-secondary">{{ $t('section-offer-button') }}</router-link>
-            </p>
-          </div>
-
-        </div>
-      </div>
-    </app-content-section>
-
-
-    <app-content-section>
-      <div class="content-wrapper">
-        <div class="row row-centered scroll-effect">
-          <div class="col col-large-10">
-            <h2 class="heading centered" id="projects">{{ $t('section-projects-heading') }}</h2>
-          </div>
-        </div>
-        <div class="scroll-effect">
-          <div class="row row-centered">
-            <div class="col col-large-10 col-xlarge-8">
-              <app-project-list></app-project-list>
-            </div>
-          </div>
-          <div class="row row-centered">
-            <div class="col col-tablet-portrait-10 col-large-6">
-              <p class="">
-                {{ $t('section-projects-text') }}
-              </p>
-            </div>
-          </div>
         </div>
       </div>
     </app-content-section>
@@ -200,35 +155,6 @@
       </div>
     </app-content-section>
 
-    <app-content-section>
-      <div class="content-wrapper">
-        <div class="row">
-          <div class="col col-tablet-portrait-7 col-large-6 col-large-before-1 col-wrapping col-large-no-bottom-margin scroll-effect">
-            <h2 class="heading centered left-aligned-large">{{ $t('section-about-heading') }}</h2>
-            <p>{{ $t('section-about-text') }}<br/>
-            {{ $t('section-about-text-2') }}</p>
-            <p class="centered left-aligned-large">
-              <img v-if="this.$i18n.locale === 'en'" alt="University of Zurich / ETH Zurich" src="@/assets/uzh_eth_logo_e_pos.svg" style="width:66.667%" />
-              <img v-else alt="Universität Zürich / ETH Zürich" src="@/assets/uzh_eth_logo_d_pos.svg" style="width:66.667%" />
-            </p>
-            <p class="centered left-aligned-large extra-margin-top">
-              <router-link tag="button" to="/about" class="button button-secondary">{{ $t('section-about-button') }}</router-link>
-            </p>
-          </div>
-
-        </div>
-      </div>
-      <div class="background-wrapper background-wrapper-move-right scroll-effect scroll-effect-delayed-1">
-        <div class="content-wrapper">
-          <div class="row row-centered row-in-background">
-            <div class="col col-tablet-portrait-10 col-large-7">
-              <img src="img/uzh-eth.jpg" style="border-radius:50%"/>
-            </div>
-          </div>
-        </div>
-      </div>
-    </app-content-section>
-
     <app-content-section color="greyish">
       <div class="content-wrapper">
         <div class="row row-centered">
@@ -253,7 +179,6 @@
 
 import Cover from '@/components/shared/Cover.vue'
 import ContentSection from '@/components/shared/ContentSection.vue'
-import ProjectList from '@/components/shared/ProjectList.vue'
 import NewsletterSignup from '@/components/shared/NewsletterSignup.vue'
 import Footer from '@/components/shared/Footer.vue'
 
@@ -262,7 +187,6 @@ export default {
   components: {
     'app-cover': Cover,
     'app-content-section': ContentSection,
-    'app-project-list': ProjectList,
     'app-newsletter-signup': NewsletterSignup,
     'app-footer': Footer
   }

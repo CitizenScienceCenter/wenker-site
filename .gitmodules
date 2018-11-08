@@ -4,9 +4,3 @@
 [submodule "src/styles/shared"]
 	path = src/styles/shared
 	url = git@github.com:CitizenScienceCenter/shared-styles.git
-[submodule "src/assets/shared-assets"]
-	path = src/assets/shared-assets
-	url = git@github.com:CitizenScienceCenter/shared-assets.git
-[submodule "src/assets/shared"]
-	path = src/assets/shared
-	url = git@github.com:CitizenScienceCenter/shared-assets.git

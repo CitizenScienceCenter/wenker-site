@@ -8,25 +8,25 @@ const Home = resolve => {
     resolve( require('../views/Home.vue') );
   });
 };
-const Activities = resolve => {
-  require.ensure(['../views/Activities.vue'], () => {
-    resolve( require('../views/Activities.vue') );
+const Project = resolve => {
+  require.ensure(['../views/Project.vue'], () => {
+    resolve( require('../views/Project.vue') );
   });
 };
-const Offer = resolve => {
-  require.ensure(['../views/Offer.vue'], () => {
-    resolve( require('../views/Offer.vue') );
+const Wenker = resolve => {
+  require.ensure(['../views/Wenker.vue'], () => {
+    resolve( require('../views/Wenker.vue') );
   });
 };
-const About = resolve => {
-  require.ensure(['../views/About.vue'], () => {
-    resolve( require('../views/About.vue') );
+const FAQ = resolve => {
+  require.ensure(['../views/FAQ.vue'], () => {
+    resolve( require('../views/FAQ.vue') );
   });
 };
 
 export const routes = [
     { path: '/', component: Home, meta: {title: 'Homepage'} },
-    { path: '/activities', component: Activities, meta: {title: 'Activities'} },
-    { path: '/offer', component: Offer, meta: {title: 'Offer'} },
-    { path: '/about', component: About, meta: {title: 'About'} }
+    { path: '/activities', component: Project, meta: {title: 'Project'} },
+    { path: '/offer', component: Wenker, meta: {title: 'Wenker'} },
+    { path: '/about', component: FAQ, meta: {title: 'FAQ'} }
 ]
