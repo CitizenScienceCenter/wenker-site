@@ -1,18 +1,20 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-import { router } from './router/router.js';
-import VueScrollTo from 'vue-scrollto';
-import App from './App.vue';
-import store from './store/store.js';
-import Vuex from 'vuex';
-import { i18n } from './i18n.js';
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import { router } from './router/router.js'
+import VueScrollTo from 'vue-scrollto'
+import App from './App.vue'
+import store from './store/store.js'
+import Vuex from 'vuex'
+import { i18n } from './i18n.js'
+import c3s from 'vuex-c3s'
 
-Vue.config.productionTip = false;
-
+const swaggerURL = 'https://wenker.citizenscience.ch/api/v1/swagger.json'
+Vue.config.productionTip = false
+Vue.use(c3s, { store, swaggerURL })
 Vue.use(VueRouter)
 Vue.use(VueScrollTo, {
-     offset: -32
- })
+  offset: -32
+})
 Vue.use(Vuex)
 
 // eslint-disable-next-line
@@ -23,6 +25,6 @@ var vm = new Vue({
   render: h => h(App)
 }).$mount('#app')
 
-if( !store.state.language ) {
-  store.dispatch("settings/setLanguage", 'en' );
+if (!store.state.language) {
+  store.dispatch('settings/setLanguage', 'en')
 }
