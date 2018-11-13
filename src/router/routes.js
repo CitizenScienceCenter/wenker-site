@@ -28,10 +28,100 @@ const FAQ = resolve => {
 import { i18n } from "../i18n.js";
 
 export const routes = [
-  { path: "/", component: Home, meta: { page: "page-homepage" } },
-  { path: "/project", component: Project, meta: { page: "page-project" } },
-  { path: "/wenker", component: Wenker, meta: { page: "page-wenker" } },
-  { path: "/faq", component: FAQ, meta: { page: "page-faq" } },
+  {
+    path: "/",
+    component: Home,
+    meta: { page: "page-homepage", nav: false }
+  },
+  {
+    path: "/transcribe",
+    component: Activity,
+    meta: { requiresAuth: true, breadcrumb: "Projects", page: "page-profile", nav: true  },
+    children: [
+      {
+        path: "",
+        name: "TranscribeStart",
+        component: Transcription.Start,
+        meta: {
+          requiresAuth: true,
+          breadcrumb: "Transcribe",
+          page: "page-profile"
+        }
+      },
+      {
+        path: "/task",
+        name: "TranscribeTask",
+        component: Transcription.Task,
+        meta: {
+          requiresAuth: true,
+          breadcrumb: "Transcribe Task",
+          page: "page-profile"
+        }
+      },
+      {
+        path: "/complete",
+        name: "TranscribeComplete",
+        component: Transcription.Complete,
+        meta: {
+          requiresAuth: true,
+          breadcrumb: "Transcribe Complete",
+          page: "page-profile"
+        }
+      }
+    ]
+  },
+  {
+    path: "/translate",
+    component: Activity,
+    meta: { requiresAuth: true, breadcrumb: "Projects", page: "page-profile", nav: true },
+    children: [
+      {
+        path: "",
+        name: "TranslateStart",
+        component: Translation.Start,
+        meta: {
+          requiresAuth: true,
+          breadcrumb: "Translate",
+          page: "page-profile"
+        }
+      },
+      {
+        path: "/task",
+        name: "TranslateTask",
+        component: Translation.Task,
+        meta: {
+          requiresAuth: true,
+          breadcrumb: "Translate Task",
+          page: "page-profile"
+        }
+      },
+      {
+        path: "/complete",
+        name: "TranslateComplete",
+        component: Translation.Complete,
+        meta: {
+          requiresAuth: true,
+          breadcrumb: "Translate Complete",
+          page: "page-profile"
+        }
+      }
+    ]
+  },
+  {
+    path: "/project",
+    component: Project,
+    meta: { page: "page-project", nav: true }
+  },
+  {
+    path: "/wenker",
+    component: Wenker,
+    meta: { page: "page-wenker", nav: true }
+  },
+  {
+    path: "/faq",
+    component: FAQ,
+    meta: { page: "page-faq", nav: true }
+  },
   {
     path: "/login",
     name: "Login",
@@ -69,59 +159,9 @@ export const routes = [
     meta: { requiresAuth: true, breadcrumb: "View User", page: "page-profile" }
   },
   {
-    path: "/transcribe",
-    component: Activity,
-    meta: { requiresAuth: true, breadcrumb: "Projects", page: "page-profile" },
-    children: [
-      {
-        path: "",
-        name: "TranscribeStart",
-        component: Transcription.Start,
-        meta: { requiresAuth: true, breadcrumb: "Transcribe", page: "page-profile" }
-      },
-      {
-        path: "/task",
-        name: "TranscribeTask",
-        component: Transcription.Task,
-        meta: { requiresAuth: true, breadcrumb: "Transcribe Task", page: "page-profile" }
-      },
-      {
-        path: "/complete",
-        name: "TranscribeComplete",
-        component: Transcription.Complete,
-        meta: { requiresAuth: true, breadcrumb: "Transcribe Complete", page: "page-profile" }
-      }
-    ]
-  },
-  {
-    path: "/translate",
-    component: Activity,
-    meta: { requiresAuth: true, breadcrumb: "Projects", page: "page-profile" },
-    children: [
-      {
-        path: "",
-        name: "TranslateStart",
-        component: Translation.Start,
-        meta: { requiresAuth: true, breadcrumb: "Translate", page: "page-profile" }
-      },
-      {
-        path: "/task",
-        name: "TranslateTask",
-        component: Translation.Task,
-        meta: { requiresAuth: true, breadcrumb: "Translate Task", page: "page-profile" }
-      },
-      {
-        path: "/complete",
-        name: "TranslateComplete",
-        component: Translation.Complete,
-        meta: { requiresAuth: true, breadcrumb: "Translate Complete", page: "page-profile" }
-      }
-    ]
-  },
-  {
     path: "/error",
     name: "Error",
     component: Home.Error,
-      meta: { page: "page-profile" }
+    meta: { page: "page-profile" }
   }
 ];
