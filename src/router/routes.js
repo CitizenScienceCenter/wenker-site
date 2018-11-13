@@ -1,7 +1,7 @@
-import Activity from '@/views/Activity'
-import * as User from '@/views/user'
-import * as Translation from '@/views/translation'
-import * as Transcription from '@/views/transcription'
+import Activity from "@/views/Activity";
+import * as User from "@/views/user";
+import * as Translation from "@/views/translation";
+import * as Transcription from "@/views/transcription";
 
 // lazy loading routes
 const Home = resolve => {
@@ -25,6 +25,8 @@ const FAQ = resolve => {
   });
 };
 
+import { i18n } from "../i18n.js";
+
 export const routes = [
   {
     path: "/",
@@ -34,7 +36,7 @@ export const routes = [
   {
     path: "/transcribe",
     component: Activity,
-    meta: { requiresAuth: true, breadcrumb: 'Projects', page: 'page-transcribe', nav: true },
+    meta: { requiresAuth: true, breadcrumb: "Projects", page: "page-transcribe", nav: true  },
     children: [
       {
         path: "",
@@ -43,7 +45,7 @@ export const routes = [
         meta: {
           requiresAuth: true,
           breadcrumb: "Transcribe",
-          page: 'page-transcribe-start'
+          page: "page-transcribe"
         }
       },
       {
@@ -53,7 +55,7 @@ export const routes = [
         meta: {
           requiresAuth: true,
           breadcrumb: "Transcribe Task",
-          page: 'page-transcribe-task'
+          page: "page-transcribe"
         }
       },
       {
@@ -63,7 +65,7 @@ export const routes = [
         meta: {
           requiresAuth: true,
           breadcrumb: "Transcribe Complete",
-          page: 'page-transcribe-complete'
+          page: "page-transcribe"
         }
       }
     ]
@@ -71,7 +73,7 @@ export const routes = [
   {
     path: "/translate",
     component: Activity,
-    meta: { requiresAuth: true, breadcrumb: 'Projects', page: 'page-translate', nav: true },
+    meta: { requiresAuth: true, breadcrumb: "Projects", page: "page-translate", nav: true },
     children: [
       {
         path: "",
@@ -80,7 +82,7 @@ export const routes = [
         meta: {
           requiresAuth: true,
           breadcrumb: "Translate",
-          page: 'page-translate-start'
+          page: "page-translate"
         }
       },
       {
@@ -90,7 +92,7 @@ export const routes = [
         meta: {
           requiresAuth: true,
           breadcrumb: "Translate Task",
-          page: 'page-translate-task'
+          page: "page-translate"
         }
       },
       {
@@ -100,7 +102,7 @@ export const routes = [
         meta: {
           requiresAuth: true,
           breadcrumb: "Translate Complete",
-          page: 'page-translate-complete'
+          page: "page-translate"
         }
       }
     ]
@@ -124,42 +126,42 @@ export const routes = [
     path: "/login",
     name: "Login",
     component: User.Login,
-    meta: { page: 'page-login' }
+    meta: { page: "page-login", nav: false }
   },
   {
     path: "/register",
     name: "Register",
     component: User.Register,
-    meta: { page: 'page-register' }
+    meta: { page: "page-register", nav: false }
   },
   {
     path: "/logout",
     name: "Logout",
     component: User.Login, //TODO add beforeEnter hook to log out user,
-    meta: { page: 'page-logout' }
+    meta: { page: "page-logout", nav: false }
   },
   {
     path: "/reset",
     name: "ResetRequest",
     component: User.RequestReset,
-    meta: { page: 'page-reset-request' }
+    meta: { page: "page-reset", nav: false }
   },
   {
     path: "/reset/:token",
     name: "Reset",
     component: User.Reset,
-    meta: { page: 'page-reset' }
+    meta: { page: "page-reset", nav: false }
   },
   {
     path: "/profile",
     name: "UserProfile",
     component: User.Profile,
-    meta: { requiresAuth: true, breadcrumb: 'View User', page: 'page-user-profile' }
+    meta: { requiresAuth: true, breadcrumb: "View User", page: "page-profile", nav: false }
   },
   {
     path: "/error",
     name: "Error",
     component: Home.Error,
-    meta: { page: 'page-error' }
+    meta: { page: "page-profile", nav: false }
   }
 ];
