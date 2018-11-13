@@ -1,10 +1,21 @@
 <template>
-    <div></div>
+    <div>{{question.text}}</div>
 </template>
 
 <script>
     export default {
-        name: "TaskQuestionText"
+      name: 'TaskQuestionText',
+      props: {
+        question: {
+          type: Object,
+          default: function () {
+            return {
+              text: 'No Question Text Specified',
+              type: 'text'
+            }
+          }
+        }
+      }
     }
 </script>
 
