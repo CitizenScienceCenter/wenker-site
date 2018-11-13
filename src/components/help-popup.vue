@@ -11,7 +11,7 @@
 </template>
 <script>
 export default {
-  name: 'InfoPopup',
+  name: 'HelpPopup',
   data() {
     return {
       visible: false

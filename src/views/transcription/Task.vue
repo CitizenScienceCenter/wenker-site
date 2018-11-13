@@ -22,7 +22,7 @@
         <comments-list :current_user="user" :comments="comments"></comments-list>
 
         <template class="row">
-            <info-popup :header="'Hilfen'" :info="task_help"></info-popup>
+            <help-popup :header="'Hilfen'" :info="task_help"></help-popup>
         </template>
 
     </div>
@@ -30,19 +30,30 @@
 </template>
 
 <script>
+  import { mapState } from 'vuex'
+  import HelpPopup from '@/components/help-popup'
+  import CommentsList from '@/components/comment'
   import TaskQuestionImage from '@/components/TaskQuestionImage'
   import TaskResponse from '@/components/TaskResponse'
 
   export default {
-        name: "Task",
-        components: {
-            TaskQuestionImage,
-            TaskResponse
-        },
+    name: 'Task',
+    components: {
+      TaskQuestionImage,
+      TaskResponse,
+      HelpPopup,
+      CommentsList
+    },
+    computed: mapState({
+      specialChars: state => state.consts.specialChars
+
+    }),
     data () {
       return {
         user: {},
         comments: [],
+        task_help: '',
+        nextTxt: 'Next',
         task: {
           info: {
             path: 'https://cdn.pixabay.com/photo/2018/10/01/20/38/meteora-3717220_1280.jpg'
@@ -56,8 +67,20 @@
           }
         }
       }
+    },
+    methods: {
+      endTask () {
+
+      },
+      submitTask () {
+
+      },
+      insertChar () {
+
+      }
     }
-    }
+
+  }
 </script>
 
 <style scoped>

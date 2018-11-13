@@ -15,27 +15,35 @@
 
         <comments-list :current_user="user" :comments="comments"></comments-list>
 
-        <template v-if="project.name === 'Transkribieren'" class="row">
-            <info-popup :header="'Hilfen'" :info="task_help"></info-popup>
-        </template>
+        <help-popup :header="'Hilfen'" :info="task_help"></help-popup>
 
     </div>
 
 </template>
 
 <script>
+  import { mapState } from 'vuex'
+  import HelpPopup from '@/components/help-popup'
+  import CommentsList from '@/components/comment'
   import TaskQuestionText from '@/components/TaskQuestionText'
   import TaskResponse from '@/components/TaskResponse'
 
   export default {
-        name: "Task",
-        components: {
-            TaskQuestionText,
-            TaskResponse
-        },
+    name: 'Task',
+    components: {
+      TaskQuestionText,
+      TaskResponse,
+      CommentsList,
+      HelpPopup
+    },
+    computed: mapState({
+      specialChars: state => state.consts.specialChars
+    }),
     data () {
       return {
         user: {},
+        task_help: '',
+        nextTxt: 'Next',
         comments: [],
         task: {
           info: {
@@ -50,8 +58,16 @@
           }
         }
       }
+    },
+    methods: {
+      endTask () {
+
+      },
+      submitTask () {
+
+      }
     }
-    }
+  }
 </script>
 
 <style scoped>
