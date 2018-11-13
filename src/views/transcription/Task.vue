@@ -2,13 +2,14 @@
 
     <div>
 
-        <task-question-image></task-question-image>
+        <task-question-image :question="task.content.question" :img="task.info.path"></task-question-image>
 
-        <task-response></task-response>
+        <task-response :responses="task.content.answers"></task-response>
 
         <div class="special-characters">
             <label>Sonderzeichen</label>
             <button v-on:click="insertChar(char)" :key="char" v-for="char in specialChars">{{char}}</button>
+            <!--TODO handle insertion of character to cursor position in CURRENT text box-->
         </div>
 
         <div class="row">
@@ -20,7 +21,7 @@
 
         <comments-list :current_user="user" :comments="comments"></comments-list>
 
-        <template v-if="project.name === 'Transkribieren'" class="row">
+        <template class="row">
             <info-popup :header="'Hilfen'" :info="task_help"></info-popup>
         </template>
 
@@ -29,15 +30,33 @@
 </template>
 
 <script>
-    import TaskQuestionImage from '@/components/TaskQuestionImage';
-    import TaskResponse from '@/components/TaskResponse';
+  import TaskQuestionImage from '@/components/TaskQuestionImage'
+  import TaskResponse from '@/components/TaskResponse'
 
-    export default {
+  export default {
         name: "Task",
         components: {
             TaskQuestionImage,
             TaskResponse
+        },
+    data () {
+      return {
+        user: {},
+        comments: [],
+        task: {
+          info: {
+            path: 'https://cdn.pixabay.com/photo/2018/10/01/20/38/meteora-3717220_1280.jpg'
+          },
+          content: {
+            answers: [],
+            question: {
+              text: 'Question text',
+              type: 'single_file'
+            }
+          }
         }
+      }
+    }
     }
 </script>
 

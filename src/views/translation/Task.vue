@@ -2,9 +2,9 @@
 
     <div>
 
-        <task-question-text></task-question-text>
+        <task-question-text :question="task.content.question"></task-question-text>
 
-        <task-response></task-response>
+        <task-response :responses="task.content.answers"></task-response>
 
         <div class="row">
             <div class="col col-task-actions">
@@ -24,15 +24,33 @@
 </template>
 
 <script>
-    import TaskQuestionText from '@/components/TaskQuestionText';
-    import TaskResponse from '@/components/TaskResponse';
+  import TaskQuestionText from '@/components/TaskQuestionText'
+  import TaskResponse from '@/components/TaskResponse'
 
-    export default {
+  export default {
         name: "Task",
         components: {
             TaskQuestionText,
             TaskResponse
+        },
+    data () {
+      return {
+        user: {},
+        comments: [],
+        task: {
+          info: {
+            path: 'https://cdn.pixabay.com/photo/2018/10/01/20/38/meteora-3717220_1280.jpg'
+          },
+          content: {
+            answers: [],
+            question: {
+              text: 'Question text',
+              type: 'single_file'
+            }
+          }
         }
+      }
+    }
     }
 </script>
 
