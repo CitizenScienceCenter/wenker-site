@@ -14,17 +14,17 @@ const Home = resolve => {
 };
 const Project = resolve => {
   require.ensure(['../views/Project.vue'], () => {
-    resolve( require('../views/Project.vue') );
+    resolve( require('../views/static/Project.vue') );
   });
 };
 const Wenker = resolve => {
   require.ensure(['../views/Wenker.vue'], () => {
-    resolve( require('../views/Wenker.vue') );
+    resolve( require('../views/static/Wenker.vue') );
   });
 };
 const FAQ = resolve => {
   require.ensure(['../views/FAQ.vue'], () => {
-    resolve( require('../views/FAQ.vue') );
+    resolve( require('../views/static/FAQ.vue') );
   });
 };
 
