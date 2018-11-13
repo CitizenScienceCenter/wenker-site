@@ -14,15 +14,21 @@
                     auto-sizing>
             </croppa>
 
-            <button @click="zoom(true)" class="primary zoom zoom-in"><img src="@/assets/img/icons/plus.svg"></button>
-            <button @click="zoom(false)" class="primary zoom zoom-out"><img src="@/assets/img/icons/minus.svg"/></button>
+            <button @click="zoom(true)" class="primary zoom zoom-in"><img src=""></button>
+            <button @click="zoom(false)" class="primary zoom zoom-out"><img src=""/></button>
         </div>
     </div>
 </template>
 
 <script>
     export default {
-        name: "TaskQuestionImage"
+        name: "TaskQuestionImage",
+        data() {
+            return {
+                croppaSettings: {},
+                img: '' // TODO load template image from web here
+            }
+        }
     }
 </script>
 

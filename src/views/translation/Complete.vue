@@ -41,7 +41,6 @@
 
 <script>
     import { mapState, mapGetters } from "vuex";
-    import ProjectInfo from "@/components/project-info.vue"
     import RegisterForm from "@/components/register-form.vue"
     export default {
         name: "Complete",
@@ -77,7 +76,7 @@
         methods: {
             startPage() {
                 console.log('start')
-                if(user && user.username.indexOf('anon') !== -1) {
+                if(this.user && this.user.username.indexOf('anon') !== -1) {
                     this.$store.dispatch('user/logout').then(() => {
                         this.$router.push({name: 'Home'})
                     })
@@ -90,5 +89,5 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scoped src='@/assets/styles/project/view.scss'>
+<style lang="scss" scoped>
 </style>
