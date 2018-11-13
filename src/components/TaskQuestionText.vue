@@ -8,7 +8,7 @@
       props: {
         question: {
           type: Object,
-          default: function () {
+          default: () => {
             return {
               text: 'No Question Text Specified',
               type: 'text'

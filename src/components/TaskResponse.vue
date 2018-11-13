@@ -18,7 +18,15 @@
 
 <script>
     export default {
-        name: "TaskResponse"
+      name: 'TaskResponse',
+      props: {
+        answers: {
+          type: Array,
+          default: () => {
+            return []
+          }
+        }
+      }
     }
 </script>
 
