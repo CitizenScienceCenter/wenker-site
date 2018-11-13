@@ -47,7 +47,7 @@ export const routes = [
         }
       },
       {
-        path: "/task",
+        path: "task",
         name: "TranscribeTask",
         component: Transcription.Task,
         meta: {
@@ -57,7 +57,7 @@ export const routes = [
         }
       },
       {
-        path: "/complete",
+        path: "complete",
         name: "TranscribeComplete",
         component: Transcription.Complete,
         meta: {
@@ -84,7 +84,7 @@ export const routes = [
         }
       },
       {
-        path: "/task",
+        path: "task",
         name: "TranslateTask",
         component: Translation.Task,
         meta: {
@@ -94,7 +94,7 @@ export const routes = [
         }
       },
       {
-        path: "/complete",
+        path: "complete",
         name: "TranslateComplete",
         component: Translation.Complete,
         meta: {
