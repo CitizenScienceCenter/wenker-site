@@ -1,7 +1,7 @@
-import VueRouter from 'vue-router';
-import { routes } from './routes.js';
-import { i18n } from '../i18n.js';
-import store from '../store/store.js';
+import VueRouter from 'vue-router'
+import { routes } from './routes.js'
+import { i18n } from '../i18n.js'
+import store from '../store/store.js'
 
 export const router = new VueRouter({
   routes: routes,
@@ -12,14 +12,14 @@ export const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  const lang = store.state.language;
-  const title = i18n.messages[lang][to.meta.page]['title'];
+  const lang = store.state.settings.language || 'de'
+  const title = i18n.messages[lang][to.meta.page]['title']
   if (title) {
-    document.title = title;
+    document.title = title
   } else {
-    document.title = "";
+    document.title = ''
   }
-
+  next()
   // if (to.matched.some(record => record.meta.requiresAuth)) {
   //   if (store.state.user.currentUser) {
   //     store.dispatch('user/validate').then(v => {
