@@ -1,31 +1,93 @@
-<i18n>
-{
-  "en": {
-    "section-citizenscience-heading": "Citizen Science",
-    "section-citizenscience-text": "As the name implies, the activities of the Citizen Science Center Zurich focus on exploring, supporting, and promoting Citizen Science, a form of public participation in scientific research (where “citizen” denotes a member of the general public, independent from citizenship) that has been around for more than a century.",
-    "section-citizenscience-text-2": "Public participation in science is a practice that works across many disciplines and that comes in different flavours and with different names, including community based research, crowd-sourced data collection, community-based monitoring, civic science, and more. What characterizes Citizen Science is the collaboration of professional scientists and citizens, the “active” involvement of both, and the engagement of citizens in potentially all phases of the research process.",
-    "section-citizenscience-text-3": "Traditional Citizen Science projects involve members of the public in gathering data (often geo-located) via mobile or sensing technologies, or in analysing existing data via interactive and highly visual web interfaces. In an increasing number of cases the public is also involved in other phases of the research process, including the definition of the research questions, the interpretation of results, and the final dissemination of conclusions.",
-    "section-citizenscience-text-4": "In the past two decades, citizen science has gained tremendous popularity both with scientists and the public, and citizen science projects span today a wide range of research topics. The methodology offers scientists the potential to tackle research questions with large datasets gathered by citizens across a wide geographical area. It also allows for a much more dynamic and interactive approach to the formulation of hypotheses, research design, and data analysis. With their volunteer activity, Citizens increase their knowledge and literacy about the topic studied, gain insight into the scientific process and method, and acquire new technological skills and abilities.",
-    "section-citizenscience-text-5": "For the benefit of the wider society, outcome of Citizen Science projects include community development and empowerment, change of attitudes and behaviours, and renewed engagement in policy making.",
-
-    "section-sdg-heading": "Citizen Science for the SDGs",
-    "section-sdg-text": "The Sustainable Development Goals (SDGs) are a set of global goals developed in 2015 by the 193 UN member states and representatives of civil society. They are part of the UN Agenda 2030, a comprehensive call for action to achieve a better and more sustainable future for all.",
-    "section-sdg-text-2": "High quality, timely and accessible data are required to monitor progress towards the goals, and there is a strong consensus that citizen engagement is critical. “The monitoring and accountability framework, spanning from the local to the global levels, must be people ­centred, inclusive, transparent and participatory’ (TAP Network 2015, 1).",
-    "section-sdg-text-3": "Through citizen science, people can directly engage with and monitor issues that affect them, bring new perspectives and knowledge into science and decision-making, and ultimately demand or drive change.",
-
-    "section-partnerships-heading": "Partnerships and Collaborations",
-    "section-partnerships-openseventeen-subheading": "The Open Seventeen – Coaching for Citizen Science Innovation",
-    "section-partnerships-openseventeen-text": "O17 is a challenged-based, online interactive coaching programme to help young global innovators connect and shape good ideas into viable social innovation projects for the 17 UN Sustainable Development Goals (SDGs). O17 supports projects that encourage grassroots public participation and citizen science through the use of open data and crowdsourcing.",
-    "section-partnerships-openseventeen-text-2": "The Challenge is a joint initiative with the Citizen Cyberlab at University of Geneva, and the Governance Lab at New York University.",
-    "section-partnerships-toolkit-heading": "The SDG Crowdsourcing Toolkit – Crowdsourcing Sustainable Development",
-    "section-partnerships-toolkit-text": "The SDG Crowdsourcing Toolkit is an ambitious initiative led by CC-CS, in collaboration with the Citizen Cyberlab in Geneva, and aims at positioning Swiss CS at the core of scientific data taking for the SDGs. It will provide a set of open and flexible tools that feature the functionalities required by the most common CS projects, and that can integrate existing platforms and communities. All tools contribute data to a structured and easily accessible database, that - by making data sharing seamless - will facilitate cross-pollination of projects and initiatives.",
-    "section-partnerships-toolkit-text-2": "To know more, please contact the CS Center’s team."
-  }
-}
-</i18n>
-
 <template>
   <div>
+
+    <app-content-section>
+      <div class="content-wrapper">
+        <div class="row">
+          <div class="col col-title">
+            <h2>Georg Wenker</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col col-text">
+            <figure>
+              <img src="img/wenker.jpg" />
+              <figcaption>Georg Wenker <a href="http://www.diwa.info/Geschichte/Kartierungsverfahren.aspx" target="_blank">© DIWA</a></figcaption>
+            </figure>
+            <h3>Die Geschichte eines Dialektliebhabers</h3>
+            <p>
+              Die Wenkersätze wurden in den 1930er Jahren zur Dokumentation des Schweizerdeutschen eingesetzt und haben eine interessante Vorgeschichte. Der junge Sprachwissenschaftler Georg Wenker unternahm im Jahr 1876 in Verbindung mit seiner Dissertation eigene empirische Untersuchungen der Mundart der Umgebung seiner Heimatstadt Düsseldorf. Dafür sammelte er anhand von Fragebogen Mundartproben jedes einzelnen Ortes. Er kreierte dazu die sogenannten 42 rheinischen Sätze in Schriftsprache, die er durch die Lehrer des jeweiligen Regierungsbezirkes zusammen mit ihren Schülern in die dort vorherrschende Mundart übertragen liess. Seine Ergebnisse wollte er in Dialektkarten und später in einem Sprachatlas abbilden.
+            </p>
+            <figure>
+              <img src="img/dialektkarte.jpg" />
+              <figcaption>Beispiel für eine Dialektkarte, Quelle: <a href="https://www.uni-marburg.de/de/fb09/dsa/einrichtung/personen/juergen-erich-schmidt/publikationen-1/aufsaetze-und-rezensionen" target="_blank">Jürgen Erich Schmidt (2012)</a></figcaption>
+            </figure>
+            <p>
+              Im Laufe der Jahre entwickelte Wenker die so genannten 40 Wenker-Sätze und dehnte sein Untersuchungsgebiet allmählich auf das gesamte Deutsche Reich aus. Was mit einem Dissertationsvorhaben begann, wurde zur Langzeitstudie: Aus den ursprünglich berechneten 13 Jahren Arbeit sollten schliesslich mehr als 50 werden. Doch dank der 20-jährigen Freistellung von seinem Dienst in der Marburger Universitätsbibliothek konnte sich Wenker voll und ganz auf die Fertigstellung des <a href="https://de.wikipedia.org/wiki/Deutscher_Sprachatlas" target="_blank">Sprachatlas des Deutschen Reichs</a> konzentrieren.
+            </p>
+            <figure>
+              <img src="img/wrede.jpg" />
+              <figcaption>Ferdinand Wrede <a href="http://www.diwa.info/Geschichte/Kartierungsverfahren.aspx" target="_blank">© DIWA</a></figcaption>
+            </figure>
+            <p>
+              Im Jahr 1912 übernahm Wenkers ehemaliger Hilfsarbeiter Ferdinand Wrede die Leitung des Sprachatlas. Unter seiner Führung wurden zwischen 1926 und 1933 Nacherhebungen für deutschsprachige Gebiete auch ausserhalb des Deutschen Reiches durchgeführt, so auch in der Schweiz. Die Schweizer Wenkerbogen wurden zwar wie alle anderen in einem aufwändigen Prozess digitalisiert und auf dem Server des Langzeitforschungsprojektes <a href="https://www.regionalsprache.de/" target="_blank">REDE</a> der Universität Marburg publiziert. Inhaltlich aufbereitet und ausgewertet wurden sie jedoch nie. Das möchten wir in unserem <router-link to="/home">Citizen Science Projekt</router-link> mit deiner Hilfe ändern.
+            </p>
+            <h4>Weiterführende Links</h4>
+            <ul>
+              <li>
+                <a href="http://www.diwa.info/Geschichte/Kartierungsverfahren.aspx" target="_blank">Beschreibung des Kartierungsverfahrens des Deutschen Sprachatlas</a>
+              </li>
+              <li>
+                <a href="pdf/Auszug_Raggenbass_E.pdf" target="_blank">Auszug aus der Masterarbeit von Carmen Raggenbass zu den Wenkermaterialien aus dem Appenzell (Deutsches Seminar der Universität Zürich 2018)</a>
+              </li>
+            </ul>
+            <h4>Die Wenkersätze</h4>
+            <ol class="list-sentences">
+              <li>Im Winter fliegen die trocknen Blätter durch die Luft herum.</li>
+              <li>Es hört gleich auf zu schneien, dann wird das Wetter wieder besser.</li>
+              <li>Thu Kohlen in den Ofen, daß die Milch bald an zu kochen fängt.</li>
+              <li>Der gute alte Mann ist mit dem Pferde durch´s Eis gebrochen und in das kalte Wasser gefallen.</li>
+              <li>Er ist vor vier oder sechs Wochen gestorben.</li>
+              <li>Das Feuer war zu stark/heiß, die Kuchen sind ja unten ganz schwarz gebrannt.</li>
+              <li>Er ißt die Eier immer ohne Salz und Pfeffer.</li>
+              <li>Die Füße thun mir sehr weh, ich glaube, ich habe sie durchgelaufen.</li>
+              <li>Ich bin bei der Frau gewesen und habe es ihr gesagt, und sie sagte, sie wollte es auch ihrer Tochter sagen.</li>
+              <li>Ich will es auch nicht mehr wieder thun!</li>
+              <li>Ich schlage Dich gleich mit dem Kochlöffel um die Ohren, Du Affe!</li>
+              <li>Wo gehst Du hin? Sollen wir mit Dir gehn?</li>
+              <li>Es sind schlechte Zeiten.</li>
+              <li>Mein liebes Kind, bleib hier unten stehn, die bösen Gänse beißen Dich todt.</li>
+              <li>Du hast heute am meisten gelernt und bist artig gewesen, Du darfst früher nach Hause gehn als die Andern.</li>
+              <li>Du bist noch nicht groß genug, um eine Flasche Wein auszutrinken, Du mußt erst noch ein Ende/etwas wachsen und größer werden.</li>
+              <li>Geh, sei so gut und sag Deiner Schwester, sie sollte die Kleider für eure Mutter fertig nähen und mit der Bürste rein machen.</li>
+              <li>Hättest Du ihn gekannt! dann wäre es anders gekommen, und es thäte besser um ihn stehen.</li>
+              <li>Wer hat mir meinen Korb mit Fleisch gestohlen?</li>
+              <li>Er that so, als hätten sie ihn zum dreschen bestellt; sie haben es aber selbst gethan.</li>
+              <li>Wem hat er die neue Geschichte erzählt?</li>
+              <li>Man muß laut schreien, sonst versteht er uns nicht.</li>
+              <li>Wir sind müde und haben Durst.</li>
+              <li>Als wir gestern Abend zurück kamen, da lagen die Andern schon zu Bett und waren fest am schlafen.</li>
+              <li>Der Schnee ist diese Nacht bei uns liegen geblieben, aber heute Morgen ist er geschmolzen.</li>
+              <li>Hinter unserm Hause stehen drei schöne Apfelbäumchen mit rothen Aepfelchen.</li>
+              <li>Könnt ihr nicht noch ein Augenblickchen auf uns warten, dann gehn wir mit euch.</li>
+              <li>Ihr dürft nicht solche Kindereien treiben!</li>
+              <li>Unsere Berge sind nicht sehr hoch, die euren sind viel höher.</li>
+              <li>Wieviel Pfund Wurst und wieviel Brod wollt ihr haben?</li>
+              <li>Ich verstehe euch nicht, ihr müßt ein bißchen lauter sprechen.</li>
+              <li>Habt ihr kein Stückchen weiße Seife für mich auf meinem Tische gefunden?</li>
+              <li>	Sein Bruder will sich zwei schöne neue Häuser in eurem Garten bauen.</li>
+              <li>Das Wort kam ihm von Herzen!</li>
+              <li>Das war recht von ihnen!</li>
+              <li>Was sitzen da für Vögelchen oben auf dem Mäuerchen?</li>
+              <li>Die Bauern hatten fünf Ochsen und neun Kühe und zwölf Schäfchen vor das Dorf gebracht, die wollten sie verkaufen.</li>
+              <li>Die Leute sind heute alle draußen auf dem Felde und mähen/hauen.</li>
+              <li>Geh nur, der braune Hund thut Dir nichts.</li>
+              <li>Ich bin mit den Leuten da hinten über die Wiese ins Korn gefahren.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </app-content-section>
 
     <app-content-section color="greyish">
       <div class="content-wrapper">
@@ -55,7 +117,7 @@ import NewsletterSignup from '@/components/shared/NewsletterSignup.vue'
 import Footer from '@/components/shared/Footer.vue'
 
 export default {
-  name: 'What',
+  name: 'Wenker',
   components: {
     'app-cover': Cover,
     'app-content-section': ContentSection,

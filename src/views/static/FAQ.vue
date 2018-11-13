@@ -1,19 +1,44 @@
-<i18n>
-{
-  "en": {
-    "heading": "The Sustainable Development Goals",
-    "paragraph-1": "In September 2015, world leaders at the United Nations committed to 17 Sustainable Development Goals (SDGs) that by the year 2030 should help end extreme poverty, and fight inequality, injustice, and climate change, amongst other objectives. Success depends largely on the availability of relevant and timely data for decision-making and monitoring of progresses, and to keep governments accountable for their promises.",
-    "paragraph-2": "The role of science in supporting this global effort is evident, as success depends largely on the availability of data for assessments and monitoring of progresses (think about environmental changes). However, scientists alone cannot provide information at the necessary scale and resolution. As some of the most important data sets to help achieve the SDGs are local in nature, they can often be generated and collected by citizens."
-  },
-  "de": {
-    "heading": "Die Sustainable Development Goals",
-    "paragraph-1": "Staats- und Regierungschefs verpflichteten sich im September 2015 zu 17 Zielen für nachhaltige Entwicklung (Sustainable Development Goals - SDGs). Unter anderem sollen sie dazu beitragen, Armut zu beenden, Ungleichheit, Ungerechtigkeit und den Klimawandel zu bekämpfen. Um die SDGs erreichen zu können, ist es wichtig, dass relevante und aktuelle Daten zur Verfügung stehen, auf deren Basis Probleme bearbeitet werden können.",
-    "paragraph-2": "Die Wissenschaft spielt hier eine besondere Rolle. Mit wissenschaftlichen Methoden und Herangehensweisen können Informationen systematisch gesammelt werden. Wissenschaftlerinnen und Wissenschaftler sind häufig alleine jedoch nicht in der Lage, Daten im erforderlichen Umfang zu sammeln und auszuwerten. Viele der wichtigsten Daten zur Erreichung der SDGs sind ausserdem lokaler Natur. Bei der Sammlung und Auswertung dieser Daten können Bürgerinnen und Bürger eine wichtige Rolle spielen."
-  }
-}
-</i18n>
 <template>
   <div>
+
+    <app-content-section>
+      <div class="content-wrapper">
+        <div class="row">
+          <div class="col col-title">
+            <h2>Fragen und Antworten</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col col-text">
+            <h4>Was tun, wenn man ein Wort/Buchstabe nicht erkennt?</h4>
+            <p>
+              Wenn ein Wort oder ein Buchstabe nicht entziffert werden kann, wird folgender Platzhalter eingefügt: [...] <br/><a href="#transkriptionskonventionen">siehe Transkriptionskonventionen</a>
+            </p>
+            <h4>Was tun, wenn man ein Sonderzeichen nicht transkribieren kann?</h4>
+            <p>
+              Schauen Sie in der vorhandenen Sonderzeichentabelle nach. Falls das gewünschte Sonderzeichen nicht vorhanden ist, schreiben Sie eine Mail an info@citizenscience.ch.
+            </p>
+            <h4>Ich komme von X, ich möchte den Bogen von Y transkribieren, ist das möglich?</h4>
+            <p>
+              Grundsätzlich ist das möglich, ja. Sie können so viele Bögen transkribieren, wie Sie möchten. Nur die eigene Übersetzung der 40 Sätze kann nur einmal erfolgen.
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col col-text col-transcription-rules">
+            <h4 id="transkriptionskonventionen">Transkriptionskonventionen</h4>
+            <ul>
+              <li>Ein vermuteter Wortlaut wird in eckigen Klammern [] geschrieben, z. B. [T]ue das mache...</li>
+              <li>Wenn ein Wort oder ein Buchstabe nicht entziffert werden kann, wird folgender Platzhalter eingefügt: [...]</li>
+              <li>Falls ein Wort nicht vollständig entziffert werden kann, kann folgender Platzhalter eingefügt werden: [unvollst.]</li>
+              <li>Grundsatz: Die Transkription soll möglichst nahe am Original sein!</li>
+              <li>Alle Sonderzeichen sollten transkribiert werden! (Falls nicht möglich, siehe FAQs).</li>
+              <li>Kommentare können Sie in dem Kommentarfeld hinterlassen.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </app-content-section>
 
     <app-content-section color="greyish">
       <div class="content-wrapper">
@@ -44,7 +69,7 @@ import NewsletterSignup from '@/components/shared/NewsletterSignup.vue'
 import Footer from '@/components/shared/Footer.vue'
 
 export default {
-  name: 'Who',
+  name: 'FAQ',
   components: {
     'app-cover': Cover,
     'app-content-section': ContentSection,
