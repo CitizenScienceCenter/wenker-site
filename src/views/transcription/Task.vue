@@ -25,9 +25,15 @@
 
                     <comments-list :current_user="user" :comments="comments"></comments-list>
 
+<<<<<<< HEAD
                     <template class="row">
                         <info-popup :header="'Hilfen'" :info="task_help"></info-popup>
                     </template>
+=======
+        <template class="row">
+            <help-popup :header="'Hilfen'" :info="task_help"></help-popup>
+        </template>
+>>>>>>> b5d6b3362b0ed182a6d1568c57ec6b193b0aa403
 
                 </div>
             </div>
@@ -38,21 +44,40 @@
 </template>
 
 <script>
+  import { mapState } from 'vuex'
+  import HelpPopup from '@/components/help-popup'
+  import CommentsList from '@/components/comment'
   import TaskQuestionImage from '@/components/TaskQuestionImage'
   import TaskResponse from '@/components/TaskResponse'
   import ContentSection from '@/components/shared/ContentSection.vue'
 
   export default {
+<<<<<<< HEAD
         name: "Task",
         components: {
             TaskQuestionImage,
             TaskResponse,
             'app-content-section': ContentSection
         },
+=======
+    name: 'Task',
+    components: {
+      TaskQuestionImage,
+      TaskResponse,
+      HelpPopup,
+      CommentsList
+    },
+    computed: mapState({
+      specialChars: state => state.consts.specialChars
+
+    }),
+>>>>>>> b5d6b3362b0ed182a6d1568c57ec6b193b0aa403
     data () {
       return {
         user: {},
         comments: [],
+        task_help: '',
+        nextTxt: 'Next',
         task: {
           info: {
             path: 'https://cdn.pixabay.com/photo/2018/10/01/20/38/meteora-3717220_1280.jpg'
@@ -66,8 +91,20 @@
           }
         }
       }
+    },
+    methods: {
+      endTask () {
+
+      },
+      submitTask () {
+
+      },
+      insertChar () {
+
+      }
     }
-    }
+
+  }
 </script>
 
 <style scoped>

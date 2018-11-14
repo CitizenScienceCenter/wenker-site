@@ -17,7 +17,11 @@
                         </div>
                     </div>
 
+<<<<<<< HEAD
                     <comments-list :current_user="user" :comments="comments"></comments-list>
+=======
+        <help-popup :header="'Hilfen'" :info="task_help"></help-popup>
+>>>>>>> b5d6b3362b0ed182a6d1568c57ec6b193b0aa403
 
                     <template v-if="project.name === 'Transkribieren'" class="row">
                         <info-popup :header="'Hilfen'" :info="task_help"></info-popup>
@@ -32,21 +36,39 @@
 </template>
 
 <script>
+  import { mapState } from 'vuex'
+  import HelpPopup from '@/components/help-popup'
+  import CommentsList from '@/components/comment'
   import TaskQuestionText from '@/components/TaskQuestionText'
   import TaskResponse from '@/components/TaskResponse'
   import ContentSection from '@/components/shared/ContentSection.vue'
 
 
   export default {
+<<<<<<< HEAD
         name: "Task",
         components: {
             TaskQuestionText,
             TaskResponse,
             'app-content-section': ContentSection
         },
+=======
+    name: 'Task',
+    components: {
+      TaskQuestionText,
+      TaskResponse,
+      CommentsList,
+      HelpPopup
+    },
+    computed: mapState({
+      specialChars: state => state.consts.specialChars
+    }),
+>>>>>>> b5d6b3362b0ed182a6d1568c57ec6b193b0aa403
     data () {
       return {
         user: {},
+        task_help: '',
+        nextTxt: 'Next',
         comments: [],
         task: {
           info: {
@@ -61,8 +83,16 @@
           }
         }
       }
+    },
+    methods: {
+      endTask () {
+
+      },
+      submitTask () {
+
+      }
     }
-    }
+  }
 </script>
 
 <style scoped>

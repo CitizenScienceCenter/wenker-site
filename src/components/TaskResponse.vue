@@ -3,13 +3,13 @@
 
         <div class="form" v-if="responses.length">
             <select v-model="activeAnswerIndex">
-                <option v-for="(r, index) in task.content.answers" :value="index" :key="index">{{index+1}}</option>
+                <option v-for="(r, index) in answers" :value="index" :key="index">{{index+1}}</option>
             </select>
 
         </div>
         <div class="buttons">
             <button :disabled="!activeAnswerIndex > 0" @click="updateActiveIndex(-1)">Prev</button>
-            <button :disabled="activeAnswerIndex === this.task.content.answers.length - 1" @click="updateActiveIndex(1)">Next</button>
+            <button :disabled="activeAnswerIndex === answers.length - 1" @click="updateActiveIndex(1)">Next</button>
         </div>
 
 
@@ -25,6 +25,22 @@
           default: () => {
             return []
           }
+        },
+        responses: {
+          type: Array,
+          default: () => {
+            return []
+          }
+        }
+      },
+      data () {
+        return {
+          activeAnswerIndex: 0
+        }
+      },
+      methods: {
+        updateActiveIndex (val) {
+          this.activeAnswerIndex += val
         }
       }
     }
