@@ -1,55 +1,76 @@
+<i18n>
+{
+    "de": {
+        "heading": "Transkribieren",
+        "task-description": "Die 1700 handgeschriebenen Schweizer Wenker-Bögen müssen genau abgeschrieben werden, um sie digital aufzubereiten. Dafür brauchen wir deine Unterstützung!",
+        "form-heading": "Ihre Angaben",
+        "button-start": "Starten",
+        "button-start-region": "Starten mit lokalen Bögen",
+        "login-heading": "Sie haben sich schon registiert?",
+        "button-login": "Anmelden"
+    }
+}
+</i18n>
+
+
+
 <template>
 
         <app-content-section>
             <div class="content-wrapper">
 
+                <!--
                 <div class="row">
                     <div class="col">
-                        <!--<project-info :stats="stats" v-if="project" :project_name="project.name"></project-info>-->
+                        <project-info :stats="stats" v-if="project" :project_name="project.name"></project-info>
                     </div>
                 </div>
+                -->
 
-                <div class="row">
-                    <div class="col">
-                        <p>Die 1700 handgeschriebenen Schweizer Wenker-Bögen müssen genau abgeschrieben werden, um sie
-                            digital aufzubereiten. Dafür brauchen wir deine Unterstützung!</p>
+                <div class="content-subsection">
+                    <div class="row row-centered">
+                        <div class="col col-large-8">
+                            <h2 class="heading centered">{{ $t('heading') }}</h2>
+                            <p class="lead" v-html="$t('task-description')"></p>
+                        </div>
                     </div>
                 </div>
+                <div class="content-subsection">
+                    <div class="row row-centered">
+                        <div class="col col-large-4">
 
-                <div class="row">
-                    <div class="col">
-
-                        <div class="form-section">
-
-                            <h3>Ihre Angaben</h3>
+                            <h3 class="subheading centered">{{ $t('form-heading') }}</h3>
                             <!-- <div class="desc" v-if="project && project.description" v-html="project.description"></div> -->
 
                             <activity-details-form :project="project" :regions="[]"></activity-details-form>
 
-                            <button class="button button-primary" v-on:click="startProject">Starten</button>
-                            <div v-if="project.name === 'Transkribieren'">
-                                <button class="startProject secondary region-btn" v-on:click="startProjectRegion">Start
-                                    für Ihre Region
-                                </button>
+                            <div class="centered button-group">
+                                <button class="button button-primary" v-on:click="startProject">{{ $t('button-start') }}</button>
+                                <button class="button button-secondary" v-on:click="startProjectRegion">{{ $t('button-start-region') }}</button>
                             </div>
 
                         </div>
+                    </div>
+                </div>
 
-                        <div class="form-section">
-                            <h4>Sie haben sich schon registiert?</h4>
-                            <router-link to="/register" tag="button" class="button button-secondary">Anmelden</router-link>
+                <div class="content-subsection">
+                    <div class="row row-centered">
+                        <div class="col">
+                            <h3 class="subheading centered">{{ $t('login-heading') }}</h3>
                         </div>
-
+                        <div class="col centered">
+                            <router-link to="/register" tag="button" class="button button-secondary">{{ $t('button-login') }}</router-link>
+                        </div>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col">
-                        <comments-list :current_user="user" :comments="comments"></comments-list>
+                <div class="content-subsection">
+                    <div class="row">
+                        <div class="col">
+                            <comments-list :current_user="user" :comments="comments"></comments-list>
+                        </div>
                     </div>
                 </div>
-
-
 
             </div>
         </app-content-section>
@@ -118,5 +139,7 @@
   }
 </script>
 
-<style>
+<style lang="scss">
+
+
 </style>

@@ -24,7 +24,3 @@ var vm = new Vue({
   i18n,
   render: h => h(App)
 }).$mount('#app')
-
-if (!store.state.language) {
-  store.dispatch('settings/setLanguage', 'en')
-}

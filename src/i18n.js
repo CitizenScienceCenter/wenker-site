@@ -11,14 +11,16 @@ if( !store.state.settings.language ) {
   if (language.indexOf('-') !== -1) {
     language = language.split('-')[0];
   }
-  if (language.indexOf('_') !== -1) {
+  else if (language.indexOf('_') !== -1) {
     language = language.split('_')[0];
+  }
+  else {
+    language = "en"
   }
 }
 else {
   language = store.state.settings.language;
 }
-language = 'en'
 
 export const i18n = new VueI18n({
   locale: language,

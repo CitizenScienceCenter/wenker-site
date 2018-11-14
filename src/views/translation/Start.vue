@@ -1,56 +1,77 @@
+<i18n>
+{
+    "de": {
+        "heading": "Übersetzen",
+        "task-description": "Übersetze die originalen Wenker-Sätze in deinen Dialekt, wie du ihn heute sprichst. So können wir das Schweizerdeutsch von heute mit dem der 1930er Jahre vergleichen.",
+        "form-heading": "Ihre Angaben",
+        "button-start": "Starten",
+        "login-heading": "Sie haben sich schon registiert?",
+        "button-login": "Anmelden"
+    }
+}
+</i18n>
+
+
+
 <template>
 
-        <app-content-section>
-            <div class="content-wrapper">
+    <app-content-section>
+        <div class="content-wrapper">
 
-                <div class="row">
-                    <div class="col">
-                        <!--<project-info :stats="stats" v-if="project" :project_name="project.name"></project-info>-->
+            <!--
+            <div class="row">
+                <div class="col">
+                    <project-info :stats="stats" v-if="project" :project_name="project.name"></project-info>
+                </div>
+            </div>
+            -->
+
+            <div class="content-subsection">
+                <div class="row row-centered">
+                    <div class="col col-large-8">
+                        <h2 class="heading centered">{{ $t('heading') }}</h2>
+                        <p class="lead" v-html="$t('task-description')"></p>
                     </div>
                 </div>
+            </div>
+            <div class="content-subsection">
+                <div class="row row-centered">
+                    <div class="col col-large-4">
 
-                <div class="row">
-                    <div class="col">
-                        <p>Übersetze die originalen Wenker-Sätze in deinen Dialekt, wie du ihn heute sprichst. So können
-                            wir das Schweizerdeutsch von heute mit dem der 1930er Jahre vergleichen.</p>
-                    </div>
-                </div>
+                        <h3 class="subheading centered">{{ $t('form-heading') }}</h3>
+                        <!-- <div class="desc" v-if="project && project.description" v-html="project.description"></div> -->
 
-                <div class="row">
-                    <div class="col">
+                        <activity-details-form :project="project" :regions="[]"></activity-details-form>
 
-                        <div class="form-section">
-
-                            <h3>Ihre Angaben</h3>
-                            <!-- <div class="desc" v-if="project && project.description" v-html="project.description"></div> -->
-
-                            <activity-details-form :project="project" :regions="[]"></activity-details-form>
-
-                            <button class="button button-primary" v-on:click="startProject">Starten</button>
-                            <div v-if="project.name === 'Transkribieren'">
-                                <button class="startProject secondary region-btn" v-on:click="startProjectRegion">Start
-                                    für Ihre Region
-                                </button>
-                            </div>
-
-                        </div>
-
-                        <div class="form-section">
-                            <h4>Sie haben sich schon registiert?</h4>
-                            <router-link to="/register" tag="button" class="button button-secondary">Anmelden</router-link>
+                        <div class="centered button-group">
+                            <button class="button button-primary" v-on:click="startProject">{{ $t('button-start') }}</button>
                         </div>
 
                     </div>
                 </div>
+            </div>
 
+            <div class="content-subsection">
+                <div class="row row-centered">
+                    <div class="col">
+                        <h3 class="subheading centered">{{ $t('login-heading') }}</h3>
+                    </div>
+                    <div class="col centered">
+                        <router-link to="/register" tag="button" class="button button-secondary">{{ $t('button-login') }}</router-link>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-subsection">
                 <div class="row">
                     <div class="col">
                         <comments-list :current_user="user" :comments="comments"></comments-list>
                     </div>
                 </div>
-
             </div>
-        </app-content-section>
+
+        </div>
+    </app-content-section>
 
 </template>
 
