@@ -42,7 +42,7 @@
                             <h3 class="subheading centered">{{ $t('form-heading') }}</h3>
                             <!-- <div class="desc" v-if="project && project.description" v-html="project.description"></div> -->
 
-                            <activity-details-form :project="project" :regions="[]"></activity-details-form>
+                            <activity-details-form :project="project" :allRegions="false"></activity-details-form>
 
                             <div class="centered button-group">
                                 <button class="button button-primary" v-on:click="startProject">{{ $t('button-start') }}</button>

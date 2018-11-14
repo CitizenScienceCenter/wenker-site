@@ -8,7 +8,7 @@ import Vuex from 'vuex'
 import { i18n } from './i18n.js'
 import c3s from 'vuex-c3s'
 
-const swaggerURL = 'https://wenker.citizenscience.ch/api/v1/swagger.json'
+const swaggerURL = 'https://wenker.citizenscience.ch/api/v2/swagger.json'
 Vue.config.productionTip = false
 Vue.use(c3s, { store, swaggerURL })
 Vue.use(VueRouter)
