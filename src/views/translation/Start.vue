@@ -2,7 +2,7 @@
 {
     "de": {
         "heading": "Übersetzen",
-        "task-description": "Übersetze die originalen Wenker-Sätze in deinen Dialekt, wie du ihn heute sprichst. So können wir das Schweizerdeutsch von heute mit dem der 1930er Jahre vergleichen.",
+        "activity-description": "Übersetze die originalen Wenker-Sätze in deinen Dialekt, wie du ihn heute sprichst. So können wir das Schweizerdeutsch von heute mit dem der 1930er Jahre vergleichen.",
         "form-heading": "Ihre Angaben",
         "button-start": "Starten",
         "login-heading": "Sie haben sich schon registiert?",
@@ -30,7 +30,7 @@
                 <div class="row row-centered">
                     <div class="col col-large-8">
                         <h2 class="heading centered">{{ $t('heading') }}</h2>
-                        <p class="lead" v-html="$t('task-description')"></p>
+                        <p class="lead" v-html="$t('activity-description')"></p>
                     </div>
                 </div>
             </div>

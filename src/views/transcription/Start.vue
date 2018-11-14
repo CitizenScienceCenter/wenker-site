@@ -2,7 +2,7 @@
 {
     "de": {
         "heading": "Transkribieren",
-        "task-description": "Die 1700 handgeschriebenen Schweizer Wenker-Bögen müssen genau abgeschrieben werden, um sie digital aufzubereiten. Dafür brauchen wir deine Unterstützung!",
+        "activity-description": "Die 1700 handgeschriebenen Schweizer Wenker-Bögen müssen genau abgeschrieben werden, um sie digital aufzubereiten. Dafür brauchen wir deine Unterstützung!",
         "form-heading": "Ihre Angaben",
         "button-start": "Starten",
         "button-start-region": "Starten mit lokalen Bögen",
@@ -31,7 +31,7 @@
                     <div class="row row-centered">
                         <div class="col col-large-8">
                             <h2 class="heading centered">{{ $t('heading') }}</h2>
-                            <p class="lead" v-html="$t('task-description')"></p>
+                            <p class="lead" v-html="$t('activity-description')"></p>
                         </div>
                     </div>
                 </div>
