@@ -25,15 +25,9 @@
 
                     <comments-list :current_user="user" :comments="comments"></comments-list>
 
-<<<<<<< HEAD
                     <template class="row">
-                        <info-popup :header="'Hilfen'" :info="task_help"></info-popup>
+                        <help-popup :header="'Hilfen'" :info="task_help"></help-popup>
                     </template>
-=======
-        <template class="row">
-            <help-popup :header="'Hilfen'" :info="task_help"></help-popup>
-        </template>
->>>>>>> b5d6b3362b0ed182a6d1568c57ec6b193b0aa403
 
                 </div>
             </div>
@@ -52,18 +46,11 @@
   import ContentSection from '@/components/shared/ContentSection.vue'
 
   export default {
-<<<<<<< HEAD
-        name: "Task",
-        components: {
-            TaskQuestionImage,
-            TaskResponse,
-            'app-content-section': ContentSection
-        },
-=======
     name: 'Task',
     components: {
       TaskQuestionImage,
       TaskResponse,
+      'app-content-section': ContentSection,
       HelpPopup,
       CommentsList
     },
@@ -71,7 +58,6 @@
       specialChars: state => state.consts.specialChars
 
     }),
->>>>>>> b5d6b3362b0ed182a6d1568c57ec6b193b0aa403
     data () {
       return {
         user: {},

@@ -17,11 +17,8 @@
                         </div>
                     </div>
 
-<<<<<<< HEAD
                     <comments-list :current_user="user" :comments="comments"></comments-list>
-=======
-        <help-popup :header="'Hilfen'" :info="task_help"></help-popup>
->>>>>>> b5d6b3362b0ed182a6d1568c57ec6b193b0aa403
+                    <help-popup :header="'Hilfen'" :info="task_help"></help-popup>
 
                     <template v-if="project.name === 'Transkribieren'" class="row">
                         <info-popup :header="'Hilfen'" :info="task_help"></info-popup>
@@ -43,27 +40,18 @@
   import TaskResponse from '@/components/TaskResponse'
   import ContentSection from '@/components/shared/ContentSection.vue'
 
-
   export default {
-<<<<<<< HEAD
-        name: "Task",
-        components: {
-            TaskQuestionText,
-            TaskResponse,
-            'app-content-section': ContentSection
-        },
-=======
     name: 'Task',
     components: {
       TaskQuestionText,
       TaskResponse,
+      'app-content-section': ContentSection,
       CommentsList,
       HelpPopup
     },
     computed: mapState({
       specialChars: state => state.consts.specialChars
     }),
->>>>>>> b5d6b3362b0ed182a6d1568c57ec6b193b0aa403
     data () {
       return {
         user: {},
