@@ -21,24 +21,24 @@ router.beforeEach((to, from, next) => {
     document.title = ''
   }
   next()
-  // if (to.matched.some(record => record.meta.requiresAuth)) {
-  //   if (store.state.user.currentUser) {
-  //     store.dispatch('user/validate').then(v => {
-  //       if (v) {
-  //         next()
-  //       } else {
-  //         store.dispatch('user/generateAnon').then(u => {
-  //           next()
-  //         })
-  //       }
-  //     })
-  //   } else {
-  //     store.dispatch('user/generateAnon').then(u => {
-  //       next()
-  //     })
-  //   }
-  // } else {
-  //   next()
-  // }
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (store.state.c3s.user.currentUser) {
+      store.dispatch('c3s/user/validate').then(v => {
+        if (v) {
+          next()
+        } else {
+          store.dispatch('c3s/user/generateAnon').then(u => {
+            next()
+          })
+        }
+      })
+    } else {
+      store.dispatch('c3s/user/generateAnon').then(u => {
+        next()
+      })
+    }
+  } else {
+    next()
+  }
 
 });

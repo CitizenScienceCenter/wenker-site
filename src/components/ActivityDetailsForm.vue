@@ -65,7 +65,7 @@
       }
     },
     mounted() {
-      console.log(this.$store.c3s)
+      console.log(this.$store)
     },
     methods: {
       updateUserInfo(key, value)
