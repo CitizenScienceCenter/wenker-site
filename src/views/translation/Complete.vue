@@ -1,47 +1,45 @@
 <template>
-    <div>
+    <app-content-section>
+        <div class="content-wrapper">
 
-        <section class="section-content">
-            <div class="content-wrapper">
+            <div class="row">
+                <div class="col">
 
-                <div class="row">
-                    <div class="col col-title">
-
-                        <div class="desc">
-                            <h2> Danke. Du bist der {{ stats.contributor_count }}. Teilnehmer. </h2>
-                        </div>
-
+                    <div class="desc">
+                        <h2> Danke. Du bist der {{ stats.contributor_count }}. Teilnehmer. </h2>
                     </div>
+
                 </div>
-
-                <div class="row" v-if="user && user.username.indexOf('anon') !== -1">
-                    <div class="col col-form">
-
-                        <div class="form-section">
-                            <h3 class="title">Registrieren</h3>
-                            <register-form></register-form>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col col-form">
-
-                        <button @click="startPage" class="secondary">Zurück zur Startseite</button>
-
-                    </div>
-                </div>
-
             </div>
-        </section>
 
-    </div>
+            <div class="row" v-if="user && user.username.indexOf('anon') !== -1">
+                <div class="col">
+
+                    <div class="form-section">
+                        <h3 class="title">Registrieren</h3>
+                        <register-form></register-form>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+
+                    <button @click="startPage" class="button button-secondary">Zurück zur Startseite</button>
+
+                </div>
+            </div>
+
+        </div>
+    </app-content-section>
 </template>
 
 <script>
     import { mapState, mapGetters } from "vuex";
     import RegisterForm from "@/components/register-form.vue"
+    import ContentSection from '@/components/shared/ContentSection.vue'
+
     export default {
         name: "Complete",
         data() {
@@ -63,7 +61,8 @@
             tasks(to, from) {}
         },
         components: {
-            RegisterForm
+            RegisterForm,
+            'app-content-section': ContentSection
         },
         computed: mapState({
         }),

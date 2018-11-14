@@ -57,17 +57,7 @@ export default {
     }
 }
 </script>
-<style lang="scss" scoped>
-    .comments {
-        background-color :moccasin;
-        border: 1px solid;
-        width: 80%;
-        margin-left: 10%;
-    }
-
-    .reply {
-        padding: 2%;
-    }
+<style lang="scss">
 
 </style>
 

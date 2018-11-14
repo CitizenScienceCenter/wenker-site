@@ -1,42 +1,43 @@
 <template>
-<div>
+    <app-content-section>
+        <div class="content-wrapper">
 
-    <section class="section-content">
-      <div class="content-wrapper">
+            <div class="row">
+              <div class="col">
 
-        <div class="row">
-          <div class="col col-form">
+                <h2 class="title">Ändern</h2>
+                <form @submit.prevent="reset">
+                    <div class="form-field">
+                    <label for="pwd">{{ $t("views.user.pwd") }}</label>
+                    <input v-model="password" type="password" id="password" name="password" autocomplete="password" :disabled="loading" />
+                    <span class="error" v-if="errors.len">Muss mehr als 8 Zeichen lang sein.</span>
+                    </div>
+                    <div class="form-field">
+                    <label for="pwd">{{ $t("views.user.conf_pwd") }}</label>
+                    <input v-model="confPassword" type="password" id="password" name="password" autocomplete="password" :disabled="loading" />
+                    <span class="error" v-if="errors.match">Passwörter stimmen nicht überein</span>
+                    </div>
 
-            <h2 class="title">Ändern</h2>
-            <form @submit.prevent="reset">
-                <div class="form-field">
-                <label for="pwd">{{ $t("views.user.pwd") }}</label>
-                <input v-model="password" type="password" id="password" name="password" autocomplete="password" :disabled="loading" />
-                <span class="error" v-if="errors.len">Muss mehr als 8 Zeichen lang sein.</span>
-                </div>
-                <div class="form-field">
-                <label for="pwd">{{ $t("views.user.conf_pwd") }}</label>
-                <input v-model="confPassword" type="password" id="password" name="password" autocomplete="password" :disabled="loading" />
-                <span class="error" v-if="errors.match">Passwörter stimmen nicht überein</span>
-                </div>
+                    <button type="submit" class="button button-primary" :disabled="loading">Ändern</button>
+                    <span class="error" v-if="error">{{error}}</span>
+                </form>
 
-                <button type="submit" class="primary" :disabled="loading">Ändern</button>
-                <span class="error" v-if="error">{{error}}</span>
-            </form>
-
-          </div>
-        </div>
+              </div>
+            </div>
 
       </div>
-    </section>
-
-  </div>
+    </app-content-section>
 </template>
 
 <script>
 import { mapState, mapGetters } from "vuex";
+import ContentSection from '@/components/shared/ContentSection.vue'
+
 export default {
   name: "Reset",
+    components: {
+        'app-content-section': ContentSection
+    },
   data() {
       return {
         oldPassword: "",

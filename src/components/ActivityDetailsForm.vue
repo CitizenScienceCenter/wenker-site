@@ -2,7 +2,7 @@
     <div class="prereq">
         <div v-bind:class="{'invalid': !details.canton}" class="form-field">
             <label>Region Ihres Dialekts</label>
-            <div class="select-wrapper">
+            <div class="custom-select">
                 <select v-model="details.canton" name="canton" id="canton"
                         placeholder="Region you have spent most of your life">
                     <option :key="r.value" v-for="r in regions" :value="r.value">{{r.label}}</option>
@@ -16,7 +16,7 @@
         </div>
         <div v-bind:class="{'invalid': !details.age}" class="form-field">
             <label>Alter</label>
-            <div class="select-wrapper">
+            <div class="custom-select">
                 <select v-model="details.age" name="range" id="range" placeholder="Age Range">
                     <option :key="a.value" v-for="a in ageRange" :value="a.value">{{a.label}}</option>
                 </select>

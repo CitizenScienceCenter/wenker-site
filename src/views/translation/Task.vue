@@ -1,37 +1,48 @@
 <template>
 
-    <div>
+    <app-content-section>
+        <div class="content-wrapper">
 
-        <task-question-text :question="task.content.question"></task-question-text>
+            <div class="row">
+                <div class="col">
 
-        <task-response :responses="task.content.answers"></task-response>
+                    <task-question-text :question="task.content.question"></task-question-text>
 
-        <div class="row">
-            <div class="col col-task-actions">
-                <button v-on:click="endTask" class="secondary">Beenden</button>
-                <button v-on:click="submitTask" class="primary">{{nextTxt}}</button>
+                    <task-response :responses="task.content.answers"></task-response>
+
+                    <div class="row">
+                        <div class="col col-task-actions">
+                            <button v-on:click="endTask" class="button button-secondary">Beenden</button>
+                            <button v-on:click="submitTask" class="button button-primary">{{nextTxt}}</button>
+                        </div>
+                    </div>
+
+                    <comments-list :current_user="user" :comments="comments"></comments-list>
+
+                    <template v-if="project.name === 'Transkribieren'" class="row">
+                        <info-popup :header="'Hilfen'" :info="task_help"></info-popup>
+                    </template>
+
+                </div>
             </div>
+
         </div>
-
-        <comments-list :current_user="user" :comments="comments"></comments-list>
-
-        <template v-if="project.name === 'Transkribieren'" class="row">
-            <info-popup :header="'Hilfen'" :info="task_help"></info-popup>
-        </template>
-
-    </div>
+    </app-content-section>
 
 </template>
 
 <script>
   import TaskQuestionText from '@/components/TaskQuestionText'
   import TaskResponse from '@/components/TaskResponse'
+  import ContentSection from '@/components/shared/ContentSection.vue'
+
 
   export default {
         name: "Task",
         components: {
             TaskQuestionText,
-            TaskResponse
+            TaskResponse,
+            'app-content-section': ContentSection
         },
     data () {
       return {

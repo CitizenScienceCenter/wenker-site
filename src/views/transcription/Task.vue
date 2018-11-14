@@ -1,43 +1,53 @@
 <template>
 
-    <div>
+    <app-content-section>
+        <div class="content-wrapper">
 
-        <task-question-image :question="task.content.question" :img="task.info.path"></task-question-image>
+            <div class="row">
+                <div class="col">
 
-        <task-response :responses="task.content.answers"></task-response>
+                    <task-question-image :question="task.content.question" :img="task.info.path"></task-question-image>
 
-        <div class="special-characters">
-            <label>Sonderzeichen</label>
-            <button v-on:click="insertChar(char)" :key="char" v-for="char in specialChars">{{char}}</button>
-            <!--TODO handle insertion of character to cursor position in CURRENT text box-->
-        </div>
+                    <task-response :responses="task.content.answers"></task-response>
 
-        <div class="row">
-            <div class="col col-task-actions">
-                <button v-on:click="endTask" class="secondary">Beenden</button>
-                <button v-on:click="submitTask" class="primary">{{nextTxt}}</button>
+                    <div class="special-characters">
+                        <label>Sonderzeichen</label>
+                        <button v-on:click="insertChar(char)" :key="char" v-for="char in specialChars">{{char}}</button>
+                        <!--TODO handle insertion of character to cursor position in CURRENT text box-->
+                    </div>
+
+                    <div class="row">
+                        <div class="col col-task-actions">
+                            <button v-on:click="endTask" class="button button-secondary">Beenden</button>
+                            <button v-on:click="submitTask" class="button button-primary">{{nextTxt}}</button>
+                        </div>
+                    </div>
+
+                    <comments-list :current_user="user" :comments="comments"></comments-list>
+
+                    <template class="row">
+                        <info-popup :header="'Hilfen'" :info="task_help"></info-popup>
+                    </template>
+
+                </div>
             </div>
+
         </div>
-
-        <comments-list :current_user="user" :comments="comments"></comments-list>
-
-        <template class="row">
-            <info-popup :header="'Hilfen'" :info="task_help"></info-popup>
-        </template>
-
-    </div>
+    </app-content-section>
 
 </template>
 
 <script>
   import TaskQuestionImage from '@/components/TaskQuestionImage'
   import TaskResponse from '@/components/TaskResponse'
+  import ContentSection from '@/components/shared/ContentSection.vue'
 
   export default {
         name: "Task",
         components: {
             TaskQuestionImage,
-            TaskResponse
+            TaskResponse,
+            'app-content-section': ContentSection
         },
     data () {
       return {

@@ -1,26 +1,41 @@
 <template>
-  <div>
-    <h1 class="title">User Details</h1>
-    <form novalidate disabled>
-      <div v-if="user" class="md-layout">
-        <div>
-          <label for="user.email">Email</label>
-          <input v-model="user.email" type="email" name="email" id="email" autocomplete="email" disabled/>
-        </div>
+  <app-content-section>
+    <div class="content-wrapper">
 
-        <div>
-          <label for="user.email">API Key</label>
-          <input v-model="user.api_key" type="text" name="api" id="api"/>
+      <div class="row">
+        <div class="col">
+
+          <h1 class="title">User Details</h1>
+          <form novalidate disabled>
+            <div v-if="user" class="md-layout">
+              <div>
+                <label for="user.email">Email</label>
+                <input v-model="user.email" type="email" name="email" id="email" autocomplete="email" disabled/>
+              </div>
+
+              <div>
+                <label for="user.email">API Key</label>
+                <input v-model="user.api_key" type="text" name="api" id="api"/>
+              </div>
+            </div>
+          </form>
+
         </div>
       </div>
-    </form>
-  </div>
+
+    </div>
+  </app-content-section>
 </template>
 
 <script>
 import { mapState, mapGetters } from "vuex";
+import ContentSection from '@/components/shared/ContentSection.vue'
+
 export default {
   name: "ViewUser",
+    components: {
+        'app-content-section': ContentSection
+    },
   data() {
     return {
       userId: this.$route.params.id || this.$store.getters["user/id"]

@@ -1,25 +1,23 @@
 <template>
-    <div>
 
-        <section class="section-content">
-
+        <app-content-section>
             <div class="content-wrapper">
 
                 <div class="row">
-                    <div class="col col-title">
+                    <div class="col">
                         <!--<project-info :stats="stats" v-if="project" :project_name="project.name"></project-info>-->
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col col-subtitle">
+                    <div class="col">
                         <p>Übersetze die originalen Wenker-Sätze in deinen Dialekt, wie du ihn heute sprichst. So können
                             wir das Schweizerdeutsch von heute mit dem der 1930er Jahre vergleichen.</p>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col col-form">
+                    <div class="col">
 
                         <div class="form-section">
 
@@ -28,7 +26,7 @@
 
                             <activity-details-form :project="project" :regions="[]"></activity-details-form>
 
-                            <button class="startProject primary" v-on:click="startProject">Starten</button>
+                            <button class="button button-primary" v-on:click="startProject">Starten</button>
                             <div v-if="project.name === 'Transkribieren'">
                                 <button class="startProject secondary region-btn" v-on:click="startProjectRegion">Start
                                     für Ihre Region
@@ -39,18 +37,20 @@
 
                         <div class="form-section">
                             <h4>Sie haben sich schon registiert?</h4>
-                            <router-link to="/register" tag="button" class="secondary">Anmelden</router-link>
+                            <router-link to="/register" tag="button" class="button button-secondary">Anmelden</router-link>
                         </div>
 
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col">
+                        <comments-list :current_user="user" :comments="comments"></comments-list>
+                    </div>
+                </div>
+
             </div>
-
-        </section>
-
-        <comments-list :current_user="user" :comments="comments"></comments-list>
-
-    </div>
+        </app-content-section>
 
 </template>
 
@@ -58,6 +58,7 @@
   import { mapState } from 'vuex'
   import CommentsList from '@/components/comments-list.vue'
   import ActivityDetailsForm from '@/components/ActivityDetailsForm'
+  import ContentSection from '@/components/shared/ContentSection.vue'
 
   export default {
     name: 'Start',
@@ -80,7 +81,8 @@
     },
     components: {
       ActivityDetailsForm,
-      CommentsList
+      CommentsList,
+        'app-content-section': ContentSection
     },
     computed: mapState({}),
     mounted () {

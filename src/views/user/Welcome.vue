@@ -1,11 +1,9 @@
 <template>
-  <div>
-
-    <section class="section-content">
-      <div class="content-wrapper">
+  <app-content-section>
+    <div class="content-wrapper">
 
         <div class="row">
-          <div class="col col-form">
+          <div class="col">
 
             <div class="form-section">
 
@@ -23,18 +21,22 @@
           </div>
         </div>
 
-      </div>
-    </section>
+    </div>
+  </app-content-section>
 
-  </div>
 </template>
 <script>
+
 import RegisterForm from "@/components/login-form.vue";
 import LoginForm from "@/components/register-form.vue";
+import ContentSection from '@/components/shared/ContentSection.vue'
+
 export default {
   name: "Welcome",
   components: {
-    RegisterForm, LoginForm
+      RegisterForm,
+      LoginForm,
+      'app-content-section': ContentSection
   }
 }
 </script>
