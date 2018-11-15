@@ -18,9 +18,11 @@
     "section-contribute-2-text": "Übersetze die originalen Wenker-Sätze in deinen Dialekt, wie du ihn heute sprichst. So können wir das Schweizerdeutsch von heute mit dem der 1930er Jahre vergleichen.",
     "section-contribute-2-button": "Übersetzen",
 
-    "section-wenker-heading": "Georg Wenker",
-    "section-wenker-text": "Die 1700 handgeschriebenen Schweizer Wenker-Bögen müssen genau abgeschrieben werden, um sie digital aufzubereiten. Dafür brauchen wir deine Unterstützung!",
-    "section-wenker-button": "Mehr über Wenker",
+    "section-wenker-heading": "Die Geschichte eines Dialektliebhabers",
+    "section-wenker-text": "Die Wenkersätze aus der Schweizer Sprachstudie haben eine interessante Vorgeschichte. Der junge Sprachwissenschaftler Georg Wenker hat sie aus einem ganz bestimmten Grund entwickelt.",
+    "section-wenker-button": "Mehr zu Georg Wenker",
+
+    "section-video-heading": "Prof. Elvira Glaser erklärt",
 
     "section-newsletter-heading": "Sign up for our Newsletter"
   },
@@ -42,9 +44,11 @@
     "section-contribute-2-text": "Übersetze die originalen Wenker-Sätze in deinen Dialekt, wie du ihn heute sprichst. So können wir das Schweizerdeutsch von heute mit dem der 1930er Jahre vergleichen.",
     "section-contribute-2-button": "Übersetzen",
 
-    "section-wenker-heading": "Georg Wenker",
-    "section-wenker-text": "Die 1700 handgeschriebenen Schweizer Wenker-Bögen müssen genau abgeschrieben werden, um sie digital aufzubereiten. Dafür brauchen wir deine Unterstützung!",
-    "section-wenker-button": "Mehr über Wenker",
+    "section-wenker-heading": "Die Geschichte eines Dialektliebhabers",
+    "section-wenker-text": "Die Wenkersätze aus der Schweizer Sprachstudie haben eine interessante Vorgeschichte. Der junge Sprachwissenschaftler Georg Wenker hat sie aus einem ganz bestimmten Grund entwickelt.",
+    "section-wenker-button": "Mehr zu Georg Wenker",
+
+    "section-video-heading": "Prof. Elvira Glaser erklärt",
 
     "section-newsletter-heading": "Sign up for our Newsletter"
   }
@@ -158,6 +162,26 @@
               <p class="centered left-aligned-large">
                 <router-link tag="button" to="/activities" class="button button-secondary button-secondary-inverted">{{ $t('section-wenker-button') }}</router-link>
               </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </app-content-section>
+
+
+    <app-content-section>
+      <div class="content-wrapper">
+        <div class="row row-centered">
+
+          <div class="col col-10 col-large-6 scroll-effect">
+            <div>
+              <h2 class="heading centered">{{ $t('section-video-heading') }}</h2>
+
+              <div class='embed-container'>
+                <iframe src='https://www.youtube.com/embed/oFAI4rgYkt0' frameborder='0' allowfullscreen></iframe>
+              </div>
+
             </div>
           </div>
 
