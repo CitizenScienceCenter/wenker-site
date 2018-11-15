@@ -1,7 +1,7 @@
 <i18n>
 {
   "de": {
-    "cover-heading": "Schweizer­deutsch\n1930 / 2020",
+    "cover-heading": "Schweizer­deutsch<br/>1930 / 2020",
     "cover-subheading": "Finde deinen Dialekt in den 40 Wenker-Sätzen.",
     "cover-button-projects": "Transkribieren",
     "cover-button-your-project": "Übersetzen",
@@ -18,18 +18,14 @@
     "section-contribute-2-text": "Übersetze die originalen Wenker-Sätze in deinen Dialekt, wie du ihn heute sprichst. So können wir das Schweizerdeutsch von heute mit dem der 1930er Jahre vergleichen.",
     "section-contribute-2-button": "Übersetzen",
 
-    "section-build-project-heading": "Do you have a project in mind? We can help you.",
-    "section-build-project-text": "If you have an idea for a Citizen Science project, get in touch with us. We can help you evaluate your idea and potentially provide you with expertise and tools to develop, set up, and run your project.",
-
-    "section-about-heading": "A Joint Initiative",
-    "section-about-text": "Run jointly by the University of Zurich and ETH Zurich, the Center supports Citizen Science initiatives at both universities and aims at developing projects that support sustainable development in Switzerland and beyond.",
-    "section-about-text-2": "The Citizen Science Center Zurich adheres to the principles of Open Science and operates in a fully transparent manner.",
-    "section-about-button": "Learn more about us",
+    "section-wenker-heading": "Georg Wenker",
+    "section-wenker-text": "Die 1700 handgeschriebenen Schweizer Wenker-Bögen müssen genau abgeschrieben werden, um sie digital aufzubereiten. Dafür brauchen wir deine Unterstützung!",
+    "section-wenker-button": "Mehr über Wenker",
 
     "section-newsletter-heading": "Sign up for our Newsletter"
   },
   "en": {
-    "cover-heading": "Swiss German \n1930 / 2020",
+    "cover-heading": "Swiss German<br/>1930 / 2020",
     "cover-subheading": "Finde deinen Dialekt in den 40 Wenker-Sätzen.",
     "cover-button-projects": "Transkribieren",
     "cover-button-your-project": "Übersetzen",
@@ -46,13 +42,9 @@
     "section-contribute-2-text": "Übersetze die originalen Wenker-Sätze in deinen Dialekt, wie du ihn heute sprichst. So können wir das Schweizerdeutsch von heute mit dem der 1930er Jahre vergleichen.",
     "section-contribute-2-button": "Übersetzen",
 
-    "section-build-project-heading": "Do you have a project in mind? We can help you.",
-    "section-build-project-text": "If you have an idea for a Citizen Science project, get in touch with us. We can help you evaluate your idea and potentially provide you with expertise and tools to develop, set up, and run your project.",
-
-    "section-about-heading": "A Joint Initiative",
-    "section-about-text": "Run jointly by the University of Zurich and ETH Zurich, the Center supports Citizen Science initiatives at both universities and aims at developing projects that support sustainable development in Switzerland and beyond.",
-    "section-about-text-2": "The Citizen Science Center Zurich adheres to the principles of Open Science and operates in a fully transparent manner.",
-    "section-about-button": "Learn more about us",
+    "section-wenker-heading": "Georg Wenker",
+    "section-wenker-text": "Die 1700 handgeschriebenen Schweizer Wenker-Bögen müssen genau abgeschrieben werden, um sie digital aufzubereiten. Dafür brauchen wir deine Unterstützung!",
+    "section-wenker-button": "Mehr über Wenker",
 
     "section-newsletter-heading": "Sign up for our Newsletter"
   }
@@ -65,7 +57,7 @@
     <app-cover imageUrl="img/cover.jpg">
       <div class="row row-centered">
         <div class="col col-large-8">
-          <h2 class="cover-heading scroll-effect" style="white-space: pre-wrap">{{ $t('cover-heading') }}</h2>
+          <h2 class="cover-heading scroll-effect" v-html="$t('cover-heading')"></h2>
         </div>
       </div>
       <div class="row row-centered">
@@ -90,7 +82,7 @@
           <div class="col col-10 col-large-6 col-wrapping col-large-no-bottom-margin scroll-effect">
             <div>
               <div class="extra-padding-large-h">
-                <img src="img/wenker-text.jpg" style="border-radius:50%" />
+                <img src="img/graphic-sheet.png" />
               </div>
             </div>
           </div>
@@ -117,10 +109,10 @@
             <h2 class="heading centered">{{ $t('section-contribute-heading') }}</h2>
           </div>
 
-          <div class="col col-tablet-portrait-10 col-large-4 col-wrapping col-large-no-bottom-margin scroll-effect scroll-effect-delayed-2">
+          <div class="col col-tablet-portrait-10 col-large-4 col-large-after-1 col-wrapping col-large-no-bottom-margin scroll-effect scroll-effect-delayed-2">
             <div class="row row-centered">
               <div class="col col-6 col-tablet-portrait-4 col-large-6 extra-margin-bottom">
-                <img src="img/graphic-community.png"/>
+                <img src="img/graphic-transcribe.png"/>
               </div>
             </div>
             <h3 class="subheading centered">{{ $t('section-contribute-1-heading') }}</h3>
@@ -132,7 +124,7 @@
           <div class="col col-tablet-portrait-10 col-large-4 col-wrapping col-no-bottom-margin scroll-effect scroll-effect-delayed-3">
             <div class="row row-centered">
               <div class="col col-6 col-tablet-portrait-4 col-large-6 extra-margin-bottom">
-                <img src="img/graphic-knowledge.png"/>
+                <img src="img/graphic-translate.png"/>
               </div>
             </div>
             <h3 class="subheading centered">{{ $t('section-contribute-2-heading') }}</h3>
@@ -154,17 +146,17 @@
           <div class="col col-10 col-large-6 col-wrapping col-large-no-bottom-margin scroll-effect">
             <div>
               <div class="extra-padding-large-h">
-                <img src="img/wenker.jpg" style="border-radius:50%" />
+                <img src="img/wenker_square.jpg" style="border-radius:50%" />
               </div>
             </div>
           </div>
 
           <div class="col col-large-5 col-large-before-1 col-wrapping col-large-no-bottom-margin scroll-effect scroll-effect-delayed-2">
             <div>
-              <h2 class="heading centered left-aligned-large">{{ $t('section-explanation-heading') }}</h2>
-              <p>{{ $t('section-explanation-text') }}</p>
+              <h2 class="heading centered left-aligned-large">{{ $t('section-wenker-heading') }}</h2>
+              <p>{{ $t('section-wenker-text') }}</p>
               <p class="centered left-aligned-large">
-                <router-link tag="button" to="/activities" class="button button-secondary button-secondary-inverted">{{ $t('section-explanation-button') }}</router-link>
+                <router-link tag="button" to="/activities" class="button button-secondary button-secondary-inverted">{{ $t('section-wenker-button') }}</router-link>
               </p>
             </div>
           </div>
