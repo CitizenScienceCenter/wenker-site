@@ -17,10 +17,11 @@ Vue.use(VueScrollTo, {
 })
 Vue.use(Vuex)
 
-// eslint-disable-next-line
-var vm = new Vue({
+new Vue({
   store,
   router,
   i18n,
-  render: h => h(App)
+  render: h => h(App),
+  beforeCreate: function () {
+  }
 }).$mount('#app')

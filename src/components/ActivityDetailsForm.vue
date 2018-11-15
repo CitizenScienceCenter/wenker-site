@@ -65,7 +65,6 @@
       }
     },
     mounted() {
-      console.log(this.$store)
     },
     methods: {
       updateUserInfo(key, value)
