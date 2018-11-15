@@ -9,7 +9,6 @@
 
 <template>
     <div class="prereq">
-        {{ details.canton }}
         <div v-bind:class="{'invalid': !details.canton}" class="form-field">
             <label>{{ $t('label-region') }}</label>
             <div class="custom-select">

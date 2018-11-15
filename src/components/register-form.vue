@@ -1,24 +1,42 @@
+<i18n>
+  {
+    "de": {
+      "label-email": "Email",
+      "label-password": "Passwort",
+      "label-password-repeat": "Passwort wiederholen",
+      "button-register": "Registrieren"
+    },
+    "en": {
+      "label-email": "Email",
+      "label-password": "Password",
+      "label-password-repeat": "Repeat Password",
+      "button-register": "Register"
+    }
+  }
+</i18n>
+
+
 <template>
 
   <form @submit.prevent="register">
     <div class="form-field">
-      <label for="email">{{ $t("views.user.email") }}</label>
+      <label for="email">{{ $t("label-email") }}</label>
       <input v-model="email" type="email" name="email" id="email" autocomplete="email" :disabled="loading" />
       <span class="error" v-if="errors.empty">Du musst eine E-Mail angeben.</span>
     </div>
 
     <div class="form-field">
-      <label for="pwd">{{ $t("views.user.pwd") }}</label>
+      <label for="pwd">{{ $t("label-password") }}</label>
       <input v-model="password" type="password" id="password" name="password" autocomplete="password" :disabled="loading" />
       <span class="error" v-if="errors.len">Muss mehr als 8 Zeichen lang sein.</span>
     </div>
     <div class="form-field">
-      <label for="pwd">{{ $t("views.user.conf_pwd") }}</label>
+      <label for="pwd">{{ $t("label-password-repeat") }}</label>
       <input v-model="confPassword" type="password" id="password" name="password" autocomplete="password" :disabled="loading" />
       <span class="error" v-if="errors.match">Passwörter stimmen nicht überein</span>
     </div>
 
-    <button type="submit" class="primary" :disabled="loading">Registrieren</button>
+    <button type="submit" class="button button-primary" :disabled="loading">Registrieren</button>
   </form>
 
 </template>
@@ -69,4 +87,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
+  .form-field {
+    display: block;
+  }
 </style>

@@ -1,22 +1,40 @@
+<i18n>
+    {
+        "de": {
+            "label-email": "Email",
+            "label-password": "Passwort",
+            "button-login": "Anmelden",
+            "button-forgotten": "Passwort vergessen?"
+        },
+        "en": {
+            "label-email": "Email",
+            "label-password": "Password",
+            "button-login": "Anmelden",
+            "button-forgotten": "Passwort vergessen?"
+        }
+    }
+</i18n>
+
+
 <template>
     <div>
         <form @submit.prevent="login">
             <div class="form-field">
-                <label for="email">{{ $t('views.user.email') }}</label>
+                <label for="email">{{ $t('label-email') }}</label>
                 <input v-model="email" type="email" name="email" id="email" autocomplete="email" :disabled="loading"/>
             </div>
 
             <div class="form-field">
-                <label for="pwd">{{ $t('views.user.pwd') }}</label>
+                <label for="pwd">{{ $t('label-password') }}</label>
                 <input v-model="password" type="password" id="password" name="password" autocomplete="password"
                        :disabled="loading"/>
             </div>
             <span class="error" v-if="error">{{error}}</span>
 
-            <button type="submit" class="primary" :disabled="loading">Anmelden</button>
+            <button type="submit" class="button button-primary" :disabled="loading">{{ $t('button-login') }}</button>
         </form>
         <br>
-        <button @click="reset" class="secondary" :disabled="loading">Vergessen?</button>
+        <button @click="reset" class="button button-secondary" :disabled="loading">{{ $t('button-forgotten') }}</button>
     </div>
 </template>
 
@@ -70,4 +88,9 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+    .form-field {
+        display: block;
+    }
+
 </style>

@@ -1,20 +1,36 @@
+<i18n>
+  {
+    "de": {
+      "heading": "Passwort zurücksetzen",
+      "label-email": "Email",
+      "label-api-key": "API Key"
+    },
+    "en": {
+      "heading": "EN Passwort zurücksetzen",
+      "label-email": "Email",
+      "label-api-key": "API Key"
+    }
+  }
+</i18n>
+
 <template>
   <app-content-section>
     <div class="content-wrapper">
 
-      <div class="row">
-        <div class="col">
+      <div class="row row-centered">
+        <div class="col col-large-6">
 
-          <h1 class="title">User Details</h1>
+          <h2 class="heading">{{ $t('heading') }}</h2>
+
           <form novalidate disabled>
             <div v-if="user" class="md-layout">
               <div>
-                <label for="user.email">Email</label>
+                <label for="user.email">{{ $t('label-email') }}</label>
                 <input v-model="user.email" type="email" name="email" id="email" autocomplete="email" disabled/>
               </div>
 
               <div>
-                <label for="user.email">API Key</label>
+                <label for="user.email">{{ $t('label-api-key') }}</label>
                 <input v-model="user.api_key" type="text" name="api" id="api"/>
               </div>
             </div>

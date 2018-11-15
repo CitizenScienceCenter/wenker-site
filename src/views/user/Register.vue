@@ -2,7 +2,13 @@
   <app-content-section>
     <div class="content-wrapper">
 
-      <register-form></register-form>
+      <div class="row row-centered">
+        <div class="col col-large-6">
+
+          <register-form></register-form>
+
+        </div>
+      </div>
 
     </div>
   </app-content-section>

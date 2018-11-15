@@ -1,11 +1,22 @@
+<i18n>
+  {
+    "de": {
+      "heading": "Anmelden"
+    },
+    "en": {
+      "heading": "EN: Fragen und Antworten"
+    }
+  }
+</i18n>
+
 <template>
   <app-content-section>
     <div class="content-wrapper">
 
-      <div class="row">
-        <div class="col">
+      <div class="row row-centered">
+        <div class="col col-large-6">
 
-          <h2 class="title">Anmelden</h2>
+          <h2 class="heading">Anmelden</h2>
           <login-form></login-form>
 
         </div>
