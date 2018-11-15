@@ -1,24 +1,42 @@
+<i18n>
+{
+"de": {
+        "heading": "Passwort zurücksetzen",
+        "label-email": "Email",
+        "label-password": "Passwort",
+        "button-reset": "Zurücksetzen"
+    },
+    "en": {
+        "heading": "EN Passwort zurücksetzen",
+        "label-email": "Email",
+        "label-password": "Password",
+        "button-reset": "Reset"
+    }
+}
+</i18n>
+
+
 <template>
     <app-content-section>
         <div class="content-wrapper">
 
-            <div class="row">
-              <div class="col">
+            <div class="row row-centered">
+              <div class="col col-large-6">
 
-                <h2 class="title">Ändern</h2>
+                <h2 class="heading">{{ $t('heading') }}</h2>
                 <form @submit.prevent="reset">
                     <div class="form-field">
-                    <label for="pwd">{{ $t("views.user.pwd") }}</label>
+                    <label for="pwd">{{ $t("label-email") }}</label>
                     <input v-model="password" type="password" id="password" name="password" autocomplete="password" :disabled="loading" />
                     <span class="error" v-if="errors.len">Muss mehr als 8 Zeichen lang sein.</span>
                     </div>
                     <div class="form-field">
-                    <label for="pwd">{{ $t("views.user.conf_pwd") }}</label>
+                    <label for="pwd">{{ $t("label-password") }}</label>
                     <input v-model="confPassword" type="password" id="password" name="password" autocomplete="password" :disabled="loading" />
                     <span class="error" v-if="errors.match">Passwörter stimmen nicht überein</span>
                     </div>
 
-                    <button type="submit" class="button button-primary" :disabled="loading">Ändern</button>
+                    <button type="submit" class="button button-primary" :disabled="loading">{{ $t('button-reset') }}</button>
                     <span class="error" v-if="error">{{error}}</span>
                 </form>
 

@@ -1,17 +1,33 @@
+<i18n>
+  {
+    "de": {
+      "heading": "Passwort zurücksetzen",
+      "label-email": "Passwort",
+      "button-reset": "Zurücksetzen"
+    },
+    "en": {
+      "heading": "EN: Passwort Zurücksetzen",
+      "label-email": "Passwort",
+      "button-reset": "Reset"
+    }
+  }
+</i18n>
+
+
 <template>
   <app-content-section>
     <div class="content-wrapper">
 
-        <div class="row">
-          <div class="col">
+        <div class="row row-centered">
+          <div class="col col-large-6">
 
-            <h2 class="title">Zurücksetzen</h2>
+            <h2 class="heading">{{ $t('heading') }}</h2>
             <form @submit.prevent="request">
               <div class="form-field">
-                <label for="email">{{ $t("views.user.email") }}</label>
+                <label for="email">{{ $t("label-email") }}</label>
                 <input v-model="email" type="email" name="email" id="email" autocomplete="email" :disabled="loading" />
               </div>
-              <button type="submit" class="button button-primary" :disabled="loading">Zurücksetzen</button>
+              <button type="submit" class="button button-primary" :disabled="loading">{{ $t('button-reset') }}</button>
           </form>
           <p v-if="success" class="success">Bitte überprüfe deine E-Mails</p>
 
@@ -54,3 +70,11 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+
+  .form-field {
+    display: block;
+  }
+
+</style>

@@ -2,8 +2,8 @@
   <app-content-section>
     <div class="content-wrapper">
 
-        <div class="row">
-          <div class="col">
+        <div class="row row-centered">
+          <div class="col col-large-6">
 
             <div class="form-section">
 
