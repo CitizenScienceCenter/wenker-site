@@ -10,7 +10,7 @@ import c3s from 'vuex-c3s'
 
 const swaggerURL = 'http://localhost:8080/api/v2/swagger.json'
 Vue.config.productionTip = false
-Vue.use(c3s, { store, swaggerURL })
+Vue.use(c3s.plugin, { store, swaggerURL })
 Vue.use(VueRouter)
 Vue.use(VueScrollTo, {
   offset: -32
