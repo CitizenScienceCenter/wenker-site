@@ -33,12 +33,11 @@ router.beforeEach((to, from, next) => {
         }
       })
     } else {
-      console.log(store)
-      setTimeout(() => {
+      // setTimeout(() => {
         store.dispatch('c3s/user/generateAnon').then(u => {
           next()
         })
-      }, 1000)
+      // }, 1000)
 
     }
   } else {

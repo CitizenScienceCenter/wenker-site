@@ -17,11 +17,22 @@ Vue.use(VueScrollTo, {
 })
 Vue.use(Vuex)
 
-new Vue({
-  store,
-  router,
-  i18n,
-  render: h => h(App),
-  beforeCreate: function () {
+store.watch(
+  (state) => state.c3s,
+  (value) => {
+    console.log(value)
+    if (value !== null) {
+      console.log('loaded')
+      new Vue({
+        store,
+        router,
+        i18n,
+        render: h => h(App),
+        beforeCreate: function () {
+        }
+      }).$mount('#app')
+    }
   }
-}).$mount('#app')
+)
+
+
