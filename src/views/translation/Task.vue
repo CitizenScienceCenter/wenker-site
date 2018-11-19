@@ -20,10 +20,6 @@
                     <comments-list :current_user="user" :comments="comments"></comments-list>
                     <help-popup :header="'Hilfen'" :info="task_help"></help-popup>
 
-                    <template v-if="project.name === 'Transkribieren'" class="row">
-                        <info-popup :header="'Hilfen'" :info="task_help"></info-popup>
-                    </template>
-
                 </div>
             </div>
 
@@ -35,7 +31,7 @@
 <script>
   import { mapState } from 'vuex'
   import HelpPopup from '@/components/help-popup'
-  import CommentsList from '@/components/comment'
+  import CommentsList from '@/components/comments-list'
   import TaskQuestionText from '@/components/TaskQuestionText'
   import TaskResponse from '@/components/TaskResponse'
   import ContentSection from '@/components/shared/ContentSection.vue'
@@ -52,12 +48,18 @@
     computed: mapState({
       specialChars: state => state.consts.specialChars
     }),
+    mounted() {
+      console.log(this.comments)
+    },
     data () {
       return {
         user: {},
         task_help: '',
         nextTxt: 'Next',
-        comments: [],
+        comments: [{
+            user: 'jfkdf',
+            text: 'fhjkdfkjd'
+        }],
         task: {
           info: {
             path: 'https://cdn.pixabay.com/photo/2018/10/01/20/38/meteora-3717220_1280.jpg'

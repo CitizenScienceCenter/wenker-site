@@ -67,7 +67,7 @@
       regions: state => state.consts.swissCantons,
       otherRegions: state => state.consts.otherRegions,
       ageRange: state => state.consts.ageRange,
-      user: state => state.c3s.user.currentUser
+      // user: state => state.c3s.user.currentUser
     }),
     mounted() {
     },
@@ -75,18 +75,18 @@
       updateUserInfo(key, value)
       {
         // TODO deploy update to store (get user info and assign)
-        let updatedUser = Object.assign({}, this.user['info'])
-        // if (updatedUser.hasOwnProperty('info')) {
-        //   if(updatedUser['info'] === null || updatedUser['info'].keys().length === 0) {
-        //     updatedUser['info'] = {}
-        //   }
-          updatedUser[key] = value
-          console.log(updatedUser)
-          this.$store.dispatch('c3s/user/updateUser', [this.user.id, {'info': updatedUser}]).then(u => {
-            console.log(u)
-
-            console.log('User Details Updated')
-          })
+        // let updatedUser = Object.assign({}, this.user['info'])
+        // // if (updatedUser.hasOwnProperty('info')) {
+        // //   if(updatedUser['info'] === null || updatedUser['info'].keys().length === 0) {
+        // //     updatedUser['info'] = {}
+        // //   }
+        //   updatedUser[key] = value
+        //   console.log(updatedUser)
+        //   this.$store.dispatch('c3s/user/updateUser', [this.user.id, {'info': updatedUser}]).then(u => {
+        //     console.log(u)
+        //
+        //     console.log('User Details Updated')
+        //   })
         // } else {
         //   console.log('User is null, not updating')
         // }
@@ -101,6 +101,9 @@
         errors: {
           canton: false,
           age: false
+        },
+        user: {
+
         }
       }
     }

@@ -129,7 +129,7 @@
     },
     methods: {
       startProject () {
-        this.router.push({ name: 'TranscribeTask' })
+        this.$router.push({ name: 'TranslateTask' })
       },
       startProjectRegion () {
       }

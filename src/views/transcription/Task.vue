@@ -6,9 +6,9 @@
             <div class="row">
                 <div class="col">
 
-                    <task-question-image :question="task.content.question" :img="task.info.path"></task-question-image>
+                    <task-question-image :question="task.content.question" :imgPath="task.info.path"></task-question-image>
 
-                    <task-response :responses="task.content.answers"></task-response>
+                    <task-response></task-response>
 
                     <div class="special-characters">
                         <label>Sonderzeichen</label>
@@ -40,7 +40,7 @@
 <script>
   import { mapState } from 'vuex'
   import HelpPopup from '@/components/help-popup'
-  import CommentsList from '@/components/comment'
+  import CommentsList from '@/components/comments-list'
   import TaskQuestionImage from '@/components/TaskQuestionImage'
   import TaskResponse from '@/components/TaskResponse'
   import ContentSection from '@/components/shared/ContentSection.vue'

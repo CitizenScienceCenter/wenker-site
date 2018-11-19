@@ -1,17 +1,18 @@
 <template>
     <div class="image-browser-frame">
-        <div v-if="img" class="image-browser">
+        <div class="image-browser">
             <croppa v-model="croppaSettings" canvas-color="transparent"
                     :prevent-white-space="true"
                     :show-remove-button="false"
                     :show-loading="true"
                     :loading-size="100"
                     :zoom-speed="5"
-                    :placeholder="' '"
+                    :placeholder="'Loading'"
                     :accept="'image/*'"
-                    :initial-image="img"
+                    :initial-image="imgPath"
                     initial-position="top left"
                     auto-sizing>
+                <img slot="initial" :src="imgPath" />
             </croppa>
 
             <button @click="zoom(true)" class="primary zoom zoom-in"><img src=""></button>
@@ -21,15 +22,30 @@
 </template>
 
 <script>
-    export default {
-        name: "TaskQuestionImage",
-        data() {
-            return {
-                croppaSettings: {},
-                img: '' // TODO load template image from web here
-            }
-        }
+  export default {
+    name: 'TaskQuestionImage',
+    props: {
+      // question: {
+      //   type: Object,
+      //   default: () => {
+      //     return {}
+      //   }
+      // },
+      imgPath: {
+        type: String,
+        default: ""
+      }
+    },
+    data () {
+      return {
+        croppaSettings: null,
+      }
+    },
+    mounted () {
+      console.log(this.img)
+
     }
+  }
 </script>
 
 <style scoped>
