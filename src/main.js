@@ -7,6 +7,7 @@ import store from './store/store.js'
 import Vuex from 'vuex'
 import { i18n } from './i18n.js'
 import c3s from 'vuex-c3s'
+import Croppa from 'vue-croppa'
 
 const swaggerURL = 'http://localhost:8080/api/v2/swagger.json'
 Vue.config.productionTip = false
@@ -15,6 +16,7 @@ Vue.use(VueRouter)
 Vue.use(VueScrollTo, {
   offset: -32
 })
+Vue.use(Croppa)
 Vue.use(Vuex)
 
 store.watch(

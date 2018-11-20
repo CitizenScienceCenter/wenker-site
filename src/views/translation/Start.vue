@@ -88,7 +88,6 @@
       return {
         project: {},
         stats: {},
-        user: {},
         comments: []
       }
     },

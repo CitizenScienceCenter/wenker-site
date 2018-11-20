@@ -1,6 +1,6 @@
 <template>
     <div class="image-browser-frame">
-        <div v-if="img" class="image-browser">
+        <div v-if="imgPath" class="image-browser">
             <croppa v-model="croppaSettings" canvas-color="transparent"
                     :prevent-white-space="true"
                     :show-remove-button="false"
@@ -9,9 +9,9 @@
                     :zoom-speed="5"
                     :placeholder="' '"
                     :accept="'image/*'"
-                    :initial-image="img"
                     initial-position="top left"
                     auto-sizing>
+                <img slot="initial" :src="imgPath" />
             </croppa>
 
             <button @click="zoom(true)" class="primary zoom zoom-in"><img src=""></button>
@@ -23,12 +23,20 @@
 <script>
     export default {
         name: "TaskQuestionImage",
+        props: {
+            imgPath: {
+                type: String
+            }
+        },
         data() {
             return {
-                croppaSettings: {},
-                img: '' // TODO load template image from web here
+                croppaSettings: {}
             }
+        },
+        mounted() {
+
         }
+
     }
 </script>
 

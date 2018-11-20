@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col">
 
-                    <task-question-image :question="task.content.question" :img="task.info.path"></task-question-image>
+                    <task-question-image v-if="media.length > 0" :question="task.content.question" :imgPath="media[0].path"></task-question-image>
 
                     <task-response :responses="task.content.answers"></task-response>
 
@@ -64,7 +64,6 @@
         }),
         watch: {
             '$route.query.count'(to, from) {
-                // TODO dispatch task retrieval
                 this.loadTask(to)
             }
         },
@@ -118,12 +117,13 @@
                     "offset": count - 1
                 };
                 if (this.$route.query.hasOwnProperty('region')) {
-                    taskQuery['where']['info.region']
+                    const userRegion = this.$route.query['region']
+                    taskQuery['where']["info ->> 'SchoolRegion'"] = {'op': 'e', 'val': userRegion, "join": "a"}
                 }
                 this.$store.dispatch('c3s/task/getTasks', taskQuery).then(t => {
-                    if (t.body.length > 0) {
+                    if (t.body && t.body.length > 0) {
                         const tID = t.body[0]['id'];
-                        this.$store.dispatch('c3s/comments/getCommentsForID', [tID, 'c3s/task/SET_COMMENTS']);
+                        // this.$store.dispatch('c3s/comments/getCommentsForID', [tID, 'c3s/task/SET_COMMENTS']);
                         const mediaQuery = {
                             "select": {
                                 "fields": [
@@ -141,9 +141,12 @@
                             },
                             "limit": 10
                         };
-                        // TODO test error on no response
-                        this.$store.dispatch('c3s/media/getMedia', [mediaQuery, 'c3s/task/SET_MEDIA']).then(m => {
-                            console.log(m.body)
+                        this.$store.dispatch('c3s/media/getMedia', [mediaQuery, undefined]).then(m => {
+                            let media = m.body.slice();
+                            for (let index in media) {
+                                media[index].path = media[index].path.replace('./static', 'https://wenker.citizenscience.ch/files')
+                            }
+                            this.$store.commit('c3s/task/SET_MEDIA', media)
                         })
                     } else {
                         //    TODO redirect to error page or explain no tasks found

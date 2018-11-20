@@ -26,9 +26,8 @@ router.beforeEach((to, from, next) => {
         if (v) {
           next()
         } else {
-          store.dispatch('c3s/user/generateAnon').then(u => {
-            next()
-          })
+          // TODO error here with user not validated
+            this.push({name: 'Login'})
         }
       })
     } else {

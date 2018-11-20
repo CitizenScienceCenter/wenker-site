@@ -13,7 +13,7 @@
             <label>{{ $t('label-region') }}</label>
             <div class="custom-select">
                 <select v-model="details.canton" name="canton" id="canton">
-                    <option :key="r.value" v-for="r in regions" :value="r.value">{{r.label}}</option>
+                    <option :key="r.value" v-for="r in regions" :value="r.label">{{r.label}}</option>
                     <template v-if="allRegions">
                         <option disabled>--------------</option>
                         <option :key="o.value" v-for="o in otherRegions" :value="o.value">{{o.label}}</option>
@@ -78,7 +78,6 @@
             user: state => state.c3s.user.currentUser
         }),
         mounted() {
-            console.log(this.errors)
             if (this.user && this.user.info && this.user.info.ageRange) {
                 this.details = this.user.info;
             }
@@ -92,10 +91,7 @@
                 //     updatedUser['info'] = {}
                 //   }
                 updatedUser[key] = value
-                console.log(updatedUser)
                 this.$store.dispatch('c3s/user/updateUser', [this.user.id, {'info': updatedUser}]).then(u => {
-                    console.log(u)
-
                     console.log('User Details Updated')
                 })
                 // } else {

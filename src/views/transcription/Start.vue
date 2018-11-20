@@ -126,7 +126,6 @@
                     'e4b5ebc5-47a2-430b-84a9-a03b1d4dda34',
                     false
                 ]).then(a => {
-                console.log(a)
             })
             // this.$store
             //   .dispatch("project/getProject", [
