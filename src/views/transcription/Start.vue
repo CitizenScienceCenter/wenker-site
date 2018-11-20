@@ -1,14 +1,14 @@
 <i18n>
     {
     "de": {
-        "heading": "Transkribieren",
-        "activity-description": "Die 1700 handgeschriebenen Schweizer Wenker-Bögen müssen genau abgeschrieben werden, um sie digital aufzubereiten. Dafür brauchen wir deine Unterstützung!",
-        "form-heading": "Ihre Angaben",
-        "button-start": "Starten",
-        "button-start-region": "Starten mit lokalen Bögen",
-        "login-heading": "Sie haben sich schon registiert?",
-        "button-login": "Anmelden"
-        }
+    "heading": "Transkribieren",
+    "activity-description": "Die 1700 handgeschriebenen Schweizer Wenker-Bögen müssen genau abgeschrieben werden, um sie digital aufzubereiten. Dafür brauchen wir deine Unterstützung!",
+    "form-heading": "Ihre Angaben",
+    "button-start": "Starten",
+    "button-start-region": "Starten mit lokalen Bögen",
+    "login-heading": "Sie haben sich schon registiert?",
+    "button-login": "Anmelden"
+    }
     }
 </i18n>
 
@@ -117,9 +117,17 @@
             'app-content-section': ContentSection
         },
         computed: mapState({
-            user: state => state.c3s.user.currentUser
+            user: state => state.c3s.user.currentUser,
+            activity: state => state.c3s.activity.activity
         }),
         mounted() {
+            this.$store
+                .dispatch("c3s/activity/getActivity", [
+                    'e4b5ebc5-47a2-430b-84a9-a03b1d4dda34',
+                    false
+                ]).then(a => {
+                console.log(a)
+            })
             // this.$store
             //   .dispatch("project/getProject", [
             //     this.$route.params.id || this.projectID,

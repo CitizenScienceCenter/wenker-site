@@ -38,59 +38,97 @@
 </template>
 
 <script>
-  import { mapState } from 'vuex'
-  import HelpPopup from '@/components/help-popup'
-  import CommentsList from '@/components/comment'
-  import TaskQuestionImage from '@/components/TaskQuestionImage'
-  import TaskResponse from '@/components/TaskResponse'
-  import ContentSection from '@/components/shared/ContentSection.vue'
+    import {mapState} from 'vuex'
+    import HelpPopup from '@/components/help-popup'
+    import CommentsList from '@/components/comment'
+    import TaskQuestionImage from '@/components/TaskQuestionImage'
+    import TaskResponse from '@/components/TaskResponse'
+    import ContentSection from '@/components/shared/ContentSection.vue'
 
-  export default {
-    name: 'Task',
-    components: {
-      TaskQuestionImage,
-      TaskResponse,
-      'app-content-section': ContentSection,
-      HelpPopup,
-      CommentsList
-    },
-    computed: mapState({
-      specialChars: state => state.consts.specialChars
-
-    }),
-    data () {
-      return {
-        user: {},
-        comments: [],
-        task_help: '',
-        nextTxt: 'Next',
-        task: {
-          info: {
-            path: 'https://cdn.pixabay.com/photo/2018/10/01/20/38/meteora-3717220_1280.jpg'
-          },
-          content: {
-            answers: [],
-            question: {
-              text: 'Question text',
-              type: 'single_file'
+    export default {
+        name: 'Task',
+        components: {
+            TaskQuestionImage,
+            TaskResponse,
+            'app-content-section': ContentSection,
+            HelpPopup,
+            CommentsList
+        },
+        computed: mapState({
+            specialChars: state => state.consts.specialChars,
+            tasks: state => state.c3s.task.tasks,
+            user: state => state.c3s.user.currentUser
+        }),
+        watch: {
+            '$route.query.count'(to, from) {
+                // TODO dispatch task retrieval
             }
-          }
+        },
+        data() {
+            return {
+                user: {},
+                comments: [],
+                task_help: '',
+                nextTxt: 'Next',
+                task: {
+                    info: {
+                        path: 'https://cdn.pixabay.com/photo/2018/10/01/20/38/meteora-3717220_1280.jpg'
+                    },
+                    content: {
+                        answers: [],
+                        question: {
+                            text: 'Question text',
+                            type: 'single_file'
+                        }
+                    }
+                }
+            }
+        },
+        mounted() {
+            console.log(this.$route.query)
+        },
+        methods: {
+            loadTask(count) {
+                const taskQuery = {
+                    "select": {
+                        "fields": [
+                            "*"
+                        ],
+                        "orderBy": {
+                            "id": "desc"
+                        },
+                        "tables": [
+                            "tasks"
+                        ]
+                    },
+                    "where": {
+                        "activity_id": {
+                            "op": "e",
+                            "val": this.activity.id
+                        }
+                    },
+                    "limit": 1,
+                    "offset": count -1
+                };
+                if(this.$route.query.hasOwnProperty('region')) {
+                    taskQuery['where']['info.region']
+                }
+                this.$store.dispatch('c3s/task/getTasks', taskQuery).then(t => {
+                    console.log(t)
+                })
+            },
+            endTask() {
+
+            },
+            submitTask() {
+                this.$router.push({name: 'TranscribeTask', query: {'count': this.$route.query['count'] + 1}})
+            },
+            insertChar() {
+
+            }
         }
-      }
-    },
-    methods: {
-      endTask () {
 
-      },
-      submitTask () {
-
-      },
-      insertChar () {
-
-      }
     }
-
-  }
 </script>
 
 <style scoped>

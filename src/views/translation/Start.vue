@@ -93,6 +93,8 @@
       }
     },
     computed: mapState({
+        user: state => state.c3s.user.currentUser,
+        activity: state => state.c3s.activity.activity
     }),
     watch: {
       project (to, from) {
@@ -108,6 +110,13 @@
         'app-content-section': ContentSection
     },
     mounted () {
+        this.$store
+            .dispatch("c3s/activity/getActivity", [
+                '507b3f89-aff1-4fa3-8f28-9c8399811539',
+                false
+            ]).then(a => {
+            console.log(a)
+        })
       // this.$store
       //   .dispatch("project/getProject", [
       //     this.$route.params.id || this.projectID,
