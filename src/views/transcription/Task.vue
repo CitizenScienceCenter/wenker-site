@@ -12,7 +12,7 @@
 
                     <div class="special-characters">
                         <label>Sonderzeichen</label>
-                        <button v-on:click="insertChar(char)" :key="char" v-for="char in specialChars">{{char}}</button>
+                        <button class="button button-secondary" v-on:click="insertChar(char)" :key="char" v-for="char in specialChars">{{char}}</button>
                         <!--TODO handle insertion of character to cursor position in CURRENT text box-->
                     </div>
 
@@ -66,7 +66,7 @@
         nextTxt: 'Next',
         task: {
           info: {
-            path: 'https://cdn.pixabay.com/photo/2018/10/01/20/38/meteora-3717220_1280.jpg'
+            path: '../img/cover.jpg'
           },
           content: {
             answers: [],

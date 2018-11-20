@@ -12,7 +12,8 @@
                 </div>
             </div>
 
-            <div class="row" v-if="user && user.username.indexOf('anon') !== -1">
+            <!-- <div class="row" v-if="user && user.username.indexOf('anon') !== -1"> -->
+            <div class="row">
                 <div class="col">
 
                     <div class="form-section">
@@ -73,15 +74,18 @@
             // ]);
         },
         methods: {
+
             startPage() {
-                console.log('start')
-                if(this.user && this.user.username.indexOf('anon') !== -1) {
-                    this.$store.dispatch('user/logout').then(() => {
-                        this.$router.push({name: 'Home'})
-                    })
-                } else {
-                    this.$router.push({name: 'Home'})
-                }
+                /*
+              console.log('start')
+              if(this.user && this.user.username.indexOf('anon') !== -1) {
+                  this.$store.dispatch('user/logout').then(() => {
+                      this.$router.push({name: 'Home'})
+                  })
+              } else {
+                  this.$router.push({name: 'Home'})
+              }
+              */
             }
         }
     };

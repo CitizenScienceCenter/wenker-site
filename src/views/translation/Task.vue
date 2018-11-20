@@ -8,7 +8,7 @@
 
                     <task-question-text :question="task.content.question"></task-question-text>
 
-                    <task-response :responses="task.content.answers"></task-response>
+                    <task-response-text :responses="task.content.answers" :activeAnswerIndex="0"></task-response-text>
 
                     <div class="row">
                         <div class="col col-task-actions">
@@ -33,14 +33,14 @@
   import HelpPopup from '@/components/help-popup'
   import CommentsList from '@/components/comments-list'
   import TaskQuestionText from '@/components/TaskQuestionText'
-  import TaskResponse from '@/components/TaskResponse'
+  import TaskResponseText from '@/components/TaskResponseText'
   import ContentSection from '@/components/shared/ContentSection.vue'
 
   export default {
     name: 'Task',
     components: {
       TaskQuestionText,
-      TaskResponse,
+        TaskResponseText,
       'app-content-section': ContentSection,
       CommentsList,
       HelpPopup

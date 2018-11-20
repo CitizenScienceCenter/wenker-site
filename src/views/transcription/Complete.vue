@@ -12,7 +12,8 @@
                 </div>
             </div>
 
-            <div class="row" v-if="user && user.username.indexOf('anon') !== -1">
+            <!-- <div class="row" v-if="user && user.username.indexOf('anon') !== -1"> -->
+            <div class="row">
                 <div class="col">
 
                     <div class="form-section">
@@ -74,6 +75,7 @@
         },
         methods: {
             startPage() {
+                /*
                 console.log('start')
                 if(this.user && this.user.username.indexOf('anon') !== -1) {
                     this.$store.dispatch('user/logout').then(() => {
@@ -82,6 +84,7 @@
                 } else {
                     this.$router.push({name: 'Home'})
                 }
+                */
             }
         }
     };
