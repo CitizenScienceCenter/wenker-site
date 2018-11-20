@@ -9,7 +9,7 @@ import { i18n } from './i18n.js'
 import c3s from 'vuex-c3s'
 import Croppa from 'vue-croppa'
 
-const swaggerURL = 'http://localhost:8080/api/v2/swagger.json'
+const swaggerURL = 'https://wenker.citizenscience.ch/api/v2/swagger.json'
 Vue.config.productionTip = false
 Vue.use(c3s.plugin, { store, swaggerURL })
 Vue.use(VueRouter)
