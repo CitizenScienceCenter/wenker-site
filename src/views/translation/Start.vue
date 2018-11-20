@@ -115,7 +115,7 @@
                 this.id,
                 false
             ]).then(a => {
-        }), ['507b3f89-aff1-4fa3-8f28-9c8399811539', 'c3s/activity/SET_COMMENTS'])
+        })
       // this.$store
       //   .dispatch("project/getProject", [
       //     this.$route.params.id || this.projectID,
