@@ -1,30 +1,45 @@
 <template>
 
-    <app-content-section>
-        <div class="content-wrapper">
+    <div>
 
-            <div class="row">
-                <div class="col">
+        <app-content-section>
+            <div class="content-wrapper">
 
-                    <task-question-text :question="task.content.question"></task-question-text>
+                <div class="row">
+                    <div class="col">
 
-                    <task-response-text :responses="task.content.answers" :activeAnswerIndex="0"></task-response-text>
+                        <task-question-text :question="task.content.question"></task-question-text>
 
-                    <div class="row">
-                        <div class="col col-task-actions">
+                        <task-response-text :responses="task.content.answers" :activeAnswerIndex="0"></task-response-text>
+
+                        <div class="task-actions">
                             <button v-on:click="endTask" class="button button-secondary">Beenden</button>
                             <button v-on:click="submitTask" class="button button-primary">{{nextTxt}}</button>
                         </div>
+
+                        <help-popup :header="'Hilfen'" :info="task_help"></help-popup>
+
                     </div>
-
-                    <comments-list :current_user="user" :comments="comments"></comments-list>
-                    <help-popup :header="'Hilfen'" :info="task_help"></help-popup>
-
                 </div>
-            </div>
 
-        </div>
-    </app-content-section>
+            </div>
+        </app-content-section>
+
+        <app-content-section color="light-greyish">
+            <div class="content-wrapper">
+
+                <div class="row">
+                    <div class="col">
+
+                        <comments-list :current_user="user" :comments="comments"></comments-list>
+
+                    </div>
+                </div>
+
+            </div>
+        </app-content-section>
+
+    </div>
 
 </template>
 
@@ -85,6 +100,6 @@
   }
 </script>
 
-<style scoped>
+<style>
 
 </style>

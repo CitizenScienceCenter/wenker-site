@@ -16,6 +16,8 @@
 
 <template>
 
+    <div>
+
         <app-content-section>
             <div class="content-wrapper">
 
@@ -64,16 +66,25 @@
                     </div>
                 </div>
 
-                <div class="content-subsection">
-                    <div class="row">
-                        <div class="col">
-                            <comments-list :current_user="user" :comments="comments"></comments-list>
-                        </div>
+            </div>
+        </app-content-section>
+
+        <app-content-section color="light-greyish">
+            <div class="content-wrapper">
+
+                <div class="row">
+                    <div class="col">
+
+                        <comments-list :current_user="user" :comments="comments"></comments-list>
+
                     </div>
                 </div>
 
             </div>
         </app-content-section>
+
+
+    </div>
 
 </template>
 

@@ -8,22 +8,23 @@
                     :key="comment.text"
             ></single-comment>
         </div>
-        <hr>
         <div class="reply">
             <div class="avatar">
                 <img src="" alt="">
             </div>
-            <input
-                    type="text"
-                    v-model.trim="reply"
-                    class="reply-text"
-                    placeholder="Leave a comment..."
-                    maxlength="250"
-                    required
-                    @keyup.enter="submitComment"
-            />
+            <div class="form-field">
+                <input
+                        type="text"
+                        v-model.trim="reply"
+                        class="reply-text"
+                        placeholder="Leave a comment..."
+                        maxlength="250"
+                        required
+                        @keyup.enter="submitComment"
+                />
+            </div>
             <button
-                    class="reply--button"
+                    class="button button-secondary"
                     @click.prevent="submitComment">
                 <i class="fa fa-paper-plane"></i> Send
             </button>

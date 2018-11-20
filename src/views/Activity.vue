@@ -14,3 +14,6 @@
         }
     }
 </script>
+
+
+<style lang="scss" src="@/styles/shared/activities.scss"></style>
