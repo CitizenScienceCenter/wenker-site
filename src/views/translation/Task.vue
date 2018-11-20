@@ -21,7 +21,7 @@
                     <div class="col">
 
                         <p class="centered">
-                            Bitte übersetzen Sie den oben stehenden Satz.
+                            Bitte übersetzen Sie den oben stehenden Satz in Ihren Dialekt.
                         </p>
 
                         <p class="task-response">

@@ -19,7 +19,7 @@
 
             <div class="content-subsection">
 
-              <h2 class="heading centered">{{ $t('heading') }}</h2>
+              <h2 class="heading">{{ $t('heading') }}</h2>
 
               <h3 class="subheading">Was tun, wenn man ein Wort/Buchstabe nicht erkennt?</h3>
               <p>
@@ -39,7 +39,7 @@
             </div>
             <div class="content-subsection">
 
-              <h2 class="heading centered" id="transkriptionskonventionen">Transkriptionskonventionen</h2>
+              <h2 class="heading" id="transkriptionskonventionen">Transkriptionskonventionen</h2>
 
               <ul>
                 <li>Ein vermuteter Wortlaut wird in eckigen Klammern [] geschrieben, z. B. [T]ue das mache...</li>

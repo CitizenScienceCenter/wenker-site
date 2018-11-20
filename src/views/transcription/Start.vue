@@ -29,28 +29,37 @@
                 </div>
                 -->
 
-                <div class="content-subsection">
-                    <div class="row row-centered">
-                        <div class="col col-large-8">
-                            <h2 class="heading centered">{{ $t('heading') }}</h2>
-                            <p class="lead" v-html="$t('activity-description')"></p>
-                        </div>
+                <div class="row row-centered">
+                    <div class="col">
+                        <h2 class="heading centered">{{ $t('heading') }}</h2>
                     </div>
                 </div>
-                <div class="content-subsection">
-                    <div class="row row-centered">
-                        <div class="col col-large-4">
 
-                            <h3 class="subheading centered">{{ $t('form-heading') }}</h3>
+                <div class="row row-centered">
+
+                    <div class="col col-tablet-portrait-10 col-large-4 col-large-after-2 col-wrapping col-large-no-bottom-margin">
+                        <h3 class="subheading centered left-aligned-large">Aufgabenbeschreibung</h3>
+                        <p class="lead" v-html="$t('activity-description')"></p>
+                    </div>
+
+                    <div class="col col-tablet-portrait-10 col-large-4 col-wrapping col-no-bottom-margin">
+
+                        <div class="content-subsection">
+                            <h3 class="subheading centered left-aligned-large">{{ $t('form-heading') }}</h3>
                             <!-- <div class="desc" v-if="project && project.description" v-html="project.description"></div> -->
 
                             <activity-details-form :project="project" :allRegions="false"></activity-details-form>
 
-                            <div class="centered button-group">
+                            <div class="button-group centered left-aligned-large">
                                 <button class="button button-primary" v-on:click="startProject">{{ $t('button-start') }}</button>
                                 <button class="button button-secondary" v-on:click="startProjectRegion">{{ $t('button-start-region') }}</button>
                             </div>
-
+                        </div>
+                        <div class="content-subsection">
+                            <h3 class="subheading centered left-aligned-large">{{ $t('login-heading') }}</h3>
+                            <div class="button-group centered left-aligned-large">
+                                <router-link to="/register" tag="button" class="button button-secondary">{{ $t('button-login') }}</router-link>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -58,11 +67,9 @@
                 <div class="content-subsection">
                     <div class="row row-centered">
                         <div class="col">
-                            <h3 class="subheading centered">{{ $t('login-heading') }}</h3>
+
                         </div>
-                        <div class="col centered">
-                            <router-link to="/register" tag="button" class="button button-secondary">{{ $t('button-login') }}</router-link>
-                        </div>
+
                     </div>
                 </div>
 

@@ -19,7 +19,7 @@
 
             <div class="content-subsection">
 
-              <h2 class="heading centered">{{ $t('heading') }}</h2>
+              <h2 class="heading">{{ $t('heading') }}</h2>
 
               <p>
                 <figure>
@@ -44,7 +44,7 @@
             </div>
             <div class="content-subsection">
 
-              <h2 class="heading centered">Trockene Blätter und Kochlöffel - Die Geschichte der Wenkerbögen</h2>
+              <h2 class="heading">Trockene Blätter und Kochlöffel - Die Geschichte der Wenkerbögen</h2>
               <p>
                 Im Rahmen eines sprachwissenschaftlichen Forschungsprojekts haben Lehrer mit ihren Schülern in den 1930er Jahren an vielen Schulen der Deutschschweiz 40 hochdeutsche Sätze in den jeweiligen Dorfdialekt übersetzt. Es waren Phrasen wie: „Im Winter fliegen die trockenen Blätter in der Luft herum“ oder „Ich schlage dich gleich mit dem Kochlöffel um die Ohren, du Affe.“
                 Die Sätze werden nach ihrem „Erfinder“ Georg Wenker „Wenkersätze“ genannt und erscheinen zum Teil kurios. Sie waren eben dazu da, die wichtigsten Merkmale und Unterschiede der Mundarten darzustellen.
@@ -61,7 +61,7 @@
             </div>
             <div class="content-subsection">
 
-              <h2 class="heading centered">Ein kultureller Schatz</h2>
+              <h2 class="heading">Ein kultureller Schatz</h2>
               <p>
                 Die etwa 1700 Bögen Schweizer Wenkersätze bilden einen kulturellen Schatz, der noch seiner Auswertung durch die Wissenschaft harrt. Denn die meisten dieser handgeschriebenen Wenkerbögen sind bis heute nicht in moderne, maschinenlesbare Druckbuchstaben-Schrift transkribiert worden. Das ist nicht nur eine zeitaufwendige Aufgabe, sondern auch eine inhaltliche Herausforderung, da für Dialekte keine schriftliche Norm, d.h. keine Rechtschreibung besteht.  Die Lehrer bedienten sich der verschiedensten Mittel, um die Mundart möglichst exakt festzuhalten. Eine genaueste Wiedergabe der übersetzten Wenkersätze ist für die wissenschaftliche Auswertung daher ein Muss und erfordert hohe Konzentration beim Transkribieren.
               </p>
@@ -75,7 +75,7 @@
             </div>
             <div class="content-subsection">
 
-              <h2 class="heading centered">Projektmitarbeitende</h2>
+              <h2 class="heading">Projektmitarbeitende</h2>
 
               <h3 class="subheading">Elvira Glaser</h3>
               <p>

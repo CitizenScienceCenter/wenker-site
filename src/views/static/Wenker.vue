@@ -23,7 +23,7 @@
 
             <div class="content-subsection">
 
-              <h2 class="heading centered">{{ $t('heading') }}</h2>
+              <h2 class="heading">{{ $t('heading') }}</h2>
               <p>
                 <figure>
                   <img src="img/wenker.jpg" />
@@ -56,7 +56,7 @@
             </div>
             <div class="content-subsection">
 
-              <h2 class="heading centered">{{ $t('links-heading') }}</h2>
+              <h2 class="heading">{{ $t('links-heading') }}</h2>
               <ul>
                 <li>
                   <a href="http://www.diwa.info/Geschichte/Kartierungsverfahren.aspx" target="_blank">Beschreibung des Kartierungsverfahrens des Deutschen Sprachatlas</a>
@@ -69,7 +69,7 @@
             </div>
             <div class="content-subsection">
 
-              <h2 class="heading centered">{{ $t('sentences-heading') }}</h2>
+              <h2 class="heading">{{ $t('sentences-heading') }}</h2>
               <h4></h4>
               <ol class="list-sentences">
                 <li>Im Winter fliegen die trocknen Blätter durch die Luft herum.</li>
