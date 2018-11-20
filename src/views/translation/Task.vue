@@ -77,7 +77,9 @@
 
       },
       submitTask () {
-
+          let qu = Object.assign({}, this.$route.query);
+          qu['count'] = qu['count'] + 1;
+          this.$router.replace({name: 'TranscribeTask', query: qu})
       }
     }
   }

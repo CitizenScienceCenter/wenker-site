@@ -46,9 +46,6 @@
             return {
                 stats: {
 
-                },
-                user: {
-
                 }
             };
         },
@@ -65,6 +62,7 @@
             'app-content-section': ContentSection
         },
         computed: mapState({
+            user: state => state.c3s.user.currentUser
         }),
         mounted() {
             // this.$store.dispatch("project/getProject", [

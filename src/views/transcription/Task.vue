@@ -59,16 +59,17 @@
             tasks: state => state.c3s.task.tasks,
             media: state => state.c3s.task.media,
             user: state => state.c3s.user.currentUser,
-            activity: state => state.c3s.activity.activity
+            activity: state => state.c3s.activity.activity,
+            comments: state => state.c3s.task.comments
         }),
         watch: {
             '$route.query.count'(to, from) {
                 // TODO dispatch task retrieval
+                this.loadTask(to)
             }
         },
         data() {
             return {
-                comments: [],
                 task_help: '',
                 nextTxt: 'Next',
                 task: {
@@ -86,7 +87,12 @@
             }
         },
         mounted() {
-            this.loadTask(this.$route.query['count'])
+            if (this.activity && this.activity.id) {
+                this.loadTask(this.$route.query['count']);
+            } else {
+                console.log('No activity set in the store!')
+                //    TODO show error for no activity
+            }
         },
         methods: {
             loadTask(count) {
@@ -109,14 +115,15 @@
                         }
                     },
                     "limit": 1,
-                    "offset": count -1
+                    "offset": count - 1
                 };
-                if(this.$route.query.hasOwnProperty('region')) {
+                if (this.$route.query.hasOwnProperty('region')) {
                     taskQuery['where']['info.region']
                 }
                 this.$store.dispatch('c3s/task/getTasks', taskQuery).then(t => {
-                    console.log(t.body[0])
-                    if(t.body.length > 0) {
+                    if (t.body.length > 0) {
+                        const tID = t.body[0]['id'];
+                        this.$store.dispatch('c3s/comments/getCommentsForID', [tID, 'c3s/task/SET_COMMENTS']);
                         const mediaQuery = {
                             "select": {
                                 "fields": [
@@ -129,32 +136,33 @@
                             "where": {
                                 "source_id": {
                                     "op": "e",
-                                    "val": t.body[0]['id']
+                                    "val": tID
                                 }
                             },
                             "limit": 10
                         };
                         // TODO test error on no response
-                        this.$store.dispatch('c3s/task/getTaskMedia', mediaQuery).then(m => {
+                        this.$store.dispatch('c3s/media/getMedia', [mediaQuery, 'c3s/task/SET_MEDIA']).then(m => {
                             console.log(m.body)
                         })
                     } else {
-                    //    TODO redirect to error page or explain no tasks found
+                        //    TODO redirect to error page or explain no tasks found
                         console.log('No tasks found')
                     }
-                //    TODO do something with this task!
                 })
-            },
-            endTask() {
+        },
+        endTask() {
 
-            },
-            submitTask() {
-                this.$router.push({name: 'TranscribeTask', query: {'count': this.$route.query['count'] + 1}})
-            },
-            insertChar() {
+        },
+        submitTask() {
+            let qu = Object.assign({}, this.$route.query);
+            qu['count'] = qu['count'] + 1;
+            this.$router.replace({name: 'TranscribeTask', query: qu})
+        },
+        insertChar() {
 
-            }
         }
+    }
 
     }
 </script>
