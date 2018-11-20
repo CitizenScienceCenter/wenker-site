@@ -57,6 +57,7 @@
         computed: mapState({
             specialChars: state => state.consts.specialChars,
             tasks: state => state.c3s.task.tasks,
+            media: state => state.c3s.task.media,
             user: state => state.c3s.user.currentUser,
             activity: state => state.c3s.activity.activity
         }),
@@ -114,7 +115,34 @@
                     taskQuery['where']['info.region']
                 }
                 this.$store.dispatch('c3s/task/getTasks', taskQuery).then(t => {
-                    console.log(t)
+                    console.log(t.body[0])
+                    if(t.body.length > 0) {
+                        const mediaQuery = {
+                            "select": {
+                                "fields": [
+                                    "*"
+                                ],
+                                "tables": [
+                                    "media"
+                                ]
+                            },
+                            "where": {
+                                "source_id": {
+                                    "op": "e",
+                                    "val": t.body[0]['id']
+                                }
+                            },
+                            "limit": 10
+                        };
+                        // TODO test error on no response
+                        this.$store.dispatch('c3s/task/getTaskMedia', mediaQuery).then(m => {
+                            console.log(m.body)
+                        })
+                    } else {
+                    //    TODO redirect to error page or explain no tasks found
+                        console.log('No tasks found')
+                    }
+                //    TODO do something with this task!
                 })
             },
             endTask() {
