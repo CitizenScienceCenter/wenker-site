@@ -1,5 +1,5 @@
 <template>
-    <div>{{question.text}}</div>
+    <p class="centered lead">{{question.text}}</p>
 </template>
 
 <script>

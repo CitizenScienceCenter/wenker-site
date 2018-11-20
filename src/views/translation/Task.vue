@@ -2,20 +2,37 @@
 
     <div>
 
+        <app-content-section color="light-greyish">
+            <div class="content-wrapper">
+
+                <div class="row">
+                    <div class="col">
+                        <task-question-text :question="task.content.question"></task-question-text>
+                    </div>
+                </div>
+
+            </div>
+        </app-content-section>
+
         <app-content-section>
             <div class="content-wrapper">
 
                 <div class="row">
                     <div class="col">
 
-                        <task-question-text :question="task.content.question"></task-question-text>
+                        <p class="centered">
+                            Bitte übersetzen Sie den oben stehenden Satz.
+                        </p>
 
-                        <task-response-text :responses="task.content.answers" :activeAnswerIndex="0"></task-response-text>
+                        <p class="task-response">
+                            <task-response-text :responses="task.content.answers" :activeAnswerIndex="0"></task-response-text>
+                        </p>
 
-                        <div class="task-actions">
+                        <p class="centered button-group">
                             <button v-on:click="endTask" class="button button-secondary">Beenden</button>
-                            <button v-on:click="submitTask" class="button button-primary">{{nextTxt}}</button>
-                        </div>
+                            <label>Satz 1 von 40</label>
+                            <button v-on:click="submitTask" class="button button-primary">Nächster Satz</button>
+                        </p>
 
                         <help-popup :header="'Hilfen'" :info="task_help"></help-popup>
 
@@ -100,6 +117,21 @@
   }
 </script>
 
-<style>
+<style lang="scss">
+
+    @import '@/styles/theme.scss';
+    @import '@/styles/shared/variables.scss';
+
+    .content-section-condensed {
+        padding: $spacing-5 0;
+    }
+
+
+    .button-group {
+        label {
+            text-transform: uppercase;
+            margin: 0 $spacing-2;
+        }
+    }
 
 </style>

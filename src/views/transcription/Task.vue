@@ -2,28 +2,27 @@
 
     <div>
 
-        <app-content-section>
+        <section>
+            <task-question-image :question="task.content.question" :imgPath="task.info.path"></task-question-image>
+        </section>
+
+        <app-content-section class="content-section-condensed">
             <div class="content-wrapper">
 
                 <div class="row">
                     <div class="col">
 
-                        <task-question-image :question="task.content.question" :imgPath="task.info.path"></task-question-image>
+                        <p class="centered">
+                            Bitte übertragen Sie die im Bild ersichtlichen Sätze in das Eingabefeld.
+                        </p>
 
                         <task-response></task-response>
 
-                        <div class="special-characters">
-                            <label>Sonderzeichen</label>
-                            <button class="button button-secondary" v-on:click="insertChar(char)" :key="char" v-for="char in specialChars">{{char}}</button>
-                            <!--TODO handle insertion of character to cursor position in CURRENT text box-->
-                        </div>
-
-                        <div class="row">
-                            <div class="col col-task-actions">
-                                <button v-on:click="endTask" class="button button-secondary">Beenden</button>
-                                <button v-on:click="submitTask" class="button button-primary">{{nextTxt}}</button>
-                            </div>
-                        </div>
+                        <p class="centered button-group">
+                            <button v-on:click="endTask" class="button button-secondary">Beenden</button>
+                            <label>Bogen 1 von 1</label>
+                            <button v-on:click="submitTask" class="button button-primary">Nächster Bogen</button>
+                        </p>
 
                         <template class="row">
                             <help-popup :header="'Hilfen'" :info="task_help"></help-popup>
@@ -70,10 +69,6 @@
       HelpPopup,
       CommentsList
     },
-    computed: mapState({
-      specialChars: state => state.consts.specialChars
-
-    }),
     data () {
       return {
         user: {},
@@ -82,7 +77,7 @@
         nextTxt: 'Next',
         task: {
           info: {
-            path: '../img/cover.jpg'
+            path: '../img/wenkerbogen.jpg'
           },
           content: {
             answers: [],
@@ -100,15 +95,38 @@
       },
       submitTask () {
 
-      },
-      insertChar () {
-
       }
     }
 
   }
 </script>
 
-<style>
+<style lang="scss">
+
+    @import '@/styles/theme.scss';
+    @import '@/styles/shared/variables.scss';
+
+    .content-section-condensed {
+        padding: $spacing-5 0;
+    }
+
+    .special-characters {
+        label {
+            margin-right: $spacing-2;
+        }
+        .button.button-secondary {
+            height: 32px;
+            padding: $spacing-1;
+            border-color: white;
+            font-family: sans-serif;
+        }
+    }
+
+    .button-group {
+        label {
+            text-transform: uppercase;
+            margin: 0 $spacing-2;
+        }
+    }
 
 </style>
