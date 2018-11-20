@@ -56,13 +56,23 @@
             },
             errors: {
                 type: Object,
-                default: () => { return {age: false, canton: false} }
+                default: () => {
+                    return {age: false, canton: false}
+                }
+            }
+        },
+        data() {
+            return {
+                details: {
+                    ageRange: undefined,
+                    canton: undefined
+                }
             }
         },
         watch: {
-            'user.info' (to, from) {
+            'user.info'(to, from) {
                 if (to.hasOwnProperty('ageRange')) this.errors.age = false;
-                if (to.hasOwnProperty('canton')) this.errors.canton= false;
+                if (to.hasOwnProperty('canton')) this.errors.canton = false;
             },
             'details.canton'(to, from) {
                 this.updateUserInfo('canton', to)
@@ -86,25 +96,10 @@
             updateUserInfo(key, value) {
                 // TODO deploy update to store (get user info and assign)
                 let updatedUser = Object.assign({}, this.user['info'])
-                // if (updatedUser.hasOwnProperty('info')) {
-                //   if(updatedUser['info'] === null || updatedUser['info'].keys().length === 0) {
-                //     updatedUser['info'] = {}
-                //   }
                 updatedUser[key] = value
                 this.$store.dispatch('c3s/user/updateUser', [this.user.id, {'info': updatedUser}]).then(u => {
                     console.log('User Details Updated')
                 })
-                // } else {
-                //   console.log('User is null, not updating')
-                // }
-            }
-        },
-        data() {
-            return {
-                details: {
-                    ageRange: undefined,
-                    canton: undefined
-                }
             }
         }
     }

@@ -74,7 +74,7 @@
             startPage() {
                 console.log('start')
                 if(this.user && this.user.username.indexOf('anon') !== -1) {
-                    this.$store.dispatch('user/logout').then(() => {
+                    this.$store.dispatch('c3s/user/logout').then(() => {
                         this.$router.push({name: 'Home'})
                     })
                 } else {

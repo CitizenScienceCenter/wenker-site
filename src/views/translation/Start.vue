@@ -66,7 +66,7 @@
             <div class="content-subsection">
                 <div class="row">
                     <div class="col">
-                        <comments-list :current_user="user" :comments="comments"></comments-list>
+                        <comments-list :id="id"></comments-list>
                     </div>
                 </div>
             </div>
@@ -88,7 +88,8 @@
       return {
         project: {},
         stats: {},
-        comments: []
+        comments: [],
+          id: '507b3f89-aff1-4fa3-8f28-9c8399811539'
       }
     },
     computed: mapState({
@@ -111,11 +112,10 @@
     mounted () {
         this.$store
             .dispatch("c3s/activity/getActivity", [
-                '507b3f89-aff1-4fa3-8f28-9c8399811539',
+                this.id,
                 false
             ]).then(a => {
-        })
-        this.$store.dispatch('c3s/comments/getCommentsForID', ['507b3f89-aff1-4fa3-8f28-9c8399811539', 'c3s/activity/SET_COMMENTS'])
+        }), ['507b3f89-aff1-4fa3-8f28-9c8399811539', 'c3s/activity/SET_COMMENTS'])
       // this.$store
       //   .dispatch("project/getProject", [
       //     this.$route.params.id || this.projectID,
@@ -137,7 +137,7 @@
     },
     methods: {
       startProject () {
-        this.router.push({ name: 'TranscribeTask' })
+        this.$router.push({ name: 'TranslateTask' })
       },
       startProjectRegion () {
       }

@@ -7,11 +7,12 @@
                     :show-loading="true"
                     :loading-size="100"
                     :zoom-speed="5"
-                    :placeholder="' '"
+                    :placeholder="'Loading'"
                     :accept="'image/*'"
+                    :initial-image="imgPath"
                     initial-position="top left"
                     auto-sizing>
-                <img slot="initial" :src="imgPath" />
+                <img slot="initial" :src="imgPath"/>
             </croppa>
 
             <button @click="zoom(true)" class="primary zoom zoom-in"><img src=""></button>
@@ -36,7 +37,6 @@
         mounted() {
 
         }
-
     }
 </script>
 

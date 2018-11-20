@@ -6,9 +6,10 @@
             <div class="row">
                 <div class="col" v-if="tasks.length > 0">
 
-                    <task-question-image v-if="media.length > 0" :question="tasks[0].content.question" :imgPath="media[0].path"></task-question-image>
+                    <task-question-image v-if="media.length > 0" :question="tasks[0].content.question"
+                                         :imgPath="media[0].path"></task-question-image>
 
-                    <task-response :responses="tasks[0].content.answers"></task-response>
+                    <task-response :answers="tasks[0].content.answers" :responses="responses"></task-response>
 
                     <div class="special-characters">
                         <label>Sonderzeichen</label>
@@ -71,6 +72,7 @@
             return {
                 task_help: '',
                 nextTxt: 'Next',
+                responses: []
             }
         },
         mounted() {
@@ -111,7 +113,7 @@
                 }
                 this.$store.dispatch('c3s/task/getTasks', taskQuery).then(t => {
                     if (t.body && t.body.length > 0) {
-                        const tID = t.body[0]['id'];
+                        const task = t.body[0];
                         const mediaQuery = {
                             "select": {
                                 "fields": [
@@ -124,11 +126,15 @@
                             "where": {
                                 "source_id": {
                                     "op": "e",
-                                    "val": tID
+                                    "val": task.id
                                 }
                             },
                             "limit": 10
                         };
+                        for (let i = 0; i < task.content.answers.length; i++) {
+                            this.responses.push({text: ""})
+                        }
+                        this.createSubmission();
                         this.$store.dispatch('c3s/media/getMedia', [mediaQuery, undefined]).then(m => {
                             let media = m.body.slice();
                             for (let index in media) {
@@ -143,19 +149,32 @@
                         this.$router.push({'name': 'TranscribeComplete'})
                     }
                 })
-        },
-        endTask() {
+            },
+            createSubmission() {
+                const submission = {
+                    user_id: this.user.id,
+                    task_id: this.tasks[0].id,
+                    content: {}
+                };
+                this.$store.commit('c3s/submission/SET_SUBMISSION', submission)
+            },
+            endTask() {
+                // TODO post submission
+                this.$router.push({
+                    name: 'TranscribeComplete'
+                })
+            },
+            submitTask() {
+                this.$store.commit('submission/SET_SUBMISSION_RESPONSES', this.responses);
+                //TODO post submission here
+                let qu = Object.assign({}, this.$route.query);
+                qu['count'] = qu['count'] + 1;
+                this.$router.replace({name: 'TranscribeTask', query: qu})
+            },
+            insertChar() {
 
-        },
-        submitTask() {
-            let qu = Object.assign({}, this.$route.query);
-            qu['count'] = qu['count'] + 1;
-            this.$router.replace({name: 'TranscribeTask', query: qu})
-        },
-        insertChar() {
-
+            }
         }
-    }
 
     }
 </script>
