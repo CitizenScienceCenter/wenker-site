@@ -8,7 +8,7 @@
 
     <!-- </div> -->
 
-    <input type="text" name="qutxt" id="qutxt" placeholder="Satz Nr. 1" />
+    <input type="text" name="qutxt" id="qutxt" placeholder="Hier eingeben" />
 
 </template>
 

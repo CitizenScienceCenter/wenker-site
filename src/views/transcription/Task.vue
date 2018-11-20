@@ -9,25 +9,33 @@
         <app-content-section class="content-section-condensed">
             <div class="content-wrapper">
 
-                <div class="row">
-                    <div class="col">
+                <div class="content-subsection">
+                    <div class="row">
+                        <div class="col">
 
-                        <p class="centered">
-                            Bitte übertragen Sie die im Bild ersichtlichen Sätze in das Eingabefeld.
-                        </p>
+                            <p class="centered">
+                                Bitte übertragen Sie die im Bild ersichtlichen Sätze in das Eingabefeld.
+                            </p>
 
-                        <task-response></task-response>
+                        </div>
+                    </div>
+                </div>
 
-                        <p class="centered button-group">
-                            <button v-on:click="endTask" class="button button-secondary">Beenden</button>
-                            <label>Bogen 1 von 1</label>
-                            <button v-on:click="submitTask" class="button button-primary">Nächster Bogen</button>
-                        </p>
+                <div class="content-subsection">
+                    <task-response></task-response>
+                </div>
 
-                        <template class="row">
-                            <help-popup :header="'Hilfen'" :info="task_help"></help-popup>
-                        </template>
+                <div class="content-subsection">
+                    <div class="row">
+                        <div class="col">
 
+                            <p class="button-group centered">
+                                <button v-on:click="endTask" class="button button-secondary">Beenden</button>
+                                <label>Bogen 1 von 1</label>
+                                <button v-on:click="submitTask" class="button button-primary">Nächster Bogen</button>
+                            </p>
+
+                        </div>
                     </div>
                 </div>
 
@@ -47,6 +55,10 @@
 
             </div>
         </app-content-section>
+
+        <template class="row">
+            <help-popup :header="'Hilfen'" :info="task_help"></help-popup>
+        </template>
 
     </div>
 

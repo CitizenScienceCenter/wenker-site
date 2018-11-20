@@ -1,39 +1,47 @@
 <template>
     <div>
+        <div class="row">
 
-        <div v-if="responses.length">
-            <div class="response-field">
-                <!-- <task-response-text  v-for="(r, index) in answers" :responses="task.content.answers" :activeAnswerIndex="0"></task-response-text> -->
-                <task-response-text activeAnswerIndex="0"></task-response-text>
-                <!--
-                <div class="form-field" v-for="(r, index) in answers">
-                    <label>{{index}}</label>
-                    <input :placeholder="index" type="text"></input>
+
+            <div class="col col-large-2 col-wrapping col-large-no-bottom-margin">
+                <div class="response-selection right-aligned">
+                    <div class="custom-select">
+                        <select v-model="activeAnswerIndex">
+                            <option v-for="(r, index) in answers" :value="index" :key="index">Satz Nr. {{index+1}}</option>
+                        </select>
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                               <path d="M127.3,192h257.3c17.8,0,26.7,21.5,14.1,34.1L270.1,354.8c-7.8,7.8-20.5,7.8-28.3,0L113.2,226.1 C100.6,213.5,109.5,192,127.3,192z"/>
+                            </svg>
+                    </div>
                 </div>
-                -->
             </div>
 
-            <p class="special-characters centered">
-                <label>Sonderzeichen einfügen</label>
-                <button class="button button-secondary" v-on:click="insertChar(char)" :key="char" v-for="char in specialChars">{{char}}</button>
-                <!--TODO handle insertion of character to cursor position in CURRENT text box-->
-            </p>
-
-            <div class="response-selection centered">
-                <button class="button button-secondary" :disabled="!activeAnswerIndex > 0" @click="updateActiveIndex(-1)">Zurück</button>
-                <div class="custom-select">
-                    <select v-model="activeAnswerIndex">
-                        <option v-for="(r, index) in answers" :value="index" :key="index">Satz Nr. {{index+1}}</option>
-                    </select>
-                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
-                       <path d="M127.3,192h257.3c17.8,0,26.7,21.5,14.1,34.1L270.1,354.8c-7.8,7.8-20.5,7.8-28.3,0L113.2,226.1 C100.6,213.5,109.5,192,127.3,192z"/>
-                    </svg>
+            <div class="col col-large-8 col-wrapping col-large-no-bottom-margin">
+                <div class="response-field">
+                    <!-- <task-response-text  v-for="(r, index) in answers" :responses="task.content.answers" :activeAnswerIndex="0"></task-response-text> -->
+                    <task-response-text activeAnswerIndex="0"></task-response-text>
+                    <!--
+                    <div class="form-field" v-for="(r, index) in answers">
+                        <label>{{index}}</label>
+                        <input :placeholder="index" type="text"></input>
+                    </div>
+                    -->
                 </div>
-                <button class="button button-primary" :disabled="activeAnswerIndex === answers.length - 1" @click="updateActiveIndex(1)">Nächster Satz</button>
+                <p class="special-characters">
+                    <label>Sonderzeichen einfügen</label>
+                    <button class="button button-secondary" v-on:click="insertChar(char)" :key="char" v-for="char in specialChars">{{char}}</button>
+                    <!--TODO handle insertion of character to cursor position in CURRENT text box-->
+                </p>
             </div>
+
+            <div class="col col-large-2 col-wrapping col-no-bottom-margin">
+                <div class="response-buttons button-group">
+                    <button class="button button-primary" :disabled="activeAnswerIndex === answers.length - 1" @click="updateActiveIndex(1)">Nächster Satz</button>
+                    <button class="button button-secondary" :disabled="!activeAnswerIndex > 0" @click="updateActiveIndex(-1)">Vorheriger</button>
+                </div>
+            </div>
+
         </div>
-
-
     </div>
 </template>
 
@@ -90,10 +98,8 @@
     @import '@/styles/shared/variables.scss';
 
     .response-selection {
-        margin-bottom: $spacing-5;
 
         .custom-select {
-            margin: 0 $spacing-1;
 
             select {
                 font-size: $font-size-small;
@@ -117,17 +123,12 @@
             }
         }
 
-        .button {
-            &.button-secondary:first-child {
-
-            }
-        }
     }
     .response-field {
         margin-bottom: $spacing-2;
 
-        .form-field {
-            display: block;
-        }
+    }
+    .response-buttons {
+
     }
 </style>

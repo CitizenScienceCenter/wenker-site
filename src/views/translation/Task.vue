@@ -14,28 +14,44 @@
             </div>
         </app-content-section>
 
-        <app-content-section>
+        <app-content-section class="content-section-condensed">
             <div class="content-wrapper">
 
-                <div class="row">
-                    <div class="col">
+                <div class="content-subsection">
+                    <div class="row">
+                        <div class="col">
 
-                        <p class="centered">
-                            Bitte übersetzen Sie den oben stehenden Satz in Ihren Dialekt.
-                        </p>
+                            <p class="centered">
+                                Bitte übersetzen Sie den oben stehenden Satz in Ihren Dialekt.
+                            </p>
 
-                        <p class="task-response">
-                            <task-response-text :responses="task.content.answers" :activeAnswerIndex="0"></task-response-text>
-                        </p>
+                        </div>
+                    </div>
+                </div>
 
-                        <p class="centered button-group">
-                            <button v-on:click="endTask" class="button button-secondary">Beenden</button>
-                            <label>Satz 1 von 40</label>
-                            <button v-on:click="submitTask" class="button button-primary">Nächster Satz</button>
-                        </p>
+                <div class="content-subsection">
+                    <div class="row row-centered">
+                        <div class="col col-large-8">
 
-                        <help-popup :header="'Hilfen'" :info="task_help"></help-popup>
+                            <p class="task-response">
+                                <task-response-text :responses="task.content.answers" :activeAnswerIndex="0"></task-response-text>
+                            </p>
 
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-subsection">
+                    <div class="row">
+                        <div class="col">
+
+                            <p class="centered button-group">
+                                <button v-on:click="endTask" class="button button-secondary">Beenden</button>
+                                <label>Satz 1 von 40</label>
+                                <button v-on:click="submitTask" class="button button-primary">Nächster Satz</button>
+                            </p>
+
+                        </div>
                     </div>
                 </div>
 
@@ -55,6 +71,8 @@
 
             </div>
         </app-content-section>
+
+        <help-popup :header="'Hilfen'" :info="task_help"></help-popup>
 
     </div>
 

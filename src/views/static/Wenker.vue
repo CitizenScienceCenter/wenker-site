@@ -104,7 +104,7 @@
                 <li>Wieviel Pfund Wurst und wieviel Brod wollt ihr haben?</li>
                 <li>Ich verstehe euch nicht, ihr müßt ein bißchen lauter sprechen.</li>
                 <li>Habt ihr kein Stückchen weiße Seife für mich auf meinem Tische gefunden?</li>
-                <li>	Sein Bruder will sich zwei schöne neue Häuser in eurem Garten bauen.</li>
+                <li>Sein Bruder will sich zwei schöne neue Häuser in eurem Garten bauen.</li>
                 <li>Das Wort kam ihm von Herzen!</li>
                 <li>Das war recht von ihnen!</li>
                 <li>Was sitzen da für Vögelchen oben auf dem Mäuerchen?</li>
