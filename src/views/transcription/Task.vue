@@ -57,7 +57,8 @@
         computed: mapState({
             specialChars: state => state.consts.specialChars,
             tasks: state => state.c3s.task.tasks,
-            user: state => state.c3s.user.currentUser
+            user: state => state.c3s.user.currentUser,
+            activity: state => state.c3s.activity.activity
         }),
         watch: {
             '$route.query.count'(to, from) {
@@ -66,7 +67,6 @@
         },
         data() {
             return {
-                user: {},
                 comments: [],
                 task_help: '',
                 nextTxt: 'Next',
@@ -85,7 +85,7 @@
             }
         },
         mounted() {
-            console.log(this.$route.query)
+            this.loadTask(this.$route.query['count'])
         },
         methods: {
             loadTask(count) {
