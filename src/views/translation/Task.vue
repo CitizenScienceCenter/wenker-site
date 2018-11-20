@@ -2,7 +2,7 @@
 
     <div>
 
-        <app-content-section color="light-greyish">
+        <app-content-section>
             <div class="content-wrapper">
 
                 <div class="row">
