@@ -4,11 +4,11 @@
         <div class="content-wrapper">
 
             <div class="row">
-                <div class="col">
+                <div class="col" v-if="tasks.length > 0">
 
-                    <task-question-image v-if="media.length > 0" :question="task.content.question" :imgPath="media[0].path"></task-question-image>
+                    <task-question-image v-if="media.length > 0" :question="tasks[0].content.question" :imgPath="media[0].path"></task-question-image>
 
-                    <task-response :responses="task.content.answers"></task-response>
+                    <task-response :responses="tasks[0].content.answers"></task-response>
 
                     <div class="special-characters">
                         <label>Sonderzeichen</label>
@@ -23,7 +23,7 @@
                         </div>
                     </div>
 
-                    <comments-list :current_user="user" :comments="comments"></comments-list>
+                    <comments-list :id="tasks[0].id"></comments-list>
 
                     <template class="row">
                         <help-popup :header="'Hilfen'" :info="task_help"></help-popup>
@@ -40,7 +40,7 @@
 <script>
     import {mapState} from 'vuex'
     import HelpPopup from '@/components/help-popup'
-    import CommentsList from '@/components/comment'
+    import CommentsList from '@/components/comments-list'
     import TaskQuestionImage from '@/components/TaskQuestionImage'
     import TaskResponse from '@/components/TaskResponse'
     import ContentSection from '@/components/shared/ContentSection.vue'
@@ -71,18 +71,6 @@
             return {
                 task_help: '',
                 nextTxt: 'Next',
-                task: {
-                    info: {
-                        path: 'https://cdn.pixabay.com/photo/2018/10/01/20/38/meteora-3717220_1280.jpg'
-                    },
-                    content: {
-                        answers: [],
-                        question: {
-                            text: 'Question text',
-                            type: 'single_file'
-                        }
-                    }
-                }
             }
         },
         mounted() {
@@ -91,6 +79,7 @@
             } else {
                 console.log('No activity set in the store!')
                 //    TODO show error for no activity
+                this.$router.push({name: 'TranscribeStart'})
             }
         },
         methods: {
@@ -123,7 +112,6 @@
                 this.$store.dispatch('c3s/task/getTasks', taskQuery).then(t => {
                     if (t.body && t.body.length > 0) {
                         const tID = t.body[0]['id'];
-                        // this.$store.dispatch('c3s/comments/getCommentsForID', [tID, 'c3s/task/SET_COMMENTS']);
                         const mediaQuery = {
                             "select": {
                                 "fields": [
@@ -146,11 +134,13 @@
                             for (let index in media) {
                                 media[index].path = media[index].path.replace('./static', 'https://wenker.citizenscience.ch/files')
                             }
+                            // console.log(media[0])
                             this.$store.commit('c3s/task/SET_MEDIA', media)
                         })
                     } else {
                         //    TODO redirect to error page or explain no tasks found
                         console.log('No tasks found')
+                        this.$router.push({'name': 'TranscribeComplete'})
                     }
                 })
         },

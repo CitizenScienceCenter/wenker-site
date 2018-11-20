@@ -72,7 +72,7 @@
             <div class="content-subsection">
                 <div class="row">
                     <div class="col">
-                        <comments-list :current_user="user" :comments="comments"></comments-list>
+                        <comments-list :id=id></comments-list>
                     </div>
                 </div>
             </div>
@@ -96,6 +96,7 @@
                 regions: [],
                 project: {},
                 stats: {},
+                id: "e4b5ebc5-47a2-430b-84a9-a03b1d4dda34",
                 comments: [],
                 errors: {
                     canton: false,
@@ -123,25 +124,11 @@
         mounted() {
             this.$store
                 .dispatch("c3s/activity/getActivity", [
-                    'e4b5ebc5-47a2-430b-84a9-a03b1d4dda34',
+                    this.id,
                     false
                 ]).then(a => {
             })
-            // this.$store
-            //   .dispatch("project/getProject", [
-            //     this.$route.params.id || this.projectID,
-            //     false
-            //   ])
-            //   .then(p => {
-            //     if (p === false) {
-            //       this.$router.push({
-            //         name: "Error",
-            //         params: { msg: "Project not found" }
-            //       });
-            //     }
-            //   });
-            // console.log(this.stats);
-            // this.regions = this.swissCantons;
+
 
         },
         methods: {
@@ -156,7 +143,6 @@
                 }
             },
             userCheck() {
-                console.log(this.user.info)
                 if (this.user.hasOwnProperty('info') && this.user.info !== null) {
                     if (!(this.user.info.hasOwnProperty('ageRange'))) {
                         this.errors.age = true;
