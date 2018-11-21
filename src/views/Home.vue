@@ -3,8 +3,8 @@
   "de": {
     "cover-heading": "Schweizer­deutsch<br/>1930 / 2020",
     "cover-subheading": "Finde deinen Dialekt in den 40 Wenker-Sätzen.",
-    "cover-button-projects": "Transkribieren",
-    "cover-button-your-project": "Übersetzen",
+    "cover-button-transcribe": "Transkribieren",
+    "cover-button-translate": "Übersetzen",
 
     "section-explanation-heading": "Die 40 Wenker-Sätze",
     "section-explanation-text": "Im Rahmen eines sprachwissenschaftlichen Forschungsprojekts wurden vor rund 100 Jahren 40 hochdeutsche Sätze in die lokalen Dialekte der Schweiz übersetzt. Diese Daten wurden jedoch nie umfassend ausgewertet. Hilf uns, diesen Schatz zu heben.",
@@ -29,8 +29,8 @@
   "en": {
     "cover-heading": "Swiss German<br/>1930 / 2020",
     "cover-subheading": "Finde deinen Dialekt in den 40 Wenker-Sätzen.",
-    "cover-button-projects": "Transkribieren",
-    "cover-button-your-project": "Übersetzen",
+  "cover-button-transcribe": "Transkribieren",
+  "cover-button-translate": "Übersetzen",
 
     "section-explanation-heading": "Die 40 Wenker-Sätze",
     "section-explanation-text": "Im Rahmen eines sprachwissenschaftlichen Forschungsprojekts wurden vor rund 100 Jahren 40 hochdeutsche Sätze in die lokalen Dialekte der Schweiz übersetzt. Diese Daten wurden jedoch nie umfassend ausgewertet. Hilf uns, diesen Schatz zu heben.",
@@ -72,8 +72,12 @@
       <div class="row row-centered">
         <div class="col col-large-8">
           <p class="centered scroll-effect scroll-effect-delayed-2">
+            <!--
             <button class="button button-primary" v-scroll-to="'#projects'">{{ $t('cover-button-projects') }}</button>
             <button class="button button-primary" v-scroll-to="'#start-project'">{{ $t('cover-button-your-project') }}</button>
+            -->
+            <router-link tag="button" to="/transcribe" class="button button-primary">{{ $t('cover-button-transcribe') }}</router-link>
+            <router-link tag="button" to="/translate" class="button button-primary">{{ $t('cover-button-translate') }}</router-link>
           </p>
         </div>
       </div>

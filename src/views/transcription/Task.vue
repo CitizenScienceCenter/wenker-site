@@ -58,7 +58,7 @@
             </div>
         </app-content-section>
 
-        <template class="row">
+        <template>
             <help-popup :header="'Hilfen'" :info="task_help"></help-popup>
         </template>
 
