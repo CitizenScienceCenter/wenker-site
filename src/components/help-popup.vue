@@ -26,13 +26,15 @@
 <template>
     <div>
 
-        <a class="popup-toggle" :class="{ active: visible }" @click="visible = !visible">
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
-                <path d="M239.1,352.3l-136-136c-9.4-9.4-9.4-24.6,0-33.9l22.6-22.6c9.4-9.4,24.6-9.4,33.9,0l96.4,96.4l96.4-96.4
-                c9.4-9.4,24.6-9.4,33.9,0l22.6,22.6c9.4,9.4,9.4,24.6,0,33.9l-136,136C263.7,361.7,248.5,361.7,239.1,352.3L239.1,352.3z"/>
-            </svg>
-            {{ buttonText }}
-        </a>
+        <div class="centered">
+            <a class="popup-toggle" :class="{ active: visible }" @click="visible = !visible">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                    <path d="M239.1,352.3l-136-136c-9.4-9.4-9.4-24.6,0-33.9l22.6-22.6c9.4-9.4,24.6-9.4,33.9,0l96.4,96.4l96.4-96.4
+                    c9.4-9.4,24.6-9.4,33.9,0l22.6,22.6c9.4,9.4,9.4,24.6,0,33.9l-136,136C263.7,361.7,248.5,361.7,239.1,352.3L239.1,352.3z"/>
+                </svg>
+                {{ buttonText }}
+            </a>
+        </div>
 
         <div v-if="visible" class="popup">
             <ul>

@@ -1,3 +1,15 @@
+<i18n>
+    {
+    "de": {
+    "task-description": "Bitte übertragen Sie die im Bild ersichtlichen Sätze in das Eingabefeld."
+    },
+    "en": {
+    "task-description": "Please transcribe the sentences from the picture above into the input field."
+    }
+    }
+</i18n>
+
+
 <template>
 
     <div>
@@ -15,7 +27,7 @@
                         <div class="col">
 
                             <p class="centered">
-                                Bitte übertragen Sie die im Bild ersichtlichen Sätze in das Eingabefeld.
+                                {{ $t('task-description') }}
                             </p>
 
                         </div>
@@ -30,9 +42,9 @@
                     <div class="row">
                         <div class="col">
 
-                            <p class="button-group centered">
+                            <p class="button-group centered task-switch-bar">
                                 <button v-on:click="endTask" class="button button-secondary">Beenden</button>
-                                <label>Bogen 1 von 1</label>
+                                <label>1 von 1</label>
                                 <button v-on:click="submitTask" class="button button-primary">Nächster Bogen</button>
                             </p>
 
@@ -210,8 +222,5 @@
     @import '@/styles/theme.scss';
     @import '@/styles/shared/variables.scss';
 
-    .content-section-condensed {
-        padding: $spacing-5 0;
-    }
 
 </style>

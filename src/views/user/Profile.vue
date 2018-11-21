@@ -1,12 +1,12 @@
 <i18n>
   {
     "de": {
-      "heading": "Passwort zurücksetzen",
+      "heading": "Ihr Profil",
       "label-email": "Email",
       "label-api-key": "API Key"
     },
     "en": {
-      "heading": "EN Passwort zurücksetzen",
+      "heading": "Your Profile",
       "label-email": "Email",
       "label-api-key": "API Key"
     }

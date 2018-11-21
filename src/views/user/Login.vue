@@ -16,8 +16,15 @@
       <div class="row row-centered">
         <div class="col col-large-6">
 
-          <h2 class="heading">Anmelden</h2>
-          <login-form></login-form>
+          <div class="content-subsection">
+            <h2 class="heading">Anmelden</h2>
+            <login-form></login-form>
+          </div>
+
+          <div class="content-subsection">
+            <h2 class="subheading">Registrieren</h2>
+            <register-form></register-form>
+          </div>
 
         </div>
       </div>
@@ -28,12 +35,14 @@
 
 <script>
   import LoginForm from '@/components/login-form.vue'
+  import RegisterForm from '@/components/register-form.vue'
   import ContentSection from '@/components/shared/ContentSection.vue'
 
   export default {
   name: "Login",
   components :{
     LoginForm,
+      RegisterForm,
       'app-content-section': ContentSection
   }
 };

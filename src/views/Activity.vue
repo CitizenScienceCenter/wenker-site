@@ -16,4 +16,4 @@
 </script>
 
 
-<style lang="scss" src="@/styles/shared/activities.scss"></style>
+<style lang="scss" src="@/styles/activities.scss"></style>

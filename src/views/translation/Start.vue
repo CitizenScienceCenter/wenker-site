@@ -16,7 +16,7 @@
 
     <div>
 
-        <app-content-section>
+        <app-content-section class="content-section-condensed">
             <div class="content-wrapper">
 
                 <!--
@@ -51,9 +51,7 @@
                             <activity-details-form :project="project" :allRegions="true"></activity-details-form>
 
                             <div class="centered button-group left-aligned-large">
-                                <button class="button button-primary" v-on:click="startProject">{{ $t('button-start')
-                                    }}
-                                </button>
+                                <button class="button button-primary" v-on:click="startProject">{{ $t('button-start') }}</button>
                             </div>
                         </div>
 
@@ -142,5 +140,12 @@
     }
 </script>
 
-<style>
+
+<style lang="scss">
+
+    @import '@/styles/theme.scss';
+    @import '@/styles/shared/variables.scss';
+
+
+
 </style>

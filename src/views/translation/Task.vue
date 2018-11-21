@@ -1,3 +1,15 @@
+<i18n>
+    {
+    "de": {
+    "task-description": "Bitte übersetzen Sie den oben stehenden Satz in Ihren Dialekt."
+    },
+    "en": {
+    "task-description": "Please translate the sentence above in your dialect. ;-)"
+    }
+    }
+</i18n>
+
+
 <template>
 
     <div>
@@ -23,7 +35,7 @@
                         <div class="col">
 
                             <p class="centered">
-                                Bitte übersetzen Sie den oben stehenden Satz in Ihren Dialekt.
+                                {{ $t('task-description') }}
                             </p>
 
                         </div>
@@ -49,7 +61,7 @@
                     <div class="row">
                         <div class="col">
 
-                            <p class="centered button-group">
+                            <p class="centered button-group task-switch-bar">
                                 <button v-on:click="endTask" class="button button-secondary">Beenden</button>
                                 <label>Satz {{$route.query.count}} von 40</label>
                                 <button v-on:click="submitTask" class="button button-primary">Nächster Satz</button>
@@ -188,16 +200,5 @@
 
     @import '@/styles/theme.scss';
     @import '@/styles/shared/variables.scss';
-
-    .content-section-condensed {
-        padding: $spacing-5 0;
-    }
-
-    .button-group {
-        label {
-            text-transform: uppercase;
-            margin: 0 $spacing-2;
-        }
-    }
 
 </style>

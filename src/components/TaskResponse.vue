@@ -1,12 +1,27 @@
+<i18n>
+    {
+    "de": {
+    "special-characters-label": "Sonderzeichen einfügen",
+    "sentence-count-prefix": "Nr. ",
+    "button-next-sentence": "Nächster Satz"
+    },
+    "en": {
+    "special-characters-label": "Enter special characters",
+    "sentence-count-prefix": "No. ",
+    "button-next-sentence": "Next Sentence"
+    }
+    }
+</i18n>
+
 <template>
     <div>
         <div class="row">
 
-            <div class="col col-large-2 col-wrapping col-large-no-bottom-margin">
-                <div class="response-selection right-aligned">
+            <div class="col col-large-2 col-selection">
+                <div class="response-selection centered right-aligned-large">
                     <div class="custom-select">
                         <select v-model="activeAnswerIndex">
-                            <option v-for="(r, index) in answers" :value="index" :key="index">Satz Nr. {{index+1}}</option>
+                            <option v-for="(r, index) in answers" :value="index" :key="index">{{$t('sentence-count-prefix')}}{{index+1}}</option>
                         </select>
                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
                                <path d="M127.3,192h257.3c17.8,0,26.7,21.5,14.1,34.1L270.1,354.8c-7.8,7.8-20.5,7.8-28.3,0L113.2,226.1 C100.6,213.5,109.5,192,127.3,192z"/>
@@ -15,14 +30,14 @@
                 </div>
             </div>
 
-            <div class="col col-large-8 col-wrapping col-large-no-bottom-margin">
+            <div class="col col-large-8 col-response">
                 <div class="response-field">
 
                     <task-response-text ref="TaskResponseText" :responses="responses" :activeAnswer="activeAnswer" :activeAnswerIndex="activeAnswerIndex" type="text"></task-response-text>
 
                 </div>
-                <div class="special-characters">
-                    <label>Sonderzeichen einfügen</label>
+                <div class="special-characters centered">
+                    <label>{{ $t('special-characters-label') }}</label>
                     <button class="button button-secondary" v-on:click="insertChar(char)" :key="char" v-for="char in specialChars">{{char}}</button>
                     <!--TODO handle insertion of character to cursor position in CURRENT text box-->
                 </div>
@@ -30,10 +45,10 @@
 
             </div>
 
-            <div class="col col-large-2 col-wrapping col-no-bottom-margin">
-                <div class="response-buttons button-group">
-                    <button class="button button-primary" :disabled="activeAnswerIndex === answers.length - 1" @click="updateActiveIndex(1)">Nächster Satz</button>
-                    <button class="button button-secondary" :disabled="!activeAnswerIndex > 0" @click="updateActiveIndex(-1)">Vorheriger</button>
+            <div class="col col-large-2 col-buttons">
+                <div class="response-buttons button-group centered left-aligned-large">
+                    <button class="button button-primary" :disabled="activeAnswerIndex === answers.length - 1" @click="updateActiveIndex(1)">{{ $t('button-next-sentence') }}</button>
+                    <!-- <button class="button button-secondary" :disabled="!activeAnswerIndex > 0" @click="updateActiveIndex(-1)">Vorheriger</button> -->
                 </div>
             </div>
 
@@ -84,7 +99,7 @@
         components: {TaskResponseText,HelpPopup},
         methods: {
             updateActiveIndex(val) {
-                this.activeAnswerIndex += val
+                this.activeAnswerIndex += val;
             },
             insertChar(char) {
                 this.$refs.TaskResponseText.setChar(char);
@@ -101,23 +116,32 @@
     @import '@/styles/theme.scss';
     @import '@/styles/shared/variables.scss';
 
+
+    .col-selection {
+        margin-bottom: $spacing-3;
+    }
+    .col-response {
+        margin-bottom: $spacing-3;
+    }
+    .col-buttons {
+        margin-bottom: $spacing-2;
+    }
+
     .response-selection {
 
         .custom-select {
 
             select {
                 font-size: $font-size-small;
-                text-transform: uppercase;
-                padding-left: 12px;
-                border: none;
+                padding-left: $spacing-2;
+                border: 1px solid $color-primary-tint-50;
                 border-radius: $border-radius;
+
                 &:active {
-                    color: $color-primary;
                     border-color: $color-primary;
                 }
                 @media (hover: hover) {
                     &:hover {
-                        color: $color-primary;
                         border-color: $color-primary;
                     }
                 }
@@ -150,6 +174,14 @@
             border-color: white;
             font-family: sans-serif;
         }
+    }
+
+
+
+
+    @media only screen and (min-width: $viewport-large) {
+
+
     }
 
 </style>

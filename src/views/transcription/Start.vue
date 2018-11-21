@@ -5,9 +5,18 @@
     "activity-description": "Die 1700 handgeschriebenen Schweizer Wenker-Bögen müssen genau abgeschrieben werden, um sie digital aufzubereiten. Dafür brauchen wir deine Unterstützung!",
     "form-heading": "Ihre Angaben",
     "button-start": "Starten",
-    "button-start-region": "Starten mit lokalen Bögen",
+    "button-start-region": "Starten mit Bögen aus der Region",
     "login-heading": "Sie haben sich schon registiert?",
     "button-login": "Anmelden"
+    },
+    "en": {
+    "heading": "Transcription",
+    "activity-description": "1700 sheets need to be transcribed. Help us do that.",
+    "form-heading": "Your Info",
+    "button-start": "Start",
+    "button-start-region": "Start with sheets from your region",
+    "login-heading": "Already registered?",
+    "button-login": "Login"
     }
     }
 </i18n>
@@ -17,7 +26,7 @@
 
     <div>
 
-        <app-content-section>
+        <app-content-section class="content-section-condensed">
             <div class="content-wrapper">
 
                 <div class="row row-centered">
@@ -45,7 +54,7 @@
                             <div class="button-group centered left-aligned-large">
                                 <button class="button button-primary" v-on:click="startProject">{{ $t('button-start')
                                     }}
-                                </button>
+                                </button><br>
                                 <button class="button button-secondary" v-on:click="startProjectRegion">{{
                                     $t('button-start-region') }}
                                 </button>
@@ -168,6 +177,11 @@
 </script>
 
 <style lang="scss">
+
+    @import '@/styles/theme.scss';
+    @import '@/styles/shared/variables.scss';
+
+
 
 
 </style>

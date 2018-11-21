@@ -1,34 +1,50 @@
+<i18n>
+    {
+    "de": {
+    "heading": "Vielen Dank für deine Teilnahme",
+    "sentence-part-1": "Du bist der ",
+    "sentence-part-2": ". Teinehmer",
+    "heading-register": "Jetzt registrieren",
+    "register-text": "Erstelle dein Profil für künfitige Teilnahmen an unseren Citizen Science Projekten."
+    },
+    "en": {
+    "heading": "Thank you for Your Participation",
+    "sentence-part-1": "You are user number ",
+    "sentence-part-2": "",
+    "heading-register": "Register now",
+    "register-text": "Create your profile for future contributions to our Citizen Science projects."
+    }
+    }
+</i18n>
+
+
 <template>
     <app-content-section>
         <div class="content-wrapper">
 
-            <div class="row">
-                <div class="col">
+            <div class="row row-centered">
+                <div class="col col-large-6">
 
-                    <div class="desc">
-                        <h2> Danke. Du bist der {{ stats.contributor_count }}. Teilnehmer. </h2>
+                    <div class="content-subsection">
+                        <h2 class="heading">{{ $t('heading') }}</h2>
+                        <p>
+                            {{ $t('sentence-part-1') }}{{ stats.contributor_count }}{{ $t('sentence-part-2') }} <!-- TODO: if no loggedin -->
+                        </p>
                     </div>
 
-                </div>
-            </div>
+                    <!-- TODO: if no loggedin -->
 
-            <!-- <div class="row" v-if="user && user.username.indexOf('anon') !== -1"> -->
-            <div class="row">
-                <div class="col">
-
-                    <div class="form-section">
-                        <h3 class="title">Registrieren</h3>
+                    <div class="content-subsection">
+                        <h3 class="subheading">{{ $t('heading-register') }}</h3>
+                        <p>
+                            {{ $t('register-text') }}
+                        </p>
                         <register-form></register-form>
                     </div>
 
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col">
-
-                    <button @click="startPage" class="button button-secondary">Zurück zur Startseite</button>
-
+                    <div class="content-subsection">
+                        <button @click="startPage" class="button button-secondary">Zurück zur Startseite</button>
+                    </div>
                 </div>
             </div>
 

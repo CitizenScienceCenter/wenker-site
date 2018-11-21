@@ -7,6 +7,8 @@
                 :loading-size="100"
                 :zoom-speed="5"
                 :placeholder="'Loading'"
+                :placeholder-font-size="20"
+                :disableScrollToZoom="true"
                 :accept="'image/*'"
                 initial-position="top left"
                 auto-sizing>
@@ -14,8 +16,17 @@
         </croppa>
 
         <div class="buttons">
-            <button @click="zoom(false)" class="button button-secondary">+</button>
-            <button @click="zoom(true)" class="button button-secondary">-</button>
+            <button @click="zoom(false)" class="button button-secondary button-icon button-icon-only">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                    <path d="M448,208H304V64c0-17.7-14.3-32-32-32h-32c-17.7,0-32,14.3-32,32v144H64c-17.7,0-32,14.3-32,32v32c0,17.7,14.3,32,32,32h144
+                    v144c0,17.7,14.3,32,32,32h32c17.7,0,32-14.3,32-32V304h144c17.7,0,32-14.3,32-32v-32C480,222.3,465.7,208,448,208z"/>
+                </svg>
+            </button>
+            <button @click="zoom(true)" class="button button-secondary button-icon button-icon-only">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                    <path d="M448,208H64c-17.7,0-32,14.3-32,32v32c0,17.7,14.3,32,32,32h384c17.7,0,32-14.3,32-32v-32C480,222.3,465.7,208,448,208z"/>
+                </svg>
+            </button>
         </div>
     </div>
 </template>
@@ -25,6 +36,9 @@
         name: "TaskQuestionImage",
         props: {
             imgPath: {
+                type: String
+            },
+            trucken: {
                 type: String
             }
         },
@@ -43,6 +57,9 @@
                 } else {
                     this.croppaSettings.zoomIn()
                 }
+            },
+            push() {
+                this.croppaSettings.croppa.moveDownwards(10);
             }
         }
     }
@@ -55,6 +72,8 @@
 
 .image-browser {
     position: relative;
+    max-width: 1680px;
+    margin: auto;
 
     .croppa-container {
         width: 100%;
@@ -66,7 +85,7 @@
     .buttons {
         position: absolute;
         bottom: $spacing-3;
-        right: $spacing-3;
+        left: $spacing-3;
 
         .button {
             background-color: white;

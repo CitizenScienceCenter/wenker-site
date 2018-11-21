@@ -126,7 +126,7 @@
             <h3 class="subheading centered">{{ $t('section-contribute-1-heading') }}</h3>
             <p>{{ $t('section-contribute-1-text') }}</p>
             <p class="centered">
-              <router-link tag="button" to="/offer" class="button button-primary">{{ $t('section-contribute-1-button') }}</router-link>
+              <router-link tag="button" to="/transcribe" class="button button-primary">{{ $t('section-contribute-1-button') }}</router-link>
             </p>
           </div>
           <div class="col col-tablet-portrait-10 col-large-4 col-wrapping col-no-bottom-margin scroll-effect scroll-effect-delayed-3">
@@ -138,7 +138,7 @@
             <h3 class="subheading centered">{{ $t('section-contribute-2-heading') }}</h3>
             <p>{{ $t('section-contribute-2-text') }}</p>
             <p class="centered">
-              <router-link tag="button" to="/offer" class="button button-primary">{{ $t('section-contribute-2-button') }}</router-link>
+              <router-link tag="button" to="/translate" class="button button-primary">{{ $t('section-contribute-2-button') }}</router-link>
             </p>
           </div>
 
@@ -164,7 +164,7 @@
               <h2 class="heading centered left-aligned-large">{{ $t('section-wenker-heading') }}</h2>
               <p>{{ $t('section-wenker-text') }}</p>
               <p class="centered left-aligned-large">
-                <router-link tag="button" to="/activities" class="button button-secondary button-secondary-inverted">{{ $t('section-wenker-button') }}</router-link>
+                <router-link tag="button" to="/wenker" class="button button-secondary button-secondary-inverted">{{ $t('section-wenker-button') }}</router-link>
               </p>
             </div>
           </div>

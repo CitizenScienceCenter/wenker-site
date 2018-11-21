@@ -2,7 +2,15 @@
     {
     "de": {
     "label-region": "Region Ihres Dialekts",
-    "label-age": "Ihr Alter"
+    "error-region": "Ihre Region ist erforderlich",
+    "label-age": "Ihr Alter",
+    "error-age": "Ihre Altersgruppe ist erforderlich"
+    },
+    "en": {
+    "label-region": "Region of your dialect",
+    "error-region": "Region is required",
+    "label-age": "Your age",
+    "error-age": "Age is required"
     }
     }
 </i18n>
@@ -22,8 +30,8 @@
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
                    <path d="M127.3,192h257.3c17.8,0,26.7,21.5,14.1,34.1L270.1,354.8c-7.8,7.8-20.5,7.8-28.3,0L113.2,226.1 C100.6,213.5,109.5,192,127.3,192z"/>
                 </svg>
-                <span class="error" v-if="errors.canton">Ihre Region ist erforderlich</span>
             </div>
+            <p class="error" v-if="errors.canton">{{ $t('error-region') }}</p>
         </div>
         <div v-bind:class="{'invalid': !details.age}" class="form-field">
             <label>{{ $t('label-age') }}</label>
@@ -35,8 +43,8 @@
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
                    <path d="M127.3,192h257.3c17.8,0,26.7,21.5,14.1,34.1L270.1,354.8c-7.8,7.8-20.5,7.8-28.3,0L113.2,226.1 C100.6,213.5,109.5,192,127.3,192z"/>
                 </svg>
-                <span class="error" v-if="errors.age">Ihre Altersgruppe ist erforderlich</span>
             </div>
+            <p class="error" v-if="errors.age">{{ $t('error-age') }}</p>
         </div>
     </div>
 </template>
