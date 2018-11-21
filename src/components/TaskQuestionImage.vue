@@ -8,15 +8,14 @@
                 :zoom-speed="5"
                 :placeholder="'Loading'"
                 :accept="'image/*'"
-                :initial-image="imgPath"
                 initial-position="top left"
                 auto-sizing>
             <img slot="initial" :src="imgPath" />
         </croppa>
 
         <div class="buttons">
-            <button @click="zoom(true)" class="button button-secondary">+</button>
-            <button @click="zoom(false)" class="button button-secondary">-</button>
+            <button @click="zoom(false)" class="button button-secondary">+</button>
+            <button @click="zoom(true)" class="button button-secondary">-</button>
         </div>
     </div>
 </template>
@@ -36,6 +35,15 @@
         },
         mounted() {
 
+        },
+        methods: {
+            zoom(out) {
+                if (out) {
+                    this.croppaSettings.zoomOut()
+                } else {
+                    this.croppaSettings.zoomIn()
+                }
+            }
         }
     }
 </script>

@@ -5,9 +5,9 @@
     </div>
     <div class="text">
       <a class="username" href="#">
-        @{{comment.user}}
+        @{{comment.info.username}}
       </a>
-      <span>{{comment.text}}</span>
+      <span>{{comment.content.text}}</span>
     </div>
   </div>
 </template>

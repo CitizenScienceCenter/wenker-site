@@ -69,11 +69,19 @@
         },
         methods: {
             submitComment: function () {
-                this.comments.push({
-                    user: this.user.username,
-                    avatar: "",
-                    text: this.reply
-                });
+                let uname = this.user.username;
+                if (uname.startsWith('anon')) uname = 'anon';
+                const c = {
+                    user_id: this.user.id,
+                    source_id: this.id,
+                    content: {
+                        text: this.reply
+                    },
+                    info: {
+                        username: uname
+                    }
+                };
+                this.$store.dispatch('c3s/comments/createComment', c);
                 this.reply = '';
             }
         }

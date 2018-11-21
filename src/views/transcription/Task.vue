@@ -2,7 +2,7 @@
 
     <div>
 
-        <section>
+        <section v-if="tasks.length">
             <task-question-image v-if="media.length > 0" :question="tasks[0].content.question"
                                  :imgPath="media[0].path"></task-question-image>
         </section>
@@ -22,7 +22,7 @@
                     </div>
                 </div>
 
-                <div class="content-subsection">
+                <div class="content-subsection" v-if="responses.length">
                     <task-response :answers="tasks[0].content.answers" :responses="responses" :showSpecial="true"></task-response>
                 </div>
 
@@ -50,7 +50,7 @@
                 <div class="row">
                     <div class="col">
 
-                        <comments-list :id="tasks[0].id"></comments-list>
+                        <comments-list v-if="tasks.length" :id="tasks[0].id"></comments-list>
 
                     </div>
                 </div>
@@ -169,7 +169,7 @@
                             for (let index in media) {
                                 media[index].path = media[index].path.replace('./static', 'https://wenker.citizenscience.ch/files')
                             }
-                            // console.log(media[0])
+                            console.log(media[0].path)
                             this.$store.commit('c3s/task/SET_MEDIA', media)
                         })
                     } else {
@@ -189,6 +189,7 @@
             endTask() {
                 this.$store.commit('c3s/submission/SET_SUBMISSION_RESPONSES', this.responses);
                 this.$store.dispatch('c3s/submission/createSubmission').then(s => {
+                    this.$store.commit('c3s/activity/SET_ACTIVITY', null);
                     this.$router.push({
                         name: 'TranscribeComplete'
                     })
