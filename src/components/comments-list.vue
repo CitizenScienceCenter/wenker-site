@@ -70,7 +70,7 @@
         methods: {
             submitComment: function () {
                 let uname = this.user.username;
-                if (uname.startsWith('anon')) uname = 'anon';
+                if (this.user.info.anonymous) uname = 'anon';
                 const c = {
                     user_id: this.user.id,
                     source_id: this.id,
