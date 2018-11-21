@@ -123,11 +123,13 @@
             activity: state => state.c3s.activity.activity
         }),
         mounted() {
+            this.$store.commit('c3s/activity/SET_ACTIVITY', null);
             this.$store
                 .dispatch("c3s/activity/getActivity", [
                     this.id,
                     false
                 ]).then(a => {
+                    console.log(a)
             })
 
 

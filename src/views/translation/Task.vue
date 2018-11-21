@@ -6,8 +6,8 @@
             <div class="content-wrapper">
 
                 <div class="row">
-                    <div class="col">
-                        <task-question-text :question="task.content.question"></task-question-text>
+                    <div class="col" v-if="tasks.length">
+                        <task-question-text :question="tasks[0].content.question"></task-question-text>
                     </div>
                 </div>
 
@@ -34,8 +34,9 @@
                     <div class="row row-centered">
                         <div class="col col-large-8">
 
-                            <p class="task-response">
-                                <task-response :answers="tasks[0].content.answers" :responses="responses" :showSpecial="true"></task-response>
+                            <p class="task-response" v-if="responses.length">
+                                <task-response :answers="tasks[0].content.answers" :responses="responses"
+                                               :showSpecial="true"></task-response>
                             </p>
 
                         </div>
@@ -66,7 +67,7 @@
                 <div class="row">
                     <div class="col">
 
-                        <comments-list :current_user="user" :comments="comments"></comments-list>
+                        <comments-list v-if="tasks.length" :id="tasks[0].id"></comments-list>
 
                     </div>
                 </div>
@@ -79,62 +80,101 @@
 </template>
 
 <script>
-  import { mapState } from 'vuex'
-  import HelpPopup from '@/components/help-popup'
-  import CommentsList from '@/components/comments-list'
-  import TaskQuestionText from '@/components/TaskQuestionText'
-  import TaskResponseText from '@/components/TaskResponseText'
-  import ContentSection from '@/components/shared/ContentSection.vue'
+    import {mapState} from 'vuex'
+    import HelpPopup from '@/components/help-popup'
+    import CommentsList from '@/components/comments-list'
+    import TaskQuestionText from '@/components/TaskQuestionText'
+    import TaskResponse from '@/components/TaskResponse'
+    import ContentSection from '@/components/shared/ContentSection.vue'
 
-  export default {
-    name: 'Task',
-    components: {
-      TaskQuestionText,
-        TaskResponseText,
-      'app-content-section': ContentSection,
-      CommentsList,
-      HelpPopup
-    },
-    computed: mapState({
-      specialChars: state => state.consts.specialChars
-    }),
-    mounted() {
-      console.log(this.comments)
-    },
-    data () {
-      return {
-        user: {},
-        task_help: '',
-        nextTxt: 'Next',
-        comments: [{
-            user: 'jfkdf',
-            text: 'fhjkdfkjd'
-        }],
-        task: {
-          info: {
-            path: 'https://cdn.pixabay.com/photo/2018/10/01/20/38/meteora-3717220_1280.jpg'
-          },
-          content: {
-            answers: [],
-            question: {
-              text: 'Question text',
-              type: 'single_file'
+    export default {
+        name: 'Task',
+        components: {
+            TaskQuestionText,
+            TaskResponse,
+            'app-content-section': ContentSection,
+            CommentsList,
+            HelpPopup
+        },
+        computed: mapState({
+            specialChars: state => state.consts.specialChars,
+            tasks: state => state.c3s.task.tasks,
+            activity: state => state.c3s.activity.activity,
+            user: state => state.c3s.user.currentUser
+        }),
+        watch: {
+        },
+        mounted() {
+            if (this.activity && this.activity.id) {
+                this.loadTask(this.$route.query['count']);
+            } else {
+                console.log('No activity set in the store!');
+                //    TODO show error for no activity
+                this.$router.push({name: 'TranslateStart'})
             }
-          }
-        }
-      }
-    },
-    methods: {
-      endTask () {
+        },
+        data() {
+            return {
+                responses: [],
+                task_help: '',
+                nextTxt: 'Next'
+            }
+        },
+        methods: {
+            createSubmission() {
+                const submission = {
+                    user_id: this.user.id,
+                    task_id: this.tasks[0].id,
+                    content: {}
+                };
+                this.$store.commit('c3s/submission/SET_SUBMISSION', submission)
+            },
+            endTask() {
 
-      },
-      submitTask () {
-          let qu = Object.assign({}, this.$route.query);
-          qu['count'] = qu['count'] + 1;
-          this.$router.replace({name: 'TranscribeTask', query: qu})
-      }
+            },
+            submitTask() {
+                let qu = Object.assign({}, this.$route.query);
+                qu['count'] = qu['count'] + 1;
+                this.$router.replace({name: 'TranslateTask', query: qu})
+            },
+            loadTask(count) {
+                const taskQuery = {
+                    "select": {
+                        "fields": [
+                            "*"
+                        ],
+                        "orderBy": {
+                            "id": "desc"
+                        },
+                        "tables": [
+                            "tasks"
+                        ]
+                    },
+                    "where": {
+                        "activity_id": {
+                            "op": "e",
+                            "val": this.activity.id
+                        }
+                    },
+                    "limit": 1,
+                    "offset": count - 1
+                };
+                this.$store.dispatch('c3s/task/getTasks', taskQuery).then(t => {
+                    if (t.body && t.body.length > 0) {
+                        const task = t.body[0];
+                        for (let i = 0; i < task.content.answers.length; i++) {
+                            this.responses.push({text: ""})
+                        }
+                        this.createSubmission();
+                    } else {
+                        console.log(t)
+                        console.log('No tasks found');
+                        // this.$router.push({'name': 'TranslateComplete'})
+                    }
+                })
+            }
+        }
     }
-  }
 </script>
 
 <style lang="scss">
@@ -145,7 +185,6 @@
     .content-section-condensed {
         padding: $spacing-5 0;
     }
-
 
     .button-group {
         label {
