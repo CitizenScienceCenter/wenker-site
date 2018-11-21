@@ -26,6 +26,8 @@
                     <button class="button button-secondary" v-on:click="insertChar(char)" :key="char" v-for="char in specialChars">{{char}}</button>
                     <!--TODO handle insertion of character to cursor position in CURRENT text box-->
                 </p>
+                <help-popup :header="'Hilfen'" :info="task_help"></help-popup>
+
             </div>
 
             <div class="col col-large-2 col-wrapping col-no-bottom-margin">
@@ -42,6 +44,7 @@
 <script>
 
     import TaskResponseText from '@/components/TaskResponseText.vue'
+    import HelpPopup from '@/components/help-popup'
     import {mapState} from 'vuex'
 
     export default {
@@ -78,7 +81,7 @@
         computed: mapState({
            specialChars: state => state.consts.specialChars
         }),
-        components: {TaskResponseText},
+        components: {TaskResponseText,HelpPopup},
         methods: {
             updateActiveIndex(val) {
                 this.activeAnswerIndex += val

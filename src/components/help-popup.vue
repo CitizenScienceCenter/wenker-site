@@ -1,14 +1,28 @@
 <template>
-<div>
- <div class="form-popup">
-  <div><span class="popup-title"><b>{{header}}</b></span><button @click="switchForm" :class="{'show': !visible, 'hide': visible}">^</button></div>
-  <form class="form-container" :class="{'visible': visible, 'hidden': !visible}">
+    <div class="help-popup-wrapper">
 
-    <div v-html="info"></div>
-  </form>
-</div>
-</div>
+        <button class="button button-secondary" @click="visible = !visible">Transkribierungsregeln</button>
+
+
+        <div v-if="visible" class="popup">
+            <button class="button button-secondary" @click="visible = !visible">Close</button>
+            content
+        </div>
+        <!--
+     <div class="form-popup">
+      <div><span class="popup-title"><b>{{header}}</b></span><button @click="switchForm" :class="{'show': !visible, 'hide': visible}">^</button></div>
+      <form class="form-container" :class="{'visible': visible, 'hidden': !visible}">
+
+        <div v-html="info"></div>
+      </form>
+
+    </div>
+
+      -->
+
+    </div>
 </template>
+
 <script>
 export default {
   name: 'HelpPopup',
@@ -25,8 +39,25 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
-.chat-popup {
+
+<style lang="scss">
+
+    .help-popup-wrapper {
+        position: relative;
+
+        .popup {
+            width: 400px;
+            height: 400px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background: green;
+        }
+    }
+
+    /*
+
+.form-popup {
   box-sizing: border-box;
 }
 
@@ -50,7 +81,6 @@ export default {
   display: none;
 }
 
-/* Button used to open the chat form - fixed at the bottom of the page */
 .open-button {
   background-color: #555;
   color: white;
@@ -63,8 +93,6 @@ export default {
   right: 28px;
   width: 280px;
 }
-
-/* The popup chat - hidden by default */
 .form-popup {
   position: fixed;
   bottom: 0;
@@ -73,14 +101,12 @@ export default {
   z-index: 9;
 }
 
-/* Add styles to the form container */
 .form-container {
   max-width: 300px;
   padding: 10px;
   background-color: white;
 }
 
-/* Full-width textarea */
 .form-container textarea {
   width: 100%;
   padding: 15px;
@@ -91,13 +117,11 @@ export default {
   min-height: 200px;
 }
 
-/* When the textarea gets focus, do something */
 .form-container textarea:focus {
   background-color: #ddd;
   outline: none;
 }
 
-/* Set a style for the submit/login button */
 .form-container .btn {
   background-color: #4caf50;
   color: white;
@@ -109,14 +133,14 @@ export default {
   opacity: 0.8;
 }
 
-/* Add a red background color to the cancel button */
 .form-container .cancel {
   background-color: red;
 }
 
-/* Add some hover effects to buttons */
 .form-container .btn:hover,
 .open-button:hover {
   opacity: 1;
 }
+
+    */
 </style>

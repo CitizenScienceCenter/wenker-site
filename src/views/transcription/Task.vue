@@ -58,10 +58,6 @@
             </div>
         </app-content-section>
 
-        <template>
-            <help-popup :header="'Hilfen'" :info="task_help"></help-popup>
-        </template>
-
     </div>
 
 </template>
@@ -69,7 +65,6 @@
 <script>
 
     import {mapState} from 'vuex'
-    import HelpPopup from '@/components/help-popup'
     import CommentsList from '@/components/comments-list'
     import TaskQuestionImage from '@/components/TaskQuestionImage'
     import TaskResponse from '@/components/TaskResponse'
@@ -81,7 +76,6 @@
             TaskQuestionImage,
             TaskResponse,
             'app-content-section': ContentSection,
-            HelpPopup,
             CommentsList
         },
         computed: mapState({
