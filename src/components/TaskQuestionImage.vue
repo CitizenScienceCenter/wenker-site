@@ -22,30 +22,22 @@
 </template>
 
 <script>
-  export default {
-    name: 'TaskQuestionImage',
-    props: {
-      // question: {
-      //   type: Object,
-      //   default: () => {
-      //     return {}
-      //   }
-      // },
-      imgPath: {
-        type: String,
-        default: ""
-      }
-    },
-    data () {
-      return {
-        croppaSettings: null,
-      }
-    },
-    mounted () {
-      console.log(this.img)
+    export default {
+        name: "TaskQuestionImage",
+        props: {
+            imgPath: {
+                type: String
+            }
+        },
+        data() {
+            return {
+                croppaSettings: {}
+            }
+        },
+        mounted() {
 
+        }
     }
-  }
 </script>
 
 <style lang="scss">

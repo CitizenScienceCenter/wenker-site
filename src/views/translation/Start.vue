@@ -75,7 +75,7 @@
                 <div class="row">
                     <div class="col">
 
-                        <comments-list :current_user="user" :comments="comments"></comments-list>
+                        <comments-list :id="id"></comments-list>
 
                     </div>
                 </div>
@@ -99,11 +99,13 @@
       return {
         project: {},
         stats: {},
-        user: {},
-        comments: []
+        comments: [],
+          id: '507b3f89-aff1-4fa3-8f28-9c8399811539'
       }
     },
     computed: mapState({
+        user: state => state.c3s.user.currentUser,
+        activity: state => state.c3s.activity.activity
     }),
     watch: {
       project (to, from) {
@@ -119,24 +121,12 @@
         'app-content-section': ContentSection
     },
     mounted () {
-      // this.$store
-      //   .dispatch("project/getProject", [
-      //     this.$route.params.id || this.projectID,
-      //     false
-      //   ])
-      //   .then(p => {
-      //     if (p === false) {
-      //       this.$router.push({
-      //         name: "Error",
-      //         params: { msg: "Project not found" }
-      //       });
-      //     }
-      //   });
-      // console.log(this.stats);
-      // this.regions = this.swissCantons;
-      // if (this.user && this.user.info && this.user.info.age) {
-      //   this.userDetails = this.user.info;
-      // }
+        this.$store
+            .dispatch("c3s/activity/getActivity", [
+                this.id,
+                false
+            ]).then(a => {
+        })
     },
     methods: {
       startProject () {

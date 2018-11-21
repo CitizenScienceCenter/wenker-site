@@ -2,7 +2,6 @@
     <div>
         <div class="row">
 
-
             <div class="col col-large-2 col-wrapping col-large-no-bottom-margin">
                 <div class="response-selection right-aligned">
                     <div class="custom-select">
@@ -18,14 +17,9 @@
 
             <div class="col col-large-8 col-wrapping col-large-no-bottom-margin">
                 <div class="response-field">
-                    <!-- <task-response-text  v-for="(r, index) in answers" :responses="task.content.answers" :activeAnswerIndex="0"></task-response-text> -->
-                    <task-response-text activeAnswerIndex="0"></task-response-text>
-                    <!--
-                    <div class="form-field" v-for="(r, index) in answers">
-                        <label>{{index}}</label>
-                        <input :placeholder="index" type="text"></input>
-                    </div>
-                    -->
+
+                    <task-response-text ref="TaskResponseText" :responses="responses" :activeAnswer="activeAnswer" :activeAnswerIndex="activeAnswerIndex" type="text"></task-response-text>
+
                 </div>
                 <p class="special-characters">
                     <label>Sonderzeichen einfügen</label>
@@ -47,47 +41,54 @@
 
 <script>
 
-    import TaskResponseText from '@/components/TaskResponseText'
-    import { mapState } from 'vuex'
+    import TaskResponseText from '@/components/TaskResponseText.vue'
+    import {mapState} from 'vuex'
 
     export default {
-      name: 'TaskResponse',
-        components: {
-            TaskResponseText
+        name: 'TaskResponse',
+        props: {
+            answers: {
+              type: Array,
+              default: () => {
+                return []
+              }
+            },
+            responses: {
+              type: Array,
+              default: () => {
+                return []
+              }
+            },
+            showSpecial: {
+                type: Boolean,
+                default: false
+            }
         },
-      props: {
-        // answers: {
-        //   type: Array,
-        //   default: () => {
-        //     return []
-        //   }
-        // },
-        // responses: {
-        //   type: Array,
-        //   default: () => {
-        //     return []
-        //   }
-        // }
-      },
-      data () {
-        return {
-          activeAnswerIndex: 0,
-          responses: [1,2],
-          answers: [1,2]
-        }
-      },
+        watch: {
+            activeAnswer (to, from) {
+                this.activeAnswer = this.task.content.answers[to]
+            }
+        },
+        data() {
+            return {
+                activeAnswerIndex: 0,
+                activeAnswer: {}
+            }
+        },
         computed: mapState({
-            specialChars: state => state.consts.specialChars
-
+           specialChars: state => state.consts.specialChars
         }),
-      methods: {
-        updateActiveIndex (val) {
-          this.activeAnswerIndex += val
-        },
-        insertChar () {
+        components: {TaskResponseText},
+        methods: {
+            updateActiveIndex(val) {
+                this.activeAnswerIndex += val
+            },
+            insertChar(char) {
+                this.$refs.TaskResponseText.setChar(char);
+
+            }
 
         }
-      }
     }
 </script>
 

@@ -13,7 +13,7 @@
             <label>{{ $t('label-region') }}</label>
             <div class="custom-select">
                 <select v-model="details.canton" name="canton" id="canton">
-                    <option :key="r.value" v-for="r in regions" :value="r.value">{{r.label}}</option>
+                    <option :key="r.value" v-for="r in regions" :value="r.label">{{r.label}}</option>
                     <template v-if="allRegions">
                         <option disabled>--------------</option>
                         <option :key="o.value" v-for="o in otherRegions" :value="o.value">{{o.label}}</option>
@@ -42,72 +42,67 @@
 </template>
 
 <script>
-  import { mapState } from 'vuex'
+    import {mapState} from 'vuex'
 
-  export default {
-    name: 'ActivityDetailsForm',
-    props: {
-      project: {
-        type: Object
-      },
-      allRegions: {
-        type: Boolean,
-        default: false
-      }
-    },
-    watch: {
-      'details.canton'(to, from) {
-        this.updateUserInfo('canton', to)
-      },
-      'details.ageRange'(to, from) {
-        this.updateUserInfo('ageRange', to)
-      }
-    },
-    computed: mapState({
-      regions: state => state.consts.swissCantons,
-      otherRegions: state => state.consts.otherRegions,
-      ageRange: state => state.consts.ageRange,
-      // user: state => state.c3s.user.currentUser
-    }),
-    mounted() {
-    },
-    methods: {
-      updateUserInfo(key, value)
-      {
-        // TODO deploy update to store (get user info and assign)
-        // let updatedUser = Object.assign({}, this.user['info'])
-        // // if (updatedUser.hasOwnProperty('info')) {
-        // //   if(updatedUser['info'] === null || updatedUser['info'].keys().length === 0) {
-        // //     updatedUser['info'] = {}
-        // //   }
-        //   updatedUser[key] = value
-        //   console.log(updatedUser)
-        //   this.$store.dispatch('c3s/user/updateUser', [this.user.id, {'info': updatedUser}]).then(u => {
-        //     console.log(u)
-        //
-        //     console.log('User Details Updated')
-        //   })
-        // } else {
-        //   console.log('User is null, not updating')
-        // }
-      }
-    },
-    data() {
-      return {
-        details: {
-          ageRange: undefined,
-          canton: undefined
+    export default {
+        name: 'ActivityDetailsForm',
+        props: {
+            project: {
+                type: Object
+            },
+            allRegions: {
+                type: Boolean,
+                default: false
+            },
+            errors: {
+                type: Object,
+                default: () => {
+                    return {age: false, canton: false}
+                }
+            }
         },
-        errors: {
-          canton: false,
-          age: false
+        data() {
+            return {
+                details: {
+                    ageRange: undefined,
+                    canton: undefined
+                }
+            }
         },
-        user: {
-
+        watch: {
+            'user.info'(to, from) {
+                if (to.hasOwnProperty('ageRange')) this.errors.age = false;
+                if (to.hasOwnProperty('canton')) this.errors.canton = false;
+            },
+            'details.canton'(to, from) {
+                this.updateUserInfo('canton', to)
+            },
+            'details.ageRange'(to, from) {
+                this.updateUserInfo('ageRange', to)
+            }
+        },
+        computed: mapState({
+            regions: state => state.consts.swissCantons,
+            otherRegions: state => state.consts.otherRegions,
+            ageRange: state => state.consts.ageRange,
+            user: state => state.c3s.user.currentUser
+        }),
+        mounted() {
+            if (this.user && this.user.info && this.user.info.ageRange) {
+                this.details = this.user.info;
+            }
+        },
+        methods: {
+            updateUserInfo(key, value) {
+                // TODO deploy update to store (get user info and assign)
+                let updatedUser = Object.assign({}, this.user['info'])
+                updatedUser[key] = value
+                this.$store.dispatch('c3s/user/updateUser', [this.user.id, {'info': updatedUser}]).then(u => {
+                    console.log('User Details Updated')
+                })
+            }
         }
-      }
     }
-  }
 </script>
 
 <style lang="scss" scoped>

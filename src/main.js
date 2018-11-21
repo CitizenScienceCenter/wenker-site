@@ -6,29 +6,46 @@ import App from './App.vue'
 import store from './store/store.js'
 import Vuex from 'vuex'
 import { i18n } from './i18n.js'
-// import c3s from 'vuex-c3s'
+import c3s from 'vuex-c3s'
 import Croppa from 'vue-croppa';
-const swaggerURL = 'http://localhost:8080/api/v2/swagger.json'
+
+const env = process.env.NODE_ENV || 'development';
+let swaggerURL = 'https://wenker.citizenscience.ch/api/v2/swagger.json';
+if (env === 'local') {
+    swaggerURL = 'http://localhost:8080/api/v2/swagger.json';
+}
+console.log(swaggerURL)
 Vue.config.productionTip = false
-// Vue.use(c3s.plugin, { store, swaggerURL })
+Vue.use(c3s.plugin, { store, swaggerURL })
 Vue.use(VueRouter)
 Vue.use(VueScrollTo, {
   offset: -32
 })
+Vue.use(Croppa)
 Vue.use(Vuex)
 Vue.use(Croppa)
 
 
 Vue.use(Croppa);
 
-new Vue({
-  store,
-  router,
-  i18n,
-  render: h => h(App),
-  beforeCreate: function () {
-  }
-}).$mount('#app')
+store.watch(
+    (state) => state.c3s,
+    (value) => {
+        console.log(value)
+        if (value !== null) {
+            console.log('loaded')
+            new Vue({
+                store,
+                router,
+                i18n,
+                render: h => h(App),
+                beforeCreate: function () {
+                }
+            }).$mount('#app')
+        }
+    }
+)
+
 
 
 

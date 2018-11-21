@@ -12,6 +12,7 @@
     "node-sass": "^4.9.3",
     "sass-loader": "^7.1.0",
     "vue": "^2.5.17",
+    "vue-croppa": "^1.3.8",
     "vue-i18n": "^8.2.1",
     "vue-router": "^3.0.1",
     "vue-scrollto": "^2.13.0",
@@ -26,9 +27,8 @@
     "eslint-plugin-babel": "^5.2.1",
     "eslint-plugin-html": "^5.0.0",
     "swagger-client": "^3.8.22",
-    "vue-croppa": "^1.3.8",
     "vue-template-compiler": "^2.5.17",
-    "vuex-c3s": "^0.1.12"
+    "vuex-c3s": "^0.1.17"
   },
   "eslintConfig": {
     "root": true,

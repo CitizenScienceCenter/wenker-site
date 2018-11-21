@@ -17,6 +17,7 @@
         <app-content-section class="content-section-condensed">
             <div class="content-wrapper">
 
+
                 <div class="content-subsection">
                     <div class="row">
                         <div class="col">
@@ -34,12 +35,13 @@
                         <div class="col col-large-8">
 
                             <p class="task-response">
-                                <task-response-text :responses="task.content.answers" :activeAnswerIndex="0"></task-response-text>
+                                <task-response :answers="tasks[0].content.answers" :responses="responses" :showSpecial="true"></task-response>
                             </p>
 
                         </div>
                     </div>
                 </div>
+
 
                 <div class="content-subsection">
                     <div class="row">
@@ -129,7 +131,9 @@
 
       },
       submitTask () {
-
+          let qu = Object.assign({}, this.$route.query);
+          qu['count'] = qu['count'] + 1;
+          this.$router.replace({name: 'TranscribeTask', query: qu})
       }
     }
   }
