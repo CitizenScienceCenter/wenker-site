@@ -20,21 +20,28 @@
       <div class="row row-centered">
         <div class="col col-large-6">
 
-          <h2 class="heading">{{ $t('heading') }}</h2>
+          <div class="content-subsection">
+            <h2 class="heading">{{ $t('heading') }}</h2>
 
-          <form novalidate disabled>
-            <div v-if="user" class="md-layout">
-              <div>
-                <label for="user.email">{{ $t('label-email') }}</label>
-                <input v-model="user.email" type="email" name="email" id="email" autocomplete="email" disabled/>
-              </div>
+            <form novalidate disabled>
+              <div v-if="user" class="md-layout">
+                <div>
+                  <label for="user.email">{{ $t('label-email') }}</label>
+                  <!-- <input v-model="user.email" type="email" name="email" id="email" autocomplete="email" disabled/> -->
+                  <p>{{ user.email }}</p>
+                </div>
 
-              <div>
-                <label for="user.email">{{ $t('label-api-key') }}</label>
-                <input v-model="user.api_key" type="text" name="api" id="api"/>
+                <div>
+                  <label for="user.api_key">{{ $t('label-api-key') }}</label>
+                  <!-- <input v-model="user.api_key" type="text" name="api" id="api"/> -->
+                  <p>{{ user.api_key }}</p>
+                </div>
               </div>
-            </div>
-          </form>
+            </form>
+          </div>
+          <div class="content-subsection">
+            <router-link tag="button" to="/logout" class="button button-secondary">Logout</router-link>
+          </div>
 
         </div>
       </div>
@@ -58,7 +65,8 @@ export default {
     };
   },
   computed: mapState({
-    user: state => state.user.user,
+    //user: state => state.user.user,
+      user: state => state.c3s.user.currentUser,
     loading: state => state.settings.loading
   }),
   mounted() {

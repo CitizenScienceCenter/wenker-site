@@ -100,7 +100,7 @@
               <h2 class="heading centered left-aligned-large">{{ $t('section-explanation-heading') }}</h2>
               <p>{{ $t('section-explanation-text') }}</p>
               <p class="centered left-aligned-large">
-                <router-link tag="button" to="/activities" class="button button-secondary">{{ $t('section-explanation-button') }}</router-link>
+                <router-link tag="button" to="/project" class="button button-secondary">{{ $t('section-explanation-button') }}</router-link>
               </p>
             </div>
           </div>
