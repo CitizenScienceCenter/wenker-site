@@ -1,12 +1,48 @@
+<i18n>
+    {
+        "de": {
+            "transcription-rules-button-show": "Transkribierungsregeln anzeigen",
+            "transcription-rules-button-hide": "Transkribierungsregeln verbergen",
+            "transcription-rule-1": "Ein vermuteter Wortlaut wird in eckigen Klammern [] geschrieben, z. B. [T]ue das mache...",
+            "transcription-rule-2": "Wenn ein Wort oder ein Buchstabe nicht entziffert werden kann, wird folgender Platzhalter eingefügt: [...]",
+            "transcription-rule-3": "Falls ein Wort nicht vollständig entziffert werden kann, kann folgender Platzhalter eingefügt werden: [unvollst.]",
+            "transcription-rule-4": "Grundsatz: Die Transkription soll möglichst nahe am Original sein!",
+            "transcription-rule-5": "Alle Sonderzeichen sollten transkribiert werden! (Falls nicht möglich, siehe FAQs).",
+            "transcription-rule-6": "Kommentare können Sie in dem Kommentarfeld hinterlassen."
+        },
+        "en": {
+            "transcription-rules-button-show": "Show Transcription Rules",
+            "transcription-rules-button-hide": "Hide Transcription Rules",
+            "transcription-rule-1": "Ein vermuteter Wortlaut wird in eckigen Klammern [] geschrieben, z. B. [T]ue das mache...",
+            "transcription-rule-2": "Wenn ein Wort oder ein Buchstabe nicht entziffert werden kann, wird folgender Platzhalter eingefügt: [...]",
+            "transcription-rule-3": "Falls ein Wort nicht vollständig entziffert werden kann, kann folgender Platzhalter eingefügt werden: [unvollst.]",
+            "transcription-rule-4": "Grundsatz: Die Transkription soll möglichst nahe am Original sein!",
+            "transcription-rule-5": "Alle Sonderzeichen sollten transkribiert werden! (Falls nicht möglich, siehe FAQs).",
+            "transcription-rule-6": "Kommentare können Sie in dem Kommentarfeld hinterlassen."
+        }
+    }
+</i18n>
+
 <template>
-    <div class="help-popup-wrapper">
+    <div>
 
-        <button class="button button-secondary" @click="visible = !visible">Transkribierungsregeln</button>
-
+        <a class="popup-toggle" :class="{ active: visible }" @click="visible = !visible">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                <path d="M239.1,352.3l-136-136c-9.4-9.4-9.4-24.6,0-33.9l22.6-22.6c9.4-9.4,24.6-9.4,33.9,0l96.4,96.4l96.4-96.4
+                c9.4-9.4,24.6-9.4,33.9,0l22.6,22.6c9.4,9.4,9.4,24.6,0,33.9l-136,136C263.7,361.7,248.5,361.7,239.1,352.3L239.1,352.3z"/>
+            </svg>
+            {{ buttonText }}
+        </a>
 
         <div v-if="visible" class="popup">
-            <button class="button button-secondary" @click="visible = !visible">Close</button>
-            content
+            <ul>
+                <li>{{ $t('transcription-rule-1') }}</li>
+                <li>{{ $t('transcription-rule-2') }}</li>
+                <li>{{ $t('transcription-rule-3') }}</li>
+                <li>{{ $t('transcription-rule-4') }}</li>
+                <li>{{ $t('transcription-rule-5') }}</li>
+                <li>{{ $t('transcription-rule-6') }}</li>
+            </ul>
         </div>
         <!--
      <div class="form-popup">
@@ -31,7 +67,17 @@ export default {
       visible: false
     }
   },
-  props: ['header', 'info'],
+    computed: {
+      buttonText() {
+          if( !this.visible ) {
+              return this.$t('transcription-rules-button-show')
+          }
+          else {
+              return this.$t('transcription-rules-button-hide')
+          }
+      }
+    },
+  props: ['info'],
   methods: {
     switchForm() {
       this.visible = !this.visible
@@ -42,19 +88,37 @@ export default {
 
 <style lang="scss">
 
-    .help-popup-wrapper {
-        position: relative;
+    @import '@/styles/theme.scss';
+    @import '@/styles/shared/variables.scss';
 
-        .popup {
-            width: 400px;
-            height: 200px;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            background: green;
-            z-index: 9999;
+    .popup-toggle {
+        font-size: $font-size-small;
+        line-height: 1;
+        display: inline-block;
+        cursor: pointer;
+
+        svg {
+            fill: $color-primary;
+            display: block;
+            float: left;
+            width: $font-size-small;
+            height: $font-size-small;
+            margin-right: $spacing-1;
+        }
+
+        &.active {
+            svg {
+                transform: rotate(180deg);
+            }
         }
     }
+
+    .popup {
+        font-size: $font-size-small;
+        padding: $spacing-1;
+        padding-top: $spacing-3;
+    }
+
 
     /*
 

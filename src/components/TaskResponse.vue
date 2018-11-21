@@ -26,7 +26,7 @@
                     <button class="button button-secondary" v-on:click="insertChar(char)" :key="char" v-for="char in specialChars">{{char}}</button>
                     <!--TODO handle insertion of character to cursor position in CURRENT text box-->
                 </div>
-                <help-popup :header="'Hilfen'" :info="task_help"></help-popup>
+                <help-popup></help-popup>
 
             </div>
 
@@ -138,6 +138,8 @@
 
 
     .special-characters {
+
+        margin-bottom: $spacing-1;
 
         label {
             margin-right: $spacing-2;
