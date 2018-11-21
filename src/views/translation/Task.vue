@@ -74,8 +74,6 @@
             </div>
         </app-content-section>
 
-        <help-popup :header="'Hilfen'" :info="task_help"></help-popup>
-
     </div>
 
 </template>
