@@ -8,7 +8,7 @@
 
                     <task-question-text :question="task.content.question"></task-question-text>
 
-                    <task-response :responses="task.content.answers"></task-response>
+                    <task-response :answers="tasks[0].content.answers" :responses="responses" :showSpecial="true"></task-response>
 
                     <div class="row">
                         <div class="col col-task-actions">

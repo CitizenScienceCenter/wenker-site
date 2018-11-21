@@ -8,6 +8,11 @@
 <script>
     export default {
         name: "TaskResponseText",
+        data() {
+            return {
+                inputTxt: document.getElementById('qutxt')
+            }
+        },
         props: {
             activeAnswer: {
                 type: Object
@@ -17,6 +22,13 @@
             },
             responses: {
                 type: Array
+            }
+        },
+        methods: {
+            setChar(char) {
+                console.log(char)
+                console.log(this.inputTxt.selectionStart)
+                this.responses[this.activeAnswerIndex].text += char;
             }
         }
     }

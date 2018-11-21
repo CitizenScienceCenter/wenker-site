@@ -9,13 +9,9 @@
                     <task-question-image v-if="media.length > 0" :question="tasks[0].content.question"
                                          :imgPath="media[0].path"></task-question-image>
 
-                    <task-response :answers="tasks[0].content.answers" :responses="responses"></task-response>
+                    <task-response :answers="tasks[0].content.answers" :responses="responses" :showSpecial="true"></task-response>
 
-                    <div class="special-characters">
-                        <label>Sonderzeichen</label>
-                        <button v-on:click="insertChar(char)" :key="char" v-for="char in specialChars">{{char}}</button>
-                        <!--TODO handle insertion of character to cursor position in CURRENT text box-->
-                    </div>
+
 
                     <div class="row">
                         <div class="col col-task-actions">
@@ -79,7 +75,7 @@
             if (this.activity && this.activity.id) {
                 this.loadTask(this.$route.query['count']);
             } else {
-                console.log('No activity set in the store!')
+                console.log('No activity set in the store!');
                 //    TODO show error for no activity
                 this.$router.push({name: 'TranscribeStart'})
             }
@@ -144,8 +140,7 @@
                             this.$store.commit('c3s/task/SET_MEDIA', media)
                         })
                     } else {
-                        //    TODO redirect to error page or explain no tasks found
-                        console.log('No tasks found')
+                        console.log('No tasks found');
                         this.$router.push({'name': 'TranscribeComplete'})
                     }
                 })
@@ -165,11 +160,12 @@
                 })
             },
             submitTask() {
-                this.$store.commit('submission/SET_SUBMISSION_RESPONSES', this.responses);
-                //TODO post submission here
-                let qu = Object.assign({}, this.$route.query);
-                qu['count'] = qu['count'] + 1;
-                this.$router.replace({name: 'TranscribeTask', query: qu})
+                this.$store.commit('c3s/submission/SET_SUBMISSION_RESPONSES', this.responses);
+                this.$store.dispatch('c3s/submission/createSubmission').then(s => {
+                    let qu = Object.assign({}, this.$route.query);
+                    qu['count'] = qu['count'] + 1;
+                    this.$router.replace({name: 'TranscribeTask', query: qu})
+                })
             },
             insertChar() {
 

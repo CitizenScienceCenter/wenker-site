@@ -116,24 +116,6 @@
                 false
             ]).then(a => {
         })
-      // this.$store
-      //   .dispatch("project/getProject", [
-      //     this.$route.params.id || this.projectID,
-      //     false
-      //   ])
-      //   .then(p => {
-      //     if (p === false) {
-      //       this.$router.push({
-      //         name: "Error",
-      //         params: { msg: "Project not found" }
-      //       });
-      //     }
-      //   });
-      // console.log(this.stats);
-      // this.regions = this.swissCantons;
-      // if (this.user && this.user.info && this.user.info.age) {
-      //   this.userDetails = this.user.info;
-      // }
     },
     methods: {
       startProject () {

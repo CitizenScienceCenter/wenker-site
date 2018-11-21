@@ -5,7 +5,12 @@
             <select v-model="activeAnswerIndex">
                 <option v-for="(r, index) in answers" :value="index" :key="index">{{index+1}}</option>
             </select>
-            <task-response-text :responses="responses" :activeAnswer="activeAnswer" :activeAnswerIndex="activeAnswerIndex" type="text"></task-response-text>
+            <task-response-text ref="TaskResponseText" :responses="responses" :activeAnswer="activeAnswer" :activeAnswerIndex="activeAnswerIndex" type="text"></task-response-text>
+        </div>
+        <div v-if="showSpecial" class="special-characters">
+            <label>Sonderzeichen</label>
+            <button v-on:click="insertChar(char)" :key="char" v-for="char in specialChars">{{char}}</button>
+            <!--TODO handle insertion of character to cursor position in CURRENT text box-->
         </div>
         <div class="buttons">
             <button :disabled="!activeAnswerIndex > 0" @click="updateActiveIndex(-1)">Prev</button>
@@ -18,6 +23,7 @@
 
 <script>
     import TaskResponseText from '@/components/TaskResponseText.vue'
+    import {mapState} from 'vuex'
 
     export default {
         name: 'TaskResponse',
@@ -33,6 +39,10 @@
               default: () => {
                 return []
               }
+            },
+            showSpecial: {
+                type: Boolean,
+                default: false
             }
         },
         watch: {
@@ -46,10 +56,17 @@
                 activeAnswer: {}
             }
         },
+        computed: mapState({
+           specialChars: state => state.consts.specialChars
+        }),
         components: {TaskResponseText},
         methods: {
             updateActiveIndex(val) {
                 this.activeAnswerIndex += val
+            },
+            insertChar(char) {
+                this.$refs.TaskResponseText.setChar(char);
+
             }
         }
     }
