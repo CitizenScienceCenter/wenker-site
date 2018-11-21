@@ -1,7 +1,7 @@
 <template>
 
     <!--<label for="qutxt">{{activeAnswer.placeholder || "In Ihrem Dialekt"}}</label>-->
-    <input type="text" :placeholder="activeAnswer.placeholder" v-model="responses[activeAnswerIndex].text" name="qutxt" id="qutxt" />
+    <input type="text" :placeholder="activeAnswer.placeholder  || 'In Ihrem Dialekt'" v-model="responses[activeAnswerIndex].text" name="qutxt" id="qutxt" />
 
 
 </template>
