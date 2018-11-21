@@ -214,23 +214,4 @@
         padding: $spacing-5 0;
     }
 
-    .special-characters {
-        label {
-            margin-right: $spacing-2;
-        }
-        .button.button-secondary {
-            height: 32px;
-            padding: $spacing-1;
-            border-color: white;
-            font-family: sans-serif;
-        }
-    }
-
-    .button-group {
-        label {
-            text-transform: uppercase;
-            margin: 0 $spacing-2;
-        }
-    }
-
 </style>

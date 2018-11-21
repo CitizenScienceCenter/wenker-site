@@ -47,11 +47,12 @@ export default {
 
         .popup {
             width: 400px;
-            height: 400px;
+            height: 200px;
             position: absolute;
             bottom: 0;
             left: 0;
             background: green;
+            z-index: 9999;
         }
     }
 

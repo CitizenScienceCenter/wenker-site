@@ -21,11 +21,11 @@
                     <task-response-text ref="TaskResponseText" :responses="responses" :activeAnswer="activeAnswer" :activeAnswerIndex="activeAnswerIndex" type="text"></task-response-text>
 
                 </div>
-                <p class="special-characters">
+                <div class="special-characters">
                     <label>Sonderzeichen einfügen</label>
                     <button class="button button-secondary" v-on:click="insertChar(char)" :key="char" v-for="char in specialChars">{{char}}</button>
                     <!--TODO handle insertion of character to cursor position in CURRENT text box-->
-                </p>
+                </div>
                 <help-popup :header="'Hilfen'" :info="task_help"></help-popup>
 
             </div>
@@ -135,4 +135,19 @@
     .response-buttons {
 
     }
+
+
+    .special-characters {
+
+        label {
+            margin-right: $spacing-2;
+        }
+        .button.button-secondary {
+            height: 32px;
+            padding: $spacing-1;
+            border-color: white;
+            font-family: sans-serif;
+        }
+    }
+
 </style>
