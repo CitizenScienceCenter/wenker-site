@@ -25,7 +25,7 @@
             </div>
 
             <div class="form-field">
-                <label for="pwd">{{ $t('label-password') }}</label>
+                <label for="password">{{ $t('label-password') }}</label>
                 <input v-model="password" type="password" id="password" name="password" autocomplete="password"
                        :disabled="loading"/>
             </div>
@@ -72,7 +72,7 @@
     methods: {
       login() {
         this.$store
-          .dispatch('user/login', { user: { email: this.email, pwd: this.password } })
+          .dispatch('c3s/user/login', { user: { email: this.email, pwd: this.password } })
           .then(user => {
             if (user !== false) {
               this.$router.push({ name: 'Home' })

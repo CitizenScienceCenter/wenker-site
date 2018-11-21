@@ -26,12 +26,12 @@
     </div>
 
     <div class="form-field">
-      <label for="pwd">{{ $t("label-password") }}</label>
+      <label for="password">{{ $t("label-password") }}</label>
       <input v-model="password" type="password" id="password" name="password" autocomplete="password" :disabled="loading" />
       <span class="error" v-if="errors.len">Muss mehr als 8 Zeichen lang sein.</span>
     </div>
     <div class="form-field">
-      <label for="pwd">{{ $t("label-password-repeat") }}</label>
+      <label for="password">{{ $t("label-password-repeat") }}</label>
       <input v-model="confPassword" type="password" id="password" name="password" autocomplete="password" :disabled="loading" />
       <span class="error" v-if="errors.match">Passwörter stimmen nicht überein</span>
     </div>
@@ -71,7 +71,8 @@ export default {
           email: this.email,
           pwd: this.password
         }
-        this.$store.dispatch('user/register', user).then(r => {
+        this.$store.dispatch('c3s/user/register', user).then(r => {
+            //TODO check if error on register
             this.$router.push('/home')
           })
       } else {
