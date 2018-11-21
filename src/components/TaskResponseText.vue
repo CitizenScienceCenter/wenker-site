@@ -27,7 +27,6 @@
         methods: {
             setChar(char) {
                 console.log(char)
-                console.log(this.inputTxt.selectionStart)
                 this.responses[this.activeAnswerIndex].text += char;
             }
         }

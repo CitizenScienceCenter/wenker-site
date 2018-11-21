@@ -154,21 +154,21 @@
                 this.$store.commit('c3s/submission/SET_SUBMISSION', submission)
             },
             endTask() {
-                // TODO post submission
-                this.$router.push({
-                    name: 'TranscribeComplete'
+                this.$store.commit('c3s/submission/SET_SUBMISSION_RESPONSES', this.responses);
+                this.$store.dispatch('c3s/submission/createSubmission').then(s => {
+                    this.$router.push({
+                        name: 'TranscribeComplete'
+                    })
                 })
             },
             submitTask() {
                 this.$store.commit('c3s/submission/SET_SUBMISSION_RESPONSES', this.responses);
                 this.$store.dispatch('c3s/submission/createSubmission').then(s => {
+                    console.log(s)
                     let qu = Object.assign({}, this.$route.query);
                     qu['count'] = qu['count'] + 1;
                     this.$router.replace({name: 'TranscribeTask', query: qu})
                 })
-            },
-            insertChar() {
-
             }
         }
 

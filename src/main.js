@@ -12,8 +12,9 @@ import Croppa from 'vue-croppa';
 const env = process.env.NODE_ENV || 'development';
 let swaggerURL = 'https://wenker.citizenscience.ch/api/v2/swagger.json';
 if (env === 'local') {
-    swaggerURL = 'https://localhost:8080/api/v2/swagger.json';
+    swaggerURL = 'http://localhost:8080/api/v2/swagger.json';
 }
+console.log(swaggerURL)
 Vue.config.productionTip = false
 Vue.use(c3s.plugin, { store, swaggerURL })
 Vue.use(VueRouter)
