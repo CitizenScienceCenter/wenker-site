@@ -76,8 +76,7 @@
                         pwd: this.password
                     };
                     this.$store.dispatch('c3s/user/register', user).then(r => {
-                        //TODO check if error on register
-                        if (r.status === 200) {
+                        if (r.ok === true) {
                             this.$router.push({name: 'Home'})
                         } else {
                             this.errors.server = true
