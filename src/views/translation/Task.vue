@@ -35,8 +35,9 @@
                         <div class="col col-large-8">
 
                             <p class="task-response" v-if="responses.length">
-                                <task-response :answers="tasks[0].content.answers" :responses="responses"
-                                               :showSpecial="true"></task-response>
+                                <task-response-text ref="TaskResponseText" :responses="responses"
+                                                    :activeAnswer="activeAnswer" :activeAnswerIndex="0"
+                                                    type="text"></task-response-text>
                             </p>
 
                         </div>
@@ -50,7 +51,7 @@
 
                             <p class="centered button-group">
                                 <button v-on:click="endTask" class="button button-secondary">Beenden</button>
-                                <label>Satz 1 von 40</label>
+                                <label>Satz {{$route.query.count}} von 40</label>
                                 <button v-on:click="submitTask" class="button button-primary">Nächster Satz</button>
                             </p>
 
@@ -84,14 +85,14 @@
     import HelpPopup from '@/components/help-popup'
     import CommentsList from '@/components/comments-list'
     import TaskQuestionText from '@/components/TaskQuestionText'
-    import TaskResponse from '@/components/TaskResponse'
+    import TaskResponseText from '@/components/TaskResponseText'
     import ContentSection from '@/components/shared/ContentSection.vue'
 
     export default {
         name: 'Task',
         components: {
             TaskQuestionText,
-            TaskResponse,
+            TaskResponseText,
             'app-content-section': ContentSection,
             CommentsList,
             HelpPopup
@@ -103,6 +104,9 @@
             user: state => state.c3s.user.currentUser
         }),
         watch: {
+            '$route.query.count'(to, from) {
+                this.loadTask(to)
+            }
         },
         mounted() {
             if (this.activity && this.activity.id) {
@@ -117,7 +121,8 @@
             return {
                 responses: [],
                 task_help: '',
-                nextTxt: 'Next'
+                nextTxt: 'Next',
+                activeAnswer: {}
             }
         },
         methods: {
@@ -166,6 +171,8 @@
                             this.responses.push({text: ""})
                         }
                         this.createSubmission();
+                        this.activeAnswer = this.tasks[0].content.answers[0]
+                        console.log(this.tasks[0].content.question.text)
                     } else {
                         console.log(t)
                         console.log('No tasks found');
