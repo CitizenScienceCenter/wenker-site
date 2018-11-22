@@ -42,6 +42,7 @@
                     <div class="col col-tablet-portrait-10 col-large-4 col-large-after-2 col-wrapping col-large-no-bottom-margin">
                         <h3 class="subheading centered left-aligned-large">{{ $t('heading-activity-description') }}</h3>
                         <p class="lead" v-html="$t('activity-description')"></p>
+                        <p>Some stats</p>
                     </div>
 
                     <div class="col col-tablet-portrait-10 col-large-4 col-wrapping col-no-bottom-margin">
