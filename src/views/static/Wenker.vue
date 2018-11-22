@@ -2,13 +2,21 @@
   {
     "de": {
       "heading": "Die Geschichte eines Dialektliebhabers",
+      "text-1": "Die Wenkersätze wurden in den 1930er Jahren zur Dokumentation des Schweizerdeutschen eingesetzt und haben eine interessante Vorgeschichte. Der junge Sprachwissenschaftler Georg Wenker unternahm im Jahr 1876 in Verbindung mit seiner Dissertation eigene empirische Untersuchungen der Mundart der Umgebung seiner Heimatstadt Düsseldorf. Dafür sammelte er anhand von Fragebogen Mundartproben jedes einzelnen Ortes. Er kreierte dazu die sogenannten 42 rheinischen Sätze in Schriftsprache, die er durch die Lehrer des jeweiligen Regierungsbezirkes zusammen mit ihren Schülern in die dort vorherrschende Mundart übertragen liess. Seine Ergebnisse wollte er in Dialektkarten und später in einem Sprachatlas abbilden.",
+      "figure-2-caption": "Beispiel für eine Dialektkarte, Quelle:",
+      "text-2": "Im Laufe der Jahre entwickelte Wenker die so genannten 40 Wenker-Sätze und dehnte sein Untersuchungsgebiet allmählich auf das gesamte Deutsche Reich aus. Was mit einem Dissertationsvorhaben begann, wurde zur Langzeitstudie: Aus den ursprünglich berechneten 13 Jahren Arbeit sollten schliesslich mehr als 50 werden. Doch dank der 20-jährigen Freistellung von seinem Dienst in der Marburger Universitätsbibliothek konnte sich Wenker voll und ganz auf die Fertigstellung des <a href='https://de.wikipedia.org/wiki/Deutscher_Sprachatlas' target='_blank'>Sprachatlas des Deutschen Reichs</a> konzentrieren.",
+      "text-3": "Im Jahr 1912 übernahm Wenkers ehemaliger Hilfsarbeiter Ferdinand Wrede die Leitung des Sprachatlas. Unter seiner Führung wurden zwischen 1926 und 1933 Nacherhebungen für deutschsprachige Gebiete auch ausserhalb des Deutschen Reiches durchgeführt, so auch in der Schweiz. Die Schweizer Wenkerbogen wurden zwar wie alle anderen in einem aufwändigen Prozess digitalisiert und auf dem Server des Langzeitforschungsprojektes <a href='https://www.regionalsprache.de/' target='_blank'>REDE</a> der Universität Marburg publiziert. Inhaltlich aufbereitet und ausgewertet wurden sie jedoch nie. Das möchten wir in unserem <router-link to='/home'>Citizen Science Projekt</router-link> mit deiner Hilfe ändern.",
       "links-heading": "Weiterführende Links",
       "sentences-heading": "Die Wenkersätze"
     },
     "en": {
-      "heading": "EN: Die Geschichte eines Dialektliebhabers",
-      "links-heading": "EN Weiterführende Links",
-      "sentences-heading": "EN: Die Wenkersätze"
+      "heading": "The story of a dialect lover",
+      "text-1": "Wenker’s phrases (german “Wenkersätze”) were used in the 1930s for the documentation of Swiss German and have an interesting history: in 1876, the young linguist Georg Wenker planned some empirical studies for his dissertation about the dialect of his home region around Düsseldorf. He used questionnaires to collect dialect samples of each individual village. For this purpose he created the so-called 42 Rhenish sentences in standard German, which he had translated by the teachers of the respective government district together with their students in the prevailing dialect there. In order to make his results visible, he planned to produce detailed dialect maps and, later on, a language atlas.",
+      "figure-2-caption": "Example of a dialect map, source:",
+      "text-2": "After several years of work, Wenker created 40 sentences, so called “Wenkersätze”, and extended his research area to the national level. What started with the goal to do one dissertation, quickly became a long-term study: the originally calculated 13 years of work eventually became more than 50. But thanks to the 20-year-release of his library service in the University Library in Marburg, Wenker was able to focus only on the completion of the “Sprachatlas des Deutschen Reichs&quot;, the language atlas of the German Reich.",
+      "text-3": "In 1912, Wenkers former assistant Ferdinand Wrede took over the leadership of the language atlas of the German Reich. Under his leadership between 1926 and 1933 additional investigations were carried out for German-speaking areas outside the German Reich, including Switzerland.<br>Like all the other Wenker sheets the ones from Switzerland were finally digitized and published on the server of the long-term research project REDE (Link: regionalsprache.de) at the University of Marburg. However they were never prepared or analysed content-wise. We want to change that today with our Citizen Science Project.",
+      "links-heading": "Links",
+      "sentences-heading": "The Wenker Sentences"
     }
   }
 </i18n>
@@ -30,28 +38,21 @@
                   <figcaption>Georg Wenker <a href="http://www.diwa.info/Geschichte/Kartierungsverfahren.aspx" target="_blank">© DIWA</a></figcaption>
                 </figure>
               </p>
-
-              <p>
-                Die Wenkersätze wurden in den 1930er Jahren zur Dokumentation des Schweizerdeutschen eingesetzt und haben eine interessante Vorgeschichte. Der junge Sprachwissenschaftler Georg Wenker unternahm im Jahr 1876 in Verbindung mit seiner Dissertation eigene empirische Untersuchungen der Mundart der Umgebung seiner Heimatstadt Düsseldorf. Dafür sammelte er anhand von Fragebogen Mundartproben jedes einzelnen Ortes. Er kreierte dazu die sogenannten 42 rheinischen Sätze in Schriftsprache, die er durch die Lehrer des jeweiligen Regierungsbezirkes zusammen mit ihren Schülern in die dort vorherrschende Mundart übertragen liess. Seine Ergebnisse wollte er in Dialektkarten und später in einem Sprachatlas abbilden.
-              </p>
+              <p v-html="$t('text-1')"></p>
               <p>
                 <figure>
                   <img src="img/dialektkarte.jpg" />
-                  <figcaption>Beispiel für eine Dialektkarte, Quelle: <a href="https://www.uni-marburg.de/de/fb09/dsa/einrichtung/personen/juergen-erich-schmidt/publikationen-1/aufsaetze-und-rezensionen" target="_blank">Jürgen Erich Schmidt (2012)</a></figcaption>
+                  <figcaption>{{ $t('figure-2-caption') }} <a href="https://www.uni-marburg.de/de/fb09/dsa/einrichtung/personen/juergen-erich-schmidt/publikationen-1/aufsaetze-und-rezensionen" target="_blank">Jürgen Erich Schmidt (2012)</a></figcaption>
                 </figure>
               </p>
-              <p>
-                Im Laufe der Jahre entwickelte Wenker die so genannten 40 Wenker-Sätze und dehnte sein Untersuchungsgebiet allmählich auf das gesamte Deutsche Reich aus. Was mit einem Dissertationsvorhaben begann, wurde zur Langzeitstudie: Aus den ursprünglich berechneten 13 Jahren Arbeit sollten schliesslich mehr als 50 werden. Doch dank der 20-jährigen Freistellung von seinem Dienst in der Marburger Universitätsbibliothek konnte sich Wenker voll und ganz auf die Fertigstellung des <a href="https://de.wikipedia.org/wiki/Deutscher_Sprachatlas" target="_blank">Sprachatlas des Deutschen Reichs</a> konzentrieren.
-              </p>
+              <p v-html="$t('text-2')"></p>
               <p>
                 <figure>
                   <img src="img/wrede.jpg" />
                   <figcaption>Ferdinand Wrede <a href="http://www.diwa.info/Geschichte/Kartierungsverfahren.aspx" target="_blank">© DIWA</a></figcaption>
                 </figure>
               </p>
-              <p>
-                Im Jahr 1912 übernahm Wenkers ehemaliger Hilfsarbeiter Ferdinand Wrede die Leitung des Sprachatlas. Unter seiner Führung wurden zwischen 1926 und 1933 Nacherhebungen für deutschsprachige Gebiete auch ausserhalb des Deutschen Reiches durchgeführt, so auch in der Schweiz. Die Schweizer Wenkerbogen wurden zwar wie alle anderen in einem aufwändigen Prozess digitalisiert und auf dem Server des Langzeitforschungsprojektes <a href="https://www.regionalsprache.de/" target="_blank">REDE</a> der Universität Marburg publiziert. Inhaltlich aufbereitet und ausgewertet wurden sie jedoch nie. Das möchten wir in unserem <router-link to="/home">Citizen Science Projekt</router-link> mit deiner Hilfe ändern.
-              </p>
+              <p v-html="$t('text-3')"></p>
 
             </div>
             <div class="content-subsection">
