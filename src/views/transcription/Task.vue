@@ -44,7 +44,7 @@
 
                             <p class="button-group centered task-switch-bar">
                                 <button v-on:click="endTask" class="button button-secondary">Beenden</button>
-                                <label>1 von 1</label>
+                                <label>{{$route.query.count}} von {{taskCount}}</label>
                                 <button v-on:click="submitTask" :disabled="loading" class="button button-primary">Nächster Bogen</button>
                             </p>
 
@@ -96,7 +96,8 @@
             return {
                 task_help: '',
                 nextTxt: 'Next',
-                responses: []
+                responses: [],
+                taskCount: 1
             }
         },
         mounted() {
@@ -132,6 +133,10 @@
                     const userRegion = this.$route.query['region']
                     taskQuery['where']["info ->> 'SchoolRegion'"] = {'op': 'e', 'val': userRegion, "join": "a"}
                 }
+                console.log(this.$store.state.c3s.client.apis.Tasks)
+                this.$store.dispatch('c3s/task/getTaskCount', taskQuery).then(c => {
+                    this.taskCount = c.body
+                })
                 this.$store.dispatch('c3s/task/getTasks', taskQuery).then(t => {
                     if (t.body && t.body.length > 0) {
                         const task = t.body[0];
