@@ -51,14 +51,14 @@
                             <h3 class="subheading centered left-aligned-large">{{ $t('form-heading') }}</h3>
                             <!-- <div class="desc" v-if="project && project.description" v-html="project.description"></div> -->
 
-                            <activity-details-form :project="project" :allRegions="false"
+                            <activity-details-form  ref="details" :activity="activity" :allRegions="false"
                                                    :errors="errors"></activity-details-form>
 
                             <div class="button-group centered left-aligned-large">
                                 <button class="button button-primary" v-on:click="startProject">{{ $t('button-start')
                                     }}
                                 </button><br>
-                                <button class="button button-secondary" v-on:click="startProjectRegion">{{
+                                <button class="button button-secondary" :disabled="$refs.details.taskCount === 0" v-on:click="startProjectRegion">{{
                                     $t('button-start-region') }}
                                 </button>
                             </div>
@@ -106,8 +106,6 @@
             }
         },
         watch: {
-            project(to, from) {
-            },
             tasks(to, from) {
             },
             '$route.params.id'(to, from) {
@@ -131,7 +129,7 @@
                 ]).then(a => {
                     // console.log(a)
             })
-
+            console.log(this.$refs.details.taskCount)
 
         },
         methods: {
