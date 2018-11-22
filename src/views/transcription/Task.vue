@@ -197,7 +197,14 @@
                 this.$store.dispatch('c3s/submission/createSubmission').then(s => {
                     let qu = Object.assign({}, this.$route.query);
                     qu['count'] = qu['count'] + 1;
-                    this.$router.replace({name: 'TranscribeTask', query: qu})
+                    if (qu['count'] === this.taskCount) {
+                        this.$store.commit('c3s/activity/SET_ACTIVITY', null);
+                        this.$router.push({
+                            name: 'TranscribeComplete'
+                        })
+                    } else {
+                        this.$router.replace({name: 'TranscribeTask', query: qu})
+                    }
                 })
 
             }
