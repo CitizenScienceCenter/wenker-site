@@ -185,7 +185,6 @@
             endTask() {
                 this.$store.commit('c3s/submission/SET_SUBMISSION_RESPONSES', this.responses);
                 this.$store.dispatch('c3s/submission/createSubmission').then(s => {
-                    this.$store.commit('c3s/activity/SET_ACTIVITY', null);
                     this.$router.push({
                         name: 'TranscribeComplete'
                     })

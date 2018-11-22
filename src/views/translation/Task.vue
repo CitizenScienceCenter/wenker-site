@@ -160,7 +160,6 @@
                     let qu = Object.assign({}, this.$route.query);
                     qu['count'] = parseInt(qu['count']) + 1;
                     if (qu['count'] > this.taskCount) {
-                        this.$store.commit('c3s/activity/SET_ACTIVITY', null);
                         this.$router.push({
                             name: 'TranslateComplete'
                         })

@@ -63,7 +63,8 @@
             return {
                 stats: {
 
-                }
+                },
+                totalSubs: -1
             };
         },
         watch: {
@@ -79,13 +80,37 @@
             'app-content-section': ContentSection
         },
         computed: mapState({
-            user: state => state.c3s.user.currentUser
+            user: state => state.c3s.user.currentUser,
+            activity: state => state.c3s.activity.activity
         }),
+        beforeRouteLeave (to, from, next) {
+          this.$store.commit('c3s/activity/SET_ACTIVITY', null)
+          next()
+        },
         mounted() {
             // this.$store.dispatch("project/getProject", [
             //     this.$route.params.id || this.projectID,
             //     true
             // ]);
+            const countQuery = {
+                "select": {
+                    "fields": [
+                        "*"
+                    ],
+                    "tables": [
+                        "submissions"
+                    ]
+                },
+                "where": {
+                    "activity_id": {
+                        "op": "e",
+                        "val": this.activity.id
+                    }
+                }
+            };
+            this.$store.dispatch('c3s/submission/getSubmissionsCount', countQuery).then( count => {
+                this.totalSubs = count;
+            })
         },
         methods: {
 

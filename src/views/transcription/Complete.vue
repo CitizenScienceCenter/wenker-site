@@ -78,6 +78,10 @@
             RegisterForm,
             'app-content-section': ContentSection
         },
+        beforeRouteLeave (to, from, next) {
+            this.$store.commit('c3s/activity/SET_ACTIVITY', null)
+            next()
+        },
         computed: mapState({
             user: state => state.c3s.user.currentUser
         }),
