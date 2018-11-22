@@ -33,7 +33,7 @@
             <div class="col col-large-8 col-response">
                 <div class="response-field">
 
-                    <task-response-text ref="TaskResponseText" :responses="responses" :activeAnswer="activeAnswer" :activeAnswerIndex="activeAnswerIndex" type="text"></task-response-text>
+                    <task-response-text ref="TaskResponseText" :placeholder="'THIS THING ' + (activeAnswerIndex+1)" :responses="responses" :activeAnswer="activeAnswer" :activeAnswerIndex="activeAnswerIndex" type="text"></task-response-text>
 
                 </div>
                 <div class="special-characters centered">

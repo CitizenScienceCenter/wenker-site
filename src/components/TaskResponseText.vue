@@ -14,7 +14,7 @@
     <div>
 
         <!-- <input type="text" :placeholder="activeAnswer.placeholder" v-model="responses[activeAnswerIndex].text" name="qutxt" id="qutxt" /> -->
-        <input type="text" :placeholder="activeAnswer.placeholder || $t('translation-placeholder-text')" v-model="responses[activeAnswerIndex].text" name="qutxt" id="qutxt" />
+        <input type="text" :placeholder="placeholder" v-model="responses[activeAnswerIndex].text" name="qutxt" id="qutxt" />
 
     </div>
 </template>
@@ -36,6 +36,10 @@
             },
             responses: {
                 type: Array
+            },
+            placeholder: {
+                type: String,
+                default: "In Ihrem Dialekt"
             }
         },
         methods: {

@@ -75,6 +75,7 @@
                     .dispatch('c3s/user/login', {user: {email: this.email, pwd: this.password}})
                     .then(user => {
                         if (user.status === 200) {
+                            this.$store.commit('c3s/user/SET_ANON', false);
                             this.$router.push({name: 'Home'})
                         } else {
                             this.error = 'Login failed'
