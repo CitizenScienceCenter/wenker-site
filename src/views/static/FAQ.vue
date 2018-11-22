@@ -1,13 +1,40 @@
 <i18n>
   {
-    "de": {
-      "heading": "Fragen und Antworten"
-    },
-    "en": {
-      "heading": "FAQ"
-    }
+  "de": {
+  "heading": "Fragen und Antworten",
+  "question-1": "Was tun, wenn man ein Wort/Buchstabe nicht erkennt?",
+  "answer-1": "Wenn ein Wort oder ein Buchstabe nicht entziffert werden kann, wird folgender Platzhalter eingefügt: [...]<br><a href='#transkriptionskonventionen'>siehe Transkriptionskonventionen</a>",
+  "question-2": "Was tun, wenn man ein Sonderzeichen nicht transkribieren kann?",
+  "answer-2": "Schauen Sie in der vorhandenen Sonderzeichentabelle nach. Falls das gewünschte Sonderzeichen nicht vorhanden ist, schreiben Sie eine Mail an <a href='mailto:info@citizenscience.ch'>info@citizenscience.ch</a>.",
+  "question-3": "Ich komme von X, ich möchte den Bogen von Y transkribieren, ist das möglich?",
+  "answer-3": "Grundsätzlich ist das möglich, ja. Sie können so viele Bögen transkribieren, wie Sie möchten. Nur die eigene Übersetzung der 40 Sätze kann nur einmal erfolgen.",
+  "transcription-rules-heading": "Transkribierungskonventionen",
+  "transcription-rule-1": "Ein vermuteter Wortlaut wird in eckigen Klammern [] geschrieben, z. B. [T]ue das mache...",
+  "transcription-rule-2": "Wenn ein Wort oder ein Buchstabe nicht entziffert werden kann, wird folgender Platzhalter eingefügt: [...]",
+  "transcription-rule-3": "Falls ein Wort nicht vollständig entziffert werden kann, kann folgender Platzhalter eingefügt werden: [unvollst.]",
+  "transcription-rule-4": "Grundsatz: Die Transkription soll möglichst nahe am Original sein!",
+  "transcription-rule-5": "Alle Sonderzeichen sollten transkribiert werden! (Falls nicht möglich, siehe FAQs).",
+  "transcription-rule-6": "Kommentare können Sie in dem Kommentarfeld hinterlassen."
+  },
+  "en": {
+  "heading": "FAQ",
+  "question-1": "What to do when you don't recognize a word/character?",
+  "answer-1": "Wenn ein Wort oder ein Buchstabe nicht entziffert werden kann, wird folgender Platzhalter eingefügt: [...]<br><a href='#transkriptionskonventionen'>siehe Transkriptionskonventionen</a>",
+  "question-2": "What to do if a special character cannot be transcribed?",
+  "answer-2": "Schauen Sie in der vorhandenen Sonderzeichentabelle nach. Falls das gewünschte Sonderzeichen nicht vorhanden ist, schreiben Sie eine Mail an <a href='mailto:info@citizenscience.ch'>info@citizenscience.ch</a>.",
+  "question-3": "I'm coming from X and would like to transcribe sheets from Y. Is that possible?",
+  "answer-3": "Grundsätzlich ist das möglich, ja. Sie können so viele Bögen transkribieren, wie Sie möchten. Nur die eigene Übersetzung der 40 Sätze kann nur einmal erfolgen.",
+  "transcription-rules-heading": "Transcription Rules",
+  "transcription-rule-1": "Ein vermuteter Wortlaut wird in eckigen Klammern [] geschrieben, z. B. [T]ue das mache...",
+  "transcription-rule-2": "Wenn ein Wort oder ein Buchstabe nicht entziffert werden kann, wird folgender Platzhalter eingefügt: [...]",
+  "transcription-rule-3": "Falls ein Wort nicht vollständig entziffert werden kann, kann folgender Platzhalter eingefügt werden: [unvollst.]",
+  "transcription-rule-4": "Grundsatz: Die Transkription soll möglichst nahe am Original sein!",
+  "transcription-rule-5": "Alle Sonderzeichen sollten transkribiert werden! (Falls nicht möglich, siehe FAQs).",
+  "transcription-rule-6": "Kommentare können Sie in dem Kommentarfeld hinterlassen."
+  }
   }
 </i18n>
+
 
 <template>
   <div>
@@ -21,33 +48,27 @@
 
               <h2 class="heading">{{ $t('heading') }}</h2>
 
-              <h3 class="subheading">Was tun, wenn man ein Wort/Buchstabe nicht erkennt?</h3>
-              <p>
-                Wenn ein Wort oder ein Buchstabe nicht entziffert werden kann, wird folgender Platzhalter eingefügt: [...] <br/><a href="#transkriptionskonventionen">siehe Transkriptionskonventionen</a>
-              </p>
+              <h3 class="subheading">{{ $t('question-1') }}</h3>
+              <p v-html="$t('answer-1')"></p>
 
-              <h3 class="subheading">Was tun, wenn man ein Sonderzeichen nicht transkribieren kann?</h3>
-              <p>
-                Schauen Sie in der vorhandenen Sonderzeichentabelle nach. Falls das gewünschte Sonderzeichen nicht vorhanden ist, schreiben Sie eine Mail an info@citizenscience.ch.
-              </p>
+              <h3 class="subheading">{{ $t('question-2') }}</h3>
+              <p v-html="$t('answer-2')"></p>
 
-              <h3 class="subheading">Ich komme von X, ich möchte den Bogen von Y transkribieren, ist das möglich?</h3>
-              <p>
-                Grundsätzlich ist das möglich, ja. Sie können so viele Bögen transkribieren, wie Sie möchten. Nur die eigene Übersetzung der 40 Sätze kann nur einmal erfolgen.
-              </p>
+              <h3 class="subheading">{{ $t('question-3') }}</h3>
+              <p v-html="$t('answer-3')"></p>
 
             </div>
             <div class="content-subsection">
 
-              <h2 class="heading" id="transkriptionskonventionen">Transkriptionskonventionen</h2>
+              <h2 class="heading" id="transkriptionskonventionen">{{ $t('transcription-rules-heading') }}</h2>
 
               <ul>
-                <li>Ein vermuteter Wortlaut wird in eckigen Klammern [] geschrieben, z. B. [T]ue das mache...</li>
-                <li>Wenn ein Wort oder ein Buchstabe nicht entziffert werden kann, wird folgender Platzhalter eingefügt: [...]</li>
-                <li>Falls ein Wort nicht vollständig entziffert werden kann, kann folgender Platzhalter eingefügt werden: [unvollst.]</li>
-                <li>Grundsatz: Die Transkription soll möglichst nahe am Original sein!</li>
-                <li>Alle Sonderzeichen sollten transkribiert werden! (Falls nicht möglich, siehe FAQs).</li>
-                <li>Kommentare können Sie in dem Kommentarfeld hinterlassen.</li>
+                <li>{{ $t('transcription-rule-1') }}</li>
+                <li>{{ $t('transcription-rule-2') }}</li>
+                <li>{{ $t('transcription-rule-3') }}</li>
+                <li>{{ $t('transcription-rule-4') }}</li>
+                <li>{{ $t('transcription-rule-5') }}</li>
+                <li>{{ $t('transcription-rule-6') }}</li>
               </ul>
 
             </div>
