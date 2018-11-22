@@ -1,10 +1,20 @@
 <i18n>
     {
     "de": {
-    "task-description": "Bitte übersetzen Sie den oben stehenden Satz in Ihren Dialekt."
+    "task-description": "Bitte übersetzen Sie den oben stehenden Satz in Ihren Dialekt.",
+    "placeholder": "In Ihrem Dialekt",
+    "button-end": "Beenden",
+    "progress-prefix": "Satz ",
+    "progress-suffix": " von 40",
+    "button-next": "Nächster Satz"
     },
     "en": {
-    "task-description": "Please translate the sentence above in your dialect. ;-)"
+    "task-description": "Please translate the sentence above in your dialect.",
+    "placeholder": "In your dialect",
+    "button-end": "End Task",
+    "progress-prefix": "Sentence ",
+    "progress-suffix": " of 40",
+    "button-next": "Next Sentence"
     }
     }
 </i18n>
@@ -49,7 +59,8 @@
                             <p class="task-response" v-if="responses.length">
                                 <task-response-text ref="TaskResponseText" :responses="responses"
                                                     :activeAnswer="activeAnswer" :activeAnswerIndex="0"
-                                                    type="text"></task-response-text>
+                                                    type="text"
+                                                    :placeholder="$t('placeholder')"></task-response-text>
                             </p>
 
                         </div>
@@ -62,9 +73,9 @@
                         <div class="col">
 
                             <p class="centered button-group task-switch-bar">
-                                <button v-on:click="endTask" class="button button-secondary">Beenden</button>
-                                <label>Satz {{$route.query.count}} von 40</label>
-                                <button v-on:click="submitTask" class="button button-primary">Nächster Satz</button>
+                                <button v-on:click="endTask" class="button button-secondary">{{ $t('button-end') }}</button>
+                                <label>{{ $t('progress-prefix') }}{{$route.query.count}}{{ $t('progress-suffix') }}</label>
+                                <button v-on:click="submitTask" class="button button-primary">{{ $t('button-next') }}</button>
                             </p>
 
                         </div>
