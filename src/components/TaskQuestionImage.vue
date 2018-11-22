@@ -77,21 +77,33 @@
 
     .croppa-container {
         width: 100%;
-        height: 320px;
+        height: 160px;
 
         cursor: move;
     }
 
     .buttons {
         position: absolute;
-        bottom: $spacing-3;
-        left: $spacing-3;
+        bottom: $spacing-1;
+        left: $spacing-1;
 
         .button {
             background-color: white;
             &:first-child {
                 margin-right: $spacing-1;
             }
+        }
+    }
+}
+
+@media only screen and (min-width: $viewport-tablet-portrait) {
+    .image-browser {
+        .croppa-container {
+            height: 320px;
+        }
+        .buttons {
+            bottom: $spacing-2;
+            left: $spacing-2;
         }
     }
 }

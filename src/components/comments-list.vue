@@ -1,3 +1,20 @@
+<i18n>
+    {
+    "de": {
+    "heading": "Kommentare",
+    "placeholder": "Hinterlassen Sie einen Kommentar",
+    "button-send": "Senden"
+    },
+    "en": {
+    "heading": "Comments",
+    "placeholder": "Leave a comment",
+    "button-send": "Send"
+    }
+    }
+</i18n>
+
+
+
 <template>
 
     <app-content-section color="light-greyish">
@@ -9,7 +26,7 @@
 
                     <div class="comments">
                         <h2 class="subheading centered">Kommentare</h2>
-                        <div>
+                        <div class="existing-comments">
                             <single-comment
                                     v-for="(comment, index) in comments"
                                     :comment="comment"
@@ -18,25 +35,27 @@
                             ></single-comment>
                         </div>
                         <div class="reply">
-                            <div class="avatar">
-                                <img src="" alt="">
-                            </div>
-                            <div class="form-field">
-                                <input
-                                        type="text"
-                                        v-model.trim="reply"
-                                        class="reply-text"
-                                        placeholder="Leave a comment..."
-                                        maxlength="250"
-                                        required
-                                        @keyup.enter="submitComment"
-                                />
-                            </div>
-                            <button
-                                    class="button button-secondary"
-                                    @click.prevent="submitComment">
-                                <i class="fa fa-paper-plane"></i> Send
+                            <button class="button button-icon button-user">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 288c79.5 0 144-64.5 144-144S335.5 0 256 0 112 64.5 112 144s64.5 144 144 144zm128 32h-55.1c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16H128C57.3 320 0 377.3 0 448v16c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48v-16c0-70.7-57.3-128-128-128z"/></svg>
                             </button>
+                            <div class="reply-form">
+                                <div class="form-field">
+                                    <input
+                                            type="text"
+                                            v-model.trim="reply"
+                                            class="reply-text"
+                                            :placeholder="$t('placeholder')"
+                                            maxlength="250"
+                                            required
+                                            @keyup.enter="submitComment"
+                                    />
+                                </div>
+                                <div class="right-aligned">
+                                    <button class="button button-secondary" @click.prevent="submitComment">
+                                        Send
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -104,6 +123,49 @@
     }
 </script>
 <style lang="scss">
+
+    @import '@/styles/theme.scss';
+    @import '@/styles/shared/variables.scss';
+
+    .comments {
+        .existing-comments {
+            margin-bottom: $spacing-3;
+        }
+
+        .reply {
+            position: relative;
+
+            .button-user {
+                position: absolute;
+                top: 0;
+                left: 0;
+                pointer-events: none;
+            }
+            .reply-form {
+                padding-left: $spacing-5;
+                .form-field {
+                    display: block;
+                    margin-bottom: $spacing-2;
+                }
+            }
+        }
+    }
+
+    @media only screen and (min-width: $viewport-tablet-portrait) {
+        .comments {
+            .existing-comments {
+                margin-bottom: $spacing-4;
+            }
+            .reply {
+                .reply-form {
+                    padding-left: $spacing-6;
+                    .form-field {
+                        margin-bottom: $spacing-2;
+                    }
+                }
+            }
+        }
+    }
 
 </style>
 
