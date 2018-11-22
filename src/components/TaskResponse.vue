@@ -84,7 +84,7 @@
         },
         watch: {
             activeAnswer (to, from) {
-                this.activeAnswer = this.task.content.answers[to]
+                this.activeAnswer = this.task.content.answers[to];
             }
         },
         data() {
@@ -105,7 +105,6 @@
                 this.$refs.TaskResponseText.setChar(char);
 
             }
-
         }
     }
 </script>

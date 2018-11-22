@@ -1,9 +1,20 @@
+<i18n>
+    {
+    "de": {
+    "translation-placeholder-text": "In Ihrem Dialekt"
+    },
+    "en": {
+    "translation-placeholder-text": "In your dialect"
+    }
+    }
+</i18n>
+
 <template>
 
     <div>
-        <!--<label for="qutxt">{{activeAnswer.placeholder || "In Ihrem Dialekt"}}</label>-->
-        {{ activeAnswer.placeholder }}
-        <input type="text" :placeholder="activeAnswer.placeholder" v-model="responses[activeAnswerIndex].text" name="qutxt" id="qutxt" />
+
+        <!-- <input type="text" :placeholder="activeAnswer.placeholder" v-model="responses[activeAnswerIndex].text" name="qutxt" id="qutxt" /> -->
+        <input type="text" :placeholder="activeAnswer.placeholder || $t('translation-placeholder-text')" v-model="responses[activeAnswerIndex].text" name="qutxt" id="qutxt" />
 
     </div>
 </template>
@@ -29,7 +40,6 @@
         },
         methods: {
             setChar(char) {
-                console.log(char)
                 this.responses[this.activeAnswerIndex].text += char;
             }
         }

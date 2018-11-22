@@ -2,6 +2,7 @@
     {
     "de": {
     "heading": "Transkribieren",
+    "heading-activity-description": "Aufgabe",
     "activity-description": "Die 1700 handgeschriebenen Schweizer Wenker-Bögen müssen genau abgeschrieben werden, um sie digital aufzubereiten. Dafür brauchen wir deine Unterstützung!",
     "form-heading": "Ihre Angaben",
     "button-start": "Starten",
@@ -11,6 +12,7 @@
     },
     "en": {
     "heading": "Transcription",
+    "heading-activity-description": "Task",
     "activity-description": "1700 sheets need to be transcribed. Help us do that.",
     "form-heading": "Your Info",
     "button-start": "Start",
@@ -38,7 +40,7 @@
                 <div class="row row-centered">
 
                     <div class="col col-tablet-portrait-10 col-large-4 col-large-after-2 col-wrapping col-large-no-bottom-margin">
-                        <h3 class="subheading centered left-aligned-large">Aufgabenbeschreibung</h3>
+                        <h3 class="subheading centered left-aligned-large">{{ $t('heading-activity-description') }}</h3>
                         <p class="lead" v-html="$t('activity-description')"></p>
                     </div>
 
@@ -74,19 +76,7 @@
             </div>
         </app-content-section>
 
-        <app-content-section color="light-greyish">
-            <div class="content-wrapper">
-
-                <div class="row">
-                    <div class="col">
-
-                        <comments-list :id=id></comments-list>
-
-                    </div>
-                </div>
-            </div>
-        </app-content-section>
-
+        <comments-list :id=id></comments-list>
 
     </div>
 

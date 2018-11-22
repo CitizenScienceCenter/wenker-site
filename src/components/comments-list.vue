@@ -1,43 +1,59 @@
 <template>
-    <div class="comments">
-        <div>
-            <single-comment
-                    v-for="(comment, index) in comments"
-                    :comment="comment"
-                    :classes="index"
-                    :key="comment.text"
-            ></single-comment>
-        </div>
-        <div class="reply">
-            <div class="avatar">
-                <img src="" alt="">
+
+    <app-content-section color="light-greyish">
+
+        <div class="content-wrapper">
+
+            <div class="row row-centered">
+                <div class="col col-large-6">
+
+                    <div class="comments">
+                        <h2 class="subheading centered">Kommentare</h2>
+                        <div>
+                            <single-comment
+                                    v-for="(comment, index) in comments"
+                                    :comment="comment"
+                                    :classes="index"
+                                    :key="comment.text"
+                            ></single-comment>
+                        </div>
+                        <div class="reply">
+                            <div class="avatar">
+                                <img src="" alt="">
+                            </div>
+                            <div class="form-field">
+                                <input
+                                        type="text"
+                                        v-model.trim="reply"
+                                        class="reply-text"
+                                        placeholder="Leave a comment..."
+                                        maxlength="250"
+                                        required
+                                        @keyup.enter="submitComment"
+                                />
+                            </div>
+                            <button
+                                    class="button button-secondary"
+                                    @click.prevent="submitComment">
+                                <i class="fa fa-paper-plane"></i> Send
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-            <div class="form-field">
-                <input
-                        type="text"
-                        v-model.trim="reply"
-                        class="reply-text"
-                        placeholder="Leave a comment..."
-                        maxlength="250"
-                        required
-                        @keyup.enter="submitComment"
-                />
-            </div>
-            <button
-                    class="button button-secondary"
-                    @click.prevent="submitComment">
-                <i class="fa fa-paper-plane"></i> Send
-            </button>
         </div>
-    </div>
+    </app-content-section>
 </template>
+
 <script>
     import SingleComment from '@/components/comment.vue'
     import {mapState} from 'vuex'
+    import ContentSection from '@/components/shared/ContentSection.vue'
 
     export default {
         name: "CommentList",
-        components: {SingleComment},
+        components: {SingleComment,'app-content-section': ContentSection},
         props: {
             'id': {
                 type: String,
