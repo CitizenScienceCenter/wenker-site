@@ -84,6 +84,8 @@
 
         <comments-list :id="id"></comments-list>
 
+        <app-footer color="greyish"></app-footer>
+
     </div>
 
 </template>
@@ -93,6 +95,7 @@
     import CommentsList from '@/components/comments-list.vue'
     import ActivityDetailsForm from '@/components/ActivityDetailsForm'
     import ContentSection from '@/components/shared/ContentSection.vue'
+    import Footer from '@/components/shared/Footer.vue'
 
     export default {
         name: 'Start',
@@ -119,7 +122,8 @@
         components: {
             ActivityDetailsForm,
             CommentsList,
-            'app-content-section': ContentSection
+            'app-content-section': ContentSection,
+            'app-footer': Footer
         },
         mounted() {
             this.$store.commit('c3s/activity/SET_ACTIVITY', null);

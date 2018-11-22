@@ -17,7 +17,7 @@
 
 <template>
 
-    <app-content-section color="light-greyish">
+    <app-content-section color="light-greyish" class="content-section-condensed">
 
         <div class="content-wrapper">
 

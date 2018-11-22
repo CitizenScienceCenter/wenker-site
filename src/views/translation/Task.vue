@@ -87,6 +87,8 @@
 
         <comments-list v-if="tasks.length" :id="tasks[0].id"></comments-list>
 
+        <app-footer color="greyish"></app-footer>
+
     </div>
 
 </template>
@@ -98,6 +100,7 @@
     import TaskQuestionText from '@/components/TaskQuestionText'
     import TaskResponseText from '@/components/TaskResponseText'
     import ContentSection from '@/components/shared/ContentSection.vue'
+    import Footer from '@/components/shared/Footer.vue'
 
     export default {
         name: 'Task',
@@ -106,7 +109,8 @@
             TaskResponseText,
             'app-content-section': ContentSection,
             CommentsList,
-            HelpPopup
+            HelpPopup,
+            'app-footer': Footer
         },
         computed: mapState({
             specialChars: state => state.consts.specialChars,

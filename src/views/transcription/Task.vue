@@ -58,6 +58,8 @@
 
         <comments-list v-if="tasks.length" :id="tasks[0].id"></comments-list>
 
+        <app-footer color="greyish"></app-footer>
+
     </div>
 
 </template>
@@ -69,6 +71,7 @@
     import TaskQuestionImage from '@/components/TaskQuestionImage'
     import TaskResponse from '@/components/TaskResponse'
     import ContentSection from '@/components/shared/ContentSection.vue'
+    import Footer from '@/components/shared/Footer.vue'
 
     export default {
         name: 'Task',
@@ -76,7 +79,8 @@
             TaskQuestionImage,
             TaskResponse,
             'app-content-section': ContentSection,
-            CommentsList
+            CommentsList,
+            'app-footer': Footer
         },
         computed: mapState({
             specialChars: state => state.consts.specialChars,

@@ -19,43 +19,50 @@
 
 
 <template>
-    <app-content-section>
-        <div class="content-wrapper">
+    <div>
 
-            <div class="row row-centered">
-                <div class="col col-large-6">
+        <app-content-section>
+            <div class="content-wrapper">
 
-                    <div class="content-subsection">
-                        <h2 class="heading">{{ $t('heading') }}</h2>
-                        <p>
-                            {{ $t('sentence-part-1') }}{{ stats.contributor_count }}{{ $t('sentence-part-2') }} <!-- TODO: if no loggedin -->
-                        </p>
-                    </div>
+                <div class="row row-centered">
+                    <div class="col col-large-6">
 
-                    <!-- TODO: if no loggedin -->
+                        <div class="content-subsection">
+                            <h2 class="heading">{{ $t('heading') }}</h2>
+                            <p>
+                                {{ $t('sentence-part-1') }}{{ stats.contributor_count }}{{ $t('sentence-part-2') }} <!-- TODO: if no loggedin -->
+                            </p>
+                        </div>
 
-                    <div class="content-subsection">
-                        <h3 class="subheading">{{ $t('heading-register') }}</h3>
-                        <p>
-                            {{ $t('register-text') }}
-                        </p>
-                        <register-form></register-form>
-                    </div>
+                        <!-- TODO: if no loggedin -->
 
-                    <div class="content-subsection">
-                        <button @click="startPage" class="button button-secondary">Zurück zur Startseite</button>
+                        <div class="content-subsection">
+                            <h3 class="subheading">{{ $t('heading-register') }}</h3>
+                            <p>
+                                {{ $t('register-text') }}
+                            </p>
+                            <register-form></register-form>
+                        </div>
+
+                        <div class="content-subsection">
+                            <button @click="startPage" class="button button-secondary">Zurück zur Startseite</button>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-        </div>
-    </app-content-section>
+            </div>
+        </app-content-section>
+
+        <app-footer color="greyish"></app-footer>
+
+    </div>
 </template>
 
 <script>
     import { mapState, mapGetters } from "vuex";
     import RegisterForm from "@/components/register-form.vue"
     import ContentSection from '@/components/shared/ContentSection.vue'
+    import Footer from '@/components/shared/Footer.vue'
 
     export default {
         name: "Complete",
@@ -76,7 +83,8 @@
         },
         components: {
             RegisterForm,
-            'app-content-section': ContentSection
+            'app-content-section': ContentSection,
+            'app-footer': Footer
         },
         computed: mapState({
             user: state => state.c3s.user.currentUser

@@ -14,50 +14,57 @@
 </i18n>
 
 <template>
-  <app-content-section>
-    <div class="content-wrapper">
+  <div>
+    <app-content-section>
+      <div class="content-wrapper">
 
-      <div class="row row-centered">
-        <div class="col col-large-6">
+        <div class="row row-centered">
+          <div class="col col-large-6">
 
-          <div class="content-subsection">
-            <h2 class="heading">{{ $t('heading') }}</h2>
+            <div class="content-subsection">
+              <h2 class="heading">{{ $t('heading') }}</h2>
 
-            <form novalidate disabled>
-              <div v-if="user" class="md-layout">
-                <div>
-                  <label for="user.email">{{ $t('label-email') }}</label>
-                  <!-- <input v-model="user.email" type="email" name="email" id="email" autocomplete="email" disabled/> -->
-                  <p>{{ user.email }}</p>
+              <form novalidate disabled>
+                <div v-if="user" class="md-layout">
+                  <div>
+                    <label for="user.email">{{ $t('label-email') }}</label>
+                    <!-- <input v-model="user.email" type="email" name="email" id="email" autocomplete="email" disabled/> -->
+                    <p>{{ user.email }}</p>
+                  </div>
+
+                  <div>
+                    <label for="user.api_key">{{ $t('label-api-key') }}</label>
+                    <!-- <input v-model="user.api_key" type="text" name="api" id="api"/> -->
+                    <p>{{ user.api_key }}</p>
+                  </div>
                 </div>
+              </form>
+            </div>
+            <div class="content-subsection">
+              <router-link tag="button" to="/logout" class="button button-secondary">Logout</router-link>
+            </div>
 
-                <div>
-                  <label for="user.api_key">{{ $t('label-api-key') }}</label>
-                  <!-- <input v-model="user.api_key" type="text" name="api" id="api"/> -->
-                  <p>{{ user.api_key }}</p>
-                </div>
-              </div>
-            </form>
           </div>
-          <div class="content-subsection">
-            <router-link tag="button" to="/logout" class="button button-secondary">Logout</router-link>
-          </div>
-
         </div>
-      </div>
 
-    </div>
-  </app-content-section>
+      </div>
+    </app-content-section>
+
+    <app-footer color="greyish"></app-footer>
+
+  </div>
 </template>
 
 <script>
 import { mapState, mapGetters } from "vuex";
 import ContentSection from '@/components/shared/ContentSection.vue'
+import Footer from '@/components/shared/Footer.vue'
 
 export default {
   name: "ViewUser",
     components: {
-        'app-content-section': ContentSection
+        'app-content-section': ContentSection,
+        'app-footer': Footer
     },
   data() {
     return {
