@@ -39,7 +39,7 @@
             },
             placeholder: {
                 type: String,
-                default: "In Ihrem Dialekt"
+                default: "Placeholder"
             }
         },
         methods: {

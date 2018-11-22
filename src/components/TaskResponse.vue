@@ -3,11 +3,13 @@
     "de": {
     "special-characters-label": "Sonderzeichen einfügen",
     "sentence-count-prefix": "Nr. ",
+    "placeholder-prefix": "Satz Nr. ",
     "button-next-sentence": "Nächster Satz"
     },
     "en": {
     "special-characters-label": "Enter special characters",
     "sentence-count-prefix": "No. ",
+    "placeholder-prefix": "Sentence No. ",
     "button-next-sentence": "Next Sentence"
     }
     }
@@ -33,7 +35,7 @@
             <div class="col col-large-8 col-response">
                 <div class="response-field">
 
-                    <task-response-text ref="TaskResponseText" :placeholder="'THIS THING ' + (activeAnswerIndex+1)" :responses="responses" :activeAnswer="activeAnswer" :activeAnswerIndex="activeAnswerIndex" type="text"></task-response-text>
+                    <task-response-text ref="TaskResponseText" :placeholder="$t('placeholder-prefix') + (activeAnswerIndex+1)" :responses="responses" :activeAnswer="activeAnswer" :activeAnswerIndex="activeAnswerIndex" type="text"></task-response-text>
 
                 </div>
                 <div class="special-characters centered">
