@@ -24,31 +24,31 @@
 
     "section-video-heading": "Prof. Elvira Glaser erklärt",
 
-    "section-newsletter-heading": "Sign up for our Newsletter"
+    "section-newsletter-heading": "Abonniere unseren Newsletter"
   },
   "en": {
     "cover-heading": "Swiss German<br/>1930 / 2020",
-    "cover-subheading": "Finde deinen Dialekt in den 40 Wenker-Sätzen.",
-  "cover-button-transcribe": "Transkribieren",
-  "cover-button-translate": "Übersetzen",
+    "cover-subheading": "Find your own dialect in the 40 Wenker phrases.",
+  "cover-button-transcribe": "Transcribe",
+  "cover-button-translate": "Translate",
 
-    "section-explanation-heading": "Die 40 Wenker-Sätze",
-    "section-explanation-text": "Im Rahmen eines sprachwissenschaftlichen Forschungsprojekts wurden vor rund 100 Jahren 40 hochdeutsche Sätze in die lokalen Dialekte der Schweiz übersetzt. Diese Daten wurden jedoch nie umfassend ausgewertet. Hilf uns, diesen Schatz zu heben.",
-    "section-explanation-button": "Mehr zum Projekt",
+    "section-explanation-heading": "The 40 Wenker Sentences",
+    "section-explanation-text": "By transcribing and translating swiss sentences from the 1930s, you help researchers understand how Swiss German changed during the past 100 years.",
+    "section-explanation-button": "Read more",
 
-    "section-contribute-heading": "Deine Hilfe ist gefragt:",
-    "section-contribute-1-heading": "Transkribieren",
+    "section-contribute-heading": "Contribute now:",
+    "section-contribute-1-heading": "Transcription",
     "section-contribute-1-text": "Die 1700 handgeschriebenen Schweizer Wenker-Bögen müssen genau abgeschrieben werden, um sie digital aufzubereiten. Dafür brauchen wir deine Unterstützung!",
-    "section-contribute-1-button": "Transkribieren",
-    "section-contribute-2-heading": "Übersetzen",
+    "section-contribute-1-button": "Transcribe",
+    "section-contribute-2-heading": "Translation",
     "section-contribute-2-text": "Übersetze die originalen Wenker-Sätze in deinen Dialekt, wie du ihn heute sprichst. So können wir das Schweizerdeutsch von heute mit dem der 1930er Jahre vergleichen.",
-    "section-contribute-2-button": "Übersetzen",
+    "section-contribute-2-button": "Translate",
 
-    "section-wenker-heading": "Die Geschichte eines Dialektliebhabers",
+    "section-wenker-heading": "The story of a dialect lover",
     "section-wenker-text": "Die Wenkersätze aus der Schweizer Sprachstudie haben eine interessante Vorgeschichte. Der junge Sprachwissenschaftler Georg Wenker hat sie aus einem ganz bestimmten Grund entwickelt.",
-    "section-wenker-button": "Mehr zu Georg Wenker",
+    "section-wenker-button": "More about Georg Wenker",
 
-    "section-video-heading": "Prof. Elvira Glaser erklärt",
+    "section-video-heading": "Prof. Elvira Glaser explains",
 
     "section-newsletter-heading": "Sign up for our Newsletter"
   }

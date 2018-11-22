@@ -4,7 +4,7 @@
       "heading": "Fragen und Antworten"
     },
     "en": {
-      "heading": "EN: Fragen und Antworten"
+      "heading": "FAQ"
     }
   }
 </i18n>
