@@ -138,7 +138,7 @@
                     this.id,
                     false
                 ]).then(a => {
-                    console.log(a)
+                    // console.log(a)
             })
 
 

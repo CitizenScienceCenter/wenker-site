@@ -14,9 +14,9 @@ let swaggerURL = 'https://wenker.citizenscience.ch/api/v2/swagger.json';
 if (env === 'local') {
     swaggerURL = 'http://localhost:8080/api/v2/swagger.json';
 }
-console.log(swaggerURL)
 Vue.config.productionTip = false
-Vue.use(c3s.plugin, { store, swaggerURL })
+
+Vue.use(c3s.plugin, { store, swaggerURL})
 Vue.use(VueRouter)
 Vue.use(VueScrollTo, {
   offset: -32
@@ -29,11 +29,10 @@ Vue.use(Croppa)
 Vue.use(Croppa);
 
 store.watch(
-    (state) => state.c3s,
+    (state) => state.c3s && state.c3s.client,
     (value) => {
-        console.log(value)
         if (value !== null) {
-            console.log('loaded')
+            console.log('loaded');
             new Vue({
                 store,
                 router,

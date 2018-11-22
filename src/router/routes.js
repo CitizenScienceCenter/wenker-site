@@ -2,6 +2,14 @@ import Activity from '@/views/Activity'
 import * as User from '@/views/user'
 import * as Translation from '@/views/translation'
 import * as Transcription from '@/views/transcription'
+import store from '../store/store.js'
+
+const logout = (to, from, next) => {
+    localStorage.removeItem('user')
+    store.commit('c3s/user/SET_CURRENT_USER', null);
+    store.commit('c3s/user/SET_ANON', false);
+    next('/home')
+}
 
 // lazy loading routes
 const Home = resolve => {
@@ -136,7 +144,8 @@ export const routes = [
     {
         path: "/logout",
         name: "Logout",
-        component: User.Login, //TODO add beforeEnter hook to log out user,
+        redirect: '/', //TODO add beforeEnter hook to log out user,
+        beforeEnter: logout,
         meta: {page: 'page-logout', nav: false}
     },
     {
