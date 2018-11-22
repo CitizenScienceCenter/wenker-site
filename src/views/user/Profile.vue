@@ -61,7 +61,7 @@ export default {
     },
   data() {
     return {
-      userId: this.$route.params.id || this.$store.getters["user/id"]
+      userId: this.$route.params.id
     };
   },
   computed: mapState({
@@ -71,7 +71,7 @@ export default {
   }),
   mounted() {
     if (this.userId !== this.user.id) {
-      this.$store.dispatch("user/getUser", this.userId);
+      this.$store.dispatch("c3s/user/getUser", this.userId);
     }
   },
   methods: {}

@@ -55,7 +55,7 @@
     export default {
         name: 'ActivityDetailsForm',
         props: {
-            project: {
+            activity: {
                 type: Object
             },
             allRegions: {
@@ -74,7 +74,8 @@
                 details: {
                     ageRange: undefined,
                     canton: undefined
-                }
+                },
+                taskCount: 1
             }
         },
         watch: {
@@ -83,6 +84,28 @@
                 if (to.hasOwnProperty('canton')) this.errors.canton = false;
             },
             'details.canton'(to, from) {
+                const taskQuery = {
+                    "select": {
+                        "fields": [
+                            "*"
+                        ],
+                        "tables": [
+                            "tasks"
+                        ]
+                    },
+                    "where": {
+                        "activity_id": {
+                            "op": "e",
+                            "val": this.activity.id
+                        }
+                    }
+                };
+                console.log(to)
+                taskQuery['where']["info ->> 'SchoolRegion'"] = {'op': 'e', 'val': to, "join": "a"}
+                this.$store.dispatch('c3s/task/getTaskCount', taskQuery).then(c => {
+                    console.log(c.body)
+                    this.taskCount = c.body
+                })
                 this.updateUserInfo('canton', to)
             },
             'details.ageRange'(to, from) {
