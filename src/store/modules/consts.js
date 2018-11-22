@@ -118,7 +118,7 @@ const state = {
     },
     {
       'value': 'ZH',
-      'label': 'Zurich',
+      'label': 'Zürich',
       'lang': 'DE'
     }
   ],

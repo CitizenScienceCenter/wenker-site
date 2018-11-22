@@ -51,14 +51,16 @@
                             <h3 class="subheading centered left-aligned-large">{{ $t('form-heading') }}</h3>
                             <!-- <div class="desc" v-if="project && project.description" v-html="project.description"></div> -->
 
-                            <activity-details-form  ref="details" :activity="activity" :allRegions="false"
+                            <activity-details-form ref="details" :activity="activity" :allRegions="false"
                                                    :errors="errors"></activity-details-form>
 
                             <div class="button-group centered left-aligned-large">
                                 <button class="button button-primary" v-on:click="startProject">{{ $t('button-start')
                                     }}
-                                </button><br>
-                                <button class="button button-secondary" :disabled="$refs.details.taskCount === 0" v-on:click="startProjectRegion">{{
+                                </button>
+                                <br>
+                                <button class="button button-secondary" :disabled="$refs.details && $refs.details.taskCount === 0"
+                                        v-on:click="startProjectRegion">{{
                                     $t('button-start-region') }}
                                 </button>
                             </div>
@@ -102,13 +104,17 @@
                 errors: {
                     canton: false,
                     age: false
-                }
+                },
+                taskCount: 1
             }
         },
         watch: {
             tasks(to, from) {
             },
             '$route.params.id'(to, from) {
+            },
+            '$refs.details.taskCount'(to, from) {
+                this.taskCount = to;
             }
         },
         components: {
@@ -127,10 +133,8 @@
                     this.id,
                     false
                 ]).then(a => {
-                    // console.log(a)
+                // console.log(a)
             })
-            console.log(this.$refs.details.taskCount)
-
         },
         methods: {
             startProject() {
@@ -169,8 +173,6 @@
 
     @import '@/styles/theme.scss';
     @import '@/styles/shared/variables.scss';
-
-
 
 
 </style>
