@@ -45,7 +45,7 @@
                             <p class="button-group centered task-switch-bar">
                                 <button v-on:click="endTask" class="button button-secondary">Beenden</button>
                                 <label>1 von 1</label>
-                                <button v-on:click="submitTask" class="button button-primary">Nächster Bogen</button>
+                                <button v-on:click="submitTask" :disabled="loading" class="button button-primary">Nächster Bogen</button>
                             </p>
 
                         </div>
@@ -96,7 +96,8 @@
             media: state => state.c3s.task.media,
             user: state => state.c3s.user.currentUser,
             activity: state => state.c3s.activity.activity,
-            comments: state => state.c3s.task.comments
+            comments: state => state.c3s.task.comments,
+            loading: state => state.c3s.settings.loading
         }),
         watch: {
             '$route.query.count'(to, from) {
@@ -126,9 +127,6 @@
                         "fields": [
                             "*"
                         ],
-                        "orderBy": {
-                            "id": "desc"
-                        },
                         "tables": [
                             "tasks"
                         ]
@@ -204,7 +202,6 @@
             submitTask() {
                 this.$store.commit('c3s/submission/SET_SUBMISSION_RESPONSES', this.responses);
                 this.$store.dispatch('c3s/submission/createSubmission').then(s => {
-                    console.log(s)
                     let qu = Object.assign({}, this.$route.query);
                     qu['count'] = qu['count'] + 1;
                     this.$router.replace({name: 'TranscribeTask', query: qu})
