@@ -74,19 +74,7 @@
             </div>
         </app-content-section>
 
-        <app-content-section color="light-greyish">
-            <div class="content-wrapper">
-
-                <div class="row">
-                    <div class="col">
-
-                        <comments-list v-if="tasks.length" :id="tasks[0].id"></comments-list>
-
-                    </div>
-                </div>
-
-            </div>
-        </app-content-section>
+        <comments-list v-if="tasks.length" :id="tasks[0].id"></comments-list>
 
     </div>
 
