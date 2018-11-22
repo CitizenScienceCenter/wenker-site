@@ -133,7 +133,6 @@
                     const userRegion = this.$route.query['region']
                     taskQuery['where']["info ->> 'SchoolRegion'"] = {'op': 'e', 'val': userRegion, "join": "a"}
                 }
-                console.log(this.$store.state.c3s.client.apis.Tasks)
                 this.$store.dispatch('c3s/task/getTaskCount', taskQuery).then(c => {
                     this.taskCount = c.body
                 })
@@ -197,7 +196,7 @@
                 this.$store.dispatch('c3s/submission/createSubmission').then(s => {
                     let qu = Object.assign({}, this.$route.query);
                     qu['count'] = qu['count'] + 1;
-                    if (qu['count'] === this.taskCount) {
+                    if (qu['count'] > this.taskCount) {
                         this.$store.commit('c3s/activity/SET_ACTIVITY', null);
                         this.$router.push({
                             name: 'TranscribeComplete'

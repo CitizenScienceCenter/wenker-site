@@ -116,7 +116,6 @@
         }),
         watch: {
             '$route.query.count'(to, from) {
-                console.log(to)
                 this.loadTask(to)
             }
         },
@@ -134,8 +133,7 @@
                 responses: [],
                 task_help: '',
                 nextTxt: 'Next',
-                activeAnswer: {},
-                taskCount: 1,
+                activeAnswer: {}
             }
         },
         methods: {
@@ -160,16 +158,16 @@
                 this.$store.commit('c3s/submission/SET_SUBMISSION_RESPONSES', this.responses);
                 this.$store.dispatch('c3s/submission/createSubmission').then(s => {
                     let qu = Object.assign({}, this.$route.query);
-                    console.log(qu['count'] == this.taskCount)
-                    // if (qu['count'] == this.taskCount) {
-                    //     this.$store.commit('c3s/activity/SET_ACTIVITY', null);
-                    //     this.$router.push({
-                    //         name: 'TranslateComplete'
-                    //     })
-                    // } else {
+                    qu['count'] = parseInt(qu['count']) + 1;
+                    if (qu['count'] > this.taskCount) {
+                        this.$store.commit('c3s/activity/SET_ACTIVITY', null);
+                        this.$router.push({
+                            name: 'TranslateComplete'
+                        })
+                    } else {
                         this.$router.replace({name: 'TranslateTask', query: qu})
-                    // }
-                });
+                    }
+                })
             },
             loadTask(count) {
                 const taskQuery = {
@@ -192,7 +190,6 @@
                 };
                 this.$store.dispatch('c3s/task/getTaskCount', taskQuery).then(c => {
                     this.taskCount = c.body
-                    console.log(this.taskCount)
                 })
                 this.$store.dispatch('c3s/task/getTasks', taskQuery).then(t => {
                     if (t.body && t.body.length > 0) {
@@ -206,7 +203,7 @@
                     } else {
                         console.log(t)
                         console.log('No tasks found');
-                        this.$router.push({'name': 'TranslateComplete'})
+                        // this.$router.push({'name': 'TranslateComplete'})
                     }
                 })
             }
