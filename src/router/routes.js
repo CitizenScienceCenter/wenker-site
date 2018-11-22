@@ -5,11 +5,12 @@ import * as Transcription from '@/views/transcription'
 import store from '../store/store.js'
 
 const logout = (to, from, next) => {
-    localStorage.removeItem('user')
+    localStorage.removeItem('user');
+    console.log('done')
     store.commit('c3s/user/SET_CURRENT_USER', null);
     store.commit('c3s/user/SET_ANON', false);
-    next('/home')
-}
+    next()
+};
 
 // lazy loading routes
 const Home = resolve => {
@@ -38,7 +39,15 @@ export const routes = [
         path: "/",
         component: Home,
         name: 'Home',
+        beforeEnter: null,
         meta: {page: "page-homepage", nav: false}
+    },
+    {
+        path: "/logout",
+        component: Home,
+        name: "Logout",
+        beforeEnter: logout,
+        meta: {page: 'page-logout', nav: false}
     },
     {
         path: "/transcribe",
@@ -140,13 +149,6 @@ export const routes = [
         name: "Register",
         component: User.Register,
         meta: {page: 'page-register', nav: false}
-    },
-    {
-        path: "/logout",
-        name: "Logout",
-        redirect: '/', //TODO add beforeEnter hook to log out user,
-        beforeEnter: logout,
-        meta: {page: 'page-logout', nav: false}
     },
     {
         path: "/reset",
