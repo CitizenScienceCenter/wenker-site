@@ -34,7 +34,7 @@
 
                     <!-- TODO: if no loggedin -->
 
-                    <div class="content-subsection">
+                    <div v-if="user.isAnon" class="content-subsection">
                         <h3 class="subheading">{{ $t('heading-register') }}</h3>
                         <p>
                             {{ $t('register-text') }}
@@ -116,16 +116,7 @@
         methods: {
 
             startPage() {
-                /*
-              console.log('start')
-              if(this.user && this.user.username.indexOf('anon') !== -1) {
-                  this.$store.dispatch('user/logout').then(() => {
-                      this.$router.push({name: 'Home'})
-                  })
-              } else {
-                  this.$router.push({name: 'Home'})
-              }
-              */
+                this.$router.push({name: 'Home'})
             }
         }
     };
