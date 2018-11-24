@@ -28,7 +28,7 @@
                     <div class="content-subsection">
                         <h2 class="heading">{{ $t('heading') }}</h2>
                         <p>
-                            {{ $t('sentence-part-1') }}{{ stats.contributor_count }}{{ $t('sentence-part-2') }} <!-- TODO: if no loggedin -->
+                            {{ $t('sentence-part-1') }}{{ totalSubs }}{{ $t('sentence-part-2') }} <!-- TODO: if no loggedin -->
                         </p>
                     </div>
 
@@ -63,7 +63,9 @@
             return {
                 stats: {
 
-                }
+                },
+                id: "e4b5ebc5-47a2-430b-84a9-a03b1d4dda34",
+                totalSubs: -1
             };
         },
         watch: {
@@ -79,17 +81,32 @@
             'app-content-section': ContentSection
         },
         beforeRouteLeave (to, from, next) {
-            this.$store.commit('c3s/activity/SET_ACTIVITY', null)
+            this.$store.commit('c3s/activity/SET_ACTIVITY', null);
             next()
         },
         computed: mapState({
             user: state => state.c3s.user.currentUser
         }),
         mounted() {
-            // this.$store.dispatch("project/getProject", [
-            //     this.$route.params.id || this.projectID,
-            //     true
-            // ]);
+            const countQuery = {
+                "select": {
+                    "fields": [
+                        "*"
+                    ],
+                    "tables": [
+                        "submissions"
+                    ]
+                },
+                "where": {
+                    "id": {
+                        "op": "e",
+                        "val": this.id
+                    }
+                }
+            };
+            this.$store.dispatch('c3s/submission/getSubmissionCount', countQuery).then( count => {
+                this.totalSubs = count.body;
+            })
         },
         methods: {
             startPage() {

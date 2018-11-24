@@ -28,7 +28,7 @@
                     <div class="content-subsection">
                         <h2 class="heading">{{ $t('heading') }}</h2>
                         <p>
-                            {{ $t('sentence-part-1') }}{{ stats.contributor_count }}{{ $t('sentence-part-2') }} <!-- TODO: if no loggedin -->
+                            {{ $t('sentence-part-1') }}{{ totalSubs }}{{ $t('sentence-part-2') }} <!-- TODO: if no loggedin -->
                         </p>
                     </div>
 
@@ -64,6 +64,7 @@
                 stats: {
 
                 },
+                id: '507b3f89-aff1-4fa3-8f28-9c8399811539'
                 totalSubs: -1
             };
         },
@@ -102,14 +103,14 @@
                     ]
                 },
                 "where": {
-                    "activity_id": {
+                    "id": {
                         "op": "e",
-                        "val": this.activity.id
+                        "val": this.id
                     }
                 }
             };
             this.$store.dispatch('c3s/submission/getSubmissionsCount', countQuery).then( count => {
-                this.totalSubs = count;
+                this.totalSubs = count.body;
             })
         },
         methods: {

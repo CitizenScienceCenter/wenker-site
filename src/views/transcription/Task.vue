@@ -109,6 +109,7 @@
                 this.$router.push({name: 'TranscribeStart'})
             }
         },
+        // TODO add route leave guard to save submission before exiting
         methods: {
             loadTask(count) {
                 const taskQuery = {
@@ -183,6 +184,7 @@
                 this.$store.commit('c3s/submission/SET_SUBMISSION', submission)
             },
             endTask() {
+                //TODO do not submit if responses are ALL empty
                 this.$store.commit('c3s/submission/SET_SUBMISSION_RESPONSES', this.responses);
                 this.$store.dispatch('c3s/submission/createSubmission').then(s => {
                     this.$router.push({
