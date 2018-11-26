@@ -62,7 +62,8 @@
         data() {
             return {
                 userId: this.$route.params.id,
-                submissions: []
+                submissions: [],
+                totalSubs: this.submissions.length
             };
         },
         computed: mapState({
@@ -103,15 +104,19 @@
                 }
             };
             this.$store.dispatch('c3s/submission/getSubmissions', subQuery).then(s => {
-                console.log(s.data)
                 if (s.ok) {
                     this.submissions = s.data;
-                //    TODO calculate split between projects and show total
                     let submissionStats = [];
                     for(let index in this.submissions) {
-                        const sub = this.submissions[index]
-
+                        const sub = this.submissions[index];
+                        if (sub['activity_id'] in submissionStats) {
+                            submissionStats[sub['activity_id']].push(sub)
+                        }else{
+                            submissionStats[sub['activity_id']] = [];
+                            submissionStats[sub['activity_id']].push(sub)
+                        }
                     }
+                //    TODO set up submissions table for users to see each project and see/delete details
                 }
             })
         },
