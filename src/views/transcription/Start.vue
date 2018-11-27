@@ -13,7 +13,7 @@
     "en": {
     "heading": "Transcription",
     "heading-activity-description": "Task",
-    "activity-description": "1700 sheets need to be transcribed. Help us do that.",
+    "activity-description": "The 1700 hand-written swiss Wenker sheets must be accurately copied in order to process them digitally. For that we need your support!",
     "form-heading": "Your Info",
     "button-start": "Start",
     "button-start-region": "Start with sheets from your region",
@@ -81,7 +81,7 @@
 
         <comments-list :id=id></comments-list>
 
-        <app-footer color="greyish"></app-footer>
+        <app-footer></app-footer>
 
     </div>
 

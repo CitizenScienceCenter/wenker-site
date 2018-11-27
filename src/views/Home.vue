@@ -32,20 +32,20 @@
   "cover-button-transcribe": "Transcribe",
   "cover-button-translate": "Translate",
 
-    "section-explanation-heading": "The 40 Wenker Sentences",
-    "section-explanation-text": "By transcribing and translating swiss sentences from the 1930s, you help researchers understand how Swiss German changed during the past 100 years.",
-    "section-explanation-button": "Read more",
+    "section-explanation-heading": "The 40 Wenker Phrases",
+    "section-explanation-text": "As part of a linguistic research project about 100 years ago, 40 sentences were translated from standard German into the local dialects of Switzerland. However, this data has never been evaluated. Help us to digitize this treasure.",
+    "section-explanation-button": "More about the project",
 
-    "section-contribute-heading": "Contribute now:",
+    "section-contribute-heading": "Your help is needed:",
     "section-contribute-1-heading": "Transcription",
-    "section-contribute-1-text": "Die 1700 handgeschriebenen Schweizer Wenker-Bögen müssen genau abgeschrieben werden, um sie digital aufzubereiten. Dafür brauchen wir deine Unterstützung!",
+    "section-contribute-1-text": "The 1700 hand-written swiss Wenker sheets must be accurately copied in order to process them digitally. For that we need your support!",
     "section-contribute-1-button": "Transcribe",
     "section-contribute-2-heading": "Translation",
-    "section-contribute-2-text": "Übersetze die originalen Wenker-Sätze in deinen Dialekt, wie du ihn heute sprichst. So können wir das Schweizerdeutsch von heute mit dem der 1930er Jahre vergleichen.",
+    "section-contribute-2-text": "Translate the original Wenker sentences into your own dialect. So we can compare today's Swiss German with the one spoken in the 1930ies.",
     "section-contribute-2-button": "Translate",
 
-    "section-wenker-heading": "The story of a dialect lover",
-    "section-wenker-text": "Die Wenkersätze aus der Schweizer Sprachstudie haben eine interessante Vorgeschichte. Der junge Sprachwissenschaftler Georg Wenker hat sie aus einem ganz bestimmten Grund entwickelt.",
+    "section-wenker-heading": "The Story of a Dialect Lover",
+    "section-wenker-text": "The Wenker phrases from the Swiss dialect study have an interesting history. The young linguist Georg Wenker developed them for a certain reason.",
     "section-wenker-button": "More about Georg Wenker",
 
     "section-video-heading": "Prof. Elvira Glaser explains",
@@ -209,7 +209,7 @@
       </div>
     </app-content-section>
 
-    <app-footer color="greyish"></app-footer>
+    <app-footer></app-footer>
 
   </div>
 </template>

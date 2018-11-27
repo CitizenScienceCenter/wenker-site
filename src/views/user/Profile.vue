@@ -4,13 +4,13 @@
     "heading": "Ihr Profil",
     "label-email": "Email",
     "label-api-key": "API Key",
-    "submission-heading": "Submissions"
+    "submission-heading": "Ihre Eingaben"
     },
     "en": {
     "heading": "Your Profile",
     "label-email": "Email",
     "label-api-key": "API Key",
-    "submission-heading": "Submissions"
+    "submission-heading": "Your Submissions"
     }
     }
 </i18n>
@@ -44,7 +44,7 @@
                         </div>
 
                         <div class="content-subsection" v-if="submissions.length">
-                            <h2 class="heading">{{ $t('submission-heading') }}</h2>
+                            <h3 class="subheading">{{ $t('submission-heading') }}</h3>
                             <table class="tg">
                                 <tr>
                                     <th class="tg-0lax">Activity Name</th>
@@ -72,7 +72,7 @@
             </div>
         </app-content-section>
 
-        <app-footer color="greyish"></app-footer>
+        <app-footer></app-footer>
 
     </div>
 </template>

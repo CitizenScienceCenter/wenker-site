@@ -13,7 +13,7 @@
     "en": {
     "heading": "Translate",
     "heading-activity-description": "Task",
-    "activity-description": "1700 sheets need to be transcribed. Help us do that.",
+    "activity-description": "Translate the original Wenker sentences into your own dialect. So we can compare today's Swiss German with the one spoken in the 1930ies.",
     "form-heading": "Your Info",
     "button-start": "Start",
     "login-heading": "Already registered?",
@@ -84,7 +84,7 @@
 
         <comments-list :id="id"></comments-list>
 
-        <app-footer color="greyish"></app-footer>
+        <app-footer></app-footer>
 
     </div>
 

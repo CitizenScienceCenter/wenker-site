@@ -25,7 +25,7 @@
                 <div class="col col-large-6">
 
                     <div class="comments">
-                        <h2 class="subheading centered">Kommentare</h2>
+                        <h2 class="subheading centered">{{ $t('heading') }}</h2>
                         <div class="existing-comments">
                             <single-comment
                                     v-for="(comment, index) in comments"

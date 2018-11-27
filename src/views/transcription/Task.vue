@@ -58,7 +58,7 @@
 
         <comments-list v-if="tasks.length" :id="tasks[0].id"></comments-list>
 
-        <app-footer color="greyish"></app-footer>
+        <app-footer></app-footer>
 
     </div>
 
