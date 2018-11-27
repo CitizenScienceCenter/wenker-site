@@ -7,18 +7,16 @@
             "transcription-rule-2": "Wenn ein Wort oder ein Buchstabe nicht entziffert werden kann, wird folgender Platzhalter eingefügt: [...]",
             "transcription-rule-3": "Falls ein Wort nicht vollständig entziffert werden kann, kann folgender Platzhalter eingefügt werden: [unvollst.]",
             "transcription-rule-4": "Grundsatz: Die Transkription soll möglichst nahe am Original sein!",
-            "transcription-rule-5": "Alle Sonderzeichen sollten transkribiert werden! (Falls nicht möglich, siehe FAQs).",
-            "transcription-rule-6": "Kommentare können Sie in dem Kommentarfeld hinterlassen."
+            "transcription-rule-5": "Alle Sonderzeichen sollten transkribiert werden! (Falls nicht möglich, siehe FAQs)."
         },
         "en": {
             "transcription-rules-button-show": "Show Transcription Rules",
             "transcription-rules-button-hide": "Hide Transcription Rules",
-            "transcription-rule-1": "Ein vermuteter Wortlaut wird in eckigen Klammern [] geschrieben, z. B. [T]ue das mache...",
-            "transcription-rule-2": "Wenn ein Wort oder ein Buchstabe nicht entziffert werden kann, wird folgender Platzhalter eingefügt: [...]",
-            "transcription-rule-3": "Falls ein Wort nicht vollständig entziffert werden kann, kann folgender Platzhalter eingefügt werden: [unvollst.]",
-            "transcription-rule-4": "Grundsatz: Die Transkription soll möglichst nahe am Original sein!",
-            "transcription-rule-5": "Alle Sonderzeichen sollten transkribiert werden! (Falls nicht möglich, siehe FAQs).",
-            "transcription-rule-6": "Kommentare können Sie in dem Kommentarfeld hinterlassen."
+            "transcription-rule-1": "A suspected wording is written in square brackets [], for example: [T]ue das mache...",
+            "transcription-rule-2": "If a word or letter can't be deciphered, the following placeholder is inserted: [...]",
+            "transcription-rule-3": "If a word can't be completely deciphered, the following wildcard can be inserted: [unvollst.]",
+            "transcription-rule-4": "Principle: The transcription should be as close as possible to the original!",
+            "transcription-rule-5": "All special characters should be transcribed! (If not possible, see FAQs)."
         }
     }
 </i18n>
@@ -36,15 +34,18 @@
             </a>
         </div>
 
-        <div v-if="visible" class="popup">
-            <ul>
-                <li>{{ $t('transcription-rule-1') }}</li>
-                <li>{{ $t('transcription-rule-2') }}</li>
-                <li>{{ $t('transcription-rule-3') }}</li>
-                <li>{{ $t('transcription-rule-4') }}</li>
-                <li>{{ $t('transcription-rule-5') }}</li>
-                <li>{{ $t('transcription-rule-6') }}</li>
-            </ul>
+        <div v-if="visible" class="row row-centered">
+            <div class="col col-tablet-portrait-10">
+                <div class="popup">
+                    <ul>
+                        <li>{{ $t('transcription-rule-1') }}</li>
+                        <li>{{ $t('transcription-rule-2') }}</li>
+                        <li>{{ $t('transcription-rule-3') }}</li>
+                        <li>{{ $t('transcription-rule-4') }}</li>
+                        <li>{{ $t('transcription-rule-5') }}</li>
+                    </ul>
+                </div>
+            </div>
         </div>
         <!--
      <div class="form-popup">
@@ -117,7 +118,6 @@ export default {
 
     .popup {
         font-size: $font-size-small;
-        padding: $spacing-1;
         padding-top: $spacing-3;
     }
 
