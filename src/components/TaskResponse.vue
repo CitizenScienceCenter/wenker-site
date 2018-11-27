@@ -4,13 +4,19 @@
     "special-characters-label": "Sonderzeichen einfügen",
     "sentence-count-prefix": "Nr. ",
     "placeholder-prefix": "Satz Nr. ",
-    "button-next-sentence": "Nächster Satz"
+    "button-next-sentence": "Nächster Satz",
+    "info-transcribed-prefix": "Dieser Satz wurde bereits ",
+    "info-transcribed-suffix": " Mal transkribiert.",
+    "info-done": "Du hast diesen Satz bereits transkribiert."
     },
     "en": {
     "special-characters-label": "Enter special characters",
     "sentence-count-prefix": "No. ",
     "placeholder-prefix": "Sentence No. ",
-    "button-next-sentence": "Next Sentence"
+    "button-next-sentence": "Next Sentence",
+    "info-transcribed-prefix": "This Phrase has been transcribed ",
+    "info-transcribed-suffix": " times",
+    "info-done": "You transcribed this phrase already."
     }
     }
 </i18n>
@@ -41,6 +47,17 @@
                                         :placeholder="$t('placeholder-prefix') + (activeAnswerIndex+1)"
                                         :responses="responses" :activeAnswer="activeAnswer"
                                         :activeAnswerIndex="activeAnswerIndex" type="text"></task-response-text>
+
+                    <template v-if="Math.random() > 0.5"> <!-- just for demo, shows up sometimes -->
+                    <div v-if="Math.random() > 0.75" class="info centered"> <!-- sometimes this one -->
+                        <svg aria-hidden="true" data-prefix="fas" data-icon="info-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"></path></svg>
+                        {{ $t('info-transcribed-prefix') }}99{{ $t('info-transcribed-suffix') }}
+                    </div>
+                    <div v-else class="info centered"> <!-- sometimes that one -->
+                        <svg aria-hidden="true" data-prefix="fas" data-icon="info-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"></path></svg>
+                        {{ $t('info-done') }}
+                    </div>
+                    </template>
 
                 </div>
                 <div class="special-characters centered">
@@ -199,6 +216,20 @@
     .response-field {
         margin-bottom: $spacing-2;
 
+        .info {
+            padding-top: $spacing-2;
+            font-size: $font-size-small;
+            color: $color-secondary;
+
+            svg {
+                fill: $color-secondary;
+                display: inline-block;
+                width: $font-size-small;
+                height: $font-size-small;
+                margin-right: $spacing-1;
+                transform: translateY(2px);
+            }
+        }
     }
 
     .response-buttons {
