@@ -1,16 +1,28 @@
 <i18n>
     {
     "de": {
-    "heading": "Ihr Profil",
+    "heading": "Dein Profil",
     "label-email": "Email",
     "label-api-key": "API Key",
-    "submission-heading": "Ihre Eingaben"
+    "submission-heading": "Deine Statistik",
+    "submission-transcription-prefix": "Du hast ",
+    "submission-transcription-between": " Sätze auf ",
+    "submission-transcription-suffix": " Bögen transkribiert.",
+    "submission-translation-prefix": "Du hast ",
+    "submission-translation-suffix": " Sätze übersetzt",
+    "thanks": "Vielen Dank für Deine Hilfe!"
     },
     "en": {
     "heading": "Your Profile",
     "label-email": "Email",
     "label-api-key": "API Key",
-    "submission-heading": "Your Submissions"
+    "submission-heading": "Your Stats",
+    "submission-transcription-prefix": "You have transcribed ",
+    "submission-transcription-between": " sentences from ",
+    "submission-transcription-suffix": " sheets.",
+    "submission-translation-prefix": "You have translated ",
+    "submission-translation-suffix": " sentences.",
+    "thanks": "Thanks for helping!"
     }
     }
 </i18n>
@@ -29,26 +41,31 @@
                             <form novalidate disabled>
                                 <div v-if="user" class="md-layout">
                                     <div>
-                                        <label for="user.email">{{ $t('label-email') }}</label>
-                                        <!-- <input v-model="user.email" type="email" name="email" id="email" autocomplete="email" disabled/> -->
+                                        <label>{{ $t('label-email') }}</label>
                                         <p>{{ user.email }}</p>
                                     </div>
 
+                                    <!--
                                     <div>
-                                        <label for="user.api_key">{{ $t('label-api-key') }}</label>
-                                        <!-- <input v-model="user.api_key" type="text" name="api" id="api"/> -->
+                                        <label>{{ $t('label-api-key') }}</label>
                                         <p>{{ user.api_key }}</p>
                                     </div>
+                                    -->
                                 </div>
                             </form>
                         </div>
 
                         <div class="content-subsection" v-if="submissions.length">
                             <h3 class="subheading">{{ $t('submission-heading') }}</h3>
-
-                            <p> You have translated {{this.submissionStats['Übersetzen']['count']}} sentences</p>
-                            <p> You have transcribed {{this.submissionStats['Transkribieren']['count']}} images </p>
-                            <h3>Thanks for helping!</h3>
+                            <ul>
+                                <li>
+                                    {{ $t('submission-transcription-prefix') }}99{{ $t('submission-transcription-between') }}{{this.submissionStats['Transkribieren']['count']}}{{ $t('submission-transcription-suffix') }}
+                                </li>
+                                <li>
+                                    {{ $t('submission-translation-prefix') }}{{this.submissionStats['Übersetzen']['count']}}{{ $t('submission-translation-suffix') }}
+                                </li>
+                            </ul>
+                            <p class="lead">{{ $t('thanks') }}</p>
                         </div>
 
                         <div class="content-subsection">

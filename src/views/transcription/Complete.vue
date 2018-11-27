@@ -9,7 +9,7 @@
     },
     "en": {
     "heading": "Thank you for Your Participation",
-    "sentence-part-1": "You are user number ",
+    "sentence-part-1": "You are participant no. ",
     "sentence-part-2": "",
     "heading-register": "Register now",
     "register-text": "Create your profile for future contributions to our Citizen Science projects."
