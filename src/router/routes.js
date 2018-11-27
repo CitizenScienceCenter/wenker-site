@@ -33,6 +33,11 @@ const FAQ = resolve => {
         resolve(require("../views/static/FAQ.vue"));
     });
 };
+const Terms = resolve => {
+    require.ensure(["../views/static/Terms.vue"], () => {
+        resolve(require("../views/static/Terms.vue"));
+    });
+};
 
 export const routes = [
     {
@@ -137,6 +142,11 @@ export const routes = [
         path: "/faq",
         component: FAQ,
         meta: {page: "page-faq", nav: true}
+    },
+    {
+        path: "/terms",
+        component: Terms,
+        meta: {page: "page-terms", nav: false}
     },
     {
         path: "/login",

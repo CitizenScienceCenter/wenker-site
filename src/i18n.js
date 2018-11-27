@@ -50,6 +50,10 @@ export const i18n = new VueI18n({
         'link': 'FAQ',
         'title': 'FAQ – Projekt Wenker – Citizen Science Center Zürich'
       },
+    'page-terms': {
+        'link': 'Privacy Policy & Terms of Use',
+        'title': 'Privacy Policy & Terms of Use – Projekt Wenker – Citizen Science Center Zürich'
+    },
       'page-login': {
         'link': 'Anmelden',
         'title': 'Anmelden – Projekt Wenker – Citizen Science Center Zürich'
@@ -95,6 +99,10 @@ export const i18n = new VueI18n({
           'page-faq': {
               'link': 'FAQ',
               'title': 'FAQ – Project Wenker – Citizen Science Center Zurich'
+          },
+          'page-terms': {
+              'link': 'Privacy Policy & Terms of Use',
+              'title': 'Privacy Policy & Terms of Use – Projekt Wenker – Citizen Science Center Zurich'
           },
           'page-login': {
               'link': 'Login',
