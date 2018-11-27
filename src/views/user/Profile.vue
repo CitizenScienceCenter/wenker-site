@@ -45,21 +45,10 @@
 
                         <div class="content-subsection" v-if="submissions.length">
                             <h3 class="subheading">{{ $t('submission-heading') }}</h3>
-                            <table class="tg">
-                                <tr>
-                                    <th class="tg-0lax">Activity Name</th>
-                                    <th class="tg-0lax">Date</th>
-                                    <th class="tg-0lax">Task</th>
-                                    <th class="tg-0lax">Content</th>
-                                </tr>
-                                <tr v-for="s in submissions">
-                                    <td class="tg-0lax">{{s['activity_name']}}</td>
-                                    <td class="tg-0lax">{{s['created_at']}}</td>
-                                    <td class="tg-0lax">{{s['task_id']}}</td>
-                                    <td class="tg-0lax">{{calcTaskResponse(s['content']['responses'])}}</td>
-                                </tr>
-                            </table>
 
+                            <p> You have translated {{this.submissionStats['Übersetzen']['count']}} sentences</p>
+                            <p> You have transcribed {{this.submissionStats['Transkribieren']['count']}} images </p>
+                            <h3>Thanks for helping!</h3>
                         </div>
 
                         <div class="content-subsection">
@@ -169,7 +158,9 @@
         methods: {
             calcTaskResponse(task) {
                 let total = 0;
+
                 for (let i in task) {
+                    console.log(task[i].text.length)
                     if (task[i].text.length > 0) total += 1;
                 }
                 return total;

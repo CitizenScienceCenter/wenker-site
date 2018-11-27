@@ -104,17 +104,31 @@
                         "*"
                     ],
                     "tables": [
-                        "submissions"
+                        "submissions",
+                        "activities",
+                        "tasks"
                     ]
                 },
                 "where": {
-                    "id": {
+                    "submissions.task_id": {
+                        "op": "e",
+                        "val": "tasks.id",
+                        "type": "sql",
+                        "join": "a"
+                    },
+                    "tasks.activity_id": {
+                        "op": "e",
+                        "val": this.id,
+                        "join": "a"
+                    },
+                    "activities.id": {
                         "op": "e",
                         "val": this.id
                     }
+
                 }
             };
-            this.$store.dispatch('c3s/submission/getSubmissionsCount', countQuery).then( count => {
+            this.$store.dispatch('c3s/submission/getSubmissionCount', countQuery).then(count => {
                 this.totalSubs = count.body;
             })
         },
