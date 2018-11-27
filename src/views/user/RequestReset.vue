@@ -2,12 +2,12 @@
   {
     "de": {
       "heading": "Passwort zurücksetzen",
-      "label-email": "Passwort",
+      "label-email": "Email",
       "button-reset": "Zurücksetzen"
     },
     "en": {
-      "heading": "EN: Passwort Zurücksetzen",
-      "label-email": "Passwort",
+      "heading": "Reset Password",
+      "label-email": "Email",
       "button-reset": "Reset"
     }
   }

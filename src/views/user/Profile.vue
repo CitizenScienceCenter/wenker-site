@@ -10,7 +10,9 @@
     "submission-transcription-suffix": " Bögen transkribiert.",
     "submission-translation-prefix": "Du hast ",
     "submission-translation-suffix": " Sätze übersetzt",
-    "thanks": "Vielen Dank für Deine Hilfe!"
+    "thanks": "Vielen Dank für Deine Hilfe!",
+    "button-logout": "Ausloggen",
+    "button-reset": "Passwort zurücksetzen"
     },
     "en": {
     "heading": "Your Profile",
@@ -22,7 +24,9 @@
     "submission-transcription-suffix": " sheets.",
     "submission-translation-prefix": "You have translated ",
     "submission-translation-suffix": " sentences.",
-    "thanks": "Thanks for helping!"
+    "thanks": "Thanks for helping!",
+    "button-logout": "Logout",
+    "button-reset": "Reset Password"
     }
     }
 </i18n>
@@ -69,8 +73,12 @@
                         </div>
 
                         <div class="content-subsection">
-                            <router-link tag="button" to="/logout" class="button button-secondary">Logout</router-link>
+                            <div class="button-group">
+                                <router-link tag="button" to="/logout" class="button button-secondary">{{ $t('button-logout') }}</router-link>
+                                <router-link tag="button" to="/reset" class="button button-secondary">{{ $t('button-reset') }}</router-link>
+                            </div>
                         </div>
+
 
                     </div>
                 </div>

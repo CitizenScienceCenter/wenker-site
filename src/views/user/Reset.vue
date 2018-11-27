@@ -7,7 +7,7 @@
         "button-reset": "Zurücksetzen"
     },
     "en": {
-        "heading": "EN Passwort zurücksetzen",
+        "heading": "Reset Password",
         "label-email": "Email",
         "label-password": "Password",
         "button-reset": "Reset"
