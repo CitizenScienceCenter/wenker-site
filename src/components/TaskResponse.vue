@@ -115,6 +115,10 @@
             specialChars: state => state.consts.specialChars,
             user: state => state.c3s.user.currentUser
         }),
+        mounted() {
+            this.checkSubmissions()
+            console.log(this.responses[0])
+        },
         components: {TaskResponseText, HelpPopup},
         methods: {
             updateActiveIndex(val) {
@@ -126,6 +130,7 @@
             },
             checkSubmissions() {
                 //subs-user for current user and subs-some for submissions not from current user
+                this.submissionsClass = 'subs-none'
                 if (this.submissions.length > 0) {
                     for (let i in this.submissions) {
                         const sub = this.submissions[i];

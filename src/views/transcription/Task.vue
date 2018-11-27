@@ -113,7 +113,6 @@
                 //    TODO show error for no activity
                 this.$router.push({name: 'TranscribeStart'})
             }
-            this.checkSubmissions()
         },
         // TODO add route leave guard to save submission before exiting
         methods: {
@@ -163,6 +162,7 @@
                             },
                             "limit": 10
                         };
+                        this.responses =[]
                         for (let i = 0; i < task.content.answers.length; i++) {
                             this.responses.push({text: ""})
                         }
