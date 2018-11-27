@@ -41,23 +41,26 @@
             </div>
 
             <div class="col col-large-8 col-response">
-                <div class="response-field" :class="submissionsClass">
+                <div class="response-field">
 
                     <task-response-text ref="TaskResponseText"
                                         :placeholder="$t('placeholder-prefix') + (activeAnswerIndex+1)"
                                         :responses="responses" :activeAnswer="activeAnswer"
                                         :activeAnswerIndex="activeAnswerIndex" type="text"></task-response-text>
-
-                    <template v-if="Math.random() > 0.5"> <!-- just for demo, shows up sometimes -->
-                    <div v-if="Math.random() > 0.75" class="info centered"> <!-- sometimes this one -->
-                        <svg aria-hidden="true" data-prefix="fas" data-icon="info-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"></path></svg>
-                        {{ $t('info-transcribed-prefix') }}99{{ $t('info-transcribed-suffix') }}
-                    </div>
-                    <div v-else class="info centered"> <!-- sometimes that one -->
-                        <svg aria-hidden="true" data-prefix="fas" data-icon="info-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"></path></svg>
+                    <div v-if="userSubmitted" class="info centered"> <!-- sometimes that one -->
+                        <svg aria-hidden="true" data-prefix="fas" data-icon="info-circle" role="img"
+                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"></path>
+                        </svg>
                         {{ $t('info-done') }}
                     </div>
-                    </template>
+                    <div v-if="othersSubmitted > 0" class="info centered"> <!-- sometimes this one -->
+                        <svg aria-hidden="true" data-prefix="fas" data-icon="info-circle" role="img"
+                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"></path>
+                        </svg>
+                        {{ $t('info-transcribed-prefix') }} {{othersSubmitted}} {{ $t('info-transcribed-suffix') }}
+                    </div>
 
                 </div>
                 <div class="special-characters centered">
@@ -118,14 +121,21 @@
         },
         watch: {
             activeAnswer(to, from) {
-                this.activeAnswer = this.task.content.answers[to];
+                this.activeAnswer = this.answers[to];
+            },
+            answers(to, from) {
+                this.activeAnswerIndex = 0;
+            },
+            activeAnswerIndex(to, from) {
+                this.checkSubmissions()
             }
         },
         data() {
             return {
                 activeAnswerIndex: 0,
                 activeAnswer: {},
-                submissionsClass: 'subs-none'
+                userSubmitted: false,
+                othersSubmitted: false
             }
         },
         computed: mapState({
@@ -133,21 +143,23 @@
             user: state => state.c3s.user.currentUser
         }),
         mounted() {
-            this.checkSubmissions()
-            console.log(this.responses[0])
+            setTimeout(() => {
+                this.checkSubmissions()
+            }, 200)
+
         },
         components: {TaskResponseText, HelpPopup},
         methods: {
             updateActiveIndex(val) {
                 this.activeAnswerIndex += val;
-                this.checkSubmissions()
             },
             insertChar(char) {
                 this.$refs.TaskResponseText.setChar(char);
             },
             checkSubmissions() {
                 //subs-user for current user and subs-some for submissions not from current user
-                this.submissionsClass = 'subs-none'
+                this.userSubmitted = false;
+                this.othersSubmitted = 0;
                 if (this.submissions.length > 0) {
                     for (let i in this.submissions) {
                         const sub = this.submissions[i];
@@ -155,15 +167,14 @@
                             const responses = sub['content']['responses'];
                             if (responses.length >= this.activeAnswerIndex && responses[this.activeAnswerIndex].text.length > 0) {
                                 if (sub['user_id'] === this.user.id) {
-                                    this.submissionsClass = 'subs-user'
+                                    this.userSubmitted = true
                                 } else {
-                                    this.submissionsClass = 'subs-other'
+                                    this.othersSubmitted += 1
                                 }
                             }
                         }
                     }
                 }
-                console.log(this.submissionsClass)
             }
         }
     }

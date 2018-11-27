@@ -136,13 +136,13 @@
                     "offset": count - 1
                 };
                 if (this.$route.query.hasOwnProperty('region')) {
-                    const userRegion = this.$route.query['region']
+                    const userRegion = this.$route.query['region'];
                     taskQuery['where']["info ->> 'SchoolRegion'"] = {'op': 'e', 'val': userRegion, "join": "a"}
                 }
                 this.$store.dispatch('c3s/task/getTaskCount', taskQuery).then(c => {
                     this.taskCount = c.body
                 })
-                this.$store.dispatch('c3s/task/getTasks', taskQuery).then(t => {
+                this.$store.dispatch('c3s/task/getTasks', [taskQuery, 1]).then(t => {
                     if (t.body && t.body.length > 0) {
                         const task = t.body[0];
                         const mediaQuery = {
@@ -168,7 +168,7 @@
                         }
                         this.loadSubmissions(task.id);
                         this.createSubmission();
-                        this.$store.dispatch('c3s/media/getMedia', [mediaQuery, undefined]).then(m => {
+                        this.$store.dispatch('c3s/media/getMedia', [mediaQuery, undefined, 100]).then(m => {
                             let media = m.body.slice();
                             for (let index in media) {
                                 media[index].path = media[index].path.replace('./static', 'https://wenker.citizenscience.ch/files')
@@ -193,13 +193,13 @@
                         ]
                     },
                     "where": {
-                        "submissions.task_id": {
+                        "task_id": {
                             "op": "e",
-                            "val": taskID,
+                            "val": taskID
                         }
                     }
                 };
-                this.$store.dispatch('c3s/submission/getSubmissions', subQuery).then(s => {
+                this.$store.dispatch('c3s/submission/getSubmissions', [subQuery, 1000]).then(s => {
                     if (s.ok) {
                         this.submissions = s.body
                     }

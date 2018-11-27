@@ -194,9 +194,10 @@
                 this.$store.dispatch('c3s/task/getTaskCount', taskQuery).then(c => {
                     this.taskCount = c.body
                 })
-                this.$store.dispatch('c3s/task/getTasks', taskQuery).then(t => {
+                this.$store.dispatch('c3s/task/getTasks', [taskQuery, 1]).then(t => {
                     if (t.body && t.body.length > 0) {
                         const task = t.body[0];
+                        this.responses = [];
                         for (let i = 0; i < task.content.answers.length; i++) {
                             this.responses.push({text: ""})
                         }
