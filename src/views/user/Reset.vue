@@ -47,7 +47,7 @@
           </div>
         </app-content-section>
 
-        <app-footer color="greyish"></app-footer>
+        <app-footer></app-footer>
 
     </div>
 </template>

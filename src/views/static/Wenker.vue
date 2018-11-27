@@ -16,7 +16,7 @@
       "text-2": "After several years of work, Wenker created 40 sentences, so called “Wenkersätze”, and extended his research area to the national level. What started with the goal to do one dissertation, quickly became a long-term study: the originally calculated 13 years of work eventually became more than 50. But thanks to the 20-year-release of his library service in the University Library in Marburg, Wenker was able to focus only on the completion of the “Sprachatlas des Deutschen Reichs&quot;, the language atlas of the German Reich.",
       "text-3": "In 1912, Wenkers former assistant Ferdinand Wrede took over the leadership of the language atlas of the German Reich. Under his leadership between 1926 and 1933 additional investigations were carried out for German-speaking areas outside the German Reich, including Switzerland.<br>Like all the other Wenker sheets the ones from Switzerland were finally digitized and published on the server of the long-term research project REDE (Link: regionalsprache.de) at the University of Marburg. However they were never prepared or analysed content-wise. We want to change that today with our Citizen Science Project.",
       "links-heading": "Links",
-      "sentences-heading": "The Wenker Sentences"
+      "sentences-heading": "The Wenker Phrases"
     }
   }
 </i18n>
