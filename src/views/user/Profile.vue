@@ -3,12 +3,14 @@
     "de": {
     "heading": "Ihr Profil",
     "label-email": "Email",
-    "label-api-key": "API Key"
+    "label-api-key": "API Key",
+    "submission-heading": "Submissions"
     },
     "en": {
     "heading": "Your Profile",
     "label-email": "Email",
-    "label-api-key": "API Key"
+    "label-api-key": "API Key",
+    "submission-heading": "Submissions"
     }
     }
 </i18n>
@@ -40,6 +42,26 @@
                                 </div>
                             </form>
                         </div>
+
+                        <div class="content-subsection" v-if="submissions.length">
+                            <h2 class="heading">{{ $t('submission-heading') }}</h2>
+                            <table class="tg">
+                                <tr>
+                                    <th class="tg-0lax">Activity Name</th>
+                                    <th class="tg-0lax">Date</th>
+                                    <th class="tg-0lax">Task</th>
+                                    <th class="tg-0lax">Content</th>
+                                </tr>
+                                <tr v-for="s in submissions">
+                                    <td class="tg-0lax">{{s['activity_name']}}</td>
+                                    <td class="tg-0lax">{{s['created_at']}}</td>
+                                    <td class="tg-0lax">{{s['task_id']}}</td>
+                                    <td class="tg-0lax">{{calcTaskResponse(s['content']['responses'])}}</td>
+                                </tr>
+                            </table>
+
+                        </div>
+
                         <div class="content-subsection">
                             <router-link tag="button" to="/logout" class="button button-secondary">Logout</router-link>
                         </div>
@@ -69,7 +91,8 @@
         data() {
             return {
                 userId: this.$route.params.id,
-                submissions: []
+                submissions: [],
+                submissionStats: {}
             };
         },
         computed: {
@@ -89,10 +112,18 @@
             const subQuery = {
                 "select": {
                     "fields": [
-                        "*"
+                        "submissions.created_at",
+                        "submissions.id as submission_id",
+                        "activities.name as activity_name",
+                        "submissions.user_id",
+                        "submissions.content",
+                        "submissions.task_id",
+                        "activities.id as activity_id"
                     ],
                     "tables": [
-                        "submissions"
+                        "submissions",
+                        "activities",
+                        "tasks"
                     ]
                 },
                 "where": {
@@ -100,27 +131,50 @@
                         "op": "e",
                         "val": this.user.id,
                         "join": "a"
+                    },
+                    "submissions.task_id": {
+                        "op": "e",
+                        'type': 'sql',
+                        "val": "tasks.id",
+                        "join": "a"
+                    },
+                    "tasks.activity_id": {
+                        "op": "e",
+                        'type': 'sql',
+                        "val": "activities.id",
+                        "join": "a"
                     }
                 }
             };
             this.$store.dispatch('c3s/submission/getSubmissions', subQuery).then(s => {
                 if (s.ok) {
-                    this.submissions = s.data;
-                    let submissionStats = [];
+                    this.submissions = s.body;
                     for (let index in this.submissions) {
                         const sub = this.submissions[index];
-                        if (sub['activity_id'] in submissionStats) {
-                            submissionStats[sub['activity_id']].push(sub)
+                        const name = sub['activity_name'];
+                        if (name in this.submissionStats) {
+                            this.submissionStats[name]['subs'].push(sub);
+                            this.submissionStats[name]['count'] += 1;
                         } else {
-                            submissionStats[sub['activity_id']] = [];
-                            submissionStats[sub['activity_id']].push(sub)
+                            this.submissionStats[name] = {};
+                            this.submissionStats[name]['subs'] = [];
+                            this.submissionStats[name]['subs'].push(sub);
+                            this.submissionStats[name]['count'] = 1;
                         }
                     }
                     //    TODO set up submissions table for users to see each project and see/delete details
                 }
             })
         },
-        methods: {}
+        methods: {
+            calcTaskResponse(task) {
+                let total = 0;
+                for (let i in task) {
+                    if (task[i].text.length > 0) total += 1;
+                }
+                return total;
+            }
+        }
     }
 </script>
 
