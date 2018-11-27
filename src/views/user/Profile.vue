@@ -14,63 +14,74 @@
 </i18n>
 
 <template>
-    <app-content-section>
-        <div class="content-wrapper">
+    <div>
+        <app-content-section>
+            <div class="content-wrapper">
 
-            <div class="row row-centered">
-                <div class="col col-large-6">
+                <div class="row row-centered">
+                    <div class="col col-large-6">
 
-                    <div class="content-subsection">
-                        <h2 class="heading">{{ $t('heading') }}</h2>
+                        <div class="content-subsection">
+                            <h2 class="heading">{{ $t('heading') }}</h2>
 
-                        <form novalidate disabled>
-                            <div v-if="user" class="md-layout">
-                                <div>
-                                    <label for="user.email">{{ $t('label-email') }}</label>
-                                    <!-- <input v-model="user.email" type="email" name="email" id="email" autocomplete="email" disabled/> -->
-                                    <p>{{ user.email }}</p>
+                            <form novalidate disabled>
+                                <div v-if="user" class="md-layout">
+                                    <div>
+                                        <label for="user.email">{{ $t('label-email') }}</label>
+                                        <!-- <input v-model="user.email" type="email" name="email" id="email" autocomplete="email" disabled/> -->
+                                        <p>{{ user.email }}</p>
+                                    </div>
+
+                                    <div>
+                                        <label for="user.api_key">{{ $t('label-api-key') }}</label>
+                                        <!-- <input v-model="user.api_key" type="text" name="api" id="api"/> -->
+                                        <p>{{ user.api_key }}</p>
+                                    </div>
                                 </div>
+                            </form>
+                        </div>
+                        <div class="content-subsection">
+                            <router-link tag="button" to="/logout" class="button button-secondary">Logout</router-link>
+                        </div>
 
-                                <div>
-                                    <label for="user.api_key">{{ $t('label-api-key') }}</label>
-                                    <!-- <input v-model="user.api_key" type="text" name="api" id="api"/> -->
-                                    <p>{{ user.api_key }}</p>
-                                </div>
-                            </div>
-                        </form>
                     </div>
-                    <div class="content-subsection">
-                        <router-link tag="button" to="/logout" class="button button-secondary">Logout</router-link>
-                    </div>
-
                 </div>
-            </div>
 
-        </div>
-    </app-content-section>
+            </div>
+        </app-content-section>
+
+        <app-footer color="greyish"></app-footer>
+
+    </div>
 </template>
 
 <script>
     import {mapState, mapGetters} from "vuex";
     import ContentSection from '@/components/shared/ContentSection.vue'
+    import Footer from '@/components/shared/Footer.vue'
 
     export default {
         name: "ViewUser",
         components: {
-            'app-content-section': ContentSection
+            'app-content-section': ContentSection,
+            'app-footer': Footer
         },
         data() {
             return {
                 userId: this.$route.params.id,
-                submissions: [],
-                totalSubs: this.submissions.length
+                submissions: []
             };
         },
-        computed: mapState({
-            //user: state => state.user.user,
-            user: state => state.c3s.user.currentUser,
-            loading: state => state.settings.loading
-        }),
+        computed: {
+            ...mapState({
+                //user: state => state.user.user,
+                user: state => state.c3s.user.currentUser,
+                loading: state => state.settings.loading
+            }),
+            totalSubs: () => {
+                return this.submissions.length
+            }
+        },
         mounted() {
             if (this.userId !== this.user.id) {
                 // this.$store.dispatch("c3s/user/getUser", this.userId);
@@ -81,9 +92,7 @@
                         "*"
                     ],
                     "tables": [
-                        "submissions",
-                        "activities",
-                        "tasks"
+                        "submissions"
                     ]
                 },
                 "where": {
@@ -91,15 +100,6 @@
                         "op": "e",
                         "val": this.user.id,
                         "join": "a"
-                    },
-                    "submissions.task_id": {
-                        "op": "e",
-                        "val": "tasks.id",
-                        "join": "a"
-                    },
-                    "activities.id": {
-                        "op": "e",
-                        "val": "tasks.activity_id"
                     }
                 }
             };
@@ -107,21 +107,21 @@
                 if (s.ok) {
                     this.submissions = s.data;
                     let submissionStats = [];
-                    for(let index in this.submissions) {
+                    for (let index in this.submissions) {
                         const sub = this.submissions[index];
                         if (sub['activity_id'] in submissionStats) {
                             submissionStats[sub['activity_id']].push(sub)
-                        }else{
+                        } else {
                             submissionStats[sub['activity_id']] = [];
                             submissionStats[sub['activity_id']].push(sub)
                         }
                     }
-                //    TODO set up submissions table for users to see each project and see/delete details
+                    //    TODO set up submissions table for users to see each project and see/delete details
                 }
             })
         },
         methods: {}
-    };
+    }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
