@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="content-subsection" v-if="responses.length">
-                    <task-response :answers="tasks[0].content.answers" :responses="responses" :showSpecial="true"></task-response>
+                    <task-response :answers="tasks[0].content.answers" :submissions="submissions" :responses="responses" :showSpecial="true"></task-response>
                 </div>
 
                 <div class="content-subsection">
@@ -101,7 +101,8 @@
                 task_help: '',
                 nextTxt: 'Next',
                 responses: [],
-                taskCount: 1
+                taskCount: 1,
+                submissions: []
             }
         },
         mounted() {
@@ -112,6 +113,7 @@
                 //    TODO show error for no activity
                 this.$router.push({name: 'TranscribeStart'})
             }
+            this.checkSubmissions()
         },
         // TODO add route leave guard to save submission before exiting
         methods: {
@@ -164,6 +166,7 @@
                         for (let i = 0; i < task.content.answers.length; i++) {
                             this.responses.push({text: ""})
                         }
+                        this.loadSubmissions(task.id);
                         this.createSubmission();
                         this.$store.dispatch('c3s/media/getMedia', [mediaQuery, undefined]).then(m => {
                             let media = m.body.slice();
@@ -176,6 +179,29 @@
                     } else {
                         console.log('No tasks found');
                         this.$router.push({'name': 'TranscribeComplete'})
+                    }
+                })
+            },
+            loadSubmissions(taskID) {
+                const subQuery = {
+                    "select": {
+                        "fields": [
+                            "*"
+                        ],
+                        "tables": [
+                            "submissions"
+                        ]
+                    },
+                    "where": {
+                        "submissions.task_id": {
+                            "op": "e",
+                            "val": taskID,
+                        }
+                    }
+                };
+                this.$store.dispatch('c3s/submission/getSubmissions', subQuery).then(s => {
+                    if (s.ok) {
+                        this.submissions = s.body
                     }
                 })
             },
@@ -200,7 +226,7 @@
                 this.$store.commit('c3s/submission/SET_SUBMISSION_RESPONSES', this.responses);
                 this.$store.dispatch('c3s/submission/createSubmission').then(s => {
                     let qu = Object.assign({}, this.$route.query);
-                    qu['count'] = qu['count'] + 1;
+                    qu['count'] = parseInt(qu['count']) + 1;
                     if (qu['count'] > this.taskCount) {
                         this.$store.commit('c3s/activity/SET_ACTIVITY', null);
                         this.$router.push({
