@@ -48,6 +48,9 @@
             }
         },
         watch: {
+            imgPath(to, from) {
+                this.croppaSettings.refresh();
+            }
         },
         mounted() {
 

@@ -135,7 +135,6 @@
                     this.$store.dispatch('c3s/submission/getSubmissions', [subQuery, 1000]).then(s => {
                         if (s.ok) {
                             this.submissions = s.body
-                            console.log(this.submissions.length)
                             this.checkSubmissions()
                         }
                     })
@@ -182,7 +181,6 @@
                 this.$store.dispatch('c3s/submission/getSubmissions', [subQuery, 1000]).then(s => {
                     if (s.ok) {
                         this.submissions = s.body
-                        console.log(this.submissions.length)
                         this.checkSubmissions()
                     }
                 })

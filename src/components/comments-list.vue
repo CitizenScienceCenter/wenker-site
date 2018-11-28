@@ -86,7 +86,7 @@
         watch: {
             'id'(to, from) {
                 this.$store.dispatch('c3s/comments/getCommentsForID', [to, 'c3s/comments/SET_COMMENTS']).then(c => {
-                    console.log(c)
+
                 })
             }
         },
