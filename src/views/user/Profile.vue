@@ -160,7 +160,7 @@
                     }
                 }
             };
-            this.$store.dispatch('c3s/submission/getSubmissions', subQuery).then(s => {
+            this.$store.dispatch('c3s/submission/getSubmissions', [subQuery, 100]).then(s => {
                 if (s.ok) {
                     this.submissions = s.body;
                     for (let index in this.submissions) {
