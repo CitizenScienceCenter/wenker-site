@@ -107,12 +107,6 @@
             showSpecial: {
                 type: Boolean,
                 default: false
-            },
-            submissions: {
-                type: Array,
-                default: () => {
-                    return []
-                }
             }
         },
         watch: {
@@ -121,8 +115,35 @@
             },
             answers(to, from) {
                 this.activeAnswerIndex = 0;
+                setTimeout(() => {
+                    const subQuery = {
+                        "select": {
+                            "fields": [
+                                "*"
+                            ],
+                            "tables": [
+                                "submissions"
+                            ]
+                        },
+                        "where": {
+                            "task_id": {
+                                "op": "e",
+                                "val": this.tasks[0].id
+                            }
+                        }
+                    };
+                    this.$store.dispatch('c3s/submission/getSubmissions', [subQuery, 1000]).then(s => {
+                        if (s.ok) {
+                            this.submissions = s.body
+                            console.log(this.submissions.length)
+                            this.checkSubmissions()
+                        }
+                    })
+                }, 200)
             },
             activeAnswerIndex(to, from) {
+                this.userSubmitted = false;
+                this.othersSubmitted = 0;
                 this.checkSubmissions()
             }
         },
@@ -131,18 +152,41 @@
                 activeAnswerIndex: 0,
                 activeAnswer: {},
                 userSubmitted: false,
-                othersSubmitted: false
+                othersSubmitted: 0,
+                submissions: []
             }
         },
         computed: mapState({
             specialChars: state => state.consts.specialChars,
+            tasks: state => state.c3s.task.tasks,
             user: state => state.c3s.user.currentUser
         }),
         mounted() {
             setTimeout(() => {
-                this.checkSubmissions()
+                const subQuery = {
+                    "select": {
+                        "fields": [
+                            "*"
+                        ],
+                        "tables": [
+                            "submissions"
+                        ]
+                    },
+                    "where": {
+                        "task_id": {
+                            "op": "e",
+                            "val": this.tasks[0].id
+                        }
+                    }
+                };
+                this.$store.dispatch('c3s/submission/getSubmissions', [subQuery, 1000]).then(s => {
+                    if (s.ok) {
+                        this.submissions = s.body
+                        console.log(this.submissions.length)
+                        this.checkSubmissions()
+                    }
+                })
             }, 200)
-
         },
         components: {TaskResponseText, HelpPopup},
         methods: {

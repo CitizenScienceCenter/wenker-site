@@ -47,6 +47,8 @@
                 croppaSettings: {}
             }
         },
+        watch: {
+        },
         mounted() {
 
         },

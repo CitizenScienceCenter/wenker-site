@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="content-subsection" v-if="responses.length">
-                    <task-response :answers="tasks[0].content.answers" :submissions="submissions" :responses="responses" :showSpecial="true"></task-response>
+                    <task-response :answers="tasks[0].content.answers" :responses="responses" :showSpecial="true"></task-response>
                 </div>
 
                 <div class="content-subsection">
@@ -183,27 +183,27 @@
                 })
             },
             loadSubmissions(taskID) {
-                const subQuery = {
-                    "select": {
-                        "fields": [
-                            "*"
-                        ],
-                        "tables": [
-                            "submissions"
-                        ]
-                    },
-                    "where": {
-                        "task_id": {
-                            "op": "e",
-                            "val": taskID
-                        }
-                    }
-                };
-                this.$store.dispatch('c3s/submission/getSubmissions', [subQuery, 1000]).then(s => {
-                    if (s.ok) {
-                        this.submissions = s.body
-                    }
-                })
+                // const subQuery = {
+                //     "select": {
+                //         "fields": [
+                //             "*"
+                //         ],
+                //         "tables": [
+                //             "submissions"
+                //         ]
+                //     },
+                //     "where": {
+                //         "task_id": {
+                //             "op": "e",
+                //             "val": taskID
+                //         }
+                //     }
+                // };
+                // this.$store.dispatch('c3s/submission/getSubmissions', [subQuery, 1000]).then(s => {
+                //     if (s.ok) {
+                //         this.submissions = s.body
+                //     }
+                // })
             },
             createSubmission() {
                 const submission = {
