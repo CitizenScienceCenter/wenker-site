@@ -60,6 +60,7 @@
     import RegisterForm from "@/components/register-form.vue"
     import ContentSection from '@/components/shared/ContentSection.vue'
     import Footer from '@/components/shared/Footer.vue'
+    import ShareIcons from '@/components/ShareIcons.vue'
 
     export default {
         name: "Complete",
@@ -83,7 +84,8 @@
         components: {
             RegisterForm,
             'app-content-section': ContentSection,
-            'app-footer': Footer
+            'app-footer': Footer,
+            ShareIcons
         },
         computed: mapState({
             user: state => state.c3s.user.currentUser,

@@ -166,7 +166,6 @@
                         for (let i = 0; i < task.content.answers.length; i++) {
                             this.responses.push({text: ""})
                         }
-                        this.loadSubmissions(task.id);
                         this.createSubmission();
                         this.$store.dispatch('c3s/media/getMedia', [mediaQuery, undefined, 100]).then(m => {
                             let media = m.body.slice();
@@ -181,29 +180,6 @@
                         this.$router.push({'name': 'TranscribeComplete'})
                     }
                 })
-            },
-            loadSubmissions(taskID) {
-                // const subQuery = {
-                //     "select": {
-                //         "fields": [
-                //             "*"
-                //         ],
-                //         "tables": [
-                //             "submissions"
-                //         ]
-                //     },
-                //     "where": {
-                //         "task_id": {
-                //             "op": "e",
-                //             "val": taskID
-                //         }
-                //     }
-                // };
-                // this.$store.dispatch('c3s/submission/getSubmissions', [subQuery, 1000]).then(s => {
-                //     if (s.ok) {
-                //         this.submissions = s.body
-                //     }
-                // })
             },
             createSubmission() {
                 const submission = {
@@ -223,19 +199,30 @@
                 })
             },
             submitTask() {
-                this.$store.commit('c3s/submission/SET_SUBMISSION_RESPONSES', this.responses);
-                this.$store.dispatch('c3s/submission/createSubmission').then(s => {
-                    let qu = Object.assign({}, this.$route.query);
-                    qu['count'] = parseInt(qu['count']) + 1;
-                    if (qu['count'] > this.taskCount) {
-                        this.$store.commit('c3s/activity/SET_ACTIVITY', null);
-                        this.$router.push({
-                            name: 'TranscribeComplete'
-                        })
-                    } else {
-                        this.$router.replace({name: 'TranscribeTask', query: qu})
+                let responded = false;
+                for (let i in this.responses) {
+                    if (this.responses[i].text.length > 0) {
+                        responded = true;
+                        break;
                     }
-                })
+                }
+                let qu = Object.assign({}, this.$route.query);
+                qu['count'] = parseInt(qu['count']) + 1;
+                if (responded) {
+                    this.$store.commit('c3s/submission/SET_SUBMISSION_RESPONSES', this.responses);
+                    this.$store.dispatch('c3s/submission/createSubmission').then(s => {
+                        if (qu['count'] > this.taskCount) {
+                            this.$store.commit('c3s/activity/SET_ACTIVITY', null);
+                            this.$router.push({
+                                name: 'TranscribeComplete'
+                            })
+                        } else {
+                            this.$router.replace({name: 'TranscribeTask', query: qu})
+                        }
+                    })
+                } else {
+                    this.$router.replace({name: 'TranscribeTask', query: qu})
+                }
 
             }
         }
