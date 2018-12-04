@@ -61,6 +61,7 @@
     import ContentSection from '@/components/shared/ContentSection.vue'
     import Footer from '@/components/shared/Footer.vue'
     import ShareIcons from '@/components/ShareIcons.vue'
+    import * as taskUtils from '@/assets/scripts/tasks'
 
     export default {
         name: "Complete",
@@ -96,43 +97,7 @@
           next()
         },
         mounted() {
-            // this.$store.dispatch("project/getProject", [
-            //     this.$route.params.id || this.projectID,
-            //     true
-            // ]);
-            const countQuery = {
-                "select": {
-                    "fields": [
-                        "*"
-                    ],
-                    "tables": [
-                        "submissions",
-                        "activities",
-                        "tasks"
-                    ]
-                },
-                "where": {
-                    "submissions.task_id": {
-                        "op": "e",
-                        "val": "tasks.id",
-                        "type": "sql",
-                        "join": "a"
-                    },
-                    "tasks.activity_id": {
-                        "op": "e",
-                        "val": this.id,
-                        "join": "a"
-                    },
-                    "activities.id": {
-                        "op": "e",
-                        "val": this.id
-                    }
-
-                }
-            };
-            this.$store.dispatch('c3s/submission/getSubmissionCount', countQuery).then(count => {
-                this.totalSubs = count.body;
-            })
+            this.totalSubs = taskUtils.getSubmissionCount(this)
         },
         methods: {
 

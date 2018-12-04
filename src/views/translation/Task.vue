@@ -73,9 +73,12 @@
                         <div class="col">
 
                             <p class="centered button-group task-switch-bar">
-                                <button v-on:click="endTask" class="button button-secondary">{{ $t('button-end') }}</button>
-                                <label>{{ $t('progress-prefix') }}{{$route.query.count}}{{ $t('progress-suffix') }}</label>
-                                <button v-on:click="submitTask" class="button button-primary">{{ $t('button-next') }}</button>
+                                <button v-on:click="endTask" class="button button-secondary">{{ $t('button-end') }}
+                                </button>
+                                <label>{{ $t('progress-prefix') }}{{$route.query.count}}{{ $t('progress-suffix')
+                                    }}</label>
+                                <button v-on:click="submitTask" class="button button-primary">{{ $t('button-next') }}
+                                </button>
                             </p>
 
                         </div>
@@ -94,125 +97,68 @@
 </template>
 
 <script>
-    import {mapState} from 'vuex'
-    import HelpPopup from '@/components/help-popup'
-    import CommentsList from '@/components/comments-list'
-    import TaskQuestionText from '@/components/TaskQuestionText'
-    import TaskResponseText from '@/components/TaskResponseText'
-    import ContentSection from '@/components/shared/ContentSection.vue'
-    import Footer from '@/components/shared/Footer.vue'
+  import { mapState } from 'vuex'
+  import HelpPopup from '@/components/help-popup'
+  import CommentsList from '@/components/comments-list'
+  import TaskQuestionText from '@/components/TaskQuestionText'
+  import TaskResponseText from '@/components/TaskResponseText'
+  import ContentSection from '@/components/shared/ContentSection.vue'
+  import Footer from '@/components/shared/Footer.vue'
+  import * as taskUtils from '@/assets/scripts/tasks'
 
-    export default {
-        name: 'Task',
-        components: {
-            TaskQuestionText,
-            TaskResponseText,
-            'app-content-section': ContentSection,
-            CommentsList,
-            HelpPopup,
-            'app-footer': Footer
-        },
-        computed: mapState({
-            specialChars: state => state.consts.specialChars,
-            tasks: state => state.c3s.task.tasks,
-            activity: state => state.c3s.activity.activity,
-            user: state => state.c3s.user.currentUser
-        }),
-        watch: {
-            '$route.query.count'(to, from) {
-                this.loadTask(to)
-            }
-        },
-        mounted() {
-            if (this.activity && this.activity.id) {
-                this.loadTask(this.$route.query['count']);
-            } else {
-                console.log('No activity set in the store!');
-                //    TODO show error for no activity
-                this.$router.push({name: 'TranslateStart'})
-            }
-        },
-        data() {
-            return {
-                responses: [],
-                task_help: '',
-                nextTxt: 'Next',
-                activeAnswer: {}
-            }
-        },
-        methods: {
-            createSubmission() {
-                const submission = {
-                    user_id: this.user.id,
-                    task_id: this.tasks[0].id,
-                    content: {}
-                };
-                this.$store.commit('c3s/submission/SET_SUBMISSION', submission)
-            },
-            endTask() {
-                this.$store.commit('c3s/submission/SET_SUBMISSION_RESPONSES', this.responses);
-                this.$store.dispatch('c3s/submission/createSubmission').then(s => {
-                    this.$store.commit('c3s/activity/SET_ACTIVITY', null);
-                    this.$router.push({
-                        name: 'TranslateComplete'
-                    })
-                })
-            },
-            submitTask() {
-                this.$store.commit('c3s/submission/SET_SUBMISSION_RESPONSES', this.responses);
-                this.$store.dispatch('c3s/submission/createSubmission').then(s => {
-                    let qu = Object.assign({}, this.$route.query);
-                    qu['count'] = parseInt(qu['count']) + 1;
-                    if (qu['count'] > this.taskCount) {
-                        this.$router.push({
-                            name: 'TranslateComplete'
-                        })
-                    } else {
-                        this.$router.replace({name: 'TranslateTask', query: qu})
-                    }
-                })
-            },
-            loadTask(count) {
-                const taskQuery = {
-                    "select": {
-                        "fields": [
-                            "*"
-                        ],
-                        "tables": [
-                            "tasks"
-                        ]
-                    },
-                    "where": {
-                        "activity_id": {
-                            "op": "e",
-                            "val": this.activity.id
-                        }
-                    },
-                    "limit": 1,
-                    "offset": count - 1
-                };
-                this.$store.dispatch('c3s/task/getTaskCount', taskQuery).then(c => {
-                    this.taskCount = c.body
-                })
-                this.$store.dispatch('c3s/task/getTasks', [taskQuery, 1]).then(t => {
-                    if (t.body && t.body.length > 0) {
-                        const task = t.body[0];
-                        this.responses = [];
-                        for (let i = 0; i < task.content.answers.length; i++) {
-                            this.responses.push({text: ""})
-                        }
-                        this.createSubmission();
-                        this.activeAnswer = this.tasks[0].content.answers[0]
-                        console.log(this.tasks[0].content.question.text)
-                    } else {
-                        console.log(t)
-                        console.log('No tasks found');
-                        // this.$router.push({'name': 'TranslateComplete'})
-                    }
-                })
-            }
+  export default {
+    name: 'Task',
+    components: {
+      TaskQuestionText,
+      TaskResponseText,
+      'app-content-section': ContentSection,
+      CommentsList,
+      HelpPopup,
+      'app-footer': Footer
+    },
+    computed: mapState({
+      specialChars: state => state.consts.specialChars,
+      tasks: state => state.c3s.task.tasks,
+      activity: state => state.c3s.activity.activity,
+      user: state => state.c3s.user.currentUser
+    }),
+    watch: {
+      '$route.query.count' (to, from) {
+        this.loadTask(to)
+        taskUtils.loadTask(this, to, true, this.routes.complete)
+      }
+    },
+    mounted () {
+      if (this.activity && this.activity.id) {
+        taskUtils.loadTask(this, this.$route.query['count'], true, this.routes.complete)
+      } else {
+        console.log('No activity set in the store!')
+        //    TODO show error for no activity
+        this.$router.push({ name: 'TranslateStart' })
+      }
+    },
+    data () {
+      return {
+        responses: [],
+        task_help: '',
+        nextTxt: 'Next',
+        activeAnswer: {},
+        routes: {
+          complete: 'TranslateComplete',
+          start: 'TranslateStart',
+          task: 'TranslateTask'
         }
+      }
+    },
+    methods: {
+      endTask () {
+        taskUtils.endTask(this, this.routes.complete)
+      },
+      submitTask () {
+        taskUtils.submitTask(this, this.routes.complete. this.routes.task)
+      },
     }
+  }
 </script>
 
 <style lang="scss">

@@ -95,6 +95,7 @@
     import ActivityDetailsForm from '@/components/ActivityDetailsForm'
     import ContentSection from '@/components/shared/ContentSection.vue'
     import Footer from '@/components/shared/Footer.vue'
+    import * as taskUtils from '@/assets/scripts/tasks'
 
     export default {
         name: 'Start',

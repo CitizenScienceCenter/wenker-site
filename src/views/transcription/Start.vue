@@ -58,7 +58,7 @@
                                     }}
                                 </button>
                                 <br>
-                                <button class="button button-secondary" :disabled="$refs.details && $refs.details.taskCount === 0"
+                                <button class="button button-secondary" :disabled="taskCount === 0"
                                         v-on:click="startProjectRegion">{{
                                     $t('button-start-region') }}
                                 </button>
@@ -92,6 +92,7 @@
     import ActivityDetailsForm from '@/components/ActivityDetailsForm'
     import ContentSection from '@/components/shared/ContentSection.vue'
     import Footer from '@/components/shared/Footer.vue'
+    import * as taskUtils from '@/assets/scripts/tasks'
 
 
     export default {
@@ -107,7 +108,7 @@
                     canton: false,
                     age: false
                 },
-                taskCount: 1
+                taskCount: 0
             }
         },
         watch: {
@@ -162,11 +163,7 @@
                     this.errors.age = true;
                     this.errors.canton = true;
                 }
-                if (this.errors.canton || this.errors.age) {
-                    return false
-                } else {
-                    return true
-                }
+                return !(this.errors.canton || this.errors.age);
             }
         }
     }

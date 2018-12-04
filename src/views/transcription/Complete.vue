@@ -58,82 +58,51 @@
 </template>
 
 <script>
-    import {mapState, mapGetters} from "vuex";
-    import RegisterForm from "@/components/register-form.vue"
-    import ContentSection from '@/components/shared/ContentSection.vue'
-    import Footer from '@/components/shared/Footer.vue'
+  import { mapState, mapGetters } from 'vuex'
+  import RegisterForm from '@/components/register-form.vue'
+  import ContentSection from '@/components/shared/ContentSection.vue'
+  import Footer from '@/components/shared/Footer.vue'
+  import * as taskUtils from '@/assets/scripts/tasks'
 
-    export default {
-        name: "Complete",
-        data() {
-            return {
-                stats: {},
-                id: "e4b5ebc5-47a2-430b-84a9-a03b1d4dda34",
-                totalSubs: -1
-            };
-        },
-        watch: {
-            project(to, from) {
-                if (to === null) {
-                    this.$router.push("/projects");
-                }
-            },
-            tasks(to, from) {
-            }
-        },
-        components: {
-            RegisterForm,
-            'app-content-section': ContentSection,
-            'app-footer': Footer
-        },
-        beforeRouteLeave(to, from, next) {
-            this.$store.commit('c3s/activity/SET_ACTIVITY', null);
-            next()
-        },
-        computed: mapState({
-            user: state => state.c3s.user.currentUser
-        }),
-        mounted() {
-            const countQuery = {
-                "select": {
-                    "fields": [
-                        "*"
-                    ],
-                    "tables": [
-                        "submissions",
-                        "activities",
-                        "tasks"
-                    ]
-                },
-                "where": {
-                    "submissions.task_id": {
-                        "op": "e",
-                        "val": "tasks.id",
-                        "type": "sql",
-                        "join": "a"
-                    },
-                    "tasks.activity_id": {
-                        "op": "e",
-                        "val": this.id,
-                        "join": "a"
-                    },
-                    "activities.id": {
-                        "op": "e",
-                        "val": this.id
-                    }
-
-                }
-            };
-            this.$store.dispatch('c3s/submission/getSubmissionCount', countQuery).then(count => {
-                this.totalSubs = count.body;
-            })
-        },
-        methods: {
-            startPage() {
-                this.$router.push({name: 'Home'})
-            }
+  export default {
+    name: 'Complete',
+    data () {
+      return {
+        stats: {},
+        id: 'e4b5ebc5-47a2-430b-84a9-a03b1d4dda34',
+        totalSubs: -1
+      }
+    },
+    watch: {
+      project (to, from) {
+        if (to === null) {
+          this.$router.push('/projects')
         }
-    };
+      },
+      tasks (to, from) {
+      }
+    },
+    components: {
+      RegisterForm,
+      'app-content-section': ContentSection,
+      'app-footer': Footer
+    },
+    beforeRouteLeave (to, from, next) {
+      this.$store.commit('c3s/activity/SET_ACTIVITY', null)
+      next()
+    },
+    computed: mapState({
+      user: state => state.c3s.user.currentUser
+    }),
+    mounted () {
+      this.totalSubs = taskUtils.getSubmissionCount(self)
+    },
+    methods: {
+      startPage () {
+        this.$router.push({ name: 'Home' })
+      }
+    }
+  }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
