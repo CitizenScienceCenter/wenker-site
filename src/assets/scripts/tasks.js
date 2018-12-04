@@ -101,7 +101,7 @@ export function loadTask (self, count, media, routeComplete) {
   }
   if (self.$route.query.hasOwnProperty('region')) {
     const userRegion = self.$route.query['region']
-    taskQuery['where']['info ->> \'SchoolRegion\''] = { 'op': 'e', 'val': userRegion, 'join': 'a' }
+    taskQuery['where']['info ->> \'SchoolState\''] = { 'op': 'e', 'val': userRegion, 'join': 'a' }
   }
   self.$store.dispatch('c3s/task/getTaskCount', taskQuery).then(c => {
     self.taskCount = c.body

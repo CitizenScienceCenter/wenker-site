@@ -75,7 +75,7 @@
                     ageRange: undefined,
                     canton: undefined
                 },
-                taskCount: 1
+                taskCount: 0
             }
         },
         watch: {
@@ -99,13 +99,11 @@
                                 "op": "e",
                                 "val": this.activity.id
                             }
-                        }
+                        },
                     };
-                    console.log(to)
-                    taskQuery['where']["info ->> 'SchoolRegion'"] = {'op': 'e', 'val': to, "join": "a"}
+                    taskQuery['where']["info ->> 'SchoolState'"] = {'op': 'e', 'val': to, "join": "a"}
                     this.$store.dispatch('c3s/task/getTaskCount', taskQuery).then(c => {
-                        console.log(c.body)
-                        this.taskCount = c.body
+                        this.taskCount = c.body.length
                     })
                 }
                 this.updateUserInfo('canton', to)
