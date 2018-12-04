@@ -95,7 +95,7 @@
       user: state => state.c3s.user.currentUser
     }),
     mounted () {
-      this.totalSubs = taskUtils.getSubmissionCount(self)
+      this.totalSubs = taskUtils.getSubmissionCount(this)
     },
     methods: {
       startPage () {

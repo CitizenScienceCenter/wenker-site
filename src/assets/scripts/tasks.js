@@ -53,26 +53,26 @@ function checkResponses (responses) {
   return responded
 }
 
-export function getMedia(self, task) {
+export function getMedia (self, task) {
   const mediaQuery = {
-    "select": {
-      "fields": [
-        "*"
+    'select': {
+      'fields': [
+        '*'
       ],
-      "tables": [
-        "media"
+      'tables': [
+        'media'
       ]
     },
-    "where": {
-      "source_id": {
-        "op": "e",
-        "val": task.id
+    'where': {
+      'source_id': {
+        'op': 'e',
+        'val': task.id
       }
     },
-    "limit": 10
-  };
+    'limit': 10
+  }
   self.$store.dispatch('c3s/media/getMedia', [mediaQuery, undefined, 100]).then(m => {
-    let media = m.body.slice();
+    let media = m.body.slice()
     for (let index in media) {
       media[index].path = media[index].path.replace('./static', 'https://wenker.citizenscience.ch/files')
     }
@@ -80,46 +80,46 @@ export function getMedia(self, task) {
   })
 }
 
-export function loadTask(self, count, media, routeComplete) {
+export function loadTask (self, count, media, routeComplete) {
   const taskQuery = {
-    "select": {
-      "fields": [
-        "*"
+    'select': {
+      'fields': [
+        '*'
       ],
-      "tables": [
-        "tasks"
+      'tables': [
+        'tasks'
       ]
     },
-    "where": {
-      "activity_id": {
-        "op": "e",
-        "val": self.activity.id
+    'where': {
+      'activity_id': {
+        'op': 'e',
+        'val': self.activity.id
       }
     },
-    "limit": 1,
-    "offset": count - 1
-  };
+    'limit': 1,
+    'offset': count - 1
+  }
   if (self.$route.query.hasOwnProperty('region')) {
-    const userRegion = self.$route.query['region'];
-    taskQuery['where']["info ->> 'SchoolRegion'"] = {'op': 'e', 'val': userRegion, "join": "a"}
+    const userRegion = self.$route.query['region']
+    taskQuery['where']['info ->> \'SchoolRegion\''] = { 'op': 'e', 'val': userRegion, 'join': 'a' }
   }
   self.$store.dispatch('c3s/task/getTaskCount', taskQuery).then(c => {
     self.taskCount = c.body
   })
   self.$store.dispatch('c3s/task/getTasks', [taskQuery, 1]).then(t => {
     if (t.body && t.body.length > 0) {
-      const task = t.body[0];
+      const task = t.body[0]
 
       self.responses = []
       for (let i = 0; i < task.content.answers.length; i++) {
-        self.responses.push({text: ""})
+        self.responses.push({ text: '' })
       }
-      this.createSubmission();
+      this.createSubmission(self, self.user.id, task.id)
       if (media) {
         this.getMedia(self, task)
       }
     } else {
-      self.$router.push({'name': routeComplete})
+      self.$router.push({ 'name': routeComplete })
     }
   })
 }
@@ -128,12 +128,12 @@ export function endTask (self, completeRoute) {
   const responded = checkResponses(self.responses)
   if (responded) {
     self.$store.commit('c3s/submission/SET_SUBMISSION_RESPONSES', this.responses)
-    self.$store.dispatch('c3s/submission/createSubmission').then(s => {
-      self.$router.push({
-        name: completeRoute
-      })
-    })
   }
+  self.$store.dispatch('c3s/submission/createSubmission').then(s => {
+    self.$router.push({
+      name: completeRoute
+    })
+  })
 }
 
 export function submitTask (self, completeRoute, nextRoute) {

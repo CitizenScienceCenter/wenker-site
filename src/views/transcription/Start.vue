@@ -58,7 +58,7 @@
                                     }}
                                 </button>
                                 <br>
-                                <button class="button button-secondary" :disabled="taskCount === 0"
+                                <button class="button button-secondary" :disabled="$refs.details && $refs.details.taskCount === 0"
                                         v-on:click="startProjectRegion">{{
                                     $t('button-start-region') }}
                                 </button>

@@ -126,10 +126,10 @@
     // TODO add route leave guard to save submission before exiting
     methods: {
       endTask () {
-        taskUtils.endTask(self, this.routes.start)
+        taskUtils.endTask(this, this.routes.complete)
       },
       submitTask () {
-        taskUtils.submitTask(self, this.routes.complete, this.routes.task)
+        taskUtils.submitTask(this, this.routes.complete, this.routes.task)
       }
     }
 
