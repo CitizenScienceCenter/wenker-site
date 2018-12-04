@@ -7,7 +7,7 @@ const state = {
     },
     {
       'value': 'AR',
-      'label': 'Appenzell Ausserhoden',
+      'label': 'Appenzell Außerrhoden',
       'lang': 'DE'
     },
     {
@@ -42,7 +42,7 @@ const state = {
     },
     {
       'value': 'GR',
-      'label': 'Graubunden',
+      'label': 'Graubünden',
       'lang': 'RM'
     },
     {
@@ -73,7 +73,7 @@ const state = {
     },
     {
       'value': 'SO',
-      'label': 'Solothun',
+      'label': 'Solothurn',
       'lang': 'DE'
     },
     {
@@ -93,12 +93,12 @@ const state = {
     },
     {
       'value': 'NW',
-      'label': 'Unterwalden Nidwalden',
+      'label': 'Nidwalden',
       'lang': 'DE'
     },
     {
       'value': 'OW',
-      'label': 'Unterwalden Obwalden',
+      'label': 'Obwalden',
       'lang': 'DE'
     },
     {
@@ -108,7 +108,7 @@ const state = {
     },
     {
       'value': 'VS',
-      'label': 'Valais',
+      'label': 'Wallis',
       'lang': 'DE'
     },
     {
