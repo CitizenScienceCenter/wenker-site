@@ -121,6 +121,28 @@
         mounted() {
             if (this.user && this.user.info && this.user.info.ageRange) {
                 this.details = this.user.info;
+                if (this.activity && this.activity.id) {
+                    const taskQuery = {
+                        "select": {
+                            "fields": [
+                                "*"
+                            ],
+                            "tables": [
+                                "tasks"
+                            ]
+                        },
+                        "where": {
+                            "activity_id": {
+                                "op": "e",
+                                "val": this.activity.id
+                            }
+                        },
+                    };
+                    taskQuery['where']["info ->> 'SchoolState'"] = {'op': 'e', 'val': this.user.info.canton, "join": "a"}
+                    this.$store.dispatch('c3s/task/getTaskCount', taskQuery).then(c => {
+                        this.taskCount = c.body.length
+                    })
+                }
             }
         },
         methods: {
