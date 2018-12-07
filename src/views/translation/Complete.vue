@@ -97,7 +97,9 @@
           next()
         },
         mounted() {
-            this.totalSubs = taskUtils.getSubmissionCount(this)
+            taskUtils.getSubmissionCount(this).then(t => {
+                this.totalSubs = t.body
+            })
         },
         methods: {
 

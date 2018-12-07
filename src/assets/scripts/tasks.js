@@ -30,7 +30,8 @@ export async function getSubmissionCount (self) {
     }
   }
   let totalSubs = await self.$store.dispatch('c3s/submission/getSubmissionCount', countQuery)
-  return totalSubs.body
+  console.log(totalSubs)
+  return totalSubs
 }
 
 export function createSubmission (self, userID, taskID) {

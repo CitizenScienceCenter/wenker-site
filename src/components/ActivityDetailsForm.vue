@@ -83,28 +83,14 @@
                 if (to.hasOwnProperty('ageRange')) this.errors.age = false;
                 if (to.hasOwnProperty('canton')) this.errors.canton = false;
             },
+	    'activity' (to, from) {
+		if (this.user && this.user.info) {
+		    this.checkTaskCount(to.id, this.activity.id);
+		}
+	    },
             'details.canton'(to, from) {
                 if (this.activity && this.activity.id) {
-                    const taskQuery = {
-                        "select": {
-                            "fields": [
-                                "*"
-                            ],
-                            "tables": [
-                                "tasks"
-                            ]
-                        },
-                        "where": {
-                            "activity_id": {
-                                "op": "e",
-                                "val": this.activity.id
-                            }
-                        },
-                    };
-                    taskQuery['where']["info ->> 'SchoolState'"] = {'op': 'e', 'val': to, "join": "a"}
-                    this.$store.dispatch('c3s/task/getTaskCount', taskQuery).then(c => {
-                        this.taskCount = c.body.length
-                    })
+		    this.checkTaskCount(this.activity.id, to);
                 }
                 this.updateUserInfo('canton', to)
             },
@@ -116,32 +102,14 @@
             regions: state => state.consts.swissCantons,
             otherRegions: state => state.consts.otherRegions,
             ageRange: state => state.consts.ageRange,
-            user: state => state.c3s.user.currentUser
+            user: state => state.c3s.user.currentUser,
+	    activity: state => state.c3s.activity.activity
         }),
         mounted() {
             if (this.user && this.user.info && this.user.info.ageRange) {
                 this.details = this.user.info;
                 if (this.activity && this.activity.id) {
-                    const taskQuery = {
-                        "select": {
-                            "fields": [
-                                "*"
-                            ],
-                            "tables": [
-                                "tasks"
-                            ]
-                        },
-                        "where": {
-                            "activity_id": {
-                                "op": "e",
-                                "val": this.activity.id
-                            }
-                        },
-                    };
-                    taskQuery['where']["info ->> 'SchoolState'"] = {'op': 'e', 'val': this.user.info.canton, "join": "a"}
-                    this.$store.dispatch('c3s/task/getTaskCount', taskQuery).then(c => {
-                        this.taskCount = c.body.length
-                    })
+		    this.checkTaskCount(this.activity.id, this.user.info.canton);
                 }
             }
         },
@@ -153,7 +121,29 @@
                 this.$store.dispatch('c3s/user/updateUser', [this.user.id, {'info': updatedUser}]).then(u => {
                     console.log('User Details Updated')
                 })
-            }
+            },
+	   checkTaskCount(activityID, canton) {
+	     const taskQuery = {
+		"select": {
+		    "fields": [
+			"*"
+		    ],
+		    "tables": [
+			"tasks"
+		    ]
+		},
+		"where": {
+		    "activity_id": {
+			"op": "e",
+			"val": activityID
+		    }
+		},
+	    };
+	    taskQuery['where']["info ->> 'SchoolState'"] = {'op': 'e', 'val': canton, "join": "a"}
+	    this.$store.dispatch('c3s/task/getTaskCount', taskQuery).then(c => {
+		this.taskCount = c.body.length
+	    })
+	 }
         }
     }
 </script>
