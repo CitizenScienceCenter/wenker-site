@@ -5,7 +5,7 @@
     "sentence-count-prefix": "Nr. ",
     "placeholder-prefix": "Satz Nr. ",
     "button-next-sentence": "Nächster Satz",
-    "info-transcribed-prefix": "Wurde bereits ",
+    "info-transcribed-prefix": "Satz {no} wurde bereits ",
     "info-transcribed-suffix": " Mal transkribiert.",
     "info-done": "Du hast diesen Satz bereits transkribiert."
     },
@@ -55,7 +55,7 @@
                         {{ $t('info-done') }}
                     </div>
                     <div v-if="othersSubmitted > 0" class="submissions centered"> <!-- sometimes this one -->
-                        {{ $t('info-transcribed-prefix') }} {{othersSubmitted}} {{ $t('info-transcribed-suffix') }}
+                        {{ $t('info-transcribed-prefix', {no: activeAnswerIndex+1}) }} {{othersSubmitted}} {{ $t('info-transcribed-suffix') }}
                     </div>
 
                 </div>
