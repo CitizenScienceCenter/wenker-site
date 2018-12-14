@@ -119,6 +119,7 @@ export function loadTask (self, count, media, routeComplete) {
       if (media) {
         this.getMedia(self, task)
       }
+      self.$router.push({query: {count: count}})
     } else {
       self.$router.push({ 'name': routeComplete })
     }

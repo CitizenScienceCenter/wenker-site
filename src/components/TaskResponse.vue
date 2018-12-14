@@ -302,6 +302,7 @@
             padding: $spacing-1;
             border-color: white;
             font-family: sans-serif;
+            text-transform: lowercase;
         }
     }
 

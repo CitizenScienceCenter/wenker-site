@@ -45,7 +45,7 @@
 
                             <p class="button-group centered task-switch-bar">
                                 <button v-on:click="endTask" class="button button-secondary">Beenden</button>
-                                <label>{{$route.query.count}} von {{taskCount}}</label>
+                                <label><select class="task-select" v-model="taskDropdown"><option v-bind:key="i" v-for="i in taskRange">{{i+1}}</option></select> von {{taskCount}}</label>
                                 <button v-on:click="submitTask" :disabled="loading" class="button button-primary">
                                     Nächster Bogen
                                 </button>
@@ -93,10 +93,17 @@
       user: state => state.c3s.user.currentUser,
       activity: state => state.c3s.activity.activity,
       comments: state => state.c3s.task.comments,
-      loading: state => state.c3s.settings.loading
+      loading: state => state.c3s.settings.loading,
+      taskRange: function() {
+        return [...Array(this.taskCount-1).keys()];
+      }
     }),
     watch: {
       '$route.query.count' (to, from) {
+        console.log(to)
+        taskUtils.loadTask(this, to, true, this.routes.start)
+      },
+      taskDropdown (to, from) {
         taskUtils.loadTask(this, to, true, this.routes.start)
       }
     },
@@ -106,6 +113,7 @@
         nextTxt: 'Next',
         responses: [],
         taskCount: 1,
+        taskDropdown: this.$route.query['count'] || 1,
         submissions: [],
         routes: {
           complete: 'TranscribeComplete',
@@ -141,6 +149,10 @@
 
     @import '@/styles/theme.scss';
     @import '@/styles/shared/variables.scss';
+
+    .task-select {
+        width: 4%;
+    }
 
 
 </style>
