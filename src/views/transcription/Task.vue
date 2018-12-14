@@ -100,7 +100,7 @@
     }),
     watch: {
       '$route.query.count' (to, from) {
-        console.log(to)
+        this.taskDropdown = to;
         taskUtils.loadTask(this, to, true, this.routes.start)
       },
       taskDropdown (to, from) {
@@ -130,6 +130,9 @@
         //    TODO show error for no activity
         this.$router.push({ name: 'TranscribeStart' })
       }
+    },
+    updated () {
+
     },
     // TODO add route leave guard to save submission before exiting
     methods: {
