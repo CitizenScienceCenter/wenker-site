@@ -73,8 +73,7 @@
                         <div class="col">
 
                             <div class="centered task-switch-bar margin-bottom">
-                                <label>{{ $t('progress-prefix') }}{{$route.query.count}}{{ $t('progress-suffix')
-                                    }}</label>
+                                <label>{{ $t('progress-prefix') }}{{$route.query.count}}{{ $t('progress-suffix')}}</label>
                                 <button v-on:click="submitTask" class="button button-primary">{{ $t('button-next') }}
                                 </button>
                             </div>

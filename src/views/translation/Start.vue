@@ -8,6 +8,7 @@
     "form-heading": "Ihre Angaben",
     "button-start": "Starten",
     "login-heading": "Sie haben sich schon registiert?",
+    "login-text": "Falls Sie bereits an einer Unserer Projekte teilgenommen haben und dabei einen Login erstellt haben, melden Sie sich jetzt an.",
     "button-login": "Anmelden"
     },
     "en": {
@@ -17,6 +18,7 @@
     "form-heading": "Your Info",
     "button-start": "Start",
     "login-heading": "Already registered?",
+    "login-text": "If you already contributed and created an account, login in now.",
     "button-login": "Login"
     }
     }
@@ -68,6 +70,7 @@
 
                         <div class="content-subsection">
                             <h3 class="subheading centered left-aligned-large">{{ $t('login-heading') }}</h3>
+                            <p>{{ $t('login-text') }}</p>
                             <div class="centered button-group left-aligned-large">
                                 <router-link to="/register" tag="button" class="button button-secondary">{{
                                     $t('button-login') }}
