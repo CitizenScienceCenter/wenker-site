@@ -71,7 +71,7 @@
             </div>
 
             <div class="col col-large-2 col-buttons">
-                <div class="response-buttons button-group centered left-aligned-large">
+                <div class="response-buttons centered left-aligned-large">
                     <button class="button button-primary" :disabled="activeAnswerIndex === answers.length - 1"
                             @click="updateActiveIndex(1)">{{ $t('button-next-sentence') }}
                     </button>
@@ -296,6 +296,10 @@
 
         label {
             margin-right: $spacing-2;
+            font-weight: 400;
+            color: $color-primary-shade-20;
+            font-size: $font-size-small;
+            font-style: italic;
         }
         .button.button-secondary {
             height: 32px;

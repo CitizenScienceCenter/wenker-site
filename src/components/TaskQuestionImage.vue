@@ -89,13 +89,17 @@
 
     .buttons {
         position: absolute;
-        bottom: $spacing-1;
-        left: $spacing-1;
+        top: $spacing-2;
+        left: $spacing-2;
+        width: 60px;
 
         .button {
+            border-radius: 50%;
+
+            display: block;
             background-color: white;
-            &:first-child {
-                margin-right: $spacing-1;
+            &:last-child {
+                margin-top: $spacing-1;
             }
         }
     }
@@ -107,7 +111,7 @@
             height: 320px;
         }
         .buttons {
-            bottom: $spacing-2;
+            top: $spacing-2;
             left: $spacing-2;
         }
     }
