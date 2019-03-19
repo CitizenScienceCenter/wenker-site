@@ -2,6 +2,7 @@ import Activity from '@/views/Activity'
 import * as User from '@/views/user'
 import * as Translation from '@/views/translation'
 import * as Transcription from '@/views/transcription'
+import MapView from '../components/MapView'
 import store from '../store/store.js'
 
 const logout = (to, from, next) => {
@@ -127,6 +128,11 @@ export const routes = [
                 }
             }
         ]
+    },
+    {
+        path: "/map",
+        component: MapView,
+        meta: {page: "page-map", nav: true}
     },
     {
         path: "/project",

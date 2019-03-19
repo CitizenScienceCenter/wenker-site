@@ -50,6 +50,10 @@ export const i18n = new VueI18n({
         'link': 'FAQ',
         'title': 'FAQ – Projekt Wenker – Citizen Science Center Zürich'
       },
+      'page-map': {
+        'link': 'FAQ',
+        'title': 'FAQ – Projekt Wenker – Citizen Science Center Zürich'
+      },
     'page-terms': {
         'link': 'Privacy Policy & Terms of Use',
         'title': 'Privacy Policy & Terms of Use – Projekt Wenker – Citizen Science Center Zürich'
