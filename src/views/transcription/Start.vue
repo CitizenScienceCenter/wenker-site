@@ -151,7 +151,7 @@
             },
             startProjectRegion() {
                 if (this.userCheck()) {
-                    this.$router.push({name: 'TranscribeTask', query: {'region': this.user.info.canton, 'count': 1}})
+                    this.$router.push({name: 'TranscribeTask', query: {'region': this.user.info.canton, 'town': this.user.info.town, 'count': 1}})
                 }
             },
             userCheck() {

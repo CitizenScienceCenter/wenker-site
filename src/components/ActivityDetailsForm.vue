@@ -38,7 +38,7 @@
             <label>{{ $t('label-town') }}</label>
             <div class="custom-select">
                 <select v-model="details.town" name="canton" id="canton">
-                    <option :key="r" v-for="r in towns" :value="r">{{r}}</option>
+                    <option :key="r" v-for="(k, r) in towns" :value="k">{{k}}</option>
                 </select>
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
                    <path d="M127.3,192h257.3c17.8,0,26.7,21.5,14.1,34.1L270.1,354.8c-7.8,7.8-20.5,7.8-28.3,0L113.2,226.1 C100.6,213.5,109.5,192,127.3,192z"/>
@@ -117,7 +117,9 @@
                         },
                     };
                     taskQuery['where']["info ->> 'SchoolState'"] = {'op': 'e', 'val': to, "join": "a"}
-                    // taskQuery['where']["info ->> 'SchoolPlace'"] = {'op': 'e', 'val': pl, "join": "a"}
+                    if (this.details.town) {
+                        taskQuery['where']["info ->> 'SchoolPlace'"] = {'op': 'e', 'val': this.user.info.town, "join": "a"}
+                    }
                     this.$store.dispatch('c3s/task/getTaskCount', taskQuery).then(c => {
                         this.taskCount = c.body.length
                     })
@@ -127,6 +129,9 @@
             },
             'details.ageRange'(to, from) {
                 this.updateUserInfo('ageRange', to)
+            },
+            'details.town'(to, from) {
+                this.updateUserInfo('town', to)
             }
         },
         computed: mapState({
@@ -155,6 +160,9 @@
                         },
                     };
                     taskQuery['where']["info ->> 'SchoolState'"] = {'op': 'e', 'val': this.user.info.canton, "join": "a"}
+                    if (this.details.town) {
+                        taskQuery['where']["info ->> 'SchoolPlace'"] = {'op': 'e', 'val': this.details.town, "join": "a"}
+                    }
                     this.$store.dispatch('c3s/task/getTaskCount', taskQuery).then(c => {
                         this.taskCount = c.body.length
                         console.log(c)
@@ -175,11 +183,11 @@
                 let cantonIndex = this.regions.findIndex((element) => {
                     return element.label === canton
                 })
-                console.log(this.regions[cantonIndex])
                 if (cantonIndex !== -1) {
-                    this.towns = this.regions[cantonIndex]['towns'].sort()
+                    this.towns = this.regions[cantonIndex]['towns']
                 } else {
                     this.towns = []
+                    this.details.town = undefined
                 }
 
             }

@@ -683,7 +683,6 @@ const state = {
         "Doppleschwand",
         "Dogelzwil",
         "Altwis",
-        "Fontannen",
         "Pfaffnau",
         "Meierskappel",
         "Kulmerau",
