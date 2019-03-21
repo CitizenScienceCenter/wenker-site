@@ -18,7 +18,7 @@
 
 <template>
     <div class="prereq">
-        <div v-bind:class="{'invalid': !details.canton}" class="form-field">
+        <div v-bind:class="{'invalid': !details.canton}" class="form-field form-field-block">
             <label>{{ $t('label-region') }}</label>
             <div class="custom-select">
                 <select v-model="details.canton" name="canton" id="canton">
@@ -34,7 +34,7 @@
             </div>
             <p class="error" v-if="errors.canton">{{ $t('error-region') }}</p>
         </div>
-        <div v-if='towns.length' class="form-field">
+        <div v-if='towns.length' class="form-field form-field-block">
             <label>{{ $t('label-town') }}</label>
             <div class="custom-select">
                 <select v-model="details.town" name="canton" id="canton">
@@ -46,7 +46,7 @@
             </div>
             <p class="error" v-if="errors.canton">{{ $t('error-region') }}</p>
         </div>
-        <div v-bind:class="{'invalid': !details.age}" class="form-field">
+        <div v-bind:class="{'invalid': !details.age}" class="form-field form-field-block">
             <label>{{ $t('label-age') }}</label>
             <div class="custom-select">
                 <option disabled selected hidden>{{ $t('placeholder-age') }}</option>
@@ -195,8 +195,5 @@
     }
 </script>
 
-<style lang="scss" scoped>
-    .form-field {
-        display: block;
-    }
+<style lang="scss">
 </style>

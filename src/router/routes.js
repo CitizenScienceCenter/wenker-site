@@ -130,11 +130,6 @@ export const routes = [
         ]
     },
     {
-        path: "/map",
-        component: MapView,
-        meta: {page: "page-map", nav: true}
-    },
-    {
         path: "/project",
         component: Project,
         meta: {page: "page-project", nav: true}

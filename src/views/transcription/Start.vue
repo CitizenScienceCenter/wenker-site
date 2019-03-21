@@ -53,7 +53,7 @@
                             <!-- <div class="desc" v-if="project && project.description" v-html="project.description"></div> -->
 
                             <activity-details-form ref="details" :activity="activity" :allRegions="false"
-                                                   :errors="errors"></activity-details-form>
+                                                   :errors="errors" class="margin-bottom"></activity-details-form>
 
                             <div class="button-group centered left-aligned-large">
                                 <button class="button button-primary" v-on:click="startProject">{{ $t('button-start')
