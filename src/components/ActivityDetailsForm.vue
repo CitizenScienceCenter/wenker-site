@@ -34,7 +34,7 @@
             </div>
             <p class="error" v-if="errors.canton">{{ $t('error-region') }}</p>
         </div>
-        <div v-if='details.canton' class="form-field">
+        <div v-if='towns.length' class="form-field">
             <label>{{ $t('label-town') }}</label>
             <div class="custom-select">
                 <select v-model="details.town" name="canton" id="canton">
@@ -184,7 +184,7 @@
                     return element.label === canton
                 })
                 if (cantonIndex !== -1) {
-                    this.towns = this.regions[cantonIndex]['towns']
+                    this.towns = this.regions[cantonIndex]['towns'].slice().sort()
                 } else {
                     this.towns = []
                     this.details.town = undefined
