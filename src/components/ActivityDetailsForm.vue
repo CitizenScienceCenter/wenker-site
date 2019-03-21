@@ -184,7 +184,7 @@
                     return element.label === canton
                 })
                 if (cantonIndex !== -1) {
-                    this.towns = this.regions[cantonIndex]['towns']
+                    this.towns = this.regions[cantonIndex]['towns'].slice().sort()
                 } else {
                     this.towns = []
                     this.details.town = undefined
