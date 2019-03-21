@@ -35,7 +35,7 @@
             </div>
             <p class="message error" v-if="errors.canton">{{ $t('error-region') }}</p>
         </div>
-        <div v-if='towns.length' class="form-field form-field-block">
+        <div v-if='towns.length && !allRegions' class="form-field form-field-block">
             <label>{{ $t('label-town') }}</label>
             <div class="custom-select">
                 <select v-model="details.town" name="canton" id="canton">
