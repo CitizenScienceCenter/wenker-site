@@ -104,11 +104,14 @@ export function loadTask (self, count, media, routeComplete) {
     const userRegion = self.$route.query['region']
     taskQuery['where']['info ->> \'SchoolState\''] = { 'op': 'e', 'val': userRegion, 'join': 'a' }
   }
-  if (self.$route.query.hasOwnProperty('town')) {
+  console.log(self.$route.query.hasOwnProperty('town'))
+  if (self.$route.query.hasOwnProperty('town') && self.$route.query.hasOwnProperty('town') !== 'Alles' && self.$route.query.hasOwnProperty('town')) {
     const userTown = self.$route.query['town']
     taskQuery['where']['info ->> \'SchoolPlace\''] = { 'op': 'e', 'val': userTown, 'join': 'a' }
   }
+  console.log(taskQuery);
   self.$store.dispatch('c3s/task/getTaskCount', taskQuery).then(c => {
+    console.log(c)
     self.taskCount = c.body
   })
   self.$store.dispatch('c3s/task/getTasks', [taskQuery, 1]).then(t => {

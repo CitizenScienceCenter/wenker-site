@@ -125,13 +125,16 @@
                     })
                 }
                 this.updateUserInfo('canton', to)
+                this.updateUserInfo('town', undefined)
                 this.getTowns(to)
             },
             'details.ageRange'(to, from) {
                 this.updateUserInfo('ageRange', to)
             },
             'details.town'(to, from) {
-                this.updateUserInfo('town', to)
+                if (to !== 'Alles') {
+                    this.updateUserInfo('town', to)
+                }
             }
         },
         computed: mapState({
@@ -160,7 +163,7 @@
                         },
                     };
                     taskQuery['where']["info ->> 'SchoolState'"] = {'op': 'e', 'val': this.user.info.canton, "join": "a"}
-                    if (this.details.town) {
+                    if (this.details.town && this.details.town !== 'Alles') {
                         taskQuery['where']["info ->> 'SchoolPlace'"] = {'op': 'e', 'val': this.details.town, "join": "a"}
                     }
                     this.$store.dispatch('c3s/task/getTaskCount', taskQuery).then(c => {
@@ -184,7 +187,12 @@
                     return element.label === canton
                 })
                 if (cantonIndex !== -1) {
-                    this.towns = this.regions[cantonIndex]['towns'].slice().sort()
+                    const townCopy = this.regions[cantonIndex]['towns'].slice().sort()
+                    if (townCopy.length > 0) {
+                        townCopy.unshift('Alles')
+                    }
+                    this.towns = townCopy
+                    this.town = 'Alles'
                 } else {
                     this.towns = []
                     this.details.town = undefined
