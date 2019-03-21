@@ -43,7 +43,7 @@
                     <div class="row">
                         <div class="col">
 
-                            <div class="centered task-switch-bar margin-bottom">
+                            <div class="centered task-switch-bar margin-bottom" v-if='taskCount > 1'>
                                 <div class="sheet-select">
                                     <div class="custom-select">
                                         <select class="task-select" v-model="taskDropdown">

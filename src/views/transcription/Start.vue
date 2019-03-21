@@ -151,7 +151,11 @@
             },
             startProjectRegion() {
                 if (this.userCheck()) {
-                    this.$router.push({name: 'TranscribeTask', query: {'region': this.user.info.canton, 'town': this.user.info.town, 'count': 1}})
+                    const quObj = {'region': this.user.info.canton, 'count': 1}
+                    if (this.user.info.town) {
+                        quObj['town'] = this.user.info.town;
+                    }
+                    this.$router.push({name: 'TranscribeTask', query: quObj})
                 }
             },
             userCheck() {
