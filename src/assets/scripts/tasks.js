@@ -104,6 +104,10 @@ export function loadTask (self, count, media, routeComplete) {
     const userRegion = self.$route.query['region']
     taskQuery['where']['info ->> \'SchoolState\''] = { 'op': 'e', 'val': userRegion, 'join': 'a' }
   }
+  if (self.$route.query.hasOwnProperty('town')) {
+    const userTown = self.$route.query['town']
+    taskQuery['where']['info ->> \'SchoolPlace\''] = { 'op': 'e', 'val': userTown, 'join': 'a' }
+  }
   self.$store.dispatch('c3s/task/getTaskCount', taskQuery).then(c => {
     self.taskCount = c.body
   })
@@ -142,7 +146,8 @@ export function submitTask (self, completeRoute, nextRoute) {
   const responded = checkResponses(self.responses)
   let qu = Object.assign({}, self.$route.query)
   qu['count'] = parseInt(qu['count']) + 1
-  if (responded) {
+  console.log(self.taskCount)
+  if (responded && qu['count'] < self.taskCount) {
     self.$store.commit('c3s/submission/SET_SUBMISSION_RESPONSES', self.responses)
     self.$store.dispatch('c3s/submission/createSubmission').then(s => {
       if (qu['count'] > self.taskCount) {
@@ -153,6 +158,11 @@ export function submitTask (self, completeRoute, nextRoute) {
       } else {
         self.$router.replace({ name: nextRoute, query: qu })
       }
+    })
+  } else if (qu['count'] > self.taskCount) {
+    self.$store.commit('c3s/activity/SET_ACTIVITY', null)
+    self.$router.push({
+      name: completeRoute
     })
   } else {
     self.$router.replace({ name: nextRoute, query: qu })

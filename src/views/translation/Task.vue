@@ -1,4 +1,4 @@
-<i18n>
+  <i18n>
     {
     "de": {
     "task-description": "Bitte übersetzen Sie den oben stehenden Satz in Ihren Dialekt.",
@@ -124,7 +124,7 @@
     }),
     watch: {
       '$route.query.count' (to, from) {
-        this.loadTask(to)
+        // this.loadTask(to)
         taskUtils.loadTask(this, to, true, this.routes.complete)
       }
     },
@@ -155,7 +155,7 @@
         taskUtils.endTask(this, this.routes.complete)
       },
       submitTask () {
-        taskUtils.submitTask(this, this.routes.complete. this.routes.task)
+        taskUtils.submitTask(this, this.routes.complete, this.routes.task)
       },
     }
   }
