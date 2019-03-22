@@ -16,7 +16,7 @@
 
         <section v-if="tasks.length">
             <task-question-image v-if="media.length > 0" :question="tasks[0].content.question"
-                                 :imgPath="media[0].path"></task-question-image>
+                                 :imgPath="media[0].path" :town="tasks[0].info['SchoolPlace']" :canton="tasks[0].info['SchoolState']"></task-question-image>
         </section>
 
         <app-content-section class="content-section-condensed">
