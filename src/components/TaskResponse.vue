@@ -72,7 +72,7 @@
 
             <div class="col col-large-2 col-buttons">
                 <div class="response-buttons centered left-aligned-large">
-                    <button class="button button-primary" :disabled="activeAnswerIndex === answers.length - 1"
+                    <button class="button button-secondary" :disabled="activeAnswerIndex === answers.length - 1"
                             @click="updateActiveIndex(1)">{{ $t('button-next-sentence') }}
                     </button>
                     <!-- <button class="button button-secondary" :disabled="!activeAnswerIndex > 0" @click="updateActiveIndex(-1)">Vorheriger</button> -->

@@ -42,10 +42,8 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                     <path d="M236.3,501.7C91,291,64,269.4,64,192C64,86,150,0,256,0s192,86,192,192c0,77.4-27,99-172.3,309.7C266.2,515.4,245.8,515.4,236.3,501.7L236.3,501.7z M256,272c44.2,0,80-35.8,80-80s-35.8-80-80-80s-80,35.8-80,80S211.8,272,256,272z"/>
                 </svg>
-                <b>
                 <span>{{town}}</span>
                 <span>{{canton}}</span>
-                </b>
             </div>
         </div>
     </div>
@@ -115,8 +113,8 @@
 
     .buttons {
         position: absolute;
-        top: $spacing-2;
-        left: $spacing-2;
+        bottom: $spacing-2;
+        right: $spacing-2;
         width: 60px;
 
         .button {
@@ -201,6 +199,52 @@
         }
 
     }
+
+    .image-info-wrapper {
+        position: absolute;
+        top: $spacing-1;
+        left: $spacing-1;
+        margin: calc( -#{$spacing-1} /2 );
+        font-size: 0;
+        .image-info {
+            color: white;
+            background: rgba( $color-black, 0.4);
+            border-radius: 16px;
+            font-size: $font-size-small;
+            position: relative;
+            padding: calc( ( 32px - #{$font-size-small} *1.5 ) / 2 ) 0;
+            padding-right: $spacing-2;
+            padding-left: 36px;
+            &.image-info-small {
+                font-size: $font-size-mini;
+                line-height: calc( #{$font-size-small} *1.5);
+                display: none;
+            }
+            svg {
+                position: absolute;
+                top: calc( ( 32px - #{$font-size-small} ) /2 );
+                left: calc( ( 32px - #{$font-size-small} ) /2 + 4px );
+                width: $font-size-small;
+                height: $font-size-small;
+                fill: rgba( white, 0.8 );
+            }
+            display: inline-block;
+            margin: calc( #{$spacing-1} /2 );
+            span {
+                text-transform: capitalize;
+                white-space: nowrap;
+                &:after {
+                    content: ', ';
+                }
+                &:last-child {
+                    &:after {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
 }
 
 @media only screen and (min-width: $viewport-tablet-portrait) {
@@ -209,52 +253,12 @@
             height: 320px;
         }
         .buttons {
+            bottom: $spacing-2;
+            right: $spacing-2;
+        }
+        .image-info-wrapper {
             top: $spacing-2;
             left: $spacing-2;
-        }
-         .image-info-wrapper {
-            position: absolute;
-            top: $spacing-1;
-            right: $spacing-1;
-            margin: calc( -#{$spacing-1} /2 );
-            font-size: 0;
-            .image-info {
-                color: white;
-                background: rgba( $color-black, 0.4);
-                border-radius: 16px;
-                font-size: $font-size-small;
-                position: relative;
-                padding: calc( ( 32px - #{$font-size-small} *1.5 ) / 2 ) 0;
-                padding-right: $spacing-2;
-                padding-left: 36px;
-                &.image-info-small {
-                    font-size: $font-size-mini;
-                    line-height: calc( #{$font-size-small} *1.5);
-                    display: none;
-                }
-                svg {
-                    position: absolute;
-                    top: calc( ( 32px - #{$font-size-small} ) /2 );
-                    left: calc( ( 32px - #{$font-size-small} ) /2 + 4px );
-                    width: $font-size-small;
-                    height: $font-size-small;
-                    fill: rgba( white, 0.8 );
-                }
-                display: inline-block;
-                margin: calc( #{$spacing-1} /2 );
-                span {
-                    text-transform: capitalize;
-                    white-space: nowrap;
-                    &:after {
-                        content: ', ';
-                    }
-                    &:last-child {
-                        &:after {
-                            display: none;
-                        }
-                    }
-                }
-            }
         }
     }
 }
