@@ -1,4 +1,4 @@
-<i18n>
+  <i18n>
     {
     "de": {
     "task-description": "Bitte übersetzen Sie den oben stehenden Satz in Ihren Dialekt.",
@@ -72,14 +72,14 @@
                     <div class="row">
                         <div class="col">
 
-                            <p class="centered button-group task-switch-bar">
-                                <button v-on:click="endTask" class="button button-secondary">{{ $t('button-end') }}
-                                </button>
-                                <label>{{ $t('progress-prefix') }}{{$route.query.count}}{{ $t('progress-suffix')
-                                    }}</label>
+                            <div class="centered task-switch-bar margin-bottom">
+                                <label>{{ $t('progress-prefix') }}{{$route.query.count}}{{ $t('progress-suffix')}}</label>
                                 <button v-on:click="submitTask" class="button button-primary">{{ $t('button-next') }}
                                 </button>
-                            </p>
+                            </div>
+                            <div class="centered">
+                                <button v-on:click="endTask" class="button button-secondary">{{ $t('button-end') }}</button>
+                            </div>
 
                         </div>
                     </div>
@@ -124,7 +124,7 @@
     }),
     watch: {
       '$route.query.count' (to, from) {
-        this.loadTask(to)
+        // this.loadTask(to)
         taskUtils.loadTask(this, to, true, this.routes.complete)
       }
     },
@@ -155,7 +155,7 @@
         taskUtils.endTask(this, this.routes.complete)
       },
       submitTask () {
-        taskUtils.submitTask(this, this.routes.complete. this.routes.task)
+        taskUtils.submitTask(this, this.routes.complete, this.routes.task)
       },
     }
   }
@@ -165,5 +165,14 @@
 
     @import '@/styles/theme.scss';
     @import '@/styles/shared/variables.scss';
+
+
+    .task-switch-bar {
+        label {
+            font-weight: 400;
+            color: $color-black;
+            margin: 0 $spacing-2;
+        }
+    }
 
 </style>

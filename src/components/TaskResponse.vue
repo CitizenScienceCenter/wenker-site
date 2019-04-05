@@ -5,7 +5,7 @@
     "sentence-count-prefix": "Nr. ",
     "placeholder-prefix": "Satz Nr. ",
     "button-next-sentence": "Nächster Satz",
-    "info-transcribed-prefix": "Wurde bereits ",
+    "info-transcribed-prefix": "Satz {no} wurde bereits ",
     "info-transcribed-suffix": " Mal transkribiert.",
     "info-done": "Du hast diesen Satz bereits transkribiert."
     },
@@ -55,7 +55,7 @@
                         {{ $t('info-done') }}
                     </div>
                     <div v-if="othersSubmitted > 0" class="submissions centered"> <!-- sometimes this one -->
-                        {{ $t('info-transcribed-prefix') }} {{othersSubmitted}} {{ $t('info-transcribed-suffix') }}
+                        {{ $t('info-transcribed-prefix', {no: activeAnswerIndex+1}) }} {{othersSubmitted}} {{ $t('info-transcribed-suffix') }}
                     </div>
 
                 </div>
@@ -71,8 +71,8 @@
             </div>
 
             <div class="col col-large-2 col-buttons">
-                <div class="response-buttons button-group centered left-aligned-large">
-                    <button class="button button-primary" :disabled="activeAnswerIndex === answers.length - 1"
+                <div class="response-buttons centered left-aligned-large">
+                    <button class="button button-secondary" :disabled="activeAnswerIndex === answers.length - 1"
                             @click="updateActiveIndex(1)">{{ $t('button-next-sentence') }}
                     </button>
                     <!-- <button class="button button-secondary" :disabled="!activeAnswerIndex > 0" @click="updateActiveIndex(-1)">Vorheriger</button> -->
@@ -296,12 +296,17 @@
 
         label {
             margin-right: $spacing-2;
+            font-weight: 400;
+            color: $color-primary-shade-20;
+            font-size: $font-size-small;
+            font-style: italic;
         }
         .button.button-secondary {
             height: 32px;
             padding: $spacing-1;
             border-color: white;
             font-family: sans-serif;
+            text-transform: lowercase;
         }
     }
 

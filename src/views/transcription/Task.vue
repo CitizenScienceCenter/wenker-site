@@ -16,7 +16,7 @@
 
         <section v-if="tasks.length">
             <task-question-image v-if="media.length > 0" :question="tasks[0].content.question"
-                                 :imgPath="media[0].path"></task-question-image>
+                                 :imgPath="media[0].path" :town="tasks[0].info['SchoolPlace']" :canton="tasks[0].info['SchoolState']"></task-question-image>
         </section>
 
         <app-content-section class="content-section-condensed">
@@ -43,13 +43,26 @@
                     <div class="row">
                         <div class="col">
 
-                            <p class="button-group centered task-switch-bar">
-                                <button v-on:click="endTask" class="button button-secondary">Beenden</button>
-                                <label>{{$route.query.count}} von {{taskCount}}</label>
+                            <div class="centered task-switch-bar margin-bottom" v-if='taskCount > 1'>
+                                <div class="sheet-select">
+                                    <div class="custom-select">
+                                        <select class="task-select" v-model="taskDropdown">
+                                            <option v-bind:key="i" v-for="i in taskRange">{{i+1}}</option>
+                                        </select>
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                                            <path d="M127.3,192h257.3c17.8,0,26.7,21.5,14.1,34.1L270.1,354.8c-7.8,7.8-20.5,7.8-28.3,0L113.2,226.1 C100.6,213.5,109.5,192,127.3,192z"/>
+                                        </svg>
+                                    </div>
+                                    <label>von {{taskCount}}</label>
+                                </div>
                                 <button v-on:click="submitTask" :disabled="loading" class="button button-primary">
                                     Nächster Bogen
                                 </button>
-                            </p>
+                            </div>
+
+                            <div class="centered">
+                                <button v-on:click="endTask" class="button button-secondary">Beenden</button>
+                            </div>
 
                         </div>
                     </div>
@@ -93,10 +106,17 @@
       user: state => state.c3s.user.currentUser,
       activity: state => state.c3s.activity.activity,
       comments: state => state.c3s.task.comments,
-      loading: state => state.c3s.settings.loading
+      loading: state => state.c3s.settings.loading,
+      taskRange: function() {
+        return [...Array(this.taskCount-1).keys()];
+      }
     }),
     watch: {
       '$route.query.count' (to, from) {
+        this.taskDropdown = to;
+        taskUtils.loadTask(this, to, true, this.routes.start)
+      },
+      taskDropdown (to, from) {
         taskUtils.loadTask(this, to, true, this.routes.start)
       }
     },
@@ -106,6 +126,7 @@
         nextTxt: 'Next',
         responses: [],
         taskCount: 1,
+        taskDropdown: this.$route.query['count'] || 1,
         submissions: [],
         routes: {
           complete: 'TranscribeComplete',
@@ -122,6 +143,9 @@
         //    TODO show error for no activity
         this.$router.push({ name: 'TranscribeStart' })
       }
+    },
+    updated () {
+
     },
     // TODO add route leave guard to save submission before exiting
     methods: {
@@ -141,6 +165,41 @@
 
     @import '@/styles/theme.scss';
     @import '@/styles/shared/variables.scss';
+
+
+    .sheet-select {
+
+        display: inline-block;
+
+        .custom-select {
+
+            select {
+                font-size: $font-size-small;
+                padding-left: $spacing-2;
+                border: 1px solid $color-primary-tint-50;
+                border-radius: $border-radius;
+
+                &:active {
+                    border-color: $color-primary;
+                }
+                @media (hover: hover) {
+                    &:hover {
+                        border-color: $color-primary;
+                    }
+                }
+            }
+            svg {
+                fill: $color-black;
+            }
+        }
+
+        label {
+            font-weight: 400;
+            color: $color-black;
+            margin: 0 $spacing-2;
+        }
+
+    }
 
 
 </style>
