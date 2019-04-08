@@ -61,7 +61,7 @@
                             </div>
 
                             <div class="centered">
-                                <button v-on:click="endTask" class="button button-secondary">Beenden</button>
+                                <button v-on:click="endTask" class="button button-secondary">Sitzung Beenden</button>
                             </div>
 
                         </div>
@@ -108,7 +108,7 @@
       comments: state => state.c3s.task.comments,
       loading: state => state.c3s.settings.loading,
       taskRange: function() {
-        return [...Array(this.taskCount-1).keys()];
+        return [...Array(this.taskCount).keys()];
       }
     }),
     watch: {
@@ -143,6 +143,7 @@
         //    TODO show error for no activity
         this.$router.push({ name: 'TranscribeStart' })
       }
+      console.log(this.taskDropdown)
     },
     updated () {
 

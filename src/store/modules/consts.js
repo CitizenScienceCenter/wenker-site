@@ -1188,12 +1188,6 @@ const state = {
     ]
     },
     {
-      'value': 'VD',
-      'label': 'Vaud',
-      'lang': 'FR',
-      'towns':[]
-    },
-    {
       'value': 'VS',
       'label': 'Wallis',
       'lang': 'DE',
@@ -1461,6 +1455,12 @@ const state = {
       'value': 'NE',
       'label': 'Neuchatel',
       'lang': 'FR'
+    },
+    {
+      'value': 'VD',
+      'label': 'Vaud',
+      'lang': 'FR',
+      'towns':[]
     }
   ],
   ageRange: [
