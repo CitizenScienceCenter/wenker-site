@@ -133,6 +133,44 @@ export function loadTask (self, count, media, routeComplete) {
   })
 }
 
+export function loadTaskID (self, id, media, routeComplete) {
+  const taskQuery = {
+    'select': {
+      'fields': [
+        '*'
+      ],
+      'tables': [
+        'tasks'
+      ]
+    },
+    'where': {
+      'id': {
+        'op': 'e',
+        'val': id
+      }
+    },
+    'limit': 1,
+  }
+  self.$store.dispatch('c3s/task/getTasks', [taskQuery, 1]).then(t => {
+    if (t.body && t.body.length > 0) {
+      const task = t.body[0]
+
+      self.responses = []
+      for (let i = 0; i < task.content.answers.length; i++) {
+        self.responses.push({ text: '' })
+      }
+      createSubmission(self, self.user.id, task.id)
+      if (media) {
+        getMedia(self, task)
+      }
+      //self.$router.push({query: {count: count}})
+    } else {
+      self.$router.push({ 'name': routeComplete })
+    }
+  })
+}
+
+
 export function endTask (self, completeRoute) {
   const responded = checkResponses(self.responses)
   if (responded) {

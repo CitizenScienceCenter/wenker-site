@@ -77,6 +77,10 @@ export const i18n = new VueI18n({
       'page-profile': {
         'link': 'Profil',
         'title': 'Profil – Projekt Wenker – Citizen Science Center Zürich'
+      },
+      'page-sheets': {
+        'link': 'Boegen',
+        'title': 'Boegen – Projekt Wenker – Citizen Science Center Zürich'
       }
     },
       'en': {
@@ -125,8 +129,12 @@ export const i18n = new VueI18n({
               'title': 'Reset Password – Project Wenker – Citizen Science Center Zurich'
           },
           'page-profile': {
-              'link': 'Profil',
-              'title': 'Profil – Project Wenker – Citizen Science Center Zurich'
+              'link': 'Profile',
+              'title': 'Profile – Project Wenker – Citizen Science Center Zurich'
+          },
+          'page-sheets': {
+              'link': 'Progress',
+              'title': 'Progress – Project Wenker – Citizen Science Center Zurich'
           }
       }
   }
