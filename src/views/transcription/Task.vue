@@ -117,6 +117,7 @@
         taskUtils.loadTask(this, to, true, this.routes.start)
       },
       taskDropdown (to, from) {
+        console.log(to)
         taskUtils.loadTask(this, to, true, this.routes.start)
       }
     },

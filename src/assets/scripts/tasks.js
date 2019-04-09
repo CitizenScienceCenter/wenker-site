@@ -122,9 +122,9 @@ export function loadTask (self, count, media, routeComplete) {
       for (let i = 0; i < task.content.answers.length; i++) {
         self.responses.push({ text: '' })
       }
-      this.createSubmission(self, self.user.id, task.id)
+      createSubmission(self, self.user.id, task.id)
       if (media) {
-        this.getMedia(self, task)
+        getMedia(self, task)
       }
       self.$router.push({query: {count: count}})
     } else {
@@ -136,7 +136,7 @@ export function loadTask (self, count, media, routeComplete) {
 export function endTask (self, completeRoute) {
   const responded = checkResponses(self.responses)
   if (responded) {
-    self.$store.commit('c3s/submission/SET_SUBMISSION_RESPONSES', this.responses)
+    self.$store.commit('c3s/submission/SET_SUBMISSION_RESPONSES', self.responses)
   }
   self.$store.dispatch('c3s/submission/createSubmission').then(s => {
     self.$router.push({
