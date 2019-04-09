@@ -46,19 +46,19 @@ export const routes = [
         component: Home,
         name: 'Home',
         beforeEnter: null,
-        meta: {page: "page-homepage", nav: false}
+        meta: {i18n: "page-homepage", nav: false}
     },
     {
         path: "/logout",
         component: Home,
         name: "Logout",
         beforeEnter: logout,
-        meta: {page: 'page-logout', nav: false}
+        meta: {i18n: 'page-logout', nav: false}
     },
     {
         path: "/transcribe",
         component: Activity,
-        meta: {requiresAuth: true, breadcrumb: 'Projects', page: 'page-transcribe', nav: true},
+        meta: {requiresAuth: true, breadcrumb: 'Projects', i18n: 'page-transcribe', nav: true},
         children: [
             {
                 path: "",
@@ -67,7 +67,8 @@ export const routes = [
                 meta: {
                     requiresAuth: true,
                     breadcrumb: "Transcribe",
-                    page: 'page-transcribe'
+                    i18n: 'page-transcribe',
+                    nav: false
                 }
             },
             {
@@ -77,7 +78,8 @@ export const routes = [
                 meta: {
                     requiresAuth: true,
                     breadcrumb: "Transcribe Task",
-                    page: 'page-transcribe'
+                    i18n: 'page-transcribe',
+                    nav: false
                 }
             },
             {
@@ -87,7 +89,8 @@ export const routes = [
                 meta: {
                     requiresAuth: true,
                     breadcrumb: "Transcribe Complete",
-                    page: 'page-transcribe'
+                    i18n: 'page-transcribe',
+                    nav: false
                 }
             }
         ]
@@ -95,7 +98,7 @@ export const routes = [
     {
         path: "/translate",
         component: Activity,
-        meta: {requiresAuth: true, breadcrumb: 'Projects', page: 'page-translate', nav: true},
+        meta: {requiresAuth: true, breadcrumb: 'Projects', i18n: 'page-translate', nav: true},
         children: [
             {
                 path: "",
@@ -104,7 +107,8 @@ export const routes = [
                 meta: {
                     requiresAuth: true,
                     breadcrumb: "Translate",
-                    page: 'page-translate'
+                    i18n: 'page-translate',
+                    nav: false
                 }
             },
             {
@@ -114,7 +118,8 @@ export const routes = [
                 meta: {
                     requiresAuth: true,
                     breadcrumb: "Translate Task",
-                    page: 'page-translate'
+                    i18n: 'page-translate',
+                    nav: false
                 }
             },
             {
@@ -124,7 +129,8 @@ export const routes = [
                 meta: {
                     requiresAuth: true,
                     breadcrumb: "Translate Complete",
-                    page: 'page-translate'
+                    i18n: 'page-translate',
+                    nav: false
                 }
             }
         ]
@@ -132,57 +138,57 @@ export const routes = [
     {
         path: "/project",
         component: Project,
-        meta: {page: "page-project", nav: true}
+        meta: {i18n: "page-project", nav: true}
     },
     {
         path: "/wenker",
         component: Wenker,
-        meta: {page: "page-wenker", nav: true}
+        meta: {i18n: "page-wenker", nav: true}
     },
     {
         path: "/faq",
         component: FAQ,
-        meta: {page: "page-faq", nav: true}
+        meta: {i18n: "page-faq", nav: true}
     },
     {
         path: "/terms",
         component: Terms,
-        meta: {page: "page-terms", nav: false}
+        meta: {i18n: "page-terms", nav: false}
     },
     {
         path: "/login",
         name: "Login",
         component: User.Login,
-        meta: {page: 'page-login', nav: false}
+        meta: {i18n: 'page-login', nav: false}
     },
     {
         path: "/register",
         name: "Register",
         component: User.Register,
-        meta: {page: 'page-register', nav: false}
+        meta: {i18n: 'page-register', nav: false}
     },
     {
         path: "/reset",
         name: "ResetRequest",
         component: User.RequestReset,
-        meta: {page: 'page-reset', nav: false}
+        meta: {i18n: 'page-reset', nav: false}
     },
     {
         path: "/reset/:token",
         name: "Reset",
         component: User.Reset,
-        meta: {page: 'page-reset', nav: false}
+        meta: {i18n: 'page-reset', nav: false}
     },
     {
         path: "/profile",
         name: "UserProfile",
         component: User.Profile,
-        meta: {requiresAuth: true, breadcrumb: 'View User', page: 'page-profile', nav: false}
+        meta: {requiresAuth: true, breadcrumb: 'View User', i18n: 'page-profile', nav: false}
     },
     {
         path: "/error",
         name: "Error",
         component: Home.Error,
-        meta: {page: 'page-profile', nav: false}
+        meta: {i18n: 'page-profile', nav: false}
     }
 ];

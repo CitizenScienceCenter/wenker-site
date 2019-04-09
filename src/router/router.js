@@ -14,7 +14,7 @@ export const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   const lang = store.state.settings.language || 'de'
-  const title = i18n.messages[lang][to.meta.page]['title']
+  const title = i18n.messages[lang][to.meta.i18n]['title']
   if (title) {
     document.title = title
   } else {
