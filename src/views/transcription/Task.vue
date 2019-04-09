@@ -41,9 +41,9 @@
 
                 <div class="content-subsection">
                     <div class="row">
-                        <div class="col">
+                        <div class="col" v-if='taskRange.length !== parseInt(taskDropdown)'>
 
-                            <div class="centered task-switch-bar margin-bottom" v-if='taskCount > 1'>
+                            <div class="centered task-switch-bar margin-bottom" >
                                 <div class="sheet-select">
                                     <div class="custom-select">
                                         <select class="task-select" v-model="taskDropdown">
@@ -65,6 +65,11 @@
                             </div>
 
                         </div>
+                    </div>
+                    <div class="col" v-if='taskRange.length === parseInt(taskDropdown)'>
+                      <div class="centered task-switch-bar margin-bottom" >
+                        <p>BACK TO REGION SELECTION</p>
+                      </div>
                     </div>
                 </div>
 
@@ -143,7 +148,6 @@
         //    TODO show error for no activity
         this.$router.push({ name: 'TranscribeStart' })
       }
-      console.log(this.taskDropdown)
     },
     updated () {
 

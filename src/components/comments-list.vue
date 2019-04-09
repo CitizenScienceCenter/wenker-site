@@ -78,15 +78,11 @@
                 type: String,
                 default: undefined
             },
-            'currentSentence': {
-                type: Number,
-                default: 1
-            }
         },
         computed: mapState({
             user: state => state.c3s.user.currentUser,
             comments: state => state.c3s.comments.comments,
-            currentSentence: state => state.settings.transcriptionIndex
+            activeAnswerIndex: state => state.settings.activeAnswerIndex
         }),
         watch: {
             'id'(to, from) {
@@ -119,7 +115,8 @@
                     },
                     info: {
                         username: uname,
-                        sentence: this.currentSentence
+                        sentence: this.activeAnswerIndex
+
                     }
                 };
                 this.$store.dispatch('c3s/comments/createComment', c);
