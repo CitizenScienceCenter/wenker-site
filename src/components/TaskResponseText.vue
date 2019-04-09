@@ -20,8 +20,12 @@
 </template>
 
 <script>
+    import {mapState} from 'vuex'
     export default {
         name: "TaskResponseText",
+        computed: mapState({
+          activeAnswerIndex: state => state.settings.activeAnswerIndex
+        }),
         data() {
             return {
                 inputTxt: document.getElementById('qutxt')
@@ -30,9 +34,6 @@
         props: {
             activeAnswer: {
                 type: Object
-            },
-            activeAnswerIndex: {
-                type: Number
             },
             responses: {
                 type: Array

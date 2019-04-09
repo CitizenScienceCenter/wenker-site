@@ -5,7 +5,8 @@ const state = {
     error: null,
     errTimeout: 5000,
     theme: 'default',
-    language: 'de'
+    language: 'de',
+    activeAnswerIndex: 0,
 }
 
 const getters = {
@@ -22,6 +23,9 @@ const actions = {
     },
     setLanguage({state, commit, rootState}, language) {
         commit('SET_LANGUAGE', language)
+    },
+    setActiveAnswerIndex({state, commit, rootState }, index) {
+        commit('SET_INDEX', index)
     }
 
 }
@@ -44,6 +48,9 @@ const mutations = {
     },
     SET_LANGUAGE(state, language) {
         state.language = language
+    },
+    SET_INDEX(state, index) {
+      state.activeAnswerIndex = index
     }
 }
 
