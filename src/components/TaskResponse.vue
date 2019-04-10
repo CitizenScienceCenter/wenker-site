@@ -72,7 +72,7 @@
 
             <div class="col col-large-2 col-buttons">
                 <div class="response-buttons centered left-aligned-large">
-                    <button class="button button-primary" :disabled="activeAnswerIndex === answers.length - 1"
+                    <button class="button button-secondary" :disabled="activeAnswerIndex === answers.length - 1"
                             @click="updateActiveIndex(1)">{{ $t('button-next-sentence') }}
                     </button>
                     <!-- <button class="button button-secondary" :disabled="!activeAnswerIndex > 0" @click="updateActiveIndex(-1)">Vorheriger</button> -->
@@ -107,7 +107,7 @@
             showSpecial: {
                 type: Boolean,
                 default: false
-            }
+            },
         },
         watch: {
             activeAnswer(to, from) {
@@ -148,18 +148,28 @@
         },
         data() {
             return {
-                activeAnswerIndex: 0,
+            //    activeAnswerIndex: 0,
                 activeAnswer: {},
                 userSubmitted: false,
                 othersSubmitted: 0,
                 submissions: []
             }
         },
-        computed: mapState({
+      computed: {
+        activeAnswerIndex: {
+            get() {
+              return this.$store.state.settings.activeAnswerIndex;
+            },
+            set(value) {
+              this.$store.commit('settings/SET_INDEX', value);
+            }
+        },
+        ...mapState({
             specialChars: state => state.consts.specialChars,
             tasks: state => state.c3s.task.tasks,
             user: state => state.c3s.user.currentUser
         }),
+      },
         mounted() {
             setTimeout(() => {
                 const subQuery = {
@@ -185,6 +195,7 @@
                     }
                 })
             }, 200)
+          this.$store.commit('settings/SET_INDEX', 0);
         },
         components: {TaskResponseText, HelpPopup},
         methods: {
@@ -209,7 +220,7 @@
                                 } else {
                                     this.othersSubmitted += 1
                                 }
-                            }
+                            } 
                         }
                     }
                 }

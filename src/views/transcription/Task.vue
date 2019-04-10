@@ -16,7 +16,7 @@
 
         <section v-if="tasks.length">
             <task-question-image v-if="media.length > 0" :question="tasks[0].content.question"
-                                 :imgPath="media[0].path"></task-question-image>
+                                 :imgPath="media[0].path" :town="tasks[0].info['SchoolPlace']" :canton="tasks[0].info['SchoolState']"></task-question-image>
         </section>
 
         <app-content-section class="content-section-condensed">
@@ -41,9 +41,9 @@
 
                 <div class="content-subsection">
                     <div class="row">
-                        <div class="col">
+                        <div class="col" v-if='taskRange.length !== parseInt(taskDropdown)'>
 
-                            <div class="centered task-switch-bar margin-bottom" v-if='taskCount > 1'>
+                            <div class="centered task-switch-bar margin-bottom" >
                                 <div class="sheet-select">
                                     <div class="custom-select">
                                         <select class="task-select" v-model="taskDropdown">
@@ -61,10 +61,15 @@
                             </div>
 
                             <div class="centered">
-                                <button v-on:click="endTask" class="button button-secondary">Beenden</button>
+                                <button v-on:click="endTask" class="button button-secondary">Sitzung Beenden</button>
                             </div>
 
                         </div>
+                    </div>
+                    <div class="col" v-if='taskRange.length === parseInt(taskDropdown)'>
+                      <div class="centered task-switch-bar margin-bottom" >
+                        <p>BACK TO REGION SELECTION</p>
+                      </div>
                     </div>
                 </div>
 
@@ -108,16 +113,22 @@
       comments: state => state.c3s.task.comments,
       loading: state => state.c3s.settings.loading,
       taskRange: function() {
-        return [...Array(this.taskCount-1).keys()];
+        return [...Array(this.taskCount).keys()];
       }
     }),
     watch: {
       '$route.query.count' (to, from) {
-        this.taskDropdown = to;
-        taskUtils.loadTask(this, to, true, this.routes.start)
+        if (!this.taskID) {
+          this.taskDropdown = to;
+          taskUtils.loadTask(this, to, true, this.routes.start)
+        }
       },
       taskDropdown (to, from) {
+        console.log(to)
         taskUtils.loadTask(this, to, true, this.routes.start)
+      },
+      taskID (to, from) {
+        taskUtils.loadTaskID(this, to, true, this.routes.start)
       }
     },
     data () {
@@ -126,6 +137,7 @@
         nextTxt: 'Next',
         responses: [],
         taskCount: 1,
+        taskID: this.$route.query['id'],
         taskDropdown: this.$route.query['count'] || 1,
         submissions: [],
         routes: {
@@ -136,7 +148,9 @@
       }
     },
     mounted () {
-      if (this.activity && this.activity.id) {
+      if (this.taskID) {
+        taskUtils.loadTaskID(this, this.taskID, true, this.routes.start)
+      } else if (this.activity && this.activity.id) {
         taskUtils.loadTask(this, this.$route.query['count'], true, this.routes.start)
       } else {
         console.log('No activity set in the store!')

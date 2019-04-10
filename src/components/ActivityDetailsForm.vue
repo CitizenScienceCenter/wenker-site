@@ -1,20 +1,20 @@
 <i18n>
-    {
-    "de": {
-    "label-region": "Region Ihres Dialekts",
-    "error-region": "Ihre Region ist erforderlich",
-    "label-town": "Dorf Ihres Dialekts",
-    "label-age": "Ihr Alter",
-    "error-age": "Ihre Altersgruppe ist erforderlich"
-    },
-    "en": {
-    "label-region": "Region of your dialect",
-    "error-region": "Region is required",
-    "label-town": "Town of your dialect",
-    "label-age": "Your age",
-    "error-age": "Age is required"
-    }
-    }
+{
+"de": {
+"label-region": "Region Ihres Dialekts",
+"error-region": "Ihre Region ist erforderlich",
+"label-town": "Dorf Ihres Dialekts",
+"label-age": "Ihr Alter",
+"error-age": "Ihre Altersgruppe ist erforderlich"
+},
+"en": {
+"label-region": "Region of your dialect",
+"error-region": "Region is required",
+"label-town": "Town of your dialect",
+"label-age": "Your age",
+"error-age": "Age is required"
+}
+}
 </i18n>
 
 <template>
@@ -77,7 +77,8 @@
             </div>
             <p class="message error" v-if="errors.age">{{ $t('error-age') }}</p>
         </div>
-    </div>
+
+  </div>
 </template>
 
 <script>
@@ -121,11 +122,11 @@
             }
         },
         watch: {
-            regionObject(to,from) {
+            regionObject(to, from) {
 
-                if( Object.keys(to).length === 3 ) {
+                if (Object.keys(to).length === 3) {
                     this.details.canton = this.regionObject.canton;
-                    if( this.regionObject.type === 'town' ) {
+                    if (this.regionObject.type === 'town') {
                         this.details.town = this.regionObject.label
                     }
                 }
@@ -135,48 +136,21 @@
                 }
 
             },
+            'activity'(to, from) {
+                if (this.user && this.user.info) {
+                    this.checkTaskCount(to.id, this.activity.id);
+                }
+            },
             'user.info'(to, from) {
                 if (to.hasOwnProperty('ageRange')) this.errors.age = false;
                 if (to.hasOwnProperty('canton')) this.errors.canton = false;
             },
             'details.canton'(to, from) {
-
-
                 if (this.activity && this.activity.id) {
-
-                    const taskQuery = {
-                        "select": {
-                            "fields": [
-                                "*"
-                            ],
-                            "tables": [
-                                "tasks"
-                            ]
-                        },
-                        "where": {
-                            "activity_id": {
-                                "op": "e",
-                                "val": this.activity.id
-                            }
-                        },
-                    };
-                    if (this.details.town) {
-                        taskQuery['where']["info ->> 'SchoolState'"] = {'op': 'e', 'val': to, "join": "a"}
-                    }
-                    if (this.details.town) {
-                        taskQuery['where']["info ->> 'SchoolPlace'"] = {
-                            'op': 'e',
-                            'val': this.user.info.town,
-                            "join": "a"
-                        }
-                    }
-                    this.$store.dispatch('c3s/task/getTaskCount', taskQuery).then(c => {
-                        this.taskCount = c.body.length
-                    })
+                    this.checkTaskCount(this.activity.id, to);
                 }
                 this.updateUserInfo('canton', to)
                 this.updateUserInfo('town', undefined)
-                //this.getTowns(to)
             },
             'details.ageRange'(to, from) {
                 this.updateUserInfo('ageRange', to)
@@ -193,7 +167,7 @@
                 user: state => state.c3s.user.currentUser
             }),
             regionOptionTree() {
-                if( this.allRegions ) {
+                if (this.allRegions) {
                     return this.regions.concat(this.otherRegions);
                 }
                 else {
@@ -203,45 +177,10 @@
         },
         mounted() {
             if (this.user && this.user.info && this.user.info.ageRange) {
-                    this.details = this.user.info;
-
-                    console.log( this.details );
-
-                    // set returnObject on load
-                    /*
-                    let region = this.regions.find( function(region) {
-                        return region.value === this.details.canton;
-                    });
-                    console.log(region);
-                    */
-
-                     const taskQuery = {
-                        "select": {
-                            "fields": [
-                                "*"
-                            ],
-                            "tables": [
-                                "tasks"
-                            ]
-                        },
-                        "where": {
-                            "activity_id": {
-                                "op": "e",
-                                "val": this.activity.id
-                            }
-                        },
-                    };
-                    if (this.details.canton) {
-                        taskQuery['where']["info ->> 'SchoolState'"] = {'op': 'e', 'val': this.user.info.canton, "join": "a"}
-                    }
-                    if (this.details.town) {
-                        taskQuery['where']["info ->> 'SchoolPlace'"] = {'op': 'e', 'val': this.details.town, "join": "a"}
-                    }
-
-                    this.$store.dispatch('c3s/task/getTaskCount', taskQuery).then(c => {
-                        this.taskCount = c.body.length
-                        console.log(c)
-                    })
+                this.details = this.user.info;
+                if (this.activity && this.activity.id) {
+                    this.checkTaskCount(this.activity.id, this.user.info.canton);
+                }
             }
         },
         methods: {
@@ -251,6 +190,37 @@
                 updatedUser[key] = value;
                 this.$store.dispatch('c3s/user/updateUser', [this.user.id, {'info': updatedUser}]).then(u => {
                     console.log('User Details Updated')
+                })
+            },
+            checkTaskCount(activityID, canton) {
+                const taskQuery = {
+                    "select": {
+                        "fields": [
+                            "*"
+                        ],
+                        "tables": [
+                            "tasks"
+                        ]
+                    },
+                    "where": {
+                        "activity_id": {
+                            "op": "e",
+                            "val": activityID
+                        }
+                    },
+                };
+                if (this.details.canton) {
+                    taskQuery['where']["info ->> 'SchoolState'"] = {
+                        'op': 'e',
+                        'val': this.user.info.canton,
+                        "join": "a"
+                    }
+                }
+                if (this.details.town) {
+                    taskQuery['where']["info ->> 'SchoolPlace'"] = {'op': 'e', 'val': this.user.info.town, "join": "a"}
+                }
+                this.$store.dispatch('c3s/task/getTaskCount', taskQuery).then(c => {
+                    this.taskCount = c.body.length
                 })
             }
             /*,
@@ -274,6 +244,7 @@
             */
         }
     }
+
 </script>
 
 <style lang="scss">

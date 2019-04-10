@@ -1,13 +1,13 @@
 <i18n>
     {
         "de": {
-            "transcription-rules-button-show": "Transkribierungsregeln anzeigen",
-            "transcription-rules-button-hide": "Transkribierungsregeln verbergen",
-            "transcription-rule-1": "Ein vermuteter Wortlaut wird in eckigen Klammern [] geschrieben, z. B. [T]ue das mache...",
-            "transcription-rule-2": "Wenn ein Wort oder ein Buchstabe nicht entziffert werden kann, wird folgender Platzhalter eingefügt: [...]",
-            "transcription-rule-3": "Falls ein Wort nicht vollständig entziffert werden kann, kann folgender Platzhalter eingefügt werden: [unvollst.]",
-            "transcription-rule-4": "Grundsatz: Die Transkription soll möglichst nahe am Original sein!",
-            "transcription-rule-5": "Alle Sonderzeichen sollten transkribiert werden! (Falls nicht möglich, siehe FAQs)."
+            "transcription-rules-button-show": "Transkriptionregeln anzeigen",
+            "transcription-rules-button-hide": "Transkriptionregeln verbergen",
+            "transcription-rule-3": "Ein vermuteter Wortlaut wird in eckigen Klammern [] geschrieben, z. B. [T]ue das mache...",
+            "transcription-rule-4": "Wenn ein Wort oder ein Buchstabe nicht entziffert werden kann, wird folgender Platzhalter eingefügt: [...]",
+            "transcription-rule-5": "Falls ein Wort nicht vollständig entziffert werden kann, kann folgender Platzhalter eingefügt werden: [unvollst.]",
+            "transcription-rule-1": "Grundsatz: Die Transkription soll möglichst nahe am Original sein!",
+            "transcription-rule-2": "Alle Sonderzeichen sollten transkribiert werden! (Falls nicht möglich, siehe FAQs)."
         },
         "en": {
             "transcription-rules-button-show": "Show Transcription Rules",

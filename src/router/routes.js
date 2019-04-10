@@ -83,6 +83,16 @@ export const routes = [
                 }
             },
             {
+                path: "task/:id",
+                name: "TranscribeTaskID",
+                component: Transcription.Task,
+                meta: {
+                    requiresAuth: true,
+                    breadcrumb: "Transcribe Task",
+                    page: 'page-transcribe'
+                }
+            },
+            {
                 path: "complete",
                 name: "TranscribeComplete",
                 component: Transcription.Complete,
@@ -184,6 +194,12 @@ export const routes = [
         name: "UserProfile",
         component: User.Profile,
         meta: {requiresAuth: true, breadcrumb: 'View User', i18n: 'page-profile', nav: false}
+    },
+    {
+        path: "/profile/progress",
+        name: "UserProgress",
+        component: User.Sheets,
+        meta: {requiresAuth: true, breadcrumb: 'View Progress', page: 'page-sheets', nav: false}
     },
     {
         path: "/error",

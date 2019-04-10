@@ -77,11 +77,12 @@
             'id': {
                 type: String,
                 default: undefined
-            }
+            },
         },
         computed: mapState({
             user: state => state.c3s.user.currentUser,
-            comments: state => state.c3s.comments.comments
+            comments: state => state.c3s.comments.comments,
+            activeAnswerIndex: state => state.settings.activeAnswerIndex
         }),
         watch: {
             'id'(to, from) {
@@ -98,7 +99,7 @@
         mounted() {
             if (this.id) {
                 this.$store.dispatch('c3s/comments/getCommentsForID', [this.id, 'c3s/comments/SET_COMMENTS']).then(c => {
-                    // console.log(c)
+                    console.log(c)
                 })
             }
         },
@@ -113,7 +114,9 @@
                         text: this.reply
                     },
                     info: {
-                        username: uname
+                        username: uname,
+                        sentence: this.activeAnswerIndex
+
                     }
                 };
                 this.$store.dispatch('c3s/comments/createComment', c);
