@@ -52,16 +52,16 @@
                             <h3 class="subheading centered left-aligned-large">{{ $t('form-heading') }}</h3>
                             <!-- <div class="desc" v-if="project && project.description" v-html="project.description"></div> -->
 
-                            <activity-details-form ref="details" :activity="activity" :allRegions="false"
+                            <activity-details-form ref="details" :activity="activity" :allRegions="false" :townSelection="true"
                                                    :errors="errors" class="margin-bottom"></activity-details-form>
 
                             <div class="button-group centered left-aligned-large">
-                                <button class="button button-primary" v-on:click="startProject">{{ $t('button-start')
+                                <button class="button button-primary" v-on:click="startProject" tabindex="3">{{ $t('button-start')
                                     }}
                                 </button>
                                 <br>
                                 <button class="button button-secondary" :disabled="$refs.details && $refs.details.taskCount === 0"
-                                        v-on:click="startProjectRegion">{{
+                                        v-on:click="startProjectRegion" tabindex="4">{{
                                     $t('button-start-region') }}
                                 </button>
                             </div>

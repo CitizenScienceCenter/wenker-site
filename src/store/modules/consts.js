@@ -328,7 +328,6 @@ const state = {
         "Otterbach",
         "Mistelberg",
         "Reutenen",
-        "Wattenwil",
         "Häleschwand",
         "Oltigen",
         "Heimenhausen",

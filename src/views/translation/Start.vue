@@ -61,10 +61,10 @@
                             <!-- <div class="desc" v-if="project && project.description" v-html="project.description"></div> -->
 
 
-                            <activity-details-form :activity="activity" :allRegions="true" class="margin-bottom"></activity-details-form>
+                            <activity-details-form :activity="activity" :allRegions="true" :townSelection="false" class="margin-bottom"></activity-details-form>
 
                             <div class="centered button-group left-aligned-large">
-                                <button class="button button-primary" v-on:click="startProject">{{ $t('button-start') }}</button>
+                                <button class="button button-primary" v-on:click="startProject" tabindex="3">{{ $t('button-start') }}</button>
                             </div>
                         </div>
 
