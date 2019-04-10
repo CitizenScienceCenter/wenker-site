@@ -1,60 +1,23 @@
 <i18n>
 {
 "de": {
-"label-region": "Region Ihres Dialekts",
-"error-region": "Ihre Region ist erforderlich",
-"label-town": "Dorf Ihres Dialekts",
-"label-age": "Ihr Alter",
-"error-age": "Ihre Altersgruppe ist erforderlich"
+    "label-region-town": "Ihre Region oder Stadt",
+    "label-region-only": "Ihre Region",
+    "label-age": "Ihr Alter"
 },
 "en": {
-"label-region": "Region of your dialect",
-"error-region": "Region is required",
-"label-town": "Town of your dialect",
-"label-age": "Your age",
-"error-age": "Age is required"
+    "label-region-town": "Your Region or City",
+    "label-region-only": "Your Region",
+    "label-age": "Your Age"
 }
 }
 </i18n>
 
 <template>
     <div class="prereq">
-
-        <!--
-
-        <div v-bind:class="{'invalid': !details.canton}" class="form-field form-field-block">
-            <label>{{ $t('label-region') }}</label>
-            <div class="custom-select">
-                <select v-model="details.canton" name="canton" id="canton">
-                    <option :key="r.value" v-for="r in regions" :value="r.label">{{r.label}}</option>
-                    <template v-if="allRegions">
-                        <option disabled>--------------</option>
-                        <option :key="o.value" v-for="o in otherRegions" :value="o.value">{{o.label}}</option>
-                    </template>
-                </select>
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
-                   <path d="M127.3,192h257.3c17.8,0,26.7,21.5,14.1,34.1L270.1,354.8c-7.8,7.8-20.5,7.8-28.3,0L113.2,226.1 C100.6,213.5,109.5,192,127.3,192z"/>
-                </svg>
-            </div>
-            <p class="message error" v-if="errors.canton">{{ $t('error-region') }}</p>
-        </div>
-
-        <div v-if='towns.length && !allRegions' class="form-field form-field-block">
-            <label>{{ $t('label-town') }}</label>
-            <div class="custom-select">
-                <select v-model="details.town" name="canton" id="canton">
-                    <option :key="r" v-for="(k, r) in towns" :value="k">{{k}}</option>
-                </select>
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
-                   <path d="M127.3,192h257.3c17.8,0,26.7,21.5,14.1,34.1L270.1,354.8c-7.8,7.8-20.5,7.8-28.3,0L113.2,226.1 C100.6,213.5,109.5,192,127.3,192z"/>
-                </svg>
-            </div>
-        </div>
-
-        -->
-
         <div class="form-field form-field-block">
-            <label>Region oder Stadt</label>
+            <label v-if="townSelection">{{ $t('label-region-town') }}</label>
+            <label v-else>{{ $t('label-region-only') }}</label>
             <region-select
                     placeholder="Bitte wählen ..."
                     :regionOptionTree="regionOptionTree"
@@ -114,8 +77,7 @@
                 details: {
                     ageRange: undefined,
                     canton: undefined,
-                    town: undefined,
-                    region: undefined
+                    town: undefined
                 },
                 taskCount: 0,
                 regionObject: undefined
@@ -125,9 +87,14 @@
             regionObject(to, from) {
 
                 if (Object.keys(to).length === 3) {
+                    //console.log('set canton');
                     this.details.canton = this.regionObject.canton;
                     if (this.regionObject.type === 'town') {
+                        //console.log('set town');
                         this.details.town = this.regionObject.label
+                    }
+                    else {
+                        this.details.town = undefined;
                     }
                 }
                 else {
@@ -135,28 +102,53 @@
                     this.details.town = undefined;
                 }
 
+                // check task counts
+                if (this.activity && this.activity.id) {
+                    this.checkTaskCount(this.activity.id);
+                }
+
+                console.log('watch region object from form:');
+                console.log( this.details );
+
+                // update user info
+                this.updateUserInfo( [{'canton': this.details.canton},{'town':this.details.town}] );
+
             },
             'activity'(to, from) {
-                if (this.user && this.user.info) {
-                    this.checkTaskCount(to.id, this.activity.id);
+                if (this.user && this.user.info && this.activity) {
+                    this.checkTaskCount(to.id );
                 }
             },
+            /*
             'user.info'(to, from) {
+                console.log( 'user info change from:');
+                console.log( from );
+                console.log( 'to:' );
+                console.log( to );
                 if (to.hasOwnProperty('ageRange')) this.errors.age = false;
                 if (to.hasOwnProperty('canton')) this.errors.canton = false;
             },
             'details.canton'(to, from) {
+                console.log( 'details.canton change from:');
+                console.log( from );
+                console.log( 'to:' );
+                console.log( to );
                 if (this.activity && this.activity.id) {
-                    this.checkTaskCount(this.activity.id, to);
+                    this.checkTaskCount(this.activity.id);
                 }
                 this.updateUserInfo('canton', to)
-                this.updateUserInfo('town', undefined)
-            },
-            'details.ageRange'(to, from) {
-                this.updateUserInfo('ageRange', to)
             },
             'details.town'(to, from) {
+                console.log( 'details.town change from:');
+                console.log( from );
+                console.log( 'to:' );
+                console.log( to );
                 this.updateUserInfo('town', to)
+            },
+            */
+            'details.ageRange'(to, from) {
+                //console.log('ageRange change');
+                this.updateUserInfo([{'ageRange':to}])
             }
         },
         computed: {
@@ -176,23 +168,46 @@
             }
         },
         mounted() {
-            if (this.user && this.user.info && this.user.info.ageRange) {
+            if (this.user && this.user.info) {
                 this.details = this.user.info;
+
                 if (this.activity && this.activity.id) {
-                    this.checkTaskCount(this.activity.id, this.user.info.canton);
+
+                    this.checkTaskCount(this.activity.id);
+
+                    // set region select value
+
+                    if( this.details.town && this.details.canton ) {
+                        //console.log('town and canton available');
+                        this.regionObject = { 'label':this.details.town, 'type':'town', 'canton':this.details.canton };
+                    }
+                    else if ( this.details.canton ) {
+                        //console.log('only canton available');
+                        let self = this;
+                        let canton = this.regionOptionTree.find( function(canton){
+                            return canton.value === self.details.canton;
+                        });
+
+                        this.regionObject = { 'label':canton.label, 'type':'canton', 'canton':this.details.canton };
+                    }
+
                 }
             }
         },
         methods: {
-            updateUserInfo(key, value) {
-                // TODO deploy update to store (get user info and assign)
-                let updatedUser = Object.assign({}, this.user['info'])
-                updatedUser[key] = value;
+            updateUserInfo( keyValuePairs ) {
+                let updatedUser = Object.assign({}, this.user['info']);
+
+                for( let i = 0; i < keyValuePairs.length; i++ ) {
+                    let key = Object.keys(keyValuePairs[i] )[0];
+                    updatedUser[key] = keyValuePairs[i][key];
+                }
                 this.$store.dispatch('c3s/user/updateUser', [this.user.id, {'info': updatedUser}]).then(u => {
                     console.log('User Details Updated')
                 })
             },
-            checkTaskCount(activityID, canton) {
+            checkTaskCount(activityID) {
+
                 const taskQuery = {
                     "select": {
                         "fields": [
@@ -212,36 +227,17 @@
                 if (this.details.canton) {
                     taskQuery['where']["info ->> 'SchoolState'"] = {
                         'op': 'e',
-                        'val': this.user.info.canton,
+                        'val': this.details.canton,
                         "join": "a"
                     }
                 }
-                if (this.details.town) {
-                    taskQuery['where']["info ->> 'SchoolPlace'"] = {'op': 'e', 'val': this.user.info.town, "join": "a"}
+                if (this.details.town && this.townSelection) {
+                    taskQuery['where']["info ->> 'SchoolPlace'"] = {'op': 'e', 'val': this.details.town, "join": "a"}
                 }
                 this.$store.dispatch('c3s/task/getTaskCount', taskQuery).then(c => {
                     this.taskCount = c.body.length
                 })
             }
-            /*,
-            getTowns(canton) {
-                console.log(canton);
-                let cantonIndex = this.regions.findIndex((element) => {
-                    return element.label === canton
-                })
-                if (cantonIndex !== -1) {
-                    const townCopy = this.regions[cantonIndex]['towns'].slice().sort()
-                    if (townCopy.length > 0) {
-                        townCopy.unshift('Alles')
-                    }
-                    this.towns = townCopy
-                    this.details.town = 'Alles'
-                } else {
-                    this.towns = []
-                    this.details.town = undefined
-                }
-            }
-            */
         }
     }
 

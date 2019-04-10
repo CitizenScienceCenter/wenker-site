@@ -25,7 +25,7 @@
                             'focused' : focusedOptionIndex === option.startId
                         }"
                         class="region">
-                        {{ (option.startId) }} {{ option.label }}
+                        {{ option.label }}
                     </li>
 
                     <template v-if="townSelection">
@@ -36,7 +36,7 @@
                                 'focused' : focusedOptionIndex === index+option.startId+1
                             }"
                             class="town">
-                            {{ (index+option.startId+1) }} {{ town }}
+                            {{ town }}
                         </li>
                     </template>
                 </template>
@@ -44,29 +44,6 @@
             </ul>
         </div>
 
-        <!--
-        <div v-show="showResults && maxOptionIndex >= 0" ref="results" class="results">
-            <ul @click="clickOnResults">
-                <div v-for="filteredOptionContainer in filteredOptionTree">
-                    <li class="label" v-if="filteredOptionContainer.options.length > 0 && filteredOptionContainer.showLabel">
-                        {{ $t(filteredOptionContainer.label) }}
-                    </li>
-                    <li v-for="(option,index) in filteredOptionContainer.options"
-                        :ref="'option_'+(index+filteredOptionContainer.startId)"
-                        @click="optionClick( (index+filteredOptionContainer.startId) )"
-                        :class="{
-                            'focused' : focusedOptionIndex === index+filteredOptionContainer.startId
-                        }">
-                        {{ option.value }}
-                        <div class="aka" v-if="( filteredOptionContainer.foundInCommonName && filteredOptionContainer.foundInCommonName[index] ) || ( filteredOptionContainer.foundInSynonyms[index] && filteredOptionContainer.foundInSynonyms[index].length > 0 )">
-                            <span class="label">aka: </span>
-                            <span class="synonym" v-for="synonymIndex in filteredOptionContainer.foundInSynonyms[index]">{{ option.synonyms[synonymIndex] }}</span>
-                        </div>
-                    </li>
-                </div>
-            </ul>
-        </div>
-        -->
     </div>
 </template>
 
@@ -124,24 +101,31 @@
             },
             inputValue: function(to, from) {
 
-                if( Object.keys(this.returnObject).length === 3 ) {
-                    // valid return object already selected
-                    if( this.returnObject.label !== this.inputValue ) {
-                        console.log('reset return object');
-                        this.returnObject = {};
-                        this.$emit('input', this.returnObject );
-                    }
-                }
-
-
                 if( this.inputValue !== '' ) {
                     if( this.value ) {
-                        if( this.inputValue !== this.value.label ) {
-                            this.showResults = true;
+
+                        if( this.townSelection ) {
+                            if( this.inputValue !== this.value.label ) {
+                                this.showResults = true;
+                            }
+                            else {
+                                this.showResults = false;
+                            }
                         }
                         else {
-                            this.showResults = false;
+                            let self = this;
+                            let canton = this.regionOptionTree.find( function(option) {
+                                return option.value === self.value.canton;
+                            });
+
+                            if( this.inputValue !== canton.label ) {
+                                this.showResults = true;
+                            }
+                            else {
+                                this.showResults = false;
+                            }
                         }
+
                     }
                     else {
                         this.showResults = true;
@@ -153,13 +137,22 @@
 
                 this.$refs.results.scrollTop = 0;
 
-
+            },
+            value(to,from) {
+                if( !this.townSelection && this.value.type === 'town' ) {
+                    let self = this;
+                    let canton = this.regionOptionTree.find( function(option) {
+                        return option.value === self.value.canton;
+                    });
+                    this.inputValue = canton.label;
+                }
+                else {
+                    this.inputValue = to.label;
+                }
             }
         },
         computed: {
             filteredOptionTree: function() {
-
-                console.log('filtered Option tree genrerate');
 
                 if( this.regionOptionTree.length > 0 ) {
 

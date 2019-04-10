@@ -156,7 +156,6 @@ const state = {
       'lang': 'DE',
       'towns':[
         "Ruchenbühl",
-        "Wengi",
         "Schafhausen",
         "Burgdorf",
         "Wierezwil",

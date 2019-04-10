@@ -23,6 +23,7 @@ if( !store.state.settings.language ) {
 language = store.state.settings.language;
 
 export const i18n = new VueI18n({
+  silentTranslationWarn: true,
   locale: language,
   messages: {
     'de': {
