@@ -24,6 +24,7 @@ language = store.state.settings.language;
 
 export const i18n = new VueI18n({
   locale: language,
+  silentTranslationWarn: true,
   messages: {
     'de': {
       'page-homepage': {

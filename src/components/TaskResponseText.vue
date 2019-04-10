@@ -28,7 +28,21 @@
         }),
         data() {
             return {
-                inputTxt: document.getElementById('qutxt')
+                inputTxt: document.getElementById('qutxt'),
+                mappings: [
+                  '\u0304',
+                  '\u0331',
+                  '\u0303',
+                  '\u0330',
+                  '\u030A',
+                  '\u0325',
+                  '\u0306',
+                  '\u032F',
+                  '\u0307',
+                  '\u0323',
+                  '\u0327',
+                  '\u0328'
+                ]
             }
         },
         props: {
@@ -44,8 +58,16 @@
             }
         },
         methods: {
-            setChar(char) {
-                this.responses[this.activeAnswerIndex].text += char;
+            setChar(char, index) {
+               var txt = this.responses[this.activeAnswerIndex].text;
+               var lastChar = txt[txt.length-1];
+              // TODO check if letter is appropriate
+
+                var charName = this.mappings[char];
+              console.log(char);
+                console.log(charName);
+                this.responses[this.activeAnswerIndex].text += charName;
+
             }
         }
     }
