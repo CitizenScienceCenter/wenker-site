@@ -98,31 +98,14 @@
                 if (to.hasOwnProperty('ageRange')) this.errors.age = false;
                 if (to.hasOwnProperty('canton')) this.errors.canton = false;
             },
+	    'activity' (to, from) {
+		if (this.user && this.user.info) {
+		    this.checkTaskCount(to.id, this.activity.id);
+		}
+	    },
             'details.canton'(to, from) {
                 if (this.activity && this.activity.id) {
-                    const taskQuery = {
-                        "select": {
-                            "fields": [
-                                "*"
-                            ],
-                            "tables": [
-                                "tasks"
-                            ]
-                        },
-                        "where": {
-                            "activity_id": {
-                                "op": "e",
-                                "val": this.activity.id
-                            }
-                        },
-                    };
-                    taskQuery['where']["info ->> 'SchoolState'"] = {'op': 'e', 'val': to, "join": "a"}
-                    if (this.details.town) {
-                        taskQuery['where']["info ->> 'SchoolPlace'"] = {'op': 'e', 'val': this.user.info.town, "join": "a"}
-                    }
-                    this.$store.dispatch('c3s/task/getTaskCount', taskQuery).then(c => {
-                        this.taskCount = c.body.length
-                    })
+		    this.checkTaskCount(this.activity.id, to);
                 }
                 this.updateUserInfo('canton', to)
                 this.updateUserInfo('town', undefined)
@@ -141,35 +124,15 @@
             regions: state => state.consts.swissCantons,
             otherRegions: state => state.consts.otherRegions,
             ageRange: state => state.consts.ageRange,
-            user: state => state.c3s.user.currentUser
+            user: state => state.c3s.user.currentUser,
+	    activity: state => state.c3s.activity.activity
         }),
         mounted() {
             if (this.user && this.user.info && this.user.info.ageRange) {
                 this.details = this.user.info;
-                     const taskQuery = {
-                        "select": {
-                            "fields": [
-                                "*"
-                            ],
-                            "tables": [
-                                "tasks"
-                            ]
-                        },
-                        "where": {
-                            "activity_id": {
-                                "op": "e",
-                                "val": this.activity.id
-                            }
-                        },
-                    };
-                    taskQuery['where']["info ->> 'SchoolState'"] = {'op': 'e', 'val': this.user.info.canton, "join": "a"}
-                    if (this.details.town && this.details.town !== 'Alles') {
-                        taskQuery['where']["info ->> 'SchoolPlace'"] = {'op': 'e', 'val': this.details.town, "join": "a"}
-                    }
-                    this.$store.dispatch('c3s/task/getTaskCount', taskQuery).then(c => {
-                        this.taskCount = c.body.length
-                        console.log(c)
-                    })
+                if (this.activity && this.activity.id) {
+		    this.checkTaskCount(this.activity.id, this.user.info.canton);
+                }
             }
         },
         methods: {
@@ -198,7 +161,29 @@
                     this.details.town = undefined
                 }
 
-            }
+            },
+	   checkTaskCount(activityID, canton) {
+	     const taskQuery = {
+		"select": {
+		    "fields": [
+			"*"
+		    ],
+		    "tables": [
+			"tasks"
+		    ]
+		},
+		"where": {
+		    "activity_id": {
+			"op": "e",
+			"val": activityID
+		    }
+		},
+	    };
+	    taskQuery['where']["info ->> 'SchoolState'"] = {'op': 'e', 'val': canton, "join": "a"}
+	    this.$store.dispatch('c3s/task/getTaskCount', taskQuery).then(c => {
+		this.taskCount = c.body.length
+	    })
+	 }
         }
     }
 </script>

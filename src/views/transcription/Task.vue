@@ -118,11 +118,17 @@
     }),
     watch: {
       '$route.query.count' (to, from) {
-        this.taskDropdown = to;
-        taskUtils.loadTask(this, to, true, this.routes.start)
+        if (!this.taskID) {
+          this.taskDropdown = to;
+          taskUtils.loadTask(this, to, true, this.routes.start)
+        }
       },
       taskDropdown (to, from) {
+        console.log(to)
         taskUtils.loadTask(this, to, true, this.routes.start)
+      },
+      taskID (to, from) {
+        taskUtils.loadTaskID(this, to, true, this.routes.start)
       }
     },
     data () {
@@ -131,6 +137,7 @@
         nextTxt: 'Next',
         responses: [],
         taskCount: 1,
+        taskID: this.$route.query['id'],
         taskDropdown: this.$route.query['count'] || 1,
         submissions: [],
         routes: {
@@ -141,7 +148,9 @@
       }
     },
     mounted () {
-      if (this.activity && this.activity.id) {
+      if (this.taskID) {
+        taskUtils.loadTaskID(this, this.taskID, true, this.routes.start)
+      } else if (this.activity && this.activity.id) {
         taskUtils.loadTask(this, this.$route.query['count'], true, this.routes.start)
       } else {
         console.log('No activity set in the store!')
