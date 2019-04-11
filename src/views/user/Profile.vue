@@ -4,7 +4,7 @@
     "heading": "Dein Profil",
     "label-email": "Email",
     "label-api-key": "API Key",
-    "submission-heading": "Deine Statistik",
+    "submission-heading": "Transkribierte Bögen",
     "submission-transcription-prefix": "Du hast ",
     "submission-transcription-between": " Sätze auf ",
     "submission-transcription-suffix": " Bögen transkribiert.",
@@ -18,7 +18,7 @@
     "heading": "Your Profile",
     "label-email": "Email",
     "label-api-key": "API Key",
-    "submission-heading": "Your Stats",
+    "submission-heading": "Transcripbed Sheets",
     "submission-transcription-prefix": "You have transcribed ",
     "submission-transcription-between": " sentences from ",
     "submission-transcription-suffix": " sheets.",
@@ -59,23 +59,6 @@
                             </form>
                         </div>
 
-                        <div class="content-subsection" v-if="submissions.length">
-                            <h3 class="subheading">{{ $t('submission-heading') }}</h3>
-                            <ul>
-                                <li v-if="submissionStats[activities.transcribe] !== undefined">
-                                    {{ $t('submission-transcription-prefix')
-                                    }}{{submissionStats[activities.transcribe]['count']}}{{
-                                    $t('submission-transcription-suffix') }}
-                                </li>
-                                <li v-if="submissionStats && submissionStats[activities.translate] && submissionStats[activities.translate]['count']">
-                                    {{ $t('submission-translation-prefix')
-                                    }}{{submissionStats[activities.translate]['count']}}{{
-                                    $t('submission-translation-suffix') }}
-                                </li>
-                            </ul>
-                            <p class="lead">{{ $t('thanks') }}</p>
-                        </div>
-
                         <div class="content-subsection">
                             <div class="button-group">
                                 <router-link tag="button" to="/logout" class="button button-secondary">{{
@@ -85,6 +68,20 @@
                                     $t('button-reset') }}
                                 </router-link>
                             </div>
+                        </div>
+
+                        <div class="content-subsection" v-if="submissions.length">
+                            <h3 class="subheading">{{ $t('submission-heading') }}</h3>
+                            <ul>
+                                <li v-for="sub in submissions">
+                                  <div v-if="sub['activity_id'] === activities.transcribe">
+                                    <router-link tag="a" :to="{name:'TranscribeTask', query: { id: sub['task_id']}}">
+                                      {{sub['info']['SchoolPlace']}}, {{sub['info']['SchoolState']}}<!-- (ID: {{sub['task_id']}}) -->
+                                    </router-link>
+                                  </div>
+                                </li>
+                            </ul>
+                            <p class="lead">{{ $t('thanks') }}</p>
                         </div>
 
 
@@ -144,13 +141,17 @@
             'submissions.user_id',
             'submissions.content',
             'submissions.task_id',
+            'tasks.info',
             'activities.id as activity_id'
           ],
           'tables': [
             'submissions',
             'activities',
             'tasks'
-          ]
+          ],
+          'orderBy': {
+             'submissions.created_at': 'DESC'
+          }
         },
         'where': {
           'submissions.user_id': {
@@ -177,6 +178,7 @@
           this.submissions = s.body
           for (let index in this.submissions) {
             const sub = this.submissions[index]
+
             const name = sub['activity_id']
 
             if (name in this.submissionStats) {
@@ -212,5 +214,10 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="scss">
+
+    @import '@/styles/theme.scss';
+    @import '@/styles/shared/variables.scss';
+
+
 </style>

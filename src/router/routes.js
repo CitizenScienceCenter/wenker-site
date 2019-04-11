@@ -196,12 +196,6 @@ export const routes = [
         meta: {requiresAuth: true, breadcrumb: 'View User', i18n: 'page-profile', nav: false}
     },
     {
-        path: "/profile/progress",
-        name: "UserProgress",
-        component: User.Sheets,
-        meta: {requiresAuth: true, breadcrumb: 'View Progress', i18n: 'page-sheets', nav: false}
-    },
-    {
         path: "/error",
         name: "Error",
         component: Home.Error,
