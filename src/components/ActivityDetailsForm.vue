@@ -107,9 +107,6 @@
                     this.checkTaskCount(this.activity.id);
                 }
 
-                console.log('watch region object from form:');
-                console.log( this.details );
-
                 // update user info
                 this.updateUserInfo( [{'canton': this.details.canton},{'town':this.details.town}] );
 
@@ -187,6 +184,9 @@
                         let canton = this.regionOptionTree.find( function(canton){
                             return canton.value === self.details.canton;
                         });
+
+                        console.log( this.regionOptionTree );
+                        console.log( this.details.canton );
 
                         this.regionObject = { 'label':canton.label, 'type':'canton', 'canton':this.details.canton };
                     }

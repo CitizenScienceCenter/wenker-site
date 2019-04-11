@@ -136,7 +136,10 @@
             'submissions',
             'activities',
             'tasks'
-          ]
+          ],
+          'orderBy': {
+             'submissions.created_at': 'DESC'
+          }
         },
         'where': {
           'submissions.user_id': {

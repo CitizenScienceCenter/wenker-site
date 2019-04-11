@@ -199,7 +199,7 @@ export const routes = [
         path: "/profile/progress",
         name: "UserProgress",
         component: User.Sheets,
-        meta: {requiresAuth: true, breadcrumb: 'View Progress', page: 'page-sheets', nav: false}
+        meta: {requiresAuth: true, breadcrumb: 'View Progress', i18n: 'page-sheets', nav: false}
     },
     {
         path: "/error",
