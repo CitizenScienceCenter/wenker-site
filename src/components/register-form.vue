@@ -21,19 +21,19 @@
     <form @submit.prevent="register">
         <div class="form-field">
             <label for="email">{{ $t("label-email") }}</label>
-            <input v-model="email" type="email" name="email" id="email" autocomplete="email" :disabled="loading"/>
+            <input v-model="email" type="email" name="email" id="email" autocomplete="new-password" :disabled="loading"/>
             <span class="error" v-if="errors.empty">Du musst eine E-Mail angeben.</span>
         </div>
 
         <div class="form-field">
             <label for="password">{{ $t("label-password") }}</label>
-            <input v-model="password" type="password" id="password" name="password" autocomplete="password"
+            <input v-model="password" type="password" id="password" name="password" autocomplete="new-password"
                    :disabled="loading"/>
             <span class="error" v-if="errors.len">Muss mehr als 8 Zeichen lang sein.</span>
         </div>
         <div class="form-field">
             <label for="password">{{ $t("label-password-repeat") }}</label>
-            <input v-model="confPassword" type="password" id="password" name="password" autocomplete="password"
+            <input v-model="confPassword" type="password" id="password" name="password" autocomplete="new-password"
                    :disabled="loading"/>
             <span class="error" v-if="errors.match">Passwörter stimmen nicht überein</span>
         </div>
