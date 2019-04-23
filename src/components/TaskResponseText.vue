@@ -58,15 +58,17 @@
             }
         },
         methods: {
-            setChar(char, index) {
+            setChar(index, char) {
                var txt = this.responses[this.activeAnswerIndex].text;
-               var lastChar = txt[txt.length-1];
               // TODO check if letter is appropriate
-
+              if(char <= this.mappings.length) {
                 var charName = this.mappings[char];
-              console.log(char);
+                console.log(char);
                 console.log(charName);
                 this.responses[this.activeAnswerIndex].text += charName;
+              } else {
+                this.responses[this.activeAnswerIndex].text += char;
+              }
 
             }
         }

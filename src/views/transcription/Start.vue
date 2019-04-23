@@ -145,18 +145,18 @@
         },
         methods: {
             startProject() {
-                if (this.userCheck()) {
+//                if (this.userCheck()) {
                     this.$router.push({name: 'TranscribeTask', query: {'count': 1}})
-                }
+  //              }
             },
             startProjectRegion() {
-                if (this.userCheck()) {
+    //            if (this.userCheck()) {
                     const quObj = {'region': this.user.info.canton, 'count': 1}
                     if (this.user.info.town) {
                         quObj['town'] = this.user.info.town;
                     }
                     this.$router.push({name: 'TranscribeTask', query: quObj})
-                }
+      //          }
             },
             userCheck() {
                 if (this.user.hasOwnProperty('info') && this.user.info !== null) {
