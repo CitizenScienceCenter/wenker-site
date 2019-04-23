@@ -204,7 +204,7 @@
                                     startId = filteredTree[ filteredTree.length-1 ].startId + 1;
                                 }
                             }
-                            filteredTree.push( {'value': this.regionOptionTree[i].value, 'label': this.regionOptionTree[i].label, 'lang': this.regionOptionTree[i].lang, 'towns':towns, 'startId': startId } );
+                            filteredTree.push( {'value': this.regionOptionTree[i].label, 'label': this.regionOptionTree[i].label, 'lang': this.regionOptionTree[i].lang, 'towns':towns, 'startId': startId } );
 
                         }
 
@@ -241,7 +241,6 @@
         methods: {
             setResultSize() {
 
-                this.$refs.answer.scrollIntoViewIfNeeded();
 
                 let inputRect = this.$refs.input.getBoundingClientRect();
 

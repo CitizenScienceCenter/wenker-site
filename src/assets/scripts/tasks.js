@@ -89,7 +89,10 @@ export function loadTask (self, count, media, routeComplete) {
       ],
       'tables': [
         'tasks'
-      ]
+      ],
+      'orderBy': {
+        'random()': ''
+      }
     },
     'where': {
       'activity_id': {
@@ -126,7 +129,7 @@ export function loadTask (self, count, media, routeComplete) {
       if (media) {
         getMedia(self, task)
       }
-      self.$router.push({query: {count: count}})
+//      self.$router.push({query: {count: count}})
     } else {
       self.$router.push({ 'name': routeComplete })
     }
