@@ -68,7 +68,9 @@
                     </div>
                     <div class="col" v-if='taskRange.length === parseInt(taskDropdown)'>
                       <div class="centered task-switch-bar margin-bottom" >
-                        <p>BACK TO REGION SELECTION</p>
+                        <router-link to="/transcribe" tag="button" class="button button-primary">
+                          Zurück zur Regionsauswahl
+                        </router-link>
                       </div>
                     </div>
                 </div>
