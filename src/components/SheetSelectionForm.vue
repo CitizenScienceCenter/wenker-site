@@ -2,11 +2,13 @@
 {
 "de": {
     "label-region": "Region",
-    "label-town": "Stadt"
+    "label-town": "Stadt",
+    "label-please-select": "Bitte wählen ..."
 },
 "en": {
     "label-region": "Region",
-    "label-town": "Stadt"
+    "label-town": "Town",
+    "label-please-select": "Please select ..."
 }
 }
 </i18n>
@@ -15,10 +17,10 @@
     <div class="prereq">
 
         <div class="form-field form-field-block">
-            <label>Region</label>
+            <label>{{ $t('label-region') }}</label>
             <div class="custom-select">
                 <select :class="{placeholder:!details.canton}" v-model="details.canton">
-                    <option :value="undefined" disabled selected>Bitte wählen ...</option>
+                    <option :value="undefined" disabled selected>{{ $t('label-please-select') }}</option>
                     <option v-for="(region, index) in displayedRegions" :value="region.label" :key="'region_'+index">{{ region.label }}</option>
                 </select>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -28,10 +30,10 @@
         </div>
 
         <div class="form-field form-field-block" :class="{disabled: !displayedTowns || displayedTowns.length <= 0 }">
-            <label>Stadt</label>
+            <label>{{ $t('label-town') }}</label>
             <div class="custom-select">
                 <select :class="{placeholder:!details.town}" v-model="details.town">
-                    <option :value="undefined" disabled selected>Bitte wählen ...</option>
+                    <option :value="undefined" disabled selected>{{ $t('label-please-select') }}</option>
                     <option v-for="(town, index) in displayedTowns" :value="town" :key="'town_'+index">{{ town }}</option>
                 </select>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">

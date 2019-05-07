@@ -8,6 +8,8 @@
     "button-start": "Starten",
     "label-sheet": "Bogen",
     "label-sheets": "Bögen",
+    "label-all": "Alle",
+    "button-reset": "Zurücksetzen",
     "login-heading": "Sie haben sich schon registiert?",
     "login-text": "Falls Sie bereits an einer Unserer Projekte teilgenommen haben und dabei einen Login erstellt haben, melden Sie sich jetzt an.",
     "button-login": "Anmelden"
@@ -20,6 +22,8 @@
     "button-start": "Start",
     "label-sheet": "Sheet",
     "label-sheets": "Sheets",
+    "label-all": "All",
+    "button-reset": "Reset",
     "login-heading": "Already registered?",
     "login-text": "If you already contributed and created an account, login in now.",
     "button-login": "Login"
@@ -61,9 +65,9 @@
                                     <template v-if="$refs.details.taskCount > 1">{{ $t('button-start') }} ({{$refs.details.taskCount}} {{ $t('label-sheets') }})</template>
                                     <template v-else>{{ $t('button-start') }} ({{$refs.details.taskCount}} {{ $t('label-sheet') }})</template>
                                 </button>
-                                <button v-else class="button button-primary" v-on:click="startProject" tabindex="3">{{ $t('button-start') }} (Alle {{ $t('label-sheets') }})</button>
+                                <button v-else class="button button-primary" v-on:click="startProject" tabindex="3">{{ $t('button-start') }} ({{ $t('label-all') }} {{ $t('label-sheets') }})</button>
 
-                                <button v-if="$refs.details && $refs.details.taskCount > 0" class="button button-secondary" @click="resetSelection" tabindex="4">Zurücksetzen</button>
+                                <button v-if="$refs.details && $refs.details.taskCount > 0" class="button button-secondary" @click="resetSelection" tabindex="4">{{ $t('button-reset') }}</button>
                             </div>
                         </div>
                         <div class="content-subsection">

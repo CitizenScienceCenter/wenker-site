@@ -69,16 +69,16 @@
         },
         methods: {
             setChar(char, index) {
-               var txt = this.responses[this.activeAnswerIndex].text;
-               var lastChar = txt[txt.length-1];
-              // TODO check if letter is appropriate
+                var txt = this.responses[this.activeAnswerIndex].text;
+                var lastChar = txt[txt.length-1];
+                // TODO check if letter is appropriate
 
                 var charName = this.mappings[char];
-              if(charName !== undefined) {
+                if(charName !== undefined) {
                 this.responses[this.activeAnswerIndex].text += charName;
-              } else {
+                } else {
                 this.responses[this.activeAnswerIndex].text += index;
-              }
+                }
             }
         }
     }

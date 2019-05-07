@@ -61,7 +61,7 @@
                 </div>
                 <div class="special-characters centered">
                     <label>{{ $t('special-characters-label') }}</label>
-                    <button class="button button-secondary special-char-button" v-on:click="insertChar(index, char)" :key="char"
+                    <button class="button button-secondary" v-on:click="insertChar(index, char)" :key="char"
                             v-for="(char, index) in specialChars">{{char}}
                     </button>
                     <!--TODO handle insertion of character to cursor position in CURRENT text box-->
@@ -220,7 +220,7 @@
                                 } else {
                                     this.othersSubmitted += 1
                                 }
-                            } 
+                            }
                         }
                     }
                 }
@@ -313,13 +313,15 @@
             font-style: italic;
         }
         .button.button-secondary {
-            height: 1.4em;
-            // padding: $spacing-1;
-            font-size: 1.3em;
-            border-color: white;
+            padding: 0 $spacing-1;
+            font-size: $font-size-medium;
             font-family: sans-serif;
             text-transform: lowercase;
-            border: 1px $color-primary-shade-20 solid;
+            border: 1px transparent solid;
+
+            &:hover {
+                border: 1px $color-primary-shade-20 solid;
+            }
         }
     }
 
