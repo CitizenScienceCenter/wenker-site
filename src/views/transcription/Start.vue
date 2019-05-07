@@ -4,9 +4,10 @@
     "heading": "Transkribieren",
     "heading-activity-description": "Aufgabe",
     "activity-description": "Die 1700 handgeschriebenen Schweizer Wenker-Bögen müssen genau abgeschrieben werden, um sie digital aufzubereiten. Dafür brauchen wir deine Unterstützung!",
-    "form-heading": "Ihre Angaben",
+    "form-heading": "Bogenauswahl",
     "button-start": "Starten",
-    "button-start-region": "Starten mit Bögen aus der Region",
+    "label-sheet": "Bogen",
+    "label-sheets": "Bögen",
     "login-heading": "Sie haben sich schon registiert?",
     "login-text": "Falls Sie bereits an einer Unserer Projekte teilgenommen haben und dabei einen Login erstellt haben, melden Sie sich jetzt an.",
     "button-login": "Anmelden"
@@ -15,9 +16,10 @@
     "heading": "Transcription",
     "heading-activity-description": "Task",
     "activity-description": "The 1700 hand-written swiss Wenker sheets must be accurately copied in order to process them digitally. For that we need your support!",
-    "form-heading": "Your Info",
+    "form-heading": "Sheet Selection",
     "button-start": "Start",
-    "button-start-region": "Start with sheets from your region",
+    "label-sheet": "Sheet",
+    "label-sheets": "Sheets",
     "login-heading": "Already registered?",
     "login-text": "If you already contributed and created an account, login in now.",
     "button-login": "Login"
@@ -52,18 +54,16 @@
                             <h3 class="subheading centered left-aligned-large">{{ $t('form-heading') }}</h3>
                             <!-- <div class="desc" v-if="project && project.description" v-html="project.description"></div> -->
 
-                            <activity-details-form ref="details" :activity="activity" :allRegions="false" :townSelection="true"
-                                                   :errors="errors" class="margin-bottom"></activity-details-form>
+                            <sheet-selection-form ref="details" :activity="activity" :errors="errors" class="margin-bottom"></sheet-selection-form>
 
                             <div class="button-group centered left-aligned-large">
-                                <button class="button button-primary" v-on:click="startProject" tabindex="3">{{ $t('button-start')
-                                    }}
+                                <button v-if="$refs.details && $refs.details.taskCount > 0" class="button button-primary" @click="startProjectRegion" tabindex="3">
+                                    <template v-if="$refs.details.taskCount > 1">{{ $t('button-start') }} ({{$refs.details.taskCount}} {{ $t('label-sheets') }})</template>
+                                    <template v-else>{{ $t('button-start') }} ({{$refs.details.taskCount}} {{ $t('label-sheet') }})</template>
                                 </button>
-                                <br>
-                                <button class="button button-secondary" :disabled="$refs.details && $refs.details.taskCount === 0"
-                                        v-on:click="startProjectRegion" tabindex="4">{{
-                                    $t('button-start-region') }}
-                                </button>
+                                <button v-else class="button button-primary" v-on:click="startProject" tabindex="3">{{ $t('button-start') }} (Alle {{ $t('label-sheets') }})</button>
+
+                                <button v-if="$refs.details && $refs.details.taskCount > 0" class="button button-secondary" @click="resetSelection" tabindex="4">Zurücksetzen</button>
                             </div>
                         </div>
                         <div class="content-subsection">
@@ -92,10 +92,9 @@
 <script>
     import {mapState} from 'vuex'
     import CommentsList from '@/components/comments-list.vue'
-    import ActivityDetailsForm from '@/components/ActivityDetailsForm'
+    import SheetSelectionForm from '@/components/SheetSelectionForm'
     import ContentSection from '@/components/shared/ContentSection.vue'
     import Footer from '@/components/shared/Footer.vue'
-    import * as taskUtils from '@/assets/scripts/tasks'
 
 
     export default {
@@ -110,21 +109,18 @@
                 errors: {
                     canton: false,
                     age: false
-                },
-                taskCount: 0
+                }
             }
         },
         watch: {
-            tasks(to, from) {
-            },
-            '$route.params.id'(to, from) {
-            },
+            /*
             '$refs.details.taskCount'(to, from) {
                 this.taskCount = to;
             }
+            */
         },
         components: {
-            ActivityDetailsForm,
+            SheetSelectionForm,
             CommentsList,
             'app-content-section': ContentSection,
             'app-footer': Footer
@@ -134,6 +130,7 @@
             activity: state => state.c3s.activity.activity
         }),
         mounted() {
+
             this.$store.commit('c3s/activity/SET_ACTIVITY', null);
             this.$store
                 .dispatch("c3s/activity/getActivity", [
@@ -144,33 +141,19 @@
             })
         },
         methods: {
+            resetSelection() {
+                this.$refs.details.details.canton = undefined;
+                this.$refs.details.details.town = undefined;
+            },
             startProject() {
-//                if (this.userCheck()) {
-                    this.$router.push({name: 'TranscribeTask', query: {'count': 1}})
-  //              }
+                this.$router.push({name: 'TranscribeTask', query: {'count': 1}})
             },
             startProjectRegion() {
-    //            if (this.userCheck()) {
-                    const quObj = {'region': this.user.info.canton, 'count': 1}
-                    if (this.user.info.town) {
-                        quObj['town'] = this.user.info.town;
-                    }
-                    this.$router.push({name: 'TranscribeTask', query: quObj})
-      //          }
-            },
-            userCheck() {
-                if (this.user.hasOwnProperty('info') && this.user.info !== null) {
-                    if (!(this.user.info.hasOwnProperty('ageRange'))) {
-                        this.errors.age = true;
-                    }
-                    if (!(this.user.info.hasOwnProperty('canton'))) {
-                        this.errors.canton = true;
-                    }
-                } else {
-                    this.errors.age = true;
-                    this.errors.canton = true;
+                const quObj = {'region': this.$refs.details.details.canton, 'count': 1};
+                if (this.$refs.details.details.town) {
+                    quObj['town'] = this.$refs.details.details.town;
                 }
-                return !(this.errors.canton || this.errors.age);
+                this.$router.push({name: 'TranscribeTask', query: quObj});
             }
         }
     }

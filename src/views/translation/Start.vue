@@ -32,13 +32,6 @@
         <app-content-section class="content-section-condensed">
             <div class="content-wrapper">
 
-                <!--
-                <div class="row">
-                    <div class="col">
-                        <project-info :stats="stats" v-if="project" :project_name="project.name"></project-info>
-                    </div>
-                </div>
-                -->
 
                 <div class="row row-centered">
                     <div class="col">
@@ -61,10 +54,10 @@
                             <!-- <div class="desc" v-if="project && project.description" v-html="project.description"></div> -->
 
 
-                            <activity-details-form :activity="activity" :allRegions="true" :townSelection="false" class="margin-bottom"></activity-details-form>
+                            <user-details-form ref="details" :activity="activity" class="margin-bottom"></user-details-form>
 
                             <div class="centered button-group left-aligned-large">
-                                <button class="button button-primary" v-on:click="startProject" tabindex="3">{{ $t('button-start') }}</button>
+                                <button class="button button-primary" v-on:click="startProject" tabindex="3" :disabled="!$refs.details || !$refs.details.details.canton || !$refs.details.details.ageRange">{{ $t('button-start') }}</button>
                             </div>
                         </div>
 
@@ -95,7 +88,7 @@
 <script>
     import {mapState} from 'vuex'
     import CommentsList from '@/components/comments-list.vue'
-    import ActivityDetailsForm from '@/components/ActivityDetailsForm'
+    import UserDetailsForm from '@/components/UserDetailsForm'
     import ContentSection from '@/components/shared/ContentSection.vue'
     import Footer from '@/components/shared/Footer.vue'
     import * as taskUtils from '@/assets/scripts/tasks'
@@ -123,7 +116,7 @@
             }
         },
         components: {
-            ActivityDetailsForm,
+            UserDetailsForm,
             CommentsList,
             'app-content-section': ContentSection,
             'app-footer': Footer
