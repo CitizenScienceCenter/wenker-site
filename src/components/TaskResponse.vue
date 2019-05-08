@@ -1,8 +1,8 @@
 <i18n>
     {
     "de": {
-    "modify-characters-label": "Letztes Zeichen modifizieren",
-    "special-characters-label": "Sonderzeichen einfügen",
+    "modify-characters-label": "Letztes Zeichen modifizieren:",
+    "special-characters-label": "Sonderzeichen einfügen:",
     "sentence-count-prefix": "Nr. ",
     "placeholder-prefix": "Satz Nr. ",
     "button-next-sentence": "Nächster Satz",
@@ -11,8 +11,8 @@
     "info-done": "Du hast diesen Satz bereits transkribiert."
     },
     "en": {
-    "modify-characters-label": "Modify last character",
-    "special-characters-label": "Enter special characters",
+    "modify-characters-label": "Modify last character:",
+    "special-characters-label": "Enter special characters:",
     "sentence-count-prefix": "No. ",
     "placeholder-prefix": "Sentence No. ",
     "button-next-sentence": "Next Sentence",

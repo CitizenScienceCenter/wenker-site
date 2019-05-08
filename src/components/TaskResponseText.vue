@@ -14,7 +14,7 @@
     <div>
 
         <!-- <input type="text" :placeholder="activeAnswer.placeholder" v-model="responses[activeAnswerIndex].text" name="qutxt" id="qutxt" /> -->
-        <input type="text" @input="change" :placeholder="placeholder" v-model="responses[activeAnswerIndex].text" name="qutxt" id="qutxt" autocomplete="new-password" />
+        <input type="text" @input="change" :placeholder="placeholder" v-model="responses[activeAnswerIndex].text" name="qutxt" id="qutxt" autocomplete="off" />
 
     </div>
 </template>
