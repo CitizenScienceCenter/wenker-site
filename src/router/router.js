@@ -23,19 +23,28 @@ router.beforeEach((to, from, next) => {
 
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (store.state.c3s.user.currentUser) {
+
       store.dispatch('c3s/user/validate').then(v => {
-        if (v) {
-          next()
+        if (v instanceof  Error) {
+            store.dispatch('c3s/user/generateAnon').then(u => {
+                next()
+            })
+        } else if(v) {
+            next()
         } else {
-          // TODO error here with user not validated
             this.push({name: 'Login'})
         }
+      }).catch(() => {
+          store.dispatch('c3s/user/generateAnon').then(u => {
+              next()
+          })
       })
     } else {
-      // setTimeout(() => {
         store.dispatch('c3s/user/generateAnon').then(u => {
-          next()
+            next()
         })
+      // setTimeout(() => {
+
       // }, 1000)
 
     }

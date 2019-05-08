@@ -105,6 +105,7 @@
             },
         },
         mounted() {
+            console.log( this.user );
             if( this.user.info.canton ) {
               this.details.canton = this.user.info.canton;
             }
@@ -120,8 +121,9 @@
                     let key = Object.keys(keyValuePairs[i] )[0];
                     updatedUser[key] = keyValuePairs[i][key];
                 }
+
                 this.$store.dispatch('c3s/user/updateUser', [this.user.id, {'info': updatedUser}]).then(u => {
-                    console.log('User Details Updated')
+                    console.log('User Details Updated');
                 })
             }
         }
