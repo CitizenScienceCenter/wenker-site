@@ -369,10 +369,16 @@
 
             &:hover {
                 border: 1px $color-primary-shade-20 solid;
+                transform: scale(1.5);
             }
 
             &.large {
                 font-size: $font-size-medium;
+            }
+
+            margin-right: $spacing-1;
+            &:last-child {
+                margin-right: 0;
             }
         }
 

@@ -14,7 +14,7 @@
     <div>
 
         <!-- <input type="text" :placeholder="activeAnswer.placeholder" v-model="responses[activeAnswerIndex].text" name="qutxt" id="qutxt" /> -->
-        <input type="text" @input="change" :placeholder="placeholder" v-model="responses[activeAnswerIndex].text" name="qutxt" id="qutxt" autocomplete="off" />
+        <input type="text" ref="inputfield" @input="change" :placeholder="placeholder" v-model="responses[activeAnswerIndex].text" name="qutxt" id="qutxt" autocomplete="off" />
 
     </div>
 </template>
@@ -71,6 +71,9 @@
                 default: "Placeholder"
             }
         },
+        mounted() {
+          this.$refs.inputfield.focus();
+        },
         watch: {
             activeAnswerIndex() {
                 this.$emit('change', this.responses[this.activeAnswerIndex].text);
@@ -103,6 +106,7 @@
             addChar( char ) {
                 this.responses[this.activeAnswerIndex].text += char;
                 this.$emit('change', this.responses[this.activeAnswerIndex].text);
+                this.$refs.inputfield.focus();
             }
         }
     }
