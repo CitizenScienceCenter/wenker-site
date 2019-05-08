@@ -77,6 +77,7 @@
         watch: {
             activeAnswerIndex() {
                 this.$emit('change', this.responses[this.activeAnswerIndex].text);
+                this.$refs.inputfield.focus();
             }
         },
         methods: {
