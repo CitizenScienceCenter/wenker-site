@@ -73,13 +73,6 @@
             }
         },
         watch: {
-            /*
-            activity(to, from) {
-                if (this.user && this.user.info && this.activity) {
-                    this.checkTaskCount(to.id );
-                }
-            }
-            */
             'details.canton'() {
                 if( this.details.canton ) {
                     this.checkTaskCount( this.activity.id );
@@ -103,9 +96,20 @@
             }),
             displayedRegions() {
                 let self = this;
-                let regions = this.regions.filter(function(element) {
+                let regions = this.regions.filter( function(element) {
                     return element.towns.length > 0;
                 });
+
+                regions.sort( function(a, b) {
+                    if ( a.label < b.label ){
+                        return -1;
+                    }
+                    if ( a.label > b.label ){
+                        return 1;
+                    }
+                    return 0;
+                });
+
                 return regions;
             },
             displayedTowns() {
@@ -114,7 +118,11 @@
                     let selectedRegion = this.regions.find(function(element) {
                         return element.label === self.details.canton;
                     });
-                    return selectedRegion.towns;
+
+                    let towns = [ ...selectedRegion.towns ];
+                    towns.sort();
+
+                    return towns;
                 }
                 else {
                     return undefined;

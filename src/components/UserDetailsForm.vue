@@ -21,7 +21,7 @@
             <div class="custom-select">
                 <select :class="{placeholder:!details.canton}" v-model="details.canton">
                     <option :value="undefined" disabled selected>Bitte wählen ...</option>
-                    <option v-for="(region, index) in regions" :value="region.label" :key="'region_'+index">{{ region.label }}</option>
+                    <option v-for="(region, index) in displayedRegions" :value="region.label" :key="'region_'+index">{{ region.label }}</option>
                 </select>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                     <path d="M127.3,192h257.3c17.8,0,26.7,21.5,14.1,34.1L270.1,354.8c-7.8,7.8-20.5,7.8-28.3,0L113.2,226.1 C100.6,213.5,109.5,192,127.3,192z"/>
@@ -88,7 +88,21 @@
                 otherRegions: state => state.consts.otherRegions,
                 ageRange: state => state.consts.ageRange,
                 user: state => state.c3s.user.currentUser
-            })
+            }),
+            displayedRegions() {
+                let regions = [ ...this.regions ];
+                regions.sort( function(a, b) {
+                    if ( a.label < b.label ){
+                        return -1;
+                    }
+                    if ( a.label > b.label ){
+                        return 1;
+                    }
+                    return 0;
+                });
+
+                return regions;
+            },
         },
         mounted() {
             if( this.user.info.canton ) {
