@@ -366,10 +366,12 @@
             font-family: sans-serif;
             text-transform: lowercase;
             border: 1px transparent solid;
+            height: 40px;
 
             &:hover {
                 border: 1px $color-primary-shade-20 solid;
-                transform: scale(1.5);
+                transform: scale(2);
+                background-color: white;
             }
 
             &.large {
