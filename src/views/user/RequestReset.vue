@@ -67,8 +67,10 @@ export default {
   },
   methods: {
     request() {
-      this.$store.dispatch('user/requestReset', this.email).then(res => {
-        console.log(res)
+        console.log('req reset');
+      this.$store.dispatch('c3s/user/requestReset', this.email).then(res => {
+          console.log('response:');
+        console.log(res);
         if (res) {
           this.success = true
         }
