@@ -62,8 +62,8 @@
                         </div>
 
                         <div class="content-subsection">
-                            <h3 class="subheading centered left-aligned-large">{{ $t('login-heading') }}</h3>
-                            <p>{{ $t('login-text') }}</p>
+                            <h3 class="subheading centered left-aligned-large reduced-bottom-margin">{{ $t('login-heading') }}</h3>
+                            <p class="reduced-bottom-margin">{{ $t('login-text') }}</p>
                             <div class="centered button-group left-aligned-large">
                                 <router-link to="/register" tag="button" class="button button-secondary">{{
                                     $t('button-login') }}
