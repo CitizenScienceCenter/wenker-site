@@ -1,6 +1,7 @@
 <i18n>
     {
     "de": {
+    "modify-characters-label": "Letztes Zeichen modifizieren",
     "special-characters-label": "Sonderzeichen einfügen",
     "sentence-count-prefix": "Nr. ",
     "placeholder-prefix": "Satz Nr. ",
@@ -10,6 +11,7 @@
     "info-done": "Du hast diesen Satz bereits transkribiert."
     },
     "en": {
+    "modify-characters-label": "Modify last character",
     "special-characters-label": "Enter special characters",
     "sentence-count-prefix": "No. ",
     "placeholder-prefix": "Sentence No. ",
@@ -61,7 +63,7 @@
 
                 </div>
                 <div class="special-characters centered" :class="{disabled: !Boolean( inputString.length ) }">
-                    <label>Zeichen modifizieren</label>
+                    <label>{{ $t('modify-characters-label') }}</label>
                     <button class="button button-secondary large" v-on:click="addChar(char)" :key="char"
                             v-for="(char, index) in specialCombinationChars">&nbsp;{{char}}
                     </button>
