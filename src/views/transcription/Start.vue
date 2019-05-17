@@ -4,7 +4,7 @@
     "heading": "Transkribieren",
     "heading-activity-description": "Aufgabe",
     "activity-description": "Die 1700 handgeschriebenen Schweizer Wenker-Bögen müssen genau abgeschrieben werden, um sie digital aufzubereiten. Dafür brauchen wir deine Unterstützung!",
-    "form-heading": "Bogenauswahl",
+    "form-heading": "Wählen Sie einen Bogen aus",
     "button-start": "Starten",
     "label-sheet": "Bogen",
     "label-sheets": "Bögen",
@@ -68,6 +68,8 @@
                                 <button v-else class="button button-primary" v-on:click="startProject" tabindex="3">{{ $t('button-start') }} ({{ $t('label-all') }} {{ $t('label-sheets') }})</button>
 
                                 <button v-if="$refs.details && $refs.details.taskCount > 0" class="button button-secondary" @click="resetSelection" tabindex="4">{{ $t('button-reset') }}</button>
+                                <br>
+                                <button v-if="$refs.details && $refs.details.taskCount > 0" class="button button-secondary" @click="resetSelection" tabindex="4">All Bogen</button>
                             </div>
                         </div>
                         <div class="content-subsection">
