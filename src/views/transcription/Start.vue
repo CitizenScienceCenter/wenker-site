@@ -69,14 +69,14 @@
 
                                 <button v-if="$refs.details && $refs.details.taskCount > 0" class="button button-secondary" @click="resetSelection" tabindex="4">{{ $t('button-reset') }}</button>
                                 <br>
-                                <button v-if="$refs.details && $refs.details.taskCount > 0" class="button button-secondary" @click="resetSelection" tabindex="4">All Bogen</button>
+                                <button class="button button-primary" v-on:click="startProject" tabindex="3">{{ $t('button-start') }} ({{ $t('label-all') }} {{ $t('label-sheets') }})</button>
                             </div>
                         </div>
                         <div class="content-subsection">
                             <h3 class="subheading centered left-aligned-large reduced-bottom-margin">{{ $t('login-heading') }}</h3>
                             <p class="reduced-bottom-margin">{{ $t('login-text') }}</p>
                             <div class="button-group centered left-aligned-large">
-                                <router-link to="/register" tag="button" class="button button-secondary">{{
+                                <router-link to="/login" tag="button" class="button button-secondary">{{
                                     $t('button-login') }}
                                 </router-link>
                             </div>

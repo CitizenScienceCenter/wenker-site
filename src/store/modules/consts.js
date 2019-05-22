@@ -100,7 +100,7 @@ const state = {
     },
     {
       'value': 'AR',
-      'label': 'Appenzell Außerrhoden',
+      'label': 'Appenzell Ausserrhoden',
       'lang': 'DE',
       'towns':[
         "Zelg",

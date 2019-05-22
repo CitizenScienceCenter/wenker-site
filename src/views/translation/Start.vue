@@ -65,7 +65,7 @@
                             <h3 class="subheading centered left-aligned-large reduced-bottom-margin">{{ $t('login-heading') }}</h3>
                             <p class="reduced-bottom-margin">{{ $t('login-text') }}</p>
                             <div class="centered button-group left-aligned-large">
-                                <router-link to="/register" tag="button" class="button button-secondary">{{
+                                <router-link to="/login" tag="button" class="button button-secondary">{{
                                     $t('button-login') }}
                                 </router-link>
                             </div>
