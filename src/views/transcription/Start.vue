@@ -65,7 +65,7 @@
                                     <template v-if="$refs.details.taskCount > 1">{{ $t('button-start') }} ({{$refs.details.taskCount}} {{ $t('label-sheets') }})</template>
                                     <template v-else>{{ $t('button-start') }} ({{$refs.details.taskCount}} {{ $t('label-sheet') }})</template>
                                 </button>
-                                <button v-else class="button button-primary" v-on:click="startProject" tabindex="3">{{ $t('button-start') }} ({{ $t('label-all') }} {{ $t('label-sheets') }})</button>
+<!--                                <button v-else class="button button-primary" v-on:click="startProject" tabindex="3">{{ $t('button-start') }} ({{ $t('label-all') }} {{ $t('label-sheets') }})</button>-->
 
                                 <button v-if="$refs.details && $refs.details.taskCount > 0" class="button button-secondary" @click="resetSelection" tabindex="4">{{ $t('button-reset') }}</button>
                                 <br>
