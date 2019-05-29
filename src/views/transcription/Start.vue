@@ -111,6 +111,7 @@
                 project: {},
                 stats: {},
                 id: "e4b5ebc5-47a2-430b-84a9-a03b1d4dda34",
+                count: 0,
                 comments: [],
                 errors: {
                     canton: false,
@@ -119,18 +120,18 @@
             }
         },
         watch: {
-
-            '$refs.details.details.canton'(to, from) {
-                // this.$refs.details.checkTaskCount(this.id).then(t => {
-                //     this.taskCount = 3;
-                // });
-            },
-            '$refs.details.taskCount'(to, from) {
-                console.log(to);
-                // this.$refs.details.checkTaskCount(this.id).then(t => {
-                //     this.taskCount = 3;
-                // });
-            },
+            // REFS ARE NOT REACTIVE SO THEY CANNOT BE WATCHED IN THIS WAY
+            // '$refs.details.details.canton'(to, from) {
+            //     // this.$refs.details.checkTaskCount(this.id).then(t => {
+            //     //     this.taskCount = 3;
+            //     // });
+            // },
+            // '$refs.details.taskCount'(to, from) {
+            //     console.log(to);
+            //     // this.$refs.details.checkTaskCount(this.id).then(t => {
+            //     //     this.taskCount = 3;
+            //     // });
+            // },
 
 
         },
@@ -147,6 +148,14 @@
         mounted() {
 
             this.$store.commit('c3s/activity/SET_ACTIVITY', null);
+            this.$nextTick(() => {
+                this.$watch(() => {
+                    return '$refs.details'
+                }, (val)=> {
+                    this.count = val;
+                });
+            });
+
             this.$store
                 .dispatch("c3s/activity/getActivity", [
                     this.id,
