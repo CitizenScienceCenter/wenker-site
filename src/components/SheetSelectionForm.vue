@@ -67,7 +67,7 @@
             return {
                 details: {
                     canton: undefined,
-                    town: undefined
+                    town: undefined,
                 },
                 taskCount: 0
             }
@@ -76,9 +76,9 @@
             'details.canton'() {
                 if( this.details.canton ) {
                     this.$store.dispatch('settings/setCanton', this.details.canton);
-                    if(!this.details.town) {
+                    // if(!this.details.town) {
                         this.checkTaskCount( this.activity );
-                    }
+                    // }
                 }
                 else {
                     this.taskCount = 0;
@@ -188,7 +188,9 @@
 
                 let self = this;
                 this.$store.dispatch('c3s/task/getTaskCount', taskQuery).then(c => {
-                    self.taskCount = c.body;
+                    // console.log(this.details)
+                    this.taskCount = c.body;
+
                 })
             }
         }

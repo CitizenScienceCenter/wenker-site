@@ -119,11 +119,20 @@
             }
         },
         watch: {
-            /*
+
+            '$refs.details.details.canton'(to, from) {
+                // this.$refs.details.checkTaskCount(this.id).then(t => {
+                //     this.taskCount = 3;
+                // });
+            },
             '$refs.details.taskCount'(to, from) {
-                this.taskCount = to;
-            }
-            */
+                console.log(to);
+                // this.$refs.details.checkTaskCount(this.id).then(t => {
+                //     this.taskCount = 3;
+                // });
+            },
+
+
         },
         components: {
             SheetSelectionForm,
@@ -143,11 +152,13 @@
                     this.id,
                     false
                 ]).then(a => {
+
                 // console.log(a)
             })
         },
         methods: {
             resetSelection() {
+                console.log(this.$refs.details.taskCount)
                 this.$refs.details.details.canton = undefined;
                 this.$refs.details.details.town = undefined;
             },
