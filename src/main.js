@@ -21,13 +21,15 @@ Vue.use(VueRouter)
 Vue.use(VueScrollTo, {
   offset: -32
 })
-Vue.use(Croppa)
-Vue.use(Vuex)
-Vue.use(Croppa)
-
-
 Vue.use(Croppa);
+Vue.use(Vuex);
 
+// invalidate local storage (use env var maybe?)
+const v = '0.1.1';
+const ls = JSON.parse(window.localStorage.getItem('vuex')).settings.version;
+if (ls === undefined || ls !== v) {
+    window.localStorage.removeItem('vuex')
+}
 store.watch(
     (state) => state.c3s && state.c3s.client,
     (value) => {

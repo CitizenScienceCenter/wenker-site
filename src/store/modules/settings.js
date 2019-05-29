@@ -10,7 +10,8 @@ const state = {
     transcription: {
         'canton': undefined,
         'town': undefined
-    }
+    },
+    version: '0.1.1'
 }
 
 const getters = {

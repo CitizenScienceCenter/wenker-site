@@ -21,6 +21,7 @@ export default {
     window.setTimeout(function() {
       app.classList.add("show");
     }, 1);
+
   }
 }
 

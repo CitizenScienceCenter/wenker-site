@@ -145,7 +145,6 @@
             }
         },
         mounted() {
-            console.log( this.user );
             if( this.user.info.canton ) {
               this.details.canton = this.user.info.canton;
             }
