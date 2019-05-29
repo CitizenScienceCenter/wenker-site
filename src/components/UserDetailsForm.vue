@@ -3,12 +3,18 @@
 "de": {
     "label-region-town": "Region oder Stadt",
     "label-region-only": "Region",
-    "label-age": "Ihr Alter"
+    "label-age": "Ihr Alter",
+    "label-region": "Region",
+    "label-town": "Stadt",
+    "label-please-select": "Bitte wählen ..."
 },
 "en": {
     "label-region-town": "Region or City",
     "label-region-only": "Region",
-    "label-age": "Your Age"
+    "label-age": "Your Age",
+    "label-region": "Region",
+    "label-town": "Town",
+    "label-please-select": "Please select ..."
 }
 }
 </i18n>
@@ -26,6 +32,19 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                     <path d="M127.3,192h257.3c17.8,0,26.7,21.5,14.1,34.1L270.1,354.8c-7.8,7.8-20.5,7.8-28.3,0L113.2,226.1 C100.6,213.5,109.5,192,127.3,192z"/>
                 </svg>
+            </div>
+            <br>
+            <div class="form-field form-field-block" :class="{disabled: !displayedTowns || displayedTowns.length <= 0 }">
+                <label>{{ $t('label-town') }}</label>
+                <div class="custom-select">
+                    <select :class="{placeholder:!details.town}" v-model="details.town">
+                        <option :value="undefined" disabled selected>{{ $t('label-please-select') }}</option>
+                        <option v-for="(town, index) in displayedTowns" :value="town" :key="'town_'+index">{{ town }}</option>
+                    </select>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <path d="M127.3,192h257.3c17.8,0,26.7,21.5,14.1,34.1L270.1,354.8c-7.8,7.8-20.5,7.8-28.3,0L113.2,226.1 C100.6,213.5,109.5,192,127.3,192z"/>
+                    </svg>
+                </div>
             </div>
         </div>
 
@@ -68,7 +87,8 @@
             return {
                 details: {
                     ageRange: undefined,
-                    canton: undefined
+                    canton: undefined,
+                    town: undefined
                 }
             }
         },
@@ -80,6 +100,9 @@
             'details.ageRange'(to, from) {
                 //console.log('ageRange change');
                 this.updateUserInfo( [{'ageRange':to}] );
+            },
+            'details.town'(to, from) {
+                this.updateUserInfo( [{'town':to}] );
             }
         },
         computed: {
@@ -87,7 +110,8 @@
                 regions: state => state.consts.swissCantons,
                 otherRegions: state => state.consts.otherRegions,
                 ageRange: state => state.consts.ageRange,
-                user: state => state.c3s.user.currentUser
+                user: state => state.c3s.user.currentUser,
+
             }),
             displayedRegions() {
                 let regions = [ ...this.regions ];
@@ -103,6 +127,22 @@
 
                 return regions;
             },
+            displayedTowns() {
+                if( this.details.canton ) {
+                    let self = this;
+                    let selectedRegion = this.regions.find(function(element) {
+                        return element.label === self.details.canton;
+                    });
+
+                    let towns = [ ...selectedRegion.towns ];
+                    towns.sort();
+
+                    return towns;
+                }
+                else {
+                    return undefined;
+                }
+            }
         },
         mounted() {
             console.log( this.user );
@@ -111,6 +151,9 @@
             }
             if( this.user.info.ageRange ) {
                 this.details.ageRange = this.user.info.ageRange;
+            }
+            if( this.user.info.town) {
+                this.details.town = this.user.info.town;
             }
         },
         methods: {

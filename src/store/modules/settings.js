@@ -7,6 +7,10 @@ const state = {
     theme: 'default',
     language: 'de',
     activeAnswerIndex: 0,
+    transcription: {
+        'canton': undefined,
+        'town': undefined
+    }
 }
 
 const getters = {
@@ -26,8 +30,13 @@ const actions = {
     },
     setActiveAnswerIndex({state, commit, rootState }, index) {
         commit('SET_INDEX', index)
-    }
-
+    },
+    setCanton({state, commit, rootState }, canton) {
+        commit('SET_CANTON', canton)
+    },
+    setTown({state, commit, rootState }, town) {
+        commit('SET_TOWN', town)
+    },
 }
 
 const mutations = {
@@ -51,7 +60,13 @@ const mutations = {
     },
     SET_INDEX(state, index) {
       state.activeAnswerIndex = index
-    }
+    },
+    SET_CANTON(state, canton) {
+        state.transcription.canton = canton
+    },
+    SET_TOWN(state, town) {
+        state.transcription.town = town
+    },
 }
 
 export default {

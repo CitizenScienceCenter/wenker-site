@@ -190,6 +190,7 @@
         .custom-select {
 
             select {
+
                 font-size: $font-size-small;
                 padding-left: $spacing-2;
                 border: 1px solid $color-primary-tint-50;

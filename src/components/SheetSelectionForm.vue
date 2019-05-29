@@ -54,7 +54,7 @@
         },
         props: {
             activity: {
-                type: Object
+                type: String
             },
             errors: {
                 type: Object,
@@ -75,7 +75,10 @@
         watch: {
             'details.canton'() {
                 if( this.details.canton ) {
-                    this.checkTaskCount( this.activity.id );
+                    this.$store.dispatch('settings/setCanton', this.details.canton);
+                    if(!this.details.town) {
+                        this.checkTaskCount( this.activity );
+                    }
                 }
                 else {
                     this.taskCount = 0;
@@ -83,7 +86,9 @@
             },
             'details.town'() {
                 if( this.details.town ) {
-                    this.checkTaskCount( this.activity.id );
+                    // this.checkTaskCount( this.activity );
+                    this.$store.dispatch('settings/setTown', this.details.town);
+                    this.checkTaskCount( this.activity );
                 }
             }
         },
@@ -92,7 +97,8 @@
                 regions: state => state.consts.swissCantons,
                 otherRegions: state => state.consts.otherRegions,
                 ageRange: state => state.consts.ageRange,
-                user: state => state.c3s.user.currentUser
+                user: state => state.c3s.user.currentUser,
+                transcription: state => state.settings.transcription
             }),
             displayedRegions() {
                 let self = this;
@@ -141,6 +147,13 @@
                 }
             }
             */
+
+            if (this.transcription) {
+                this.details.canton = this.transcription.canton;
+                this.details.town = this.transcription.town;
+            }
+        }, created() {
+            this.checkTaskCount(this.activity);
         },
         methods: {
             checkTaskCount(activityID) {

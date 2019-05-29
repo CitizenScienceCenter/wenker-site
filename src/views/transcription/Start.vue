@@ -58,7 +58,7 @@
                             <h3 class="subheading centered left-aligned-large">{{ $t('form-heading') }}</h3>
                             <!-- <div class="desc" v-if="project && project.description" v-html="project.description"></div> -->
 
-                            <sheet-selection-form ref="details" :activity="activity" :errors="errors" class="margin-bottom"></sheet-selection-form>
+                            <sheet-selection-form ref="details" :activity="id" :errors="errors" class="margin-bottom"></sheet-selection-form>
 
                             <div class="button-group centered left-aligned-large">
                                 <button v-if="$refs.details && $refs.details.taskCount > 0" class="button button-primary" @click="startProjectRegion" tabindex="3">
