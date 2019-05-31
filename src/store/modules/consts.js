@@ -103,30 +103,24 @@ const state = {
       'label': 'Appenzell Ausserrhoden',
       'lang': 'DE',
       'towns':[
-        "Zelg",
-        "Dorf in Teufen",
-        "Dorf in Wolfhalden",
-        "Rietli",
-        "Lutzenberg",
-        "Schönau",
-        "Dorf in Stein",
-        "Lehnen",
-        "Schönengrund",
-        "Walzenhausen",
-        "Dorf in Wald",
-        "Dorf in Trogen",
-        "Mohren",
-        "Dorf in Heiden",
-        "Dorf in Grub",
-        "Ramsen",
-        "Dorf",
-        "Waldstatt",
-        "Robach",
-        "Kaien",
-        "Mühle",
-        "Rehetobel",
-        "Schwellbrunn",
-        "Hinteregg/Tanne"
+      "Gais",
+      "Grub"
+      "Heiden",
+      "Herisau",
+      "Hundwil",
+      "Lutzenberg",
+      "Rehetobel",
+      "Reute",
+      "Schönengrund",
+      "Schwellbrunn",
+      "Stein",
+      "Teufen",
+      "Trogen",
+      "Urnäsch"
+      "Wald",
+      "Waldstatt"
+      "Walzenhausen,
+      "Wolfhalden"
     ]
     },
     {
