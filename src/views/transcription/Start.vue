@@ -11,7 +11,7 @@
     "label-all": "Alle",
     "button-reset": "Zurücksetzen",
     "login-heading": "Sie haben sich schon registiert?",
-    "login-text": "Falls Sie bereits an einer Unserer Projekte teilgenommen haben und dabei einen Login erstellt haben, melden Sie sich jetzt an.",
+    "login-text": "Registrierte Benutzer haben folgende Vorteile:<ul><li> Sie können Ihre Arbeit auf einem anderen Computer fortsetzen.</li> <li> Sie erhalten Zugriff auf die Bögen, die Sie bereits transkribiert haben (unter Ihrem Profil)</li> <li> Sie können Ihre persönlichen Daten (Region, Altersbereich) speichern, damit Sie sie nicht jedes Mal erneut eingeben müssen.</li></ul>",
     "button-login": "Anmelden"
     },
     "en": {
@@ -61,20 +61,20 @@
                             <sheet-selection-form ref="details" :activity="id" :errors="errors" class="margin-bottom"></sheet-selection-form>
 
                             <div class="button-group centered left-aligned-large">
-                                <button v-if="$refs.details && $refs.details.taskCount > 0" class="button button-primary" @click="startProjectRegion" tabindex="3">
-                                    <template v-if="$refs.details.taskCount > 1">{{ $t('button-start') }} ({{$refs.details.taskCount}} {{ $t('label-sheets') }})</template>
-                                    <template v-else>{{ $t('button-start') }} ({{$refs.details.taskCount}} {{ $t('label-sheet') }})</template>
+                                <button v-if="details.count > 0 && canton" class="button button-primary" @click="startProjectRegion" tabindex="3">
+                                    <template v-if="details.count > 1 ">{{ $t('button-start') }} ({{details.count}} {{ $t('label-sheets') }})</template>
+                                    <template v-else>{{ $t('button-start') }} ({{details.count}} {{ $t('label-sheet') }})</template>
                                 </button>
 <!--                                <button v-else class="button button-primary" v-on:click="startProject" tabindex="3">{{ $t('button-start') }} ({{ $t('label-all') }} {{ $t('label-sheets') }})</button>-->
 
-                                <button v-if="$refs.details && $refs.details.taskCount > 0" class="button button-secondary" @click="resetSelection" tabindex="4">{{ $t('button-reset') }}</button>
+                                <button v-if="details.count > 0 && canton" class="button button-secondary" @click="resetSelection" tabindex="4">{{ $t('button-reset') }}</button>
                                 <br>
                                 <button class="button button-primary" v-on:click="startProject" tabindex="3">{{ $t('button-start') }} ({{ $t('label-all') }} {{ $t('label-sheets') }})</button>
                             </div>
                         </div>
                         <div class="content-subsection">
                             <h3 class="subheading centered left-aligned-large reduced-bottom-margin">{{ $t('login-heading') }}</h3>
-                            <p class="reduced-bottom-margin">{{ $t('login-text') }}</p>
+                            <p class="reduced-bottom-margin" v-html="$t('login-text')"></p>
                             <div class="button-group centered left-aligned-large">
                                 <router-link to="/login" tag="button" class="button button-secondary">{{
                                     $t('button-login') }}
@@ -111,7 +111,10 @@
                 project: {},
                 stats: {},
                 id: "e4b5ebc5-47a2-430b-84a9-a03b1d4dda34",
-                count: 0,
+                details: {
+                    canton: undefined,
+                    count: 0
+                },
                 comments: [],
                 errors: {
                     canton: false,
@@ -120,20 +123,9 @@
             }
         },
         watch: {
-            // REFS ARE NOT REACTIVE SO THEY CANNOT BE WATCHED IN THIS WAY
-            // '$refs.details.details.canton'(to, from) {
-            //     // this.$refs.details.checkTaskCount(this.id).then(t => {
-            //     //     this.taskCount = 3;
-            //     // });
-            // },
-            // '$refs.details.taskCount'(to, from) {
-            //     console.log(to);
-            //     // this.$refs.details.checkTaskCount(this.id).then(t => {
-            //     //     this.taskCount = 3;
-            //     // });
-            // },
-
-
+            'canton'(to, from) {
+                console.log(to);
+            }
         },
         components: {
             SheetSelectionForm,
@@ -143,33 +135,52 @@
         },
         computed: mapState({
             user: state => state.c3s.user.currentUser,
-            activity: state => state.c3s.activity.activity
+            activity: state => state.c3s.activity.activity,
+            canton: state => state.settings.transcription.canton,
         }),
         mounted() {
 
             this.$store.commit('c3s/activity/SET_ACTIVITY', null);
-            this.$nextTick(() => {
-                this.$watch(() => {
-                    return '$refs.details'
-                }, (val)=> {
-                    this.count = val;
-                });
-            });
-
+            console.log(this.canton)
+            this.setWatchers();
             this.$store
                 .dispatch("c3s/activity/getActivity", [
                     this.id,
                     false
-                ]).then(a => {
+                ]).then(() => {
 
                 // console.log(a)
             })
         },
+        created() {
+            this.setWatchers();
+        },
         methods: {
+            setWatchers() {
+                this.$nextTick(() => {
+                    this.$watch(() => {return this.$refs.details.taskCount}, (v) => {
+                        console.log(v);
+                        this.details.count = v;
+                    });
+                    this.$watch(() => {
+                        return '$refs.details.taskCount'
+                    }, (val)=> {
+                        console.log(val);
+                        this.details.count = val;
+                    });
+                    this.$watch(() => {
+                        return '$refs.details.details.canton'
+                    }, (val)=> {
+                        console.log(val);
+                        this.details.canton = val;
+                    });
+                });
+            },
             resetSelection() {
-                console.log(this.$refs.details.taskCount)
                 this.$refs.details.details.canton = undefined;
                 this.$refs.details.details.town = undefined;
+                this.$store.dispatch('settings/setTown', undefined);
+                this.$store.dispatch('settings/setCanton', undefined);
             },
             startProject() {
                 this.$router.push({name: 'TranscribeTask', query: {'count': 1}})

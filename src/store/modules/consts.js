@@ -104,7 +104,7 @@ const state = {
       'lang': 'DE',
       'towns':[
       "Gais",
-      "Grub"
+      "Grub",
       "Heiden",
       "Herisau",
       "Hundwil",
@@ -116,10 +116,10 @@ const state = {
       "Stein",
       "Teufen",
       "Trogen",
-      "Urnäsch"
+      "Urnäsch",
       "Wald",
-      "Waldstatt"
-      "Walzenhausen,
+      "Waldstatt",
+      "Walzenhausen",
       "Wolfhalden"
     ]
     },
@@ -1494,7 +1494,14 @@ const state = {
   ]
 }
 
+const mutations = {
+  // eslint-disable-next-line no-unused-vars
+  RESET_STATE(currentState) {
+    currentState = Object.assign(currentState, state);
+  }
+}
 export default {
   namespaced: true,
-  state
+  state,
+  mutations
 }

@@ -25,11 +25,13 @@ Vue.use(Croppa);
 Vue.use(Vuex);
 
 // invalidate local storage (use env var maybe?)
-const v = '0.1.1';
+const v = '0.1.5';
 if(window.localStorage.getItem(('vuex'))) {
     const ls = JSON.parse(window.localStorage.getItem('vuex')).settings.version;
     if (ls === undefined || ls !== v) {
-        window.localStorage.removeItem('vuex')
+        store.commit('settings/RESET_STATE');
+        store.commit('consts/RESET_STATE');
+        console.log('removing store, logging out user if logged in')
     }
 }
 store.watch(
