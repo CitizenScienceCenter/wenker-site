@@ -2,8 +2,8 @@ version: '2.1'
 
 services:
   wenker:
-    image: wenker
-    build: .
+    image: registry.citizenscience.ch/wenker:changes5
+    #build: .
     environment:
       NODE_ENV: production
     ports:
