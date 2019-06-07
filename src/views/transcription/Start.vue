@@ -61,15 +61,9 @@
                             <sheet-selection-form ref="details" :activity="id" :errors="errors" class="margin-bottom"></sheet-selection-form>
 
                             <div class="button-group centered left-aligned-large">
-<<<<<<< HEAD
-                                <button v-if="$refs.details && $refs.details.taskCount > 0 && $refs.details.details.canton" class="button button-primary" @click="startProjectRegion" tabindex="3">
-                                    <template v-if="$refs.details.taskCount > 1">{{ $t('button-start') }} ({{$refs.details.taskCount}} {{ $t('label-sheets') }})</template>
-                                    <template v-else>{{ $t('button-start') }} ({{$refs.details.taskCount}} {{ $t('label-sheet') }})</template>
-=======
                                 <button v-if="details.count > 0 && canton" class="button button-primary" @click="startProjectRegion" tabindex="3">
                                     <template v-if="details.count > 1 ">{{ $t('button-start') }} ({{details.count}} {{ $t('label-sheets') }})</template>
                                     <template v-else>{{ $t('button-start') }} ({{details.count}} {{ $t('label-sheet') }})</template>
->>>>>>> 1a6d47dd3d49daa58ab37631933107912412e81c
                                 </button>
 <!--                                <button v-else class="button button-primary" v-on:click="startProject" tabindex="3">{{ $t('button-start') }} ({{ $t('label-all') }} {{ $t('label-sheets') }})</button>-->
 
