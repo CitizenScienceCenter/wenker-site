@@ -104,7 +104,7 @@ const state = {
       'lang': 'DE',
       'towns':[
       "Gais",
-      "Grub"
+      "Grub",
       "Heiden",
       "Herisau",
       "Hundwil",
@@ -116,10 +116,10 @@ const state = {
       "Stein",
       "Teufen",
       "Trogen",
-      "Urnäsch"
+      "Urnäsch",
       "Wald",
-      "Waldstatt"
-      "Walzenhausen,
+      "Waldstatt",
+      "Walzenhausen",
       "Wolfhalden"
     ]
     },

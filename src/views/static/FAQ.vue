@@ -8,7 +8,7 @@
   "answer-2": "Schauen Sie in der vorhandenen Sonderzeichentabelle nach. Falls das gewünschte Sonderzeichen nicht vorhanden ist, schreiben Sie eine Mail an <a href='mailto:info@citizenscience.ch'>info@citizenscience.ch</a>.",
   "question-3": "Ich komme von X, ich möchte den Bogen von Y transkribieren, ist das möglich?",
   "answer-3": "Grundsätzlich ist das möglich, ja. Sie können so viele Bögen transkribieren, wie Sie möchten. Nur die eigene Übersetzung der 40 Sätze kann nur einmal erfolgen.",
-  "transcription-rules-heading": "Transkribierungskonventionen",
+  "transcription-rules-heading": "Transkriptionsregeln",
   "transcription-rule-1": "Ein vermuteter Wortlaut wird in eckigen Klammern [] geschrieben, z. B. [T]ue das mache...",
   "transcription-rule-2": "Wenn ein Wort oder ein Buchstabe nicht entziffert werden kann, wird folgender Platzhalter eingefügt: [...]",
   "transcription-rule-3": "Falls ein Wort nicht vollständig entziffert werden kann, kann folgender Platzhalter eingefügt werden: [unvollst.]",

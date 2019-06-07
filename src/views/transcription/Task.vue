@@ -68,9 +68,9 @@
                     </div>
                     <div class="col" v-if='taskRange.length === parseInt(taskDropdown)'>
                       <div class="centered task-switch-bar margin-bottom" >
-                        <router-link to="/transcribe" tag="button" class="button button-primary">
+                        <button v-on:click="submitTask(true)" tag="button" class="button button-primary">
                           Zurück zur Regionsauswahl
-                        </router-link>
+                        </button>
                       </div>
                     </div>
                 </div>
@@ -168,8 +168,9 @@
       endTask () {
         taskUtils.endTask(this, this.routes.complete)
       },
-      submitTask () {
-        taskUtils.submitTask(this, this.routes.complete, this.routes.task)
+      submitTask (end) {
+         const route = end ? this.routes.start : this.routes.complete
+        taskUtils.submitTask(this, route, this.routes.task)
       }
     }
 

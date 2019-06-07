@@ -61,7 +61,7 @@
                             <sheet-selection-form ref="details" :activity="id" :errors="errors" class="margin-bottom"></sheet-selection-form>
 
                             <div class="button-group centered left-aligned-large">
-                                <button v-if="$refs.details && $refs.details.taskCount > 0" class="button button-primary" @click="startProjectRegion" tabindex="3">
+                                <button v-if="$refs.details && $refs.details.taskCount > 0 && $refs.details.details.canton" class="button button-primary" @click="startProjectRegion" tabindex="3">
                                     <template v-if="$refs.details.taskCount > 1">{{ $t('button-start') }} ({{$refs.details.taskCount}} {{ $t('label-sheets') }})</template>
                                     <template v-else>{{ $t('button-start') }} ({{$refs.details.taskCount}} {{ $t('label-sheet') }})</template>
                                 </button>
@@ -168,6 +168,8 @@
         methods: {
             resetSelection() {
                 console.log(this.$refs.details.taskCount)
+                this.$store.commit('settings/SET_CANTON', undefined);
+                this.$store.commit('settings/SET_TOWN', undefined);
                 this.$refs.details.details.canton = undefined;
                 this.$refs.details.details.town = undefined;
             },
