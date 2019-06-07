@@ -4,11 +4,16 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
+    "prebuild": "npm update caniuse-lite browserslist",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test": "testcafe chromium src/test/e2e/wenker.testcafe.js"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "@vue/babel-preset-app": "^3.8.0",
+    "babel-polyfill": "^6.26.0",
     "crypto-js": "^3.1.9-1",
     "js-cookie": "^2.2.0",
     "node-sass": "^4.12.0",

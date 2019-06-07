@@ -152,6 +152,7 @@
                 this.details.canton = this.transcription.canton;
                 this.details.town = this.transcription.town;
             }
+            this.checkTaskCount(this.activity);
         }, created() {
             this.checkTaskCount(this.activity);
         },
@@ -188,7 +189,6 @@
 
                 let self = this;
                 this.$store.dispatch('c3s/task/getTaskCount', taskQuery).then(c => {
-                    // console.log(this.details)
                     this.taskCount = c.body;
 
                 })

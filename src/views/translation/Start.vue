@@ -8,7 +8,7 @@
     "form-heading": "Ihre Angaben",
     "button-start": "Starten",
     "login-heading": "Sie haben sich schon registiert?",
-    "login-text": "Falls Sie bereits an einer Unserer Projekte teilgenommen haben und dabei einen Login erstellt haben, melden Sie sich jetzt an.",
+    "login-text": "Registrierte Benutzer haben folgende Vorteile:<ul><li> Sie können Ihre Arbeit auf einem anderen Computer fortsetzen.</li> <li> Sie erhalten Zugriff auf die Bögen, die Sie bereits transkribiert haben (unter Ihrem Profil)</li> <li> Sie können Ihre persönlichen Daten (Region, Altersbereich) speichern, damit Sie sie nicht jedes Mal erneut eingeben müssen.</li></ul>",
     "button-login": "Anmelden"
     },
     "en": {
@@ -18,7 +18,7 @@
     "form-heading": "Your Info",
     "button-start": "Start",
     "login-heading": "Already registered?",
-    "login-text": "If you already contributed and created an account, login in now.",
+    "login-text": "Registered users have the following benefits:<ul><li>Continue your work on a different computer</li><li> Access a history of sheets you have already transcribed (under your Profile)</li><li> Save your region and age range so you do not have to enter it each time</li></ul>",
     "button-login": "Login"
     }
     }
@@ -63,7 +63,7 @@
 
                         <div class="content-subsection">
                             <h3 class="subheading centered left-aligned-large reduced-bottom-margin">{{ $t('login-heading') }}</h3>
-                            <p class="reduced-bottom-margin">{{ $t('login-text') }}</p>
+                            <p class="reduced-bottom-margin" v-html="$t('login-text')"></p>
                             <div class="centered button-group left-aligned-large">
                                 <router-link to="/login" tag="button" class="button button-secondary">{{
                                     $t('button-login') }}

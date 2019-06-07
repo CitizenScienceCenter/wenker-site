@@ -1494,7 +1494,14 @@ const state = {
   ]
 }
 
+const mutations = {
+  // eslint-disable-next-line no-unused-vars
+  RESET_STATE(currentState) {
+    currentState = Object.assign(currentState, state);
+  }
+}
 export default {
   namespaced: true,
-  state
+  state,
+  mutations
 }

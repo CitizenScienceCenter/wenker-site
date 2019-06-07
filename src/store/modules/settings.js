@@ -11,8 +11,8 @@ const state = {
         'canton': undefined,
         'town': undefined
     },
-    version: '0.1.2'
-}
+    version: '0.1.5'
+};
 
 const getters = {
     theme: state => state.theme
@@ -68,6 +68,10 @@ const mutations = {
     SET_TOWN(state, town) {
         state.transcription.town = town
     },
+    // eslint-disable-next-line no-unused-vars
+    RESET_STATE(currentState) {
+        currentState = Object.assign(currentState, state);
+    }
 }
 
 export default {
