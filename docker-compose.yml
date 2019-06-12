@@ -2,7 +2,7 @@ version: '2.1'
 
 services:
   wenker:
-    image: registry.citizenscience.ch/wenker:changes5
+    image: registry.citizenscience.ch/wenker:feature_elvira-changes458ec7e
     #build: .
     environment:
       NODE_ENV: production
