@@ -42,7 +42,11 @@
                 <div class="content-subsection">
                     <div class="row">
                         <div class="col" v-if='taskRange.length !== parseInt(taskDropdown)'>
-
+                            <div class="centered task-switch-bar margin-bottom" >
+                              <button v-on:click="submitTask" :disabled="loading" class="button button-primary">
+                                Nächster Bogen
+                              </button>
+                            </div>                      
                             <div class="centered task-switch-bar margin-bottom" >
                                 <div class="sheet-select">
                                     <div class="custom-select">
@@ -55,13 +59,7 @@
                                     </div>
                                     <label>von {{taskCount}}</label>
                                 </div>
-                                <button v-on:click="submitTask" :disabled="loading" class="button button-primary">
-                                    Nächster Bogen
-                                </button>
-                            </div>
-
-                            <div class="centered">
-                                <button v-on:click="endTask" class="button button-secondary">Sitzung Beenden</button>
+                                
                             </div>
 
                         </div>
@@ -72,6 +70,12 @@
                           Zurück zur Regionsauswahl
                         </button>
                       </div>
+
+                      
+                    </div>
+                    <br>
+                    <div class="centered">
+                        <button v-on:click="endTask" class="button button-secondary">Sitzung Beenden</button>
                     </div>
                 </div>
 
@@ -126,8 +130,10 @@
         }
       },
       taskDropdown (to, from) {
-        console.log(to)
-        taskUtils.loadTask(this, to, true, this.routes.start)
+        const queryObj = Object.assign({}, this.$route.query)
+        queryObj.count = to
+        this.$router.push({path: this.$route.path, query: queryObj})
+        // taskUtils.loadTask(this, to, true, this.routes.start)
       },
       taskID (to, from) {
         taskUtils.loadTaskID(this, to, true, this.routes.start)

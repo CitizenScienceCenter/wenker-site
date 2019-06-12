@@ -1171,10 +1171,6 @@ const state = {
         "Engelberg",
         "Lungern",
         "Sarnen",
-        "Engelberg",
-        "Sarnen",
-        "Engelberg",
-        "Lungern",
         "Obwalden"
     ]
     },

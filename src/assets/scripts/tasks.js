@@ -107,7 +107,6 @@ export function loadTask (self, count, media, routeComplete) {
     const userRegion = self.$route.query['region']
     taskQuery['where']['info ->> \'SchoolState\''] = { 'op': 'e', 'val': userRegion, 'join': 'a' }
   }
-  console.log(self.$route.query.hasOwnProperty('town'))
   if (self.$route.query.hasOwnProperty('town') && self.$route.query.hasOwnProperty('town') !== 'Alles' && self.$route.query.hasOwnProperty('town')) {
     const userTown = self.$route.query['town']
     taskQuery['where']['info ->> \'SchoolPlace\''] = { 'op': 'e', 'val': userTown, 'join': 'a' }
