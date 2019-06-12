@@ -1214,7 +1214,6 @@ const state = {
       'towns': [
         "Hagendorn",
         "Cham",
-        "Cham",
         "Risch",
         "Unterägeri",
         "Zug",
