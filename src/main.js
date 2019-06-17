@@ -25,7 +25,7 @@ Vue.use(VueScrollTo, {
 Vue.use(Croppa);
 Vue.use(Vuex);
 
-const v = '0.1.6';
+const v = '0.1.91';
 if(window.localStorage.getItem(('vuex'))) {
     const ls = JSON.parse(window.localStorage.getItem('vuex')).settings.version;
     if (ls === undefined || ls !== v) {
