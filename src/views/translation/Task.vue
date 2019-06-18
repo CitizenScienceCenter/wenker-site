@@ -125,12 +125,12 @@
     watch: {
       '$route.query.count' (to, from) {
         // this.loadTask(to)
-        taskUtils.loadTask(this, to, true, this.routes.complete)
+        taskUtils.loadTask(this, to, true, this.routes.complete, false)
       }
     },
     mounted () {
       if (this.activity && this.activity.id) {
-        taskUtils.loadTask(this, this.$route.query['count'], true, this.routes.complete)
+        taskUtils.loadTask(this, this.$route.query['count'], true, this.routes.complete, false)
       } else {
         console.log('No activity set in the store!')
         //    TODO show error for no activity
