@@ -11,7 +11,7 @@
     "label-all": "Alle",
     "button-reset": "Zurücksetzen",
     "login-heading": "Sie haben sich schon registiert?",
-    "login-text": "Registrierte Benutzer haben folgende Vorteile:<ul><li> Sie können Ihre Arbeit auf einem anderen Computer fortsetzen.</li> <li> Sie erhalten Zugriff auf die Bögen, die Sie bereits transkribiert haben (unter Ihrem Profil)</li> <li> Sie können Ihre persönlichen Daten (Region, Altersbereich) speichern, damit Sie sie nicht jedes Mal erneut eingeben müssen.</li></ul>",
+    "login-text": "Registrierte Benutzer haben folgende Vorteile:<ul><li> Sie können Ihre Arbeit auf einem anderen Computer fortsetzen.</li> <li> Sie erhalten Zugriff auf die Bögen, die Sie bereits transkribiert haben (unter Ihrem Profil)</li></ul>",
     "button-login": "Anmelden"
     },
     "en": {

@@ -2,12 +2,12 @@
 {
 "de": {
     "label-region": "Region",
-    "label-town": "Stadt",
+    "label-town": "Ort",
     "label-please-select": "Bitte wählen ..."
 },
 "en": {
     "label-region": "Region",
-    "label-town": "Town",
+    "label-town": "Place",
     "label-please-select": "Please select ..."
 }
 }

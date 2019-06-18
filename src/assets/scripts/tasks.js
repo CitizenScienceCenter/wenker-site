@@ -81,7 +81,7 @@ export function getMedia (self, task) {
   })
 }
 
-export function loadTask (self, count, media, routeComplete) {
+export function loadTask (self, count, media, routeComplete, random=true) {
   const taskQuery = {
     'select': {
       'fields': [
@@ -89,10 +89,7 @@ export function loadTask (self, count, media, routeComplete) {
       ],
       'tables': [
         'tasks'
-      ],
-      'orderBy': {
-        'random()': ''
-      }
+      ]
     },
     'where': {
       'activity_id': {
@@ -102,6 +99,16 @@ export function loadTask (self, count, media, routeComplete) {
     },
     'limit': 1,
     'offset': count - 1
+  }
+
+  if (random) {
+    taskQuery['select']['orderBy'] = {
+      'random()': ''
+    };
+  }else{
+    taskQuery['select']['orderBy'] = {
+      'created_at': ''
+    };
   }
   if (self.$route.query.hasOwnProperty('region')) {
     const userRegion = self.$route.query['region']
