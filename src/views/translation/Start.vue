@@ -2,6 +2,9 @@
 <i18n>
     {
     "de": {
+
+    "page-title": "Übersetzen",
+
     "heading": "Übersetzen",
     "heading-activity-description": "Aufgabe",
     "activity-description": "Übersetze die originalen Wenker-Sätze in deinen Dialekt, wie du ihn heute sprichst. So können wir das Schweizerdeutsch von heute mit dem der 1930er Jahre vergleichen.",
@@ -15,6 +18,9 @@
     "button-login": "Anmelden"
     },
     "en": {
+
+    "page-title": "Translation",
+
     "heading": "Translate",
     "heading-activity-description": "Task",
     "activity-description": "Translate the original Wenker sentences into your own dialect. So we can compare today's Swiss German with the one spoken in the 1930ies.",
@@ -108,6 +114,18 @@
 
     export default {
         name: 'Start',
+        metaInfo: function() {
+            return {
+                title: this.$t('page-title'),
+                meta: [
+                    {
+                        property: 'og:title',
+                        content: this.$t('page-title'),
+                        template: '%s | '+this.$t('site-title')
+                    }
+                ]
+            }
+        },
         data() {
             return {
                 project: {},

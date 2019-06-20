@@ -1,6 +1,9 @@
 <i18n>
     {
     "de": {
+
+    "page-title": "Transkribieren",
+
     "heading": "Transkribieren",
     "heading-activity-description": "Aufgabe",
     "activity-description": "Die 1700 handgeschriebenen Schweizer Wenker-Bögen müssen genau abgeschrieben werden, um sie digital aufzubereiten. Dafür brauchen wir deine Unterstützung!",
@@ -17,6 +20,9 @@
     "button-login": "Anmelden"
     },
     "en": {
+
+    "page-title": "Transcription",
+
     "heading": "Transcription",
     "heading-activity-description": "Task",
     "activity-description": "The 1700 hand-written swiss Wenker sheets must be accurately copied in order to process them digitally. For that we need your support!",
@@ -114,9 +120,20 @@
     import ContentSection from '@/components/shared/ContentSection.vue'
     import Footer from '@/components/shared/Footer.vue'
 
-
     export default {
         name: 'Start',
+        metaInfo: function() {
+            return {
+                title: this.$t('page-title'),
+                meta: [
+                    {
+                        property: 'og:title',
+                        content: this.$t('page-title'),
+                        template: '%s | '+this.$t('site-title')
+                    }
+                ]
+            }
+        },
         data() {
             return {
                 regions: [],

@@ -1,6 +1,9 @@
 <i18n>
   {
   "de": {
+
+  "page-title": "FAQ",
+
   "heading": "Fragen und Antworten",
   "question-1": "Was ist der Vorteil einer Registrierung?",
   "answer-1-text": "Registrierte Benutzer haben folgende Vorteile:",
@@ -31,6 +34,9 @@
   "transcription-rule-5": "Alle Sonderzeichen sollten transkribiert werden!"
   },
   "en": {
+
+  "page-title": "FAQ",
+
   "heading": "FAQ",
   "question-1": "What is the benefit of registering?",
   "answer-1-text": "Registered users have the following benefits:",
@@ -161,6 +167,18 @@ import Footer from '@/components/shared/Footer.vue'
 
 export default {
   name: 'FAQ',
+  metaInfo: function() {
+      return {
+          title: this.$t('page-title'),
+          meta: [
+              {
+                  property: 'og:title',
+                  content: this.$t('page-title'),
+                  template: '%s | '+this.$t('site-title')
+              }
+          ]
+      }
+  },
   components: {
     'app-cover': Cover,
     'app-content-section': ContentSection,

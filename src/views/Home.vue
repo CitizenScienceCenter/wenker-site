@@ -1,6 +1,9 @@
 <i18n>
 {
   "de": {
+
+    "page-title": "Projekt Wenker | Citizen Science Center Zürich",
+
     "cover-heading": "Schweizer­deutsch<br/>1930 / 2020",
     "cover-subheading": "Finde deinen Dialekt in den 40 Wenker-Sätzen.",
     "cover-button-transcribe": "Transkribieren",
@@ -27,10 +30,13 @@
     "section-newsletter-heading": "Abonniere unseren Newsletter"
   },
   "en": {
+
+    "page-title": "Project Wenker | Citizen Science Center Zurich",
+
     "cover-heading": "Swiss German<br/>1930 / 2020",
     "cover-subheading": "Find your own dialect in the 40 Wenker phrases.",
-  "cover-button-transcribe": "Transcribe",
-  "cover-button-translate": "Translate",
+    "cover-button-transcribe": "Transcribe",
+    "cover-button-translate": "Translate",
 
     "section-explanation-heading": "The 40 Wenker Phrases",
     "section-explanation-text": "As part of a linguistic research project about 100 years ago, 40 sentences were translated from standard German into the local dialects of Switzerland. However, this data has never been evaluated. Help us to digitize this treasure.",
@@ -228,6 +234,18 @@ export default {
     'app-content-section': ContentSection,
     'app-newsletter-signup': NewsletterSignup,
     'app-footer': Footer
+  },
+  metaInfo: function() {
+      return {
+          title: this.$t('page-title'),
+          titleTemplate: null,
+          meta: [
+              {
+                  property: 'og:title',
+                  content: this.$t('page-title')
+              }
+          ]
+      }
   }
 }
 

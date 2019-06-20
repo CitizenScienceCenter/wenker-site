@@ -1,6 +1,9 @@
 <i18n>
   {
   "de": {
+
+  "page-title": "Das Projekt",
+
   "heading-1": "Unsere sprachliche Entwicklung verstehen",
   "text-1": "Viele Menschen sind überzeugt, dass die schweizerdeutschen Mundarten in den letzten Jahrzehnten zahlreiche ihrer Merkmale verloren haben. Die Frage nach der Veränderung der Mundarten kann bisher oft nicht wissenschaftlich fundiert beantwortet werden, weil Kenntnisse darüber, wie die Mundart früher gestaltet war, fehlen.<br>Mit dem Transkribieren der Wenkerbögen helfen Sie Forschenden, diese Wissenslücke zu schliessen. Und Sie erhalten selbst einen Einblick in die sprachliche Vergangenheit der Schweiz, vielleicht sogar in die Geschichte Ihres eigenen Dialekts. Sie lernen alte Ausdrücke kennen und staunen wahrscheinlich über die in dem Bogen aus Ihrem Ort festgehaltene Aussprache mancher Wörter.<br>Helfen Sie mit, diesen Schatz der Schweizer Wenkersätze zu digitalisieren, indem Sie sie transkribieren oder neu übersetzen. Somit leisten Sie einen wertvollen Beitrag zur Erforschung des Schweizerdeutschen von vor 100 Jahren.",
   "heading-2": "Trockene Blätter und Kochlöffel - Die Geschichte der Wenkerbögen",
@@ -18,6 +21,9 @@
   "people-3-text": "Carmen hat an der Universität Zürich Germanistik und Romanistik studiert und ist Mitarbeiterin des Citizen Science Projekts Schweizerdeutsch 1930 / 2020."
   },
   "en": {
+
+  "page-title": "The Project",
+
   "heading-1": "Understanding our language’s evolution",
   "text-1": "Many people are convinced that the Swiss German dialects have lost many features in recent decades. The question of the changing dialects can often not be scientifically answered because knowledge about how the dialect was used is missing.<br>By transcribing the Wenker sheets you help researchers to close this knowledge gap. And it also gives you a glimpse into the linguistic past of Switzerland, perhaps of your own dialect. You will get to know ancient expressions and will be amazed at the pronunciation of some words recorded in the sheet of your hometown.<br>Help us to digitize this treasure, to transcribe and translate the counterparts so that it can then be researched what Swiss-German looked like 100 years ago.",
   "heading-2": "Dry leaves and wooden spoons: The story of the Wenker sheets",
@@ -153,6 +159,18 @@ import Footer from '@/components/shared/Footer.vue'
 
 export default {
   name: 'Project',
+  metaInfo: function() {
+      return {
+          title: this.$t('page-title'),
+          meta: [
+              {
+                  property: 'og:title',
+                  content: this.$t('page-title'),
+                  template: '%s | '+this.$t('site-title')
+              }
+          ]
+      }
+  },
   components: {
     'app-cover': Cover,
     'app-content-section': ContentSection,

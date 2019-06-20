@@ -1,6 +1,9 @@
 <i18n>
     {
     "de": {
+
+    "page-title": "Transkribieren",
+
     "heading": "Vielen Dank für deine Teilnahme",
     "sentence-part-1": "Du bist der ",
     "sentence-part-2": ". Teinehmer",
@@ -8,6 +11,9 @@
     "register-text": "Erstelle dein Profil für künfitige Teilnahmen an unseren Citizen Science Projekten."
     },
     "en": {
+
+    "page-title": "Transcription",
+
     "heading": "Thank you for Your Participation",
     "sentence-part-1": "You are participant no. ",
     "sentence-part-2": " ",
@@ -66,6 +72,18 @@
 
   export default {
     name: 'Complete',
+    metaInfo: function() {
+      return {
+          title: this.$t('page-title'),
+          meta: [
+              {
+                  property: 'og:title',
+                  content: this.$t('page-title'),
+                  template: '%s | '+this.$t('site-title')
+              }
+          ]
+      }
+    },
     data () {
       return {
         stats: {},

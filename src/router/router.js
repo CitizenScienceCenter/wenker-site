@@ -28,12 +28,6 @@ router.beforeEach((to, from, next) => {
         store.dispatch("settings/setLanguage", language);
         i18n.locale = language;
 
-        const title = i18n.messages[language][to.meta.i18n]['title']
-        if (title) {
-            document.title = title
-        } else {
-            document.title = ''
-        }
 
         // --- auth / account
 

@@ -1,6 +1,9 @@
 <i18n>
     {
     "en": {
+
+    "page-title": "Privacy Policy & Terms of Use",
+
     "privacy-heading": "Privacy Policy",
     "privacy-text-1": "Any personal data you supply to our online platform are processed in accordance with the SwissData Protection Act (<a href='https://iclg.com/practice-areas/data-protection-laws-and-regulations/switzerland' target='_blank'>DSG</a>) and the EU General Data Protection Regulation (<a href='https://eugdpr.org/' target='_blank'>GDPR</a>).",
 
@@ -19,6 +22,9 @@
     "section-newsletter-heading": "Sign up for our Newsletter"
     },
     "de": {
+
+    "page-title": "Privacy Policy & Terms of Use",
+
     "privacy-heading": "Privacy Policy",
     "privacy-text-1": "Any personal data you supply to our online platform are processed in accordance with the SwissData Protection Act (<a href='https://iclg.com/practice-areas/data-protection-laws-and-regulations/switzerland' target='_blank'>DSG</a>) and the EU General Data Protection Regulation (<a href='https://eugdpr.org/' target='_blank'>GDPR</a>).",
 
@@ -105,6 +111,18 @@
 
     export default {
         name: 'Terms',
+        metaInfo: function() {
+            return {
+                title: this.$t('page-title'),
+                meta: [
+                    {
+                        property: 'og:title',
+                        content: this.$t('page-title'),
+                        template: '%s | '+this.$t('site-title')
+                    }
+                ]
+            }
+        },
         components: {
             'app-content-section': ContentSection,
             'app-newsletter-signup': NewsletterSignup,
