@@ -34,21 +34,21 @@
               <h2 class="heading">{{ $t('heading') }}</h2>
               <p>
                 <figure>
-                  <img src="img/wenker.jpg" />
+                  <img src="/img/wenker.jpg" />
                   <figcaption>Georg Wenker <a href="http://www.diwa.info/Geschichte/Kartierungsverfahren.aspx" target="_blank">© DIWA</a></figcaption>
                 </figure>
               </p>
               <p v-html="$t('text-1')"></p>
               <p>
                 <figure>
-                  <img src="img/dialektkarte.jpg" />
+                  <img src="/img/dialektkarte.jpg" />
                   <figcaption>{{ $t('figure-2-caption') }} <a href="https://www.uni-marburg.de/de/fb09/dsa/einrichtung/personen/juergen-erich-schmidt/publikationen-1/aufsaetze-und-rezensionen" target="_blank">Jürgen Erich Schmidt (2012)</a></figcaption>
                 </figure>
               </p>
               <p v-html="$t('text-2')"></p>
               <p>
                 <figure>
-                  <img src="img/wrede.jpg" />
+                  <img src="/img/wrede.jpg" />
                   <figcaption>Ferdinand Wrede <a href="http://www.diwa.info/Geschichte/Kartierungsverfahren.aspx" target="_blank">© DIWA</a></figcaption>
                 </figure>
               </p>

@@ -52,7 +52,7 @@
 
               <p>
                 <figure>
-                  <img src="img/klassenzimmer.jpg" />
+                  <img src="/img/klassenzimmer.jpg" />
                   <figcaption><a href="http://archiv.sgv-sstp.ch/resource/431874" target="_blank">© SGV</a></figcaption>
                 </figure>
               </p>
@@ -61,7 +61,7 @@
 
               <p>
                 <figure>
-                  <img src="img/schreiben.jpg" />
+                  <img src="/img/schreiben.jpg" />
                   <figcaption><a href="http://archiv.sgv-sstp.ch/resource/425896" target="_blank">© SGV</a></figcaption>
                 </figure>
               </p>
@@ -74,7 +74,7 @@
 
               <p>
                 <figure>
-                  <img src="img/schueler.jpg" />
+                  <img src="/img/schueler.jpg" />
                   <figcaption><a href="http://archiv.sgv-sstp.ch/resource/447400" target="_blank">© SGV</a></figcaption>
                 </figure>
               </p>
