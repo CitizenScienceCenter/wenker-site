@@ -59,11 +59,11 @@ export const i18n = new VueI18n({
       },
       'page-transcribe': {
         'link': 'Transkribieren',
-        'title': 'Projekt Wenker – Citizen Science Center Zürich'
+        'title': 'Transkribieren – Projekt Wenker – Citizen Science Center Zürich'
       },
       'page-translate': {
         'link': 'Übersetzen',
-        'title': 'Projekt Wenker – Citizen Science Center Zürich'
+        'title': 'Übersetzen – Projekt Wenker – Citizen Science Center Zürich'
       },
       'page-project': {
         'link': 'Das Projekt',
