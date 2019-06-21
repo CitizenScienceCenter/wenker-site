@@ -111,7 +111,7 @@
                 otherRegions: state => state.consts.otherRegions,
                 ageRange: state => state.consts.ageRange,
                 user: state => state.c3s.user.currentUser,
-
+                lang: state => state.settings.language
             }),
             displayedRegions() {
                 let regions = [ ...this.regions ];
@@ -124,7 +124,11 @@
                     }
                     return 0;
                 });
-
+                let label = this.lang === 'de' ? 'Anderes Land' : 'Other Country'
+                regions.unshift({
+                    'label': label,
+                    'value': 'Anderes Land'
+                })
                 return regions;
             },
             displayedTowns() {
