@@ -100,15 +100,16 @@ export function loadTask (self, count, media, routeComplete, random=true) {
     'limit': 1,
     'offset': count - 1
   }
-
-  if (random) {
-    taskQuery['select']['orderBy'] = {
-      'random()': ''
-    };
-  }else{
-    taskQuery['select']['orderBy'] = {
-      'created_at': ''
-    };
+  if(!self.$route.query.hasOwnProperty('region')) {
+    if (random) {
+      taskQuery['select']['orderBy'] = {
+        'random()': ''
+      };
+    }else{
+      taskQuery['select']['orderBy'] = {
+        'created_at': ''
+      };
+    }
   }
   if (self.$route.query.hasOwnProperty('region')) {
     const userRegion = self.$route.query['region']
@@ -124,6 +125,7 @@ export function loadTask (self, count, media, routeComplete, random=true) {
   self.$store.dispatch('c3s/task/getTasks', [taskQuery, 1]).then(t => {
     if (t.body && t.body.length > 0) {
       const task = t.body[0]
+      console.log('Got ' + task.id);
 
       self.responses = []
       for (let i = 0; i < task.content.answers.length; i++) {

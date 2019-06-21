@@ -188,19 +188,12 @@
             setWatchers() {
                 this.$nextTick(() => {
                     this.$watch(() => {return this.$refs.details.taskCount}, (v) => {
-                        console.log(v);
+                        console.log(v)
                         this.details.count = v;
-                    });
-                    this.$watch(() => {
-                        return '$refs.details.taskCount'
-                    }, (val)=> {
-                        console.log(val);
-                        this.details.count = val;
                     });
                     this.$watch(() => {
                         return '$refs.details.details.canton'
                     }, (val)=> {
-                        console.log(val);
                         this.details.canton = val;
                     });
                 });

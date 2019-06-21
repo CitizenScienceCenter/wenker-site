@@ -27,7 +27,7 @@ Vue.use(Croppa);
 Vue.use(Vuex);
 Vue.use(Meta);
 
-const v = '0.1.93';
+const v = '0.1.94';
 if(window.localStorage.getItem(('vuex'))) {
     const ls = JSON.parse(window.localStorage.getItem('vuex')).settings.version;
     if (ls === undefined || ls !== v) {
