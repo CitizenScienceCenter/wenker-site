@@ -1,6 +1,9 @@
 <i18n>
     {
     "de": {
+
+    "page-title": "Transkribieren",
+
     "heading": "Transkribieren",
     "heading-activity-description": "Aufgabe",
     "activity-description": "Die 1700 handgeschriebenen Schweizer Wenker-Bögen müssen genau abgeschrieben werden, um sie digital aufzubereiten. Dafür brauchen wir deine Unterstützung!",
@@ -11,10 +14,15 @@
     "label-all": "Alle",
     "button-reset": "Zurücksetzen",
     "login-heading": "Sie haben sich schon registiert?",
-    "login-text": "Registrierte Benutzer haben folgende Vorteile:<ul><li> Sie können Ihre Arbeit auf einem anderen Computer fortsetzen.</li> <li> Sie erhalten Zugriff auf die Bögen, die Sie bereits transkribiert haben (unter Ihrem Profil)</li></ul>",
+    "login-text": "Registrierte Benutzer haben folgende Vorteile:",
+    "login-bullet-1": "Sie können Ihre Arbeit auf einem anderen Computer fortsetzen.",
+    "login-bullet-2": "Sie erhalten Zugriff auf die Bögen, die Sie bereits transkribiert haben (unter Ihrem Profil).",
     "button-login": "Anmelden"
     },
     "en": {
+
+    "page-title": "Transcription",
+
     "heading": "Transcription",
     "heading-activity-description": "Task",
     "activity-description": "The 1700 hand-written swiss Wenker sheets must be accurately copied in order to process them digitally. For that we need your support!",
@@ -25,7 +33,9 @@
     "label-all": "All",
     "button-reset": "Reset",
     "login-heading": "Already registered?",
-    "login-text": "If you already contributed and created an account, login in now.",
+    "login-text": "Registered users have the following benefits:",
+    "login-bullet-1": "Continue your work on a different computer.",
+    "login-bullet-2": "Access a history of sheets you have already transcribed (under your Profile).",
     "button-login": "Login"
     }
     }
@@ -45,7 +55,7 @@
                     </div>
                 </div>
 
-                <div class="row row-centered">
+                <div class="row row-centered margin-bottom">
 
                     <div class="col col-tablet-portrait-10 col-large-4 col-large-after-2 col-wrapping col-large-no-bottom-margin">
                         <h3 class="subheading centered left-aligned-large">{{ $t('heading-activity-description') }}</h3>
@@ -72,18 +82,26 @@
                                 <button class="button button-primary" v-on:click="startProject" tabindex="3">{{ $t('button-start') }} ({{ $t('label-all') }} {{ $t('label-sheets') }})</button>
                             </div>
                         </div>
-                        <div class="content-subsection">
-                            <h3 class="subheading centered left-aligned-large reduced-bottom-margin">{{ $t('login-heading') }}</h3>
-                            <p class="reduced-bottom-margin" v-html="$t('login-text')"></p>
-                            <div class="button-group centered left-aligned-large">
-                                <router-link to="/login" tag="button" class="button button-secondary">{{
-                                    $t('button-login') }}
-                                </router-link>
-                            </div>
-                        </div>
 
                     </div>
                 </div>
+
+                <div class="row row-centered">
+                    <div class="col col-tablet-portrait-10 col-large-6">
+                        <h3 class="subheading centered left-aligned-large reduced-bottom-margin">{{ $t('login-heading') }}</h3>
+                        <p class="reduced-bottom-margin" v-html="$t('login-text')"></p>
+                        <ul>
+                            <li v-html="$t('login-bullet-1')"></li>
+                            <li v-html="$t('login-bullet-2')"></li>
+                        </ul>
+                        <div class="button-group centered left-aligned-large">
+                            <router-link to="/login" tag="button" class="button button-secondary">{{
+                                $t('button-login') }}
+                            </router-link>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </app-content-section>
 
@@ -102,9 +120,20 @@
     import ContentSection from '@/components/shared/ContentSection.vue'
     import Footer from '@/components/shared/Footer.vue'
 
-
     export default {
         name: 'Start',
+        metaInfo: function() {
+            return {
+                title: this.$t('page-title'),
+                meta: [
+                    {
+                        property: 'og:title',
+                        content: this.$t('page-title'),
+                        template: '%s | '+this.$t('site-title')
+                    }
+                ]
+            }
+        },
         data() {
             return {
                 regions: [],
@@ -159,19 +188,12 @@
             setWatchers() {
                 this.$nextTick(() => {
                     this.$watch(() => {return this.$refs.details.taskCount}, (v) => {
-                        console.log(v);
+                        console.log(v)
                         this.details.count = v;
-                    });
-                    this.$watch(() => {
-                        return '$refs.details.taskCount'
-                    }, (val)=> {
-                        console.log(val);
-                        this.details.count = val;
                     });
                     this.$watch(() => {
                         return '$refs.details.details.canton'
                     }, (val)=> {
-                        console.log(val);
                         this.details.canton = val;
                     });
                 });

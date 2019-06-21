@@ -1,6 +1,9 @@
 <i18n>
 {
   "de": {
+
+    "page-title": "Projekt Wenker | Citizen Science Center Zürich",
+
     "cover-heading": "Schweizer­deutsch<br/>1930 / 2020",
     "cover-subheading": "Finde deinen Dialekt in den 40 Wenker-Sätzen.",
     "cover-button-transcribe": "Transkribieren",
@@ -27,10 +30,13 @@
     "section-newsletter-heading": "Abonniere unseren Newsletter"
   },
   "en": {
+
+    "page-title": "Project Wenker | Citizen Science Center Zurich",
+
     "cover-heading": "Swiss German<br/>1930 / 2020",
     "cover-subheading": "Find your own dialect in the 40 Wenker phrases.",
-  "cover-button-transcribe": "Transcribe",
-  "cover-button-translate": "Translate",
+    "cover-button-transcribe": "Transcribe",
+    "cover-button-translate": "Translate",
 
     "section-explanation-heading": "The 40 Wenker Phrases",
     "section-explanation-text": "As part of a linguistic research project about 100 years ago, 40 sentences were translated from standard German into the local dialects of Switzerland. However, this data has never been evaluated. Help us to digitize this treasure.",
@@ -58,7 +64,7 @@
 <template>
   <div>
 
-    <app-cover imageUrl="img/cover.jpg">
+    <app-cover imageUrl="/img/cover.jpg">
       <div class="row row-centered">
         <div class="col col-large-8">
           <h2 class="cover-heading scroll-effect" v-html="$t('cover-heading')"></h2>
@@ -90,7 +96,7 @@
           <div class="col col-10 col-large-6 col-wrapping col-large-no-bottom-margin scroll-effect">
             <div>
               <div class="extra-padding-large-h">
-                <img src="img/graphic-sheet.png" />
+                <img src="/img/graphic-sheet.png" />
               </div>
             </div>
           </div>
@@ -120,7 +126,7 @@
           <div class="col col-tablet-portrait-10 col-large-4 col-large-after-1 col-wrapping col-large-no-bottom-margin scroll-effect scroll-effect-delayed-2">
             <div class="row row-centered">
               <div class="col col-6 col-tablet-portrait-4 col-large-6 extra-margin-bottom">
-                <img src="img/graphic-transcribe.png"/>
+                <img src="/img/graphic-transcribe.png"/>
               </div>
             </div>
             <h3 class="subheading centered">{{ $t('section-contribute-1-heading') }}</h3>
@@ -132,7 +138,7 @@
           <div class="col col-tablet-portrait-10 col-large-4 col-wrapping col-no-bottom-margin scroll-effect scroll-effect-delayed-3">
             <div class="row row-centered">
               <div class="col col-6 col-tablet-portrait-4 col-large-6 extra-margin-bottom">
-                <img src="img/graphic-translate.png"/>
+                <img src="/img/graphic-translate.png"/>
               </div>
             </div>
             <h3 class="subheading centered">{{ $t('section-contribute-2-heading') }}</h3>
@@ -154,7 +160,7 @@
           <div class="col col-10 col-large-6 col-wrapping col-large-no-bottom-margin scroll-effect">
             <div>
               <div class="extra-padding-large-h">
-                <img src="img/wenker_square.jpg" style="border-radius:50%" />
+                <img src="/img/wenker_square.jpg" style="border-radius:50%" />
               </div>
             </div>
           </div>
@@ -228,6 +234,18 @@ export default {
     'app-content-section': ContentSection,
     'app-newsletter-signup': NewsletterSignup,
     'app-footer': Footer
+  },
+  metaInfo: function() {
+      return {
+          title: this.$t('page-title'),
+          titleTemplate: null,
+          meta: [
+              {
+                  property: 'og:title',
+                  content: this.$t('page-title')
+              }
+          ]
+      }
   }
 }
 

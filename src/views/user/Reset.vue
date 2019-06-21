@@ -1,12 +1,18 @@
 <i18n>
 {
 "de": {
+
+    "page-title": "Passwort zurücksetzen",
+
         "heading": "Passwort zurücksetzen",
         "label-email": "Email",
         "label-password": "Passwort",
         "button-reset": "Zurücksetzen"
     },
     "en": {
+
+    "page-title": "Reset Password",
+
         "heading": "Reset Password",
         "label-email": "Email",
         "label-password": "Password",
@@ -59,6 +65,18 @@ import Footer from '@/components/shared/Footer.vue'
 
 export default {
   name: "Reset",
+    metaInfo: function() {
+        return {
+            title: this.$t('page-title'),
+            meta: [
+                {
+                    property: 'og:title',
+                    content: this.$t('page-title'),
+                    template: '%s | '+this.$t('site-title')
+                }
+            ]
+        }
+    },
     components: {
         'app-content-section': ContentSection,
         'app-footer': Footer
@@ -90,7 +108,7 @@ export default {
           id: id,
           token: this.$route.params.token,
           pwd: this.password
-        }
+        };
         this.$store.dispatch('user/resetPwd', reset).then(r => {
             if(r !== false) {
                 this.$router.push('/welcome')

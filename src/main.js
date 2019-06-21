@@ -9,6 +9,7 @@ import Vuex from 'vuex'
 import { i18n } from './i18n.js'
 import c3s from 'vuex-c3s'
 import Croppa from 'vue-croppa';
+import Meta from 'vue-meta';
 
 const env = process.env.NODE_ENV || 'development';
 let swaggerURL = 'https://wenker.citizenscience.ch/api/v2/swagger.json';
@@ -24,8 +25,9 @@ Vue.use(VueScrollTo, {
 })
 Vue.use(Croppa);
 Vue.use(Vuex);
+Vue.use(Meta);
 
-const v = '0.1.93';
+const v = '0.1.94';
 if(window.localStorage.getItem(('vuex'))) {
     const ls = JSON.parse(window.localStorage.getItem('vuex')).settings.version;
     if (ls === undefined || ls !== v) {

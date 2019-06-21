@@ -2,23 +2,35 @@
 <i18n>
     {
     "de": {
+
+    "page-title": "Übersetzen",
+
     "heading": "Übersetzen",
     "heading-activity-description": "Aufgabe",
     "activity-description": "Übersetze die originalen Wenker-Sätze in deinen Dialekt, wie du ihn heute sprichst. So können wir das Schweizerdeutsch von heute mit dem der 1930er Jahre vergleichen.",
     "form-heading": "Ihre Angaben",
     "button-start": "Starten",
     "login-heading": "Sie haben sich schon registiert?",
-    "login-text": "Registrierte Benutzer haben folgende Vorteile:<ul><li> Sie können Ihre Arbeit auf einem anderen Computer fortsetzen.</li> <li> Sie erhalten Zugriff auf die Bögen, die Sie bereits transkribiert haben (unter Ihrem Profil)</li> <li> Sie können Ihre persönlichen Daten (Region, Altersbereich) speichern, damit Sie sie nicht jedes Mal erneut eingeben müssen.</li></ul>",
+    "login-text": "Registrierte Benutzer haben folgende Vorteile:",
+    "login-bullet-1": "Sie können Ihre Arbeit auf einem anderen Computer fortsetzen.",
+    "login-bullet-2": "Sie erhalten Zugriff auf die Bögen, die Sie bereits transkribiert haben (unter Ihrem Profil).",
+    "login-bullet-3": "Sie können Ihre persönlichen Daten (Region, Altersbereich) speichern, damit Sie sie nicht jedes Mal erneut eingeben müssen.",
     "button-login": "Anmelden"
     },
     "en": {
+
+    "page-title": "Translation",
+
     "heading": "Translate",
     "heading-activity-description": "Task",
     "activity-description": "Translate the original Wenker sentences into your own dialect. So we can compare today's Swiss German with the one spoken in the 1930ies.",
     "form-heading": "Your Info",
     "button-start": "Start",
     "login-heading": "Already registered?",
-    "login-text": "Registered users have the following benefits:<ul><li>Continue your work on a different computer</li><li> Access a history of sheets you have already transcribed (under your Profile)</li><li> Save your region and age range so you do not have to enter it each time</li></ul>",
+    "login-text": "Registered users have the following benefits:",
+    "login-bullet-1": "Continue your work on a different computer.",
+    "login-bullet-2": "Access a history of sheets you have already transcribed (under your Profile).",
+    "login-bullet-3": "Save your region and age range so you do not have to enter it each time",
     "button-login": "Login"
     }
     }
@@ -39,7 +51,7 @@
                     </div>
                 </div>
 
-                <div class="row row-centered">
+                <div class="row row-centered margin-bottom">
 
                     <div class="col col-tablet-portrait-10 col-large-4 col-large-after-2 col-wrapping col-large-no-bottom-margin">
                         <h3 class="subheading centered left-aligned-large">{{ $t('heading-activity-description') }}</h3>
@@ -61,16 +73,23 @@
                             </div>
                         </div>
 
-                        <div class="content-subsection">
-                            <h3 class="subheading centered left-aligned-large reduced-bottom-margin">{{ $t('login-heading') }}</h3>
-                            <p class="reduced-bottom-margin" v-html="$t('login-text')"></p>
-                            <div class="centered button-group left-aligned-large">
-                                <router-link to="/login" tag="button" class="button button-secondary">{{
-                                    $t('button-login') }}
-                                </router-link>
-                            </div>
-                        </div>
+                    </div>
+                </div>
 
+                <div class="row row-centered">
+                    <div class="col col-tablet-portrait-10 col-large-6">
+                        <h3 class="subheading centered left-aligned-large reduced-bottom-margin">{{ $t('login-heading') }}</h3>
+                        <p class="reduced-bottom-margin" v-html="$t('login-text')"></p>
+                        <ul>
+                            <li v-html="$t('login-bullet-1')"></li>
+                            <li v-html="$t('login-bullet-2')"></li>
+                            <li v-html="$t('login-bullet-3')"></li>
+                        </ul>
+                        <div class="centered button-group left-aligned-large">
+                            <router-link to="/login" tag="button" class="button button-secondary">{{
+                                $t('button-login') }}
+                            </router-link>
+                        </div>
                     </div>
                 </div>
 
@@ -95,6 +114,18 @@
 
     export default {
         name: 'Start',
+        metaInfo: function() {
+            return {
+                title: this.$t('page-title'),
+                meta: [
+                    {
+                        property: 'og:title',
+                        content: this.$t('page-title'),
+                        template: '%s | '+this.$t('site-title')
+                    }
+                ]
+            }
+        },
         data() {
             return {
                 project: {},

@@ -4,6 +4,7 @@ import store from './store/store.js'
 
 Vue.use(VueI18n);
 
+/*
 var language;
 if( !store.state.settings.language ) {
     // no language in store, check browser
@@ -21,120 +22,121 @@ if( !store.state.settings.language ) {
     store.dispatch("settings/setLanguage", language );
 }
 language = store.state.settings.language;
+*/
+
+if( !store.state.settings.language ) {
+    // no language in store
+    var language;
+
+    // check browser
+    language = window.navigator.userLanguage || window.navigator.language;
+
+    // trim
+    language = language.substr(0,2);
+
+    // check if valid
+    if( language !== 'de' && language !== 'en' ) {
+        language = "de";
+    }
+
+    // language for prerendering default routes
+    if( navigator.userAgent === 'ReactSnap' ) {
+        language = "de";
+    }
+
+    store.dispatch("settings/setLanguage", language );
+}
 
 export const i18n = new VueI18n({
   silentTranslationWarn: true,
-  locale: language,
+  locale: store.state.settings.language,
   silentTranslationWarn: true,
   messages: {
     'de': {
-      'page-homepage': {
-        'link': 'Home',
-        'title': 'Projekt Wenker – Citizen Science Center Zürich'
+
+    "site-title": "Projekt Wenker | Citizen Science Center Zürich",
+    "site-description": "Schweizerdeutsch 1930 / 2020",
+
+      'navigation-homepage': {
+        'link': 'Home'
       },
-      'page-transcribe': {
-        'link': 'Transkribieren',
-        'title': 'Projekt Wenker – Citizen Science Center Zürich'
+      'navigation-transcribe': {
+        'link': 'Transkribieren'
       },
-      'page-translate': {
-        'link': 'Übersetzen',
-        'title': 'Projekt Wenker – Citizen Science Center Zürich'
+      'navigation-translate': {
+        'link': 'Übersetzen'
       },
-      'page-project': {
-        'link': 'Das Projekt',
-        'title': 'Das Projekt – Projekt Wenker – Citizen Science Center Zürich'
+      'navigation-project': {
+        'link': 'Das Projekt'
       },
-      'page-wenker': {
-        'link': 'Wenker',
-        'title': 'Georg Wenker – Projekt Wenker – Citizen Science Center Zürich'
+      'navigation-wenker': {
+        'link': 'Wenker'
       },
-      'page-faq': {
-        'link': 'FAQ',
-        'title': 'FAQ – Projekt Wenker – Citizen Science Center Zürich'
+      'navigation-faq': {
+        'link': 'FAQ'
       },
-      'page-map': {
-        'link': 'FAQ',
-        'title': 'FAQ – Projekt Wenker – Citizen Science Center Zürich'
-      },
-    'page-terms': {
-        'link': 'Privacy Policy & Terms of Use',
-        'title': 'Privacy Policy & Terms of Use – Projekt Wenker – Citizen Science Center Zürich'
+    'navigation-terms': {
+        'link': 'Privacy Policy & Terms of Use'
     },
-      'page-login': {
-        'link': 'Anmelden',
-        'title': 'Anmelden – Projekt Wenker – Citizen Science Center Zürich'
+      'navigation-login': {
+        'link': 'Anmelden'
       },
-      'page-register': {
-        'link': 'Registrieren',
-        'title': 'Registrieren – Projekt Wenker – Citizen Science Center Zürich'
+      'navigation-register': {
+        'link': 'Registrieren'
       },
-      'page-logout': {
-        'link': 'Logout',
-        'title': 'Logout – Projekt Wenker – Citizen Science Center Zürich'
-      },
-      'page-reset': {
+      'navigation-reset': {
         'link': 'Passwort zurücksetzen',
         'title': 'Passwort zurücksetzen – Projekt Wenker – Citizen Science Center Zürich'
       },
-      'page-profile': {
-        'link': 'Profil',
-        'title': 'Profil – Projekt Wenker – Citizen Science Center Zürich'
+      'navigation-profile': {
+        'link': 'Profil'
       },
-      'page-sheets': {
+      'navigation-sheets': {
         'link': 'Boegen',
         'title': 'Boegen – Projekt Wenker – Citizen Science Center Zürich'
       }
     },
       'en': {
-          'page-homepage': {
-              'link': 'Home',
-              'title': 'Project Wenker – Citizen Science Center Zurich'
+
+
+          "site-title": "Project Wenker | Citizen Science Center Zurich",
+          "site-description": "Swiss German 1930 / 2020",
+
+          'navigation-homepage': {
+              'link': 'Home'
           },
-          'page-transcribe': {
-              'link': 'Transcribe',
-              'title': 'Transcribe – Project Wenker – Citizen Science Center Zurich'
+          'navigation-transcribe': {
+              'link': 'Transcription'
           },
-          'page-translate': {
-              'link': 'Translate',
-              'title': 'Translate – Project Wenker – Citizen Science Center Zurich'
+          'navigation-translate': {
+              'link': 'Translation'
           },
-          'page-project': {
-              'link': 'The Project',
-              'title': 'The Project – Project Wenker – Citizen Science Center Zurich'
+          'navigation-project': {
+              'link': 'The Project'
           },
-          'page-wenker': {
-              'link': 'Wenker',
-              'title': 'Georg Wenker – Project Wenker – Citizen Science Center Zurich'
+          'navigation-wenker': {
+              'link': 'Wenker'
           },
-          'page-faq': {
-              'link': 'FAQ',
-              'title': 'FAQ – Project Wenker – Citizen Science Center Zurich'
+          'navigation-faq': {
+              'link': 'FAQ'
           },
-          'page-terms': {
-              'link': 'Privacy Policy & Terms of Use',
-              'title': 'Privacy Policy & Terms of Use – Projekt Wenker – Citizen Science Center Zurich'
+          'navigation-terms': {
+              'link': 'Privacy Policy & Terms of Use'
           },
-          'page-login': {
-              'link': 'Login',
-              'title': 'Login – Project Wenker – Citizen Science Center Zurich'
+          'navigation-login': {
+              'link': 'Login'
           },
-          'page-register': {
-              'link': 'Register',
-              'title': 'Register – Project Wenker – Citizen Science Center Zurich'
+          'navigation-register': {
+              'link': 'Register'
           },
-          'page-logout': {
-              'link': 'Logout',
-              'title': 'Logout – Project Wenker – Citizen Science Center Zurich'
-          },
-          'page-reset': {
+          'navigation-reset': {
               'link': 'Reset Password',
               'title': 'Reset Password – Project Wenker – Citizen Science Center Zurich'
           },
-          'page-profile': {
-              'link': 'Profile',
-              'title': 'Profile – Project Wenker – Citizen Science Center Zurich'
+          'navigation-profile': {
+              'link': 'Profile'
           },
-          'page-sheets': {
+          'navigation-sheets': {
               'link': 'Progress',
               'title': 'Progress – Project Wenker – Citizen Science Center Zurich'
           }

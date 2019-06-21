@@ -1,6 +1,9 @@
 <i18n>
   {
     "de": {
+
+      "page-title": "Georg Wenker",
+
       "heading": "Die Geschichte eines Dialektliebhabers",
       "text-1": "Die Wenkersätze wurden in den 1930er Jahren zur Dokumentation des Schweizerdeutschen eingesetzt und haben eine interessante Vorgeschichte. Der junge Sprachwissenschaftler Georg Wenker unternahm im Jahr 1876 in Verbindung mit seiner Dissertation eigene empirische Untersuchungen der Mundart der Umgebung seiner Heimatstadt Düsseldorf. Dafür sammelte er anhand von Fragebogen Mundartproben jedes einzelnen Ortes. Er kreierte dazu die sogenannten 42 rheinischen Sätze in Schriftsprache, die er durch die Lehrer des jeweiligen Regierungsbezirkes zusammen mit ihren Schülern in die dort vorherrschende Mundart übertragen liess. Seine Ergebnisse wollte er in Dialektkarten und später in einem Sprachatlas abbilden.",
       "figure-2-caption": "Beispiel für eine Dialektkarte, Quelle:",
@@ -10,6 +13,9 @@
       "sentences-heading": "Die Wenkersätze"
     },
     "en": {
+
+      "page-title": "Georg Wenker",
+
       "heading": "The story of a dialect lover",
       "text-1": "Wenker’s phrases (german “Wenkersätze”) were used in the 1930s for the documentation of Swiss German and have an interesting history: in 1876, the young linguist Georg Wenker planned some empirical studies for his dissertation about the dialect of his home region around Düsseldorf. He used questionnaires to collect dialect samples of each individual village. For this purpose he created the so-called 42 Rhenish sentences in standard German, which he had translated by the teachers of the respective government district together with their students in the prevailing dialect there. In order to make his results visible, he planned to produce detailed dialect maps and, later on, a language atlas.",
       "figure-2-caption": "Example of a dialect map, source:",
@@ -34,21 +40,21 @@
               <h2 class="heading">{{ $t('heading') }}</h2>
               <p>
                 <figure>
-                  <img src="img/wenker.jpg" />
+                  <img src="/img/wenker.jpg" />
                   <figcaption>Georg Wenker <a href="http://www.diwa.info/Geschichte/Kartierungsverfahren.aspx" target="_blank">© DIWA</a></figcaption>
                 </figure>
               </p>
               <p v-html="$t('text-1')"></p>
               <p>
                 <figure>
-                  <img src="img/dialektkarte.jpg" />
+                  <img src="/img/dialektkarte.jpg" />
                   <figcaption>{{ $t('figure-2-caption') }} <a href="https://www.uni-marburg.de/de/fb09/dsa/einrichtung/personen/juergen-erich-schmidt/publikationen-1/aufsaetze-und-rezensionen" target="_blank">Jürgen Erich Schmidt (2012)</a></figcaption>
                 </figure>
               </p>
               <p v-html="$t('text-2')"></p>
               <p>
                 <figure>
-                  <img src="img/wrede.jpg" />
+                  <img src="/img/wrede.jpg" />
                   <figcaption>Ferdinand Wrede <a href="http://www.diwa.info/Geschichte/Kartierungsverfahren.aspx" target="_blank">© DIWA</a></figcaption>
                 </figure>
               </p>
@@ -151,6 +157,18 @@ import Footer from '@/components/shared/Footer.vue'
 
 export default {
   name: 'Wenker',
+  metaInfo: function() {
+      return {
+          title: this.$t('page-title'),
+          meta: [
+              {
+                  property: 'og:title',
+                  content: this.$t('page-title'),
+                  template: '%s | '+this.$t('site-title')
+              }
+          ]
+      }
+  },
   components: {
     'app-cover': Cover,
     'app-content-section': ContentSection,

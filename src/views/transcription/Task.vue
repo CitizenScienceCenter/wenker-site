@@ -1,9 +1,16 @@
 <i18n>
     {
     "de": {
+
+    "page-title": "Transkribieren",
+
+
     "task-description": "Bitte übertragen Sie die im Bild ersichtlichen Sätze in das Eingabefeld."
     },
     "en": {
+
+    "page-title": "Transcription",
+
     "task-description": "Please transcribe the sentences from the picture above into the input field."
     }
     }
@@ -46,7 +53,7 @@
                               <button v-on:click="submitTask" :disabled="loading" class="button button-primary">
                                 Nächster Bogen
                               </button>
-                            </div>                      
+                            </div>
                             <div class="centered task-switch-bar margin-bottom" >
                                 <div class="sheet-select">
                                     <div class="custom-select">
@@ -59,7 +66,7 @@
                                     </div>
                                     <label>von {{taskCount}}</label>
                                 </div>
-                                
+
                             </div>
 
                         </div>
@@ -71,7 +78,7 @@
                         </button>
                       </div>
 
-                      
+
                     </div>
                     <br>
                     <div class="centered">
@@ -103,6 +110,18 @@
 
   export default {
     name: 'Task',
+    metaInfo: function() {
+      return {
+          title: this.$t('page-title'),
+          meta: [
+              {
+                  property: 'og:title',
+                  content: this.$t('page-title'),
+                  template: '%s | '+this.$t('site-title')
+              }
+          ]
+      }
+    },
     components: {
       TaskQuestionImage,
       TaskResponse,

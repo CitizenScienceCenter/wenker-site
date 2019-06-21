@@ -1,6 +1,9 @@
 <i18n>
 {
 "de": {
+
+  "page-title": "Profil",
+
 "heading": "Dein Profil",
 "label-email": "Email",
 "label-api-key": "API Key",
@@ -15,6 +18,9 @@
 "button-reset": "Passwort zurücksetzen"
 },
 "en": {
+
+  "page-title": "Profile",
+
 "heading": "Your Profile",
 "label-email": "Email",
 "label-api-key": "API Key",
@@ -103,6 +109,18 @@ import Footer from '@/components/shared/Footer.vue'
 
 export default {
   name: 'ViewUser',
+  metaInfo: function() {
+      return {
+          title: this.$t('page-title'),
+          meta: [
+              {
+                  property: 'og:title',
+                  content: this.$t('page-title'),
+                  template: '%s | '+this.$t('site-title')
+              }
+          ]
+      }
+  },
   components: {
     'app-content-section': ContentSection,
     'app-footer': Footer

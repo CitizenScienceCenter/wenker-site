@@ -76,6 +76,7 @@
             'details.canton'() {
                 if( this.details.canton ) {
                     this.$store.dispatch('settings/setCanton', this.details.canton);
+                    this.$store.dispatch('settings/setTown', undefined);
                     // if(!this.details.town) {
                         this.checkTaskCount( this.activity );
                     // }
@@ -185,7 +186,7 @@
                 if (this.details.town) {
                     taskQuery['where']["info ->> 'SchoolPlace'"] = {'op': 'e', 'val': this.details.town, "join": "a"}
                 }
-
+                console.dir(taskQuery)
 
                 let self = this;
                 this.$store.dispatch('c3s/task/getTaskCount', taskQuery).then(c => {

@@ -1,6 +1,9 @@
   <i18n>
     {
     "de": {
+
+      "page-title": "Übersetzen",
+
     "task-description": "Bitte übersetzen Sie den oben stehenden Satz in Ihren Dialekt.",
     "placeholder": "In Ihrem Dialekt",
     "button-end": "Beenden",
@@ -9,6 +12,9 @@
     "button-next": "Nächster Satz"
     },
     "en": {
+
+      "page-title": "Translation",
+
     "task-description": "Please translate the sentence above in your dialect.",
     "placeholder": "In your dialect",
     "button-end": "End Task",
@@ -108,6 +114,18 @@
 
   export default {
     name: 'Task',
+    metaInfo: function() {
+      return {
+          title: this.$t('page-title'),
+          meta: [
+              {
+                  property: 'og:title',
+                  content: this.$t('page-title'),
+                  template: '%s | '+this.$t('site-title')
+              }
+          ]
+      }
+    },
     components: {
       TaskQuestionText,
       TaskResponseText,
