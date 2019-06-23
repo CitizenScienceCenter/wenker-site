@@ -1,19 +1,19 @@
 <i18n>
 {
 "de": {
-    "label-region-town": "Region oder Stadt",
+    "label-region-town": "Region oder Ort",
     "label-region-only": "Region",
     "label-age": "Ihr Alter",
     "label-region": "Region",
-    "label-town": "Stadt",
+    "label-town": "Ort",
     "label-please-select": "Bitte wählen ..."
 },
 "en": {
-    "label-region-town": "Region or City",
+    "label-region-town": "Region or Place",
     "label-region-only": "Region",
     "label-age": "Your Age",
     "label-region": "Region",
-    "label-town": "Town",
+    "label-town": "Place",
     "label-please-select": "Please select ..."
 }
 }

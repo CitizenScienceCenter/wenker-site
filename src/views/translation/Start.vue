@@ -7,7 +7,7 @@
 
     "heading": "Übersetzen",
     "heading-activity-description": "Aufgabe",
-    "activity-description": "Übersetze die originalen Wenker-Sätze in deinen Dialekt, wie du ihn heute sprichst. So können wir das Schweizerdeutsch von heute mit dem der 1930er Jahre vergleichen.",
+    "activity-description": "Übersetze die Wenker-Sätze (in ihrer originalen Form) in deinen Dialekt, wie du ihn heute sprichst. So können wir das Schweizerdeutsch von heute mit dem der 1930er Jahre vergleichen.",
     "form-heading": "Ihre Angaben",
     "button-start": "Starten",
     "login-heading": "Sie haben sich schon registiert?",

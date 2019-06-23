@@ -19,14 +19,15 @@
   "answer-2-text-4": "Unterhalb des Bildes befindet sich ein Textfeld, das den ersten Satz zeigt. Sie können zwischen den Sätzen wechseln, indem Sie auf die Schaltfläche 'weiter' klicken oder eine Satznummer aus der Dropdown-Liste auswählen.",
   "answer-2-text-5": "Wenn Sie einen Bogen ausfüllen, wird alles, was Sie tun, lokal auf Ihrem Rechner gespeichert. Das bedeutet, dass Sie beispielsweise zu Satz 4 wechseln können, weiter zu Satz 5 gehen können und schliesslich trotzdem zu Satz 4 zurückkehren können, um Änderungen vorzunehmen. Sobald Sie Ihre Arbeit abschliessen, d.h. auf den nächsten Bogen wechseln oder Ihre Sitzung beenden, werden diese Transkriptionen in der Datenbank gespeichert und können nicht mehr bearbeitet werden. Jedes Mal, wenn Sie erneut einen Bogen aufrufen (entweder um zu korrigieren oder um ihn zu vervollständigen), wird Ihre Transkription als neu behandelt, wobei das Eingabefeld informiert, welche Sätze Sie bereits bearbeitet haben.",
   "answer-2-text-6": "Wenn Sie irgendwelche Schwierigkeiten haben, können Sie den Kommentarbereich benutzen, um den Satz zu besprechen, an dem Sie gerade arbeiten. Ihr Kommentar wird automatisch dem Satz zugeordnet. Sie werden dann Hilfe von der Community und den am Projekt Beteiligten erhalten.",
+  "answer-2-text-7": "Wenn Sie auf einen Bogen in alter deutscher Schrift stossen, den Sie nicht lesen können, lassen Sie ihn einfach aus. Vielleicht findet sich eine andere schriftkundige Person, die diesen Bogen transkribieren kann.",
   "question-3": "Was soll ich mit Sonderzeichen machen?",
-  "answer-3-text-1": "Es kann in den Bögen Sonderzeichen geben, die auf Ihrer Tastatur schwer zu finden sind. Einige werden oberhalb des Eingabefelds für die Sätze angezeigt und können angeklickt werden, um sie dem letzten Buchstaben, den Sie geschrieben haben hinzuzufügen. Tippen Sie also zuerst den gewünschten Buchstaben und klicken Sie anschliessend auf das Sonderzeichen, um es mit dem vorherigen Buchstaben zu kombinieren.",
-  "answer-3-text-2": "Wenn Sie beispielsweise das Symbol ā verwenden möchten, geben Sie a ein und klicken Sie anschliessend auf die erste Schaltfläche in der Liste der Sonderzeichen.",
+  "answer-3-text-1": "Es kann in den Bögen Sonderzeichen geben, die auf Ihrer Tastatur schwer zu finden sind. Einige werden oberhalb des Eingabefelds für die Sätze angezeigt und können angeklickt werden, um sie dem letzten Buchstaben, den Sie geschrieben haben, hinzuzufügen. Tippen Sie also zuerst den gewünschten Buchstaben und klicken Sie anschliessend auf das Sonderzeichen, um es mit dem vorherigen Buchstaben zu kombinieren.",
+  "answer-3-text-2": "Wenn Sie beispielsweise das Symbol ā verwenden möchten, geben Sie a ein und klicken Sie anschliessend auf das passende Zusatzzeichen (z.B. den hochgestellten Bindestrich) in der Liste der Sonderzeichen",
   "answer-3-text-3": "Es gibt einige Sonderzeichen, die sie direkt an der gewünschten Stelle einfügen können. Es handelt sich um die folgenden Symbole, die sie am Ende der Sonderzeichenreihe finden.",
   "question-4":"Wie gehe ich beim Übersetzen vor?",
   "answer-4-text-1": "Bitte geben Sie die Region und im Optimalfall das Dorf/den Ort, in dem Sie aufgewachsen sind (oder dem Sie sich sprachlich am ehesten zuordnen) und Ihr Alter an. Damit bestimmen wir ihre dialektologische Herkunft. Falls Sie den gewünschten Ort nicht finden, vermerken Sie dies bitte in einem Kommentar.",
   "answer-4-text-2": "Übersetzen Sie anschliessend die vorgegebenen Sätze in Ihren Dialekt. Es gibt dabei keine Vorschriften, wie Sie den Dialekt schreiben.",
-  "transcription-rules-heading": "Transkriptionregeln",
+  "transcription-rules-heading": "Transkriptionsregeln",
   "transcription-rule-1": "Ein vermuteter Wortlaut wird in eckigen Klammern [] geschrieben, z. B. [T]ue das mache...",
   "transcription-rule-2": "Wenn ein Wort oder ein Buchstabe nicht entziffert werden kann, wird folgender Platzhalter eingefügt: [...]",
   "transcription-rule-3": "Falls ein Wort nicht vollständig entziffert werden kann, kann folgender Platzhalter eingefügt werden: [unvollst.]",
@@ -52,6 +53,7 @@
   "answer-2-text-4": "Beneath the image is a text box that starts the first sentence. You can move between sentences by clicking the Next button or by choosing a sentence number from the dropdown.",
   "answer-2-text-5": "When you are completing a sheet, everything you do is saved locally on your machine. This means that you can move to Sentence 4, for example, move on to Sentence 5 and still go back to Sentence 4 to make changes. As soon as you submit your work, i.e. move on to the next sheet or end your session, then these transcriptions are saved in the database and can not be edited again. Each time you see the sheet again (to correct or complete it), your submission will be treated as new, although the input box will inform which sentences you already have submitted.",
   "answer-2-text-6": "If you have any issues, you can use the comments section to discuss the sentence you are working on. Your comment is automatically assigned to the sentence. You will get help from the community and those involved in the project.",
+  "answer-2-text-7": "If you come across a sheet in old German script that you cannot read, simply leave it out. Perhaps there is another person who knows the script and can transcribe it.",
   "question-3": "What about special characters?",
   "answer-3-text-1": "There may be some special characters that are hard to find on your keyboard. Some of these have been added above the input box for each sentence and can be clicked on to insert them into the end of the text you have written so far.",
   "answer-3-text-2": "So type in the desired letter first and then click on the special character to combine it with the previous letter.",
@@ -93,9 +95,8 @@
               <h3 class="subheading">{{ $t('question-2') }}</h3>
               <p class="reduced-bottom-margin" v-html="$t('answer-2-text')"></p>
               <ul class="reduced-bottom-margin">
-                <li v-html="$t('answer-1-bullet-1')"></li>
-                <li v-html="$t('answer-1-bullet-2')"></li>
-                <li v-html="$t('answer-1-bullet-3')"></li>
+                <li v-html="$t('answer-2-bullet-1')"></li>
+                <li v-html="$t('answer-2-bullet-2')"></li>
               </ul>
               <p class="reduced-bottom-margin" v-html="$t('answer-2-text-2')"></p>
               <p class="reduced-bottom-margin" v-html="$t('answer-2-text-3')"></p>
@@ -111,7 +112,7 @@
                 <li>ə</li>
                 <li>Š</li>
                 <li>š</li>
-                <li>s</li>
+                <li>ſ</li>
               </ul>
 
               <h3 class="subheading">{{ $t('question-4') }}</h3>
