@@ -52,7 +52,6 @@ export const routes = [
                 beforeEnter: null,
                 meta: {i18n: "navigation-homepage", nav: false}
             },
-            /*
             {
                 path: "logout",
                 component: Home,
@@ -60,7 +59,6 @@ export const routes = [
                 beforeEnter: logout,
                 meta: {i18n: 'navigation-logout', nav: false}
             },
-            */
             {
                 path: "transcribe",
                 component: Activity,
