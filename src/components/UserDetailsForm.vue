@@ -115,15 +115,15 @@
             }),
             displayedRegions() {
                 let regions = [ ...this.regions ];
-                regions.sort( function(a, b) {
-                    if ( a.label < b.label ){
-                        return -1;
-                    }
-                    if ( a.label > b.label ){
-                        return 1;
-                    }
-                    return 0;
-                });
+                // regions.sort( function(a, b) {
+                //     if ( a.label < b.label ){
+                //         return -1;
+                //     }
+                //     if ( a.label > b.label ){
+                //         return 1;
+                //     }
+                //     return 0;
+                // });
                 let label = this.lang === 'de' ? 'Anderes Land' : 'Other Country'
                 regions.unshift({
                     'label': label,
@@ -139,7 +139,7 @@
                     });
 
                     let towns = [ ...selectedRegion.towns ];
-                    towns.sort();
+                    // towns.sort();
 
                     return towns;
                 }
