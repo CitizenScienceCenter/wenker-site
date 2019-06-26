@@ -107,15 +107,15 @@
                     return element.towns.length > 0;
                 });
 
-                regions.sort( function(a, b) {
-                    if ( a.label < b.label ){
-                        return -1;
-                    }
-                    if ( a.label > b.label ){
-                        return 1;
-                    }
-                    return 0;
-                });
+                // regions.sort( function(a, b) {
+                //     if ( a.label < b.label ){
+                //         return -1;
+                //     }
+                //     if ( a.label > b.label ){
+                //         return 1;
+                //     }
+                //     return 0;
+                // });
 
                 return regions;
             },
@@ -127,7 +127,7 @@
                     });
 
                     let towns = [ ...selectedRegion.towns ];
-                    towns.sort();
+                    // towns.sort();
 
                     return towns;
                 }

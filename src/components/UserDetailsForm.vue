@@ -28,9 +28,6 @@
 <template>
     <div class="prereq">
 
-        {{ user.info }}
-        <br>
-        {{ details }}
 
         <div class="form-field form-field-block">
             <label>Region</label>
@@ -119,20 +116,43 @@
         watch: {
             'details.canton'(to, from) {
                 // update user info
-                this.updateUserInfo( [{'canton': this.details.canton}] );
                 if( to !== 'other' ) {
-                    this.cantonFreetext = undefined;
+                    this.details.cantonFreetext = undefined;
+
+                    if( to !== this.user.info.canton ) {
+                        this.details.town = undefined;
+                        this.details.townFreetext = undefined;
+                    }
+                    this.updateUserInfo([
+                            {'canton': to},
+                            {'cantonFreetext': this.details.cantonFreetext},
+                            {'town': this.details.town},
+                            {'townFreetext': this.details.townFreetext},
+                        ]);
+                }
+                else {
+                    this.updateUserInfo( [{'canton': this.details.canton}] );
                 }
             },
             'details.cantonFreetext'(to, from) {
                 // update user info
-                this.updateUserInfo( [{'cantonFreetext': this.details.cantonFreetext}] );
+                if( this.details.canton === 'other' ) {
+                    this.updateUserInfo([{'cantonFreetext': this.details.cantonFreetext}]);
+                }
             },
             'details.town'(to, from) {
-                this.updateUserInfo( [{'town':to}] );
+                if( to !== 'other' && to !== undefined ) {
+                    this.details.townFreetext = undefined;
+                    this.updateUserInfo([{'town': to},{'townFreetext': this.details.townFreetext}]);
+                }
+                else if( to === 'other' ) {
+                    this.updateUserInfo( [{'town': this.details.town}] );
+                }
             },
             'details.townFreetext'(to, from) {
-                this.updateUserInfo( [{'townFreetext':to}] );
+                if( this.details.town === 'other' ) {
+                    this.updateUserInfo([{'townFreetext': to}]);
+                }
             },
             'details.ageRange'(to, from) {
                 //console.log('ageRange change');
@@ -149,22 +169,7 @@
             }),
             displayedRegions() {
                 let regions = [ ...this.regions ];
-                regions.sort( function(a, b) {
-                    if ( a.label < b.label ){
-                        return -1;
-                    }
-                    if ( a.label > b.label ){
-                        return 1;
-                    }
-                    return 0;
-                });
-                /*
-                let label = this.lang === 'de' ? 'Anderes Land' : 'Other Country'
-                regions.unshift({
-                    'label': label,
-                    'value': 'Anderes Land'
-                })
-                */
+
                 return regions;
             },
             displayedTowns() {
@@ -175,7 +180,7 @@
                     });
 
                     let towns = [ ...selectedRegion.towns ];
-                    towns.sort();
+                    // towns.sort();
 
                     return towns;
                 }
@@ -195,6 +200,8 @@
               }
             }
             if( this.user.info.town ) {
+                console.log( 'has town ');
+                console.log( this.user.info.town );
                 this.details.town = this.user.info.town;
                 if( this.user.info.town === 'other' && this.user.info.townFreetext ) {
                     this.details.townFreetext = this.user.info.townFreetext;
@@ -206,7 +213,10 @@
         },
         methods: {
             updateUserInfo( keyValuePairs ) {
+
                 let updatedUser = Object.assign({}, this.user['info']);
+                console.log('update user with:');
+                console.log( this.user.info );
 
                 for( let i = 0; i < keyValuePairs.length; i++ ) {
                     let key = Object.keys(keyValuePairs[i] )[0];
