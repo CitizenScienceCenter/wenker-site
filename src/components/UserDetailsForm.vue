@@ -48,7 +48,8 @@
             </template>
         </div>
 
-        <div v-if="displayedTowns && displayedTowns.length > 0" class="form-field form-field-block" :class="{disabled: false }">
+        <div class="form-field form-field-block" :class="{disabled: false }">
+        <!-- <div v-if="displayedTowns && displayedTowns.length > 0" class="form-field form-field-block" :class="{disabled: false }"> -->
             <label>{{ $t('label-town') }}</label>
             <div class="custom-select">
                 <select :class="{placeholder:!details.town}" v-model="details.town">
@@ -185,7 +186,7 @@
                     return towns;
                 }
                 else {
-                    return undefined;
+                    return [];
                 }
             }
         },
