@@ -27,6 +27,7 @@
   "question-4":"Wie gehe ich beim Übersetzen vor?",
   "answer-4-text-1": "Bitte geben Sie die Region und im Optimalfall das Dorf/den Ort, in dem Sie aufgewachsen sind (oder dem Sie sich sprachlich am ehesten zuordnen) und Ihr Alter an. Damit bestimmen wir ihre dialektologische Herkunft. Falls Sie den gewünschten Ort nicht finden, vermerken Sie dies bitte in einem Kommentar.",
   "answer-4-text-2": "Übersetzen Sie anschliessend die vorgegebenen Sätze in Ihren Dialekt. Es gibt dabei keine Vorschriften, wie Sie den Dialekt schreiben.",
+  "answer-4-text-3": "Falls Sie den gewünschten Ort nicht finden, wählen Sie anderer Ort und geben den Ortsnamen an",
   "transcription-rules-heading": "Transkriptionsregeln",
   "transcription-rule-1": "Ein vermuteter Wortlaut wird in eckigen Klammern [] geschrieben, z. B. [T]ue das mache...",
   "transcription-rule-2": "Wenn ein Wort oder ein Buchstabe nicht entziffert werden kann, wird folgender Platzhalter eingefügt: [...]",
@@ -61,6 +62,7 @@
   "question-4": "How do I translate?",
   "answer-4-text-1": "Please indicate the region and, ideally, the village/place where you grew up (or to which you are most likely to be linguistically assigned) and your age. This is how we determine your dialectological origin. If you cannot find the place you are looking for, please note this in a comment.",
   "answer-4-text-2": "Then translate the sentences into your dialect. There are no rules about how you have to write the dialect.",
+  "answer-4-text-3": "If you can't find the location you want, select another location and enter the location name."
   "transcription-rules-heading": "Transcription Rules",
   "transcription-rule-1": "A suspected wording is written in square brackets [], for example: [T]ue das mache...",
   "transcription-rule-2": "If a word or letter can't be deciphered, the following placeholder is inserted: [...]",
@@ -118,6 +120,7 @@
               <h3 class="subheading">{{ $t('question-4') }}</h3>
               <p class="reduced-bottom-margin" v-html="$t('answer-4-text-1')"></p>
               <p v-html="$t('answer-4-text-2')"></p>
+              <p v-html="$t('answer-4-text-3')"></p>
 
             </div>
             <div class="content-subsection">
