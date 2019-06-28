@@ -62,7 +62,7 @@
   "question-4": "How do I translate?",
   "answer-4-text-1": "Please indicate the region and, ideally, the village/place where you grew up (or to which you are most likely to be linguistically assigned) and your age. This is how we determine your dialectological origin. If you cannot find the place you are looking for, please note this in a comment.",
   "answer-4-text-2": "Then translate the sentences into your dialect. There are no rules about how you have to write the dialect.",
-  "answer-4-text-3": "If you can't find the location you want, select another location and enter the location name."
+  "answer-4-text-3": "If you can't find the location you want, select another location and enter the location name.",
   "transcription-rules-heading": "Transcription Rules",
   "transcription-rule-1": "A suspected wording is written in square brackets [], for example: [T]ue das mache...",
   "transcription-rule-2": "If a word or letter can't be deciphered, the following placeholder is inserted: [...]",
