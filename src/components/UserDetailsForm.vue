@@ -6,7 +6,10 @@
     "label-age": "Ihr Alter",
     "label-region": "Region",
     "label-town": "Ort",
-    "label-please-select": "Bitte wählen ..."
+    "label-please-select": "Bitte wählen ...",
+    "label-other-region": "Andere Region",
+    "label-other-town": "Anderer Ort",
+    "label-please-enter": "Bitte eingeben ..."
 },
 "en": {
     "label-region-town": "Region or Place",
@@ -14,7 +17,10 @@
     "label-age": "Your Age",
     "label-region": "Region",
     "label-town": "Place",
-    "label-please-select": "Please select ..."
+    "label-please-select": "Please select ...",
+    "label-other-region": "Other Region",
+    "label-other-town": "Other Place",
+    "label-please-enter": "Please enter ..."
 }
 }
 </i18n>
@@ -22,30 +28,44 @@
 <template>
     <div class="prereq">
 
+
         <div class="form-field form-field-block">
             <label>Region</label>
             <div class="custom-select">
                 <select :class="{placeholder:!details.canton}" v-model="details.canton">
-                    <option :value="undefined" disabled selected>Bitte wählen ...</option>
+                    <option :value="undefined" disabled selected>{{ $t('label-please-select') }}</option>
                     <option v-for="(region, index) in displayedRegions" :value="region.label" :key="'region_'+index">{{ region.label }}</option>
+                    <option :value="undefined" disabled>---</option>
+                    <option value="other">{{ $t('label-other-region') }}</option>
                 </select>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                     <path d="M127.3,192h257.3c17.8,0,26.7,21.5,14.1,34.1L270.1,354.8c-7.8,7.8-20.5,7.8-28.3,0L113.2,226.1 C100.6,213.5,109.5,192,127.3,192z"/>
                 </svg>
             </div>
-            <br>
-            <div class="form-field form-field-block" :class="{disabled: !displayedTowns || displayedTowns.length <= 0 }">
-                <label>{{ $t('label-town') }}</label>
-                <div class="custom-select">
-                    <select :class="{placeholder:!details.town}" v-model="details.town">
-                        <option :value="undefined" disabled selected>{{ $t('label-please-select') }}</option>
-                        <option v-for="(town, index) in displayedTowns" :value="town" :key="'town_'+index">{{ town }}</option>
-                    </select>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                        <path d="M127.3,192h257.3c17.8,0,26.7,21.5,14.1,34.1L270.1,354.8c-7.8,7.8-20.5,7.8-28.3,0L113.2,226.1 C100.6,213.5,109.5,192,127.3,192z"/>
-                    </svg>
-                </div>
+            <template v-if="details.canton === 'other'" type="text">
+                <br>
+                <input v-model="details.cantonFreetext" :placeholder="$t('label-please-enter')">
+            </template>
+        </div>
+
+        <div class="form-field form-field-block" :class="{disabled: false }">
+        <!-- <div v-if="displayedTowns && displayedTowns.length > 0" class="form-field form-field-block" :class="{disabled: false }"> -->
+            <label>{{ $t('label-town') }}</label>
+            <div class="custom-select">
+                <select :class="{placeholder:!details.town}" v-model="details.town">
+                    <option :value="undefined" disabled selected>{{ $t('label-please-select') }}</option>
+                    <option v-for="(town, index) in displayedTowns" :value="town" :key="'town_'+index">{{ town }}</option>
+                    <option :value="undefined" disabled>---</option>
+                    <option value="other">{{ $t('label-other-town') }}</option>
+                </select>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <path d="M127.3,192h257.3c17.8,0,26.7,21.5,14.1,34.1L270.1,354.8c-7.8,7.8-20.5,7.8-28.3,0L113.2,226.1 C100.6,213.5,109.5,192,127.3,192z"/>
+                </svg>
             </div>
+            <template v-if="details.town === 'other'" type="text">
+                <br>
+                <input v-model="details.townFreetext" :placeholder="$t('label-please-enter')">
+            </template>
         </div>
 
         <div v-bind:class="{'invalid': !details.age}" class="form-field form-field-block">
@@ -88,21 +108,56 @@
                 details: {
                     ageRange: undefined,
                     canton: undefined,
-                    town: undefined
+                    cantonFreetext: undefined,
+                    town: undefined,
+                    townFreetext: undefined
                 }
             }
         },
         watch: {
             'details.canton'(to, from) {
                 // update user info
-                this.updateUserInfo( [{'canton': this.details.canton}] );
+                if( to !== 'other' ) {
+                    this.details.cantonFreetext = undefined;
+
+                    if( to !== this.user.info.canton ) {
+                        this.details.town = undefined;
+                        this.details.townFreetext = undefined;
+                    }
+                    this.updateUserInfo([
+                            {'canton': to},
+                            {'cantonFreetext': this.details.cantonFreetext},
+                            {'town': this.details.town},
+                            {'townFreetext': this.details.townFreetext},
+                        ]);
+                }
+                else {
+                    this.updateUserInfo( [{'canton': this.details.canton}] );
+                }
+            },
+            'details.cantonFreetext'(to, from) {
+                // update user info
+                if( this.details.canton === 'other' ) {
+                    this.updateUserInfo([{'cantonFreetext': this.details.cantonFreetext}]);
+                }
+            },
+            'details.town'(to, from) {
+                if( to !== 'other' && to !== undefined ) {
+                    this.details.townFreetext = undefined;
+                    this.updateUserInfo([{'town': to},{'townFreetext': this.details.townFreetext}]);
+                }
+                else if( to === 'other' ) {
+                    this.updateUserInfo( [{'town': this.details.town}] );
+                }
+            },
+            'details.townFreetext'(to, from) {
+                if( this.details.town === 'other' ) {
+                    this.updateUserInfo([{'townFreetext': to}]);
+                }
             },
             'details.ageRange'(to, from) {
                 //console.log('ageRange change');
                 this.updateUserInfo( [{'ageRange':to}] );
-            },
-            'details.town'(to, from) {
-                this.updateUserInfo( [{'town':to}] );
             }
         },
         computed: {
@@ -115,24 +170,11 @@
             }),
             displayedRegions() {
                 let regions = [ ...this.regions ];
-                // regions.sort( function(a, b) {
-                //     if ( a.label < b.label ){
-                //         return -1;
-                //     }
-                //     if ( a.label > b.label ){
-                //         return 1;
-                //     }
-                //     return 0;
-                // });
-                let label = this.lang === 'de' ? 'Anderes Land' : 'Other Country'
-                regions.unshift({
-                    'label': label,
-                    'value': 'Anderes Land'
-                })
+
                 return regions;
             },
             displayedTowns() {
-                if( this.details.canton ) {
+                if( this.details.canton && this.details.canton !== 'other' ) {
                     let self = this;
                     let selectedRegion = this.regions.find(function(element) {
                         return element.label === self.details.canton;
@@ -144,24 +186,38 @@
                     return towns;
                 }
                 else {
-                    return undefined;
+                    return [];
                 }
             }
         },
         mounted() {
             if( this.user.info.canton ) {
+              console.log( 'has region ');
               this.details.canton = this.user.info.canton;
+              if( this.user.info.canton === 'other' && this.user.info.cantonFreetext ) {
+                  console.log( 'has freetext region:' +this.user.info.cantonFreetext );
+                  this.details.cantonFreetext = this.user.info.cantonFreetext;
+                  console.log( this.details.cantonFreetext );
+              }
+            }
+            if( this.user.info.town ) {
+                console.log( 'has town ');
+                console.log( this.user.info.town );
+                this.details.town = this.user.info.town;
+                if( this.user.info.town === 'other' && this.user.info.townFreetext ) {
+                    this.details.townFreetext = this.user.info.townFreetext;
+                }
             }
             if( this.user.info.ageRange ) {
                 this.details.ageRange = this.user.info.ageRange;
             }
-            if( this.user.info.town) {
-                this.details.town = this.user.info.town;
-            }
         },
         methods: {
             updateUserInfo( keyValuePairs ) {
+
                 let updatedUser = Object.assign({}, this.user['info']);
+                console.log('update user with:');
+                console.log( this.user.info );
 
                 for( let i = 0; i < keyValuePairs.length; i++ ) {
                     let key = Object.keys(keyValuePairs[i] )[0];
