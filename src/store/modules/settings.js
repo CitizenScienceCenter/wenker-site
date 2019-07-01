@@ -11,7 +11,7 @@ const state = {
         'canton': undefined,
         'town': undefined
     },
-    version: '0.1.96'
+    version: '1.0.0'
 };
 
 const getters = {
