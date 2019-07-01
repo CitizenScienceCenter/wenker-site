@@ -1,3 +1,18 @@
+<i18n>
+  {
+  "de": {
+
+  "page-title": "Registrieren"
+
+  },
+  "en": {
+
+  "page-title": "Register"
+
+  }
+  }
+</i18n>
+
 <template>
   <div>
     <app-content-section>
@@ -27,6 +42,18 @@ import Footer from '@/components/shared/Footer.vue'
 
 export default {
   name: "Register",
+  metaInfo: function() {
+      return {
+          title: this.$t('page-title'),
+          meta: [
+              {
+                  property: 'og:title',
+                  content: this.$t('page-title'),
+                  template: '%s | '+this.$t('site-title')
+              }
+          ]
+      }
+  },
   components :{
     RegisterForm,
       'app-content-section': ContentSection,

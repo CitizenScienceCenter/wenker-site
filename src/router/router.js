@@ -12,9 +12,77 @@ export const router = new VueRouter({
   }
 });
 
+
+router.beforeEach((to, from, next) => {
+
+    console.log( 'navigate to: '+to.path );
+    console.log('split:');
+
+    let filteredPath = to.path.split('/').filter(element => element.length > 0);
+    console.log( filteredPath );
+
+    //if( to.params.lang && to.params.lang.split('/')[0].length === 2 ) {
+    if( filteredPath.length > 0 && filteredPath[0].length === 2 ) {
+        console.log( 'url has language: '+ to.params.lang);
+        let language = to.params.lang;
+        store.dispatch("settings/setLanguage", language);
+        i18n.locale = language;
+
+
+        // --- auth / account
+
+        if( to.matched.some(record => record.meta.requiresAuth) ) {
+            if( store.state.c3s.user.currentUser ) {
+                console.log('validate user '+store.state.c3s.user.currentUser.username);
+
+                store.dispatch('c3s/user/validate').then(v => {
+                    //console.log('validation success');
+                    if (v) {
+                        next();
+                    }
+                    else {
+                        router.push('/login');
+                    }
+                });
+            }
+            else {
+                store.dispatch('c3s/user/generateAnon').then(u => {
+                    console.log('generate anon');
+                    next();
+                });
+            }
+
+        }
+        else if( to.matched.some(record => record.meta.requiresAccount) ) {
+
+            if( !store.state.c3s.user.currentUser || store.state.c3s.user.isAnon ) {
+                router.push('/login');
+            }
+            else {
+                next();
+            }
+        }
+        else {
+            next();
+        }
+
+        // ----
+
+    }
+    else {
+        console.log('redirect to');
+        console.log( '/'+ i18n.locale + to.path );
+        next( '/'+ i18n.locale + to.path );
+    }
+
+
+});
+
+/*
+
 router.beforeEach((to, from, next) => {
   const lang = store.state.settings.language || 'de'
-  const title = i18n.messages[lang][to.meta.page]['title']
+  const title = i18n.messages[lang][to.meta.i18n]['title']
   if (title) {
     document.title = title
   } else {
@@ -23,19 +91,28 @@ router.beforeEach((to, from, next) => {
 
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (store.state.c3s.user.currentUser) {
+
       store.dispatch('c3s/user/validate').then(v => {
-        if (v) {
-          next()
+        if (v instanceof  Error) {
+            store.dispatch('c3s/user/generateAnon').then(u => {
+                next()
+            })
+        } else if(v) {
+            next()
         } else {
-          // TODO error here with user not validated
             this.push({name: 'Login'})
         }
+      }).catch(() => {
+          store.dispatch('c3s/user/generateAnon').then(u => {
+              next()
+          })
       })
     } else {
-      // setTimeout(() => {
         store.dispatch('c3s/user/generateAnon').then(u => {
-          next()
+            next()
         })
+      // setTimeout(() => {
+
       // }, 1000)
 
     }
@@ -43,3 +120,5 @@ router.beforeEach((to, from, next) => {
     next()
   }
 });
+
+*/

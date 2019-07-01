@@ -1,11 +1,17 @@
 <i18n>
   {
     "de": {
+
+  "page-title": "Passwort zurücksetzen",
+
       "heading": "Passwort zurücksetzen",
       "label-email": "Email",
       "button-reset": "Zurücksetzen"
     },
     "en": {
+
+  "page-title": "Reset Password",
+
       "heading": "Reset Password",
       "label-email": "Email",
       "button-reset": "Reset"
@@ -50,6 +56,18 @@ import Footer from '@/components/shared/Footer.vue'
 
 export default {
   name: "RequestReset",
+  metaInfo: function() {
+      return {
+          title: this.$t('page-title'),
+          meta: [
+              {
+                  property: 'og:title',
+                  content: this.$t('page-title'),
+                  template: '%s | '+this.$t('site-title')
+              }
+          ]
+      }
+  },
   components :{
       'app-content-section': ContentSection,
       'app-footer': Footer
@@ -67,8 +85,10 @@ export default {
   },
   methods: {
     request() {
-      this.$store.dispatch('user/requestReset', this.email).then(res => {
-        console.log(res)
+        console.log('req reset');
+      this.$store.dispatch('c3s/user/requestReset', this.email).then(res => {
+          console.log('response:');
+        console.log(res);
         if (res) {
           this.success = true
         }

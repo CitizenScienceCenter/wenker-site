@@ -5,8 +5,14 @@ const state = {
     error: null,
     errTimeout: 5000,
     theme: 'default',
-    language: 'de'
-}
+    language: 'de',
+    activeAnswerIndex: 0,
+    transcription: {
+        'canton': undefined,
+        'town': undefined
+    },
+    version: '1.0.0'
+};
 
 const getters = {
     theme: state => state.theme
@@ -22,8 +28,16 @@ const actions = {
     },
     setLanguage({state, commit, rootState}, language) {
         commit('SET_LANGUAGE', language)
-    }
-
+    },
+    setActiveAnswerIndex({state, commit, rootState }, index) {
+        commit('SET_INDEX', index)
+    },
+    setCanton({state, commit, rootState }, canton) {
+        commit('SET_CANTON', canton)
+    },
+    setTown({state, commit, rootState }, town) {
+        commit('SET_TOWN', town)
+    },
 }
 
 const mutations = {
@@ -44,6 +58,19 @@ const mutations = {
     },
     SET_LANGUAGE(state, language) {
         state.language = language
+    },
+    SET_INDEX(state, index) {
+      state.activeAnswerIndex = index
+    },
+    SET_CANTON(state, canton) {
+        state.transcription.canton = canton
+    },
+    SET_TOWN(state, town) {
+        state.transcription.town = town
+    },
+    // eslint-disable-next-line no-unused-vars
+    RESET_STATE(currentState) {
+        currentState = Object.assign(currentState, state);
     }
 }
 

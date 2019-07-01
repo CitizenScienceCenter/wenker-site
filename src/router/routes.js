@@ -42,147 +42,169 @@ const Terms = resolve => {
 
 export const routes = [
     {
-        path: "/",
-        component: Home,
-        name: 'Home',
-        beforeEnter: null,
-        meta: {page: "page-homepage", nav: false}
-    },
-    {
-        path: "/logout",
-        component: Home,
-        name: "Logout",
-        beforeEnter: logout,
-        meta: {page: 'page-logout', nav: false}
-    },
-    {
-        path: "/transcribe",
-        component: Activity,
-        meta: {requiresAuth: true, breadcrumb: 'Projects', page: 'page-transcribe', nav: true},
+        path: '/:lang',
+        component: { render (c) { return c('router-view') } },
         children: [
             {
                 path: "",
-                name: "TranscribeStart",
-                component: Transcription.Start,
-                meta: {
-                    requiresAuth: true,
-                    breadcrumb: "Transcribe",
-                    page: 'page-transcribe'
-                }
+                component: Home,
+                name: 'Home',
+                beforeEnter: null,
+                meta: {i18n: "navigation-homepage", nav: false}
             },
             {
-                path: "task",
-                name: "TranscribeTask",
-                component: Transcription.Task,
-                meta: {
-                    requiresAuth: true,
-                    breadcrumb: "Transcribe Task",
-                    page: 'page-transcribe'
-                }
+                path: "logout",
+                component: Home,
+                name: "Logout",
+                beforeEnter: logout,
+                meta: {i18n: 'navigation-logout', nav: false}
             },
             {
-                path: "complete",
-                name: "TranscribeComplete",
-                component: Transcription.Complete,
-                meta: {
-                    requiresAuth: true,
-                    breadcrumb: "Transcribe Complete",
-                    page: 'page-transcribe'
-                }
+                path: "transcribe",
+                component: Activity,
+                meta: {requiresAuth: true, breadcrumb: 'Projects', i18n: 'navigation-transcribe', nav: true},
+                children: [
+                    {
+                        path: "",
+                        name: "TranscribeStart",
+                        component: Transcription.Start,
+                        meta: {
+                            requiresAuth: true,
+                            breadcrumb: "Transcribe",
+                            i18n: 'navigation-transcribe',
+                            nav: false
+                        }
+                    },
+                    {
+                        path: "task",
+                        name: "TranscribeTask",
+                        component: Transcription.Task,
+                        meta: {
+                            requiresAuth: true,
+                            breadcrumb: "Transcribe Task",
+                            i18n: 'navigation-transcribe',
+                            nav: false
+                        }
+                    },
+                    {
+                        path: "task/:id",
+                        name: "TranscribeTaskID",
+                        component: Transcription.Task,
+                        meta: {
+                            requiresAuth: true,
+                            breadcrumb: "Transcribe Task",
+                            page: 'navigation-transcribe'
+                        }
+                    },
+                    {
+                        path: "complete",
+                        name: "TranscribeComplete",
+                        component: Transcription.Complete,
+                        meta: {
+                            requiresAuth: true,
+                            breadcrumb: "Transcribe Complete",
+                            i18n: 'navigation-transcribe',
+                            nav: false
+                        }
+                    }
+                ]
+            },
+            {
+                path: "translate",
+                component: Activity,
+                meta: {requiresAuth: true, breadcrumb: 'Projects', i18n: 'navigation-translate', nav: true},
+                children: [
+                    {
+                        path: "",
+                        name: "TranslateStart",
+                        component: Translation.Start,
+                        meta: {
+                            requiresAuth: true,
+                            breadcrumb: "Translate",
+                            i18n: 'navigation-translate',
+                            nav: false
+                        }
+                    },
+                    {
+                        path: "task",
+                        name: "TranslateTask",
+                        component: Translation.Task,
+                        meta: {
+                            requiresAuth: true,
+                            breadcrumb: "Translate Task",
+                            i18n: 'navigation-translate',
+                            nav: false
+                        }
+                    },
+                    {
+                        path: "complete",
+                        name: "TranslateComplete",
+                        component: Translation.Complete,
+                        meta: {
+                            requiresAuth: true,
+                            breadcrumb: "Translate Complete",
+                            i18n: 'navigation-translate',
+                            nav: false
+                        }
+                    }
+                ]
+            },
+            {
+                path: "project",
+                component: Project,
+                meta: {i18n: "navigation-project", nav: true}
+            },
+            {
+                path: "wenker",
+                component: Wenker,
+                meta: {i18n: "navigation-wenker", nav: true}
+            },
+            {
+                path: "faq",
+                component: FAQ,
+                meta: {i18n: "navigation-faq", nav: true}
+            },
+            {
+                path: "terms",
+                component: Terms,
+                meta: {i18n: "navigation-terms", nav: false}
+            },
+            {
+                path: "login",
+                name: "Login",
+                component: User.Login,
+                meta: {i18n: 'navigation-login', nav: false}
+            },
+            {
+                path: "register",
+                name: "Register",
+                component: User.Register,
+                meta: {i18n: 'navigation-register', nav: false}
+            },
+            {
+                path: "reset",
+                name: "ResetRequest",
+                component: User.RequestReset,
+                meta: {i18n: 'navigation-reset', nav: false}
+            },
+            {
+                path: "reset/:token",
+                name: "Reset",
+                component: User.Reset,
+                meta: {i18n: 'navigation-reset', nav: false}
+            },
+            {
+                path: "profile",
+                name: "UserProfile",
+                component: User.Profile,
+                meta: {requiresAuth: true, breadcrumb: 'View User', i18n: 'navigation-profile', nav: false}
+            },
+            {
+                path: "error",
+                name: "Error",
+                component: Home.Error,
+                meta: {i18n: 'navigation-profile', nav: false}
             }
         ]
-    },
-    {
-        path: "/translate",
-        component: Activity,
-        meta: {requiresAuth: true, breadcrumb: 'Projects', page: 'page-translate', nav: true},
-        children: [
-            {
-                path: "",
-                name: "TranslateStart",
-                component: Translation.Start,
-                meta: {
-                    requiresAuth: true,
-                    breadcrumb: "Translate",
-                    page: 'page-translate'
-                }
-            },
-            {
-                path: "task",
-                name: "TranslateTask",
-                component: Translation.Task,
-                meta: {
-                    requiresAuth: true,
-                    breadcrumb: "Translate Task",
-                    page: 'page-translate'
-                }
-            },
-            {
-                path: "complete",
-                name: "TranslateComplete",
-                component: Translation.Complete,
-                meta: {
-                    requiresAuth: true,
-                    breadcrumb: "Translate Complete",
-                    page: 'page-translate'
-                }
-            }
-        ]
-    },
-    {
-        path: "/project",
-        component: Project,
-        meta: {page: "page-project", nav: true}
-    },
-    {
-        path: "/wenker",
-        component: Wenker,
-        meta: {page: "page-wenker", nav: true}
-    },
-    {
-        path: "/faq",
-        component: FAQ,
-        meta: {page: "page-faq", nav: true}
-    },
-    {
-        path: "/terms",
-        component: Terms,
-        meta: {page: "page-terms", nav: false}
-    },
-    {
-        path: "/login",
-        name: "Login",
-        component: User.Login,
-        meta: {page: 'page-login', nav: false}
-    },
-    {
-        path: "/register",
-        name: "Register",
-        component: User.Register,
-        meta: {page: 'page-register', nav: false}
-    },
-    {
-        path: "/reset",
-        name: "ResetRequest",
-        component: User.RequestReset,
-        meta: {page: 'page-reset', nav: false}
-    },
-    {
-        path: "/reset/:token",
-        name: "Reset",
-        component: User.Reset,
-        meta: {page: 'page-reset', nav: false}
-    },
-    {
-        path: "/profile",
-        name: "UserProfile",
-        component: User.Profile,
-        meta: {requiresAuth: true, breadcrumb: 'View User', page: 'page-profile', nav: false}
-    },
-    {
-        path: "/error",
-        name: "Error",
-        component: Home.Error,
-        meta: {page: 'page-profile', nav: false}
     }
 ];

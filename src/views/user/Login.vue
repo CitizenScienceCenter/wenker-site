@@ -1,10 +1,17 @@
 <i18n>
   {
     "de": {
-      "heading": "Anmelden"
+
+      "page-title": "Anmelden",
+
+      "heading-login": "Anmelden",
+      "heading-register": "Registrieren"
     },
     "en": {
-      "heading": "EN: Fragen und Antworten"
+     "page-title": "Login",
+
+      "heading-login": "Login",
+      "heading-register": "Register"
     }
   }
 </i18n>
@@ -18,12 +25,12 @@
           <div class="col col-large-6">
 
             <div class="content-subsection">
-              <h2 class="heading">Anmelden</h2>
+              <h2 class="heading">{{ $t('heading-login') }}</h2>
               <login-form></login-form>
             </div>
 
             <div class="content-subsection">
-              <h2 class="subheading">Registrieren</h2>
+              <h2 class="subheading">{{ $t('heading-register') }}</h2>
               <register-form></register-form>
             </div>
 
@@ -46,6 +53,18 @@
 
   export default {
   name: "Login",
+  metaInfo: function() {
+      return {
+          title: this.$t('page-title'),
+          meta: [
+              {
+                  property: 'og:title',
+                  content: this.$t('page-title'),
+                  template: '%s | '+this.$t('site-title')
+              }
+          ]
+      }
+  },
   components :{
     LoginForm,
       RegisterForm,

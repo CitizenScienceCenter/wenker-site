@@ -1,9 +1,16 @@
 <i18n>
     {
     "de": {
+
+    "page-title": "Transkribieren",
+
+
     "task-description": "Bitte übertragen Sie die im Bild ersichtlichen Sätze in das Eingabefeld."
     },
     "en": {
+
+    "page-title": "Transcription",
+
     "task-description": "Please transcribe the sentences from the picture above into the input field."
     }
     }
@@ -41,9 +48,13 @@
 
                 <div class="content-subsection">
                     <div class="row">
-                        <div class="col">
-
-                            <div class="centered task-switch-bar margin-bottom" v-if='taskCount > 1'>
+                        <div class="col" v-if='taskRange.length !== parseInt(taskDropdown)'>
+                            <div class="centered task-switch-bar margin-bottom" >
+                              <button v-on:click="submitTask" :disabled="loading" class="button button-primary">
+                                Nächster Bogen
+                              </button>
+                            </div>
+                            <div class="centered task-switch-bar margin-bottom" >
                                 <div class="sheet-select">
                                     <div class="custom-select">
                                         <select class="task-select" v-model="taskDropdown">
@@ -55,16 +66,23 @@
                                     </div>
                                     <label>von {{taskCount}}</label>
                                 </div>
-                                <button v-on:click="submitTask" :disabled="loading" class="button button-primary">
-                                    Nächster Bogen
-                                </button>
-                            </div>
 
-                            <div class="centered">
-                                <button v-on:click="endTask" class="button button-secondary">Beenden</button>
                             </div>
 
                         </div>
+                    </div>
+                    <div class="col" v-if='taskRange.length === parseInt(taskDropdown)'>
+                      <div class="centered task-switch-bar margin-bottom" >
+                        <button v-on:click="submitTask(true)" tag="button" class="button button-primary">
+                          Zurück zur Regionsauswahl
+                        </button>
+                      </div>
+
+
+                    </div>
+                    <br>
+                    <div class="centered">
+                        <button v-on:click="endTask" class="button button-secondary">Sitzung Beenden</button>
                     </div>
                 </div>
 
@@ -92,6 +110,18 @@
 
   export default {
     name: 'Task',
+    metaInfo: function() {
+      return {
+          title: this.$t('page-title'),
+          meta: [
+              {
+                  property: 'og:title',
+                  content: this.$t('page-title'),
+                  template: '%s | '+this.$t('site-title')
+              }
+          ]
+      }
+    },
     components: {
       TaskQuestionImage,
       TaskResponse,
@@ -108,16 +138,24 @@
       comments: state => state.c3s.task.comments,
       loading: state => state.c3s.settings.loading,
       taskRange: function() {
-        return [...Array(this.taskCount-1).keys()];
+        return [...Array(this.taskCount).keys()];
       }
     }),
     watch: {
       '$route.query.count' (to, from) {
-        this.taskDropdown = to;
-        taskUtils.loadTask(this, to, true, this.routes.start)
+        if (!this.taskID) {
+          this.taskDropdown = to;
+          taskUtils.loadTask(this, to, true, this.routes.start)
+        }
       },
       taskDropdown (to, from) {
-        taskUtils.loadTask(this, to, true, this.routes.start)
+        const queryObj = Object.assign({}, this.$route.query)
+        queryObj.count = to
+        this.$router.push({path: this.$route.path, query: queryObj})
+        // taskUtils.loadTask(this, to, true, this.routes.start)
+      },
+      taskID (to, from) {
+        taskUtils.loadTaskID(this, to, true, this.routes.start)
       }
     },
     data () {
@@ -126,6 +164,7 @@
         nextTxt: 'Next',
         responses: [],
         taskCount: 1,
+        taskID: this.$route.query['id'],
         taskDropdown: this.$route.query['count'] || 1,
         submissions: [],
         routes: {
@@ -136,7 +175,9 @@
       }
     },
     mounted () {
-      if (this.activity && this.activity.id) {
+      if (this.taskID) {
+        taskUtils.loadTaskID(this, this.taskID, true, this.routes.start)
+      } else if (this.activity && this.activity.id) {
         taskUtils.loadTask(this, this.$route.query['count'], true, this.routes.start)
       } else {
         console.log('No activity set in the store!')
@@ -152,8 +193,9 @@
       endTask () {
         taskUtils.endTask(this, this.routes.complete)
       },
-      submitTask () {
-        taskUtils.submitTask(this, this.routes.complete, this.routes.task)
+      submitTask (end) {
+         const route = end ? this.routes.start : this.routes.complete
+        taskUtils.submitTask(this, route, this.routes.task)
       }
     }
 
@@ -174,6 +216,7 @@
         .custom-select {
 
             select {
+
                 font-size: $font-size-small;
                 padding-left: $spacing-2;
                 border: 1px solid $color-primary-tint-50;

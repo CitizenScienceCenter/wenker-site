@@ -1,7 +1,8 @@
 <i18n>
     {
     "de": {
-    "special-characters-label": "Sonderzeichen einfügen",
+    "modify-characters-label": "Letztes Zeichen modifizieren:",
+    "special-characters-label": "Sonderzeichen einfügen:",
     "sentence-count-prefix": "Nr. ",
     "placeholder-prefix": "Satz Nr. ",
     "button-next-sentence": "Nächster Satz",
@@ -10,7 +11,8 @@
     "info-done": "Du hast diesen Satz bereits transkribiert."
     },
     "en": {
-    "special-characters-label": "Enter special characters",
+    "modify-characters-label": "Modify last character:",
+    "special-characters-label": "Enter special characters:",
     "sentence-count-prefix": "No. ",
     "placeholder-prefix": "Sentence No. ",
     "button-next-sentence": "Next Sentence",
@@ -46,6 +48,7 @@
                     <task-response-text ref="TaskResponseText"
                                         :placeholder="$t('placeholder-prefix') + (activeAnswerIndex+1)"
                                         :responses="responses" :activeAnswer="activeAnswer"
+                                        @change="change"
                                         :activeAnswerIndex="activeAnswerIndex" type="text"></task-response-text>
                     <div v-if="userSubmitted" class="info centered"> <!-- sometimes that one -->
                         <svg aria-hidden="true" data-prefix="fas" data-icon="info-circle" role="img"
@@ -59,14 +62,19 @@
                     </div>
 
                 </div>
+                <div class="special-characters centered" :class="{disabled: !Boolean( inputString.length ) }">
+                    <label>{{ $t('modify-characters-label') }}</label>
+                    <button class="button button-secondary large" v-on:click="addChar(char)" :key="char"
+                            v-for="(char, index) in specialCombinationChars">&nbsp;{{char}}
+                    </button>
+                </div>
                 <div class="special-characters centered">
                     <label>{{ $t('special-characters-label') }}</label>
-                    <button class="button button-secondary" v-on:click="insertChar(char)" :key="char"
-                            v-for="char in specialChars">{{char}}
+                    <button class="button button-secondary" v-on:click="addChar(char)" :key="char"
+                            v-for="(char, index) in specialSingleChars">{{char}}
                     </button>
-                    <!--TODO handle insertion of character to cursor position in CURRENT text box-->
                 </div>
-                <help-popup></help-popup>
+                <help-popup class="rules"></help-popup>
 
             </div>
 
@@ -107,7 +115,7 @@
             showSpecial: {
                 type: Boolean,
                 default: false
-            }
+            },
         },
         watch: {
             activeAnswer(to, from) {
@@ -148,18 +156,62 @@
         },
         data() {
             return {
-                activeAnswerIndex: 0,
                 activeAnswer: {},
                 userSubmitted: false,
                 othersSubmitted: 0,
-                submissions: []
+                submissions: [],
+                specialCombinationChars: [
+                    '̄',
+                    '̱',
+                    '̃',
+                    '̰',
+                    '̊',
+
+                    '̥',
+                    '̆',
+                    '̯',
+                    '̇',
+                    '̣',
+
+                    '̧',
+                    '̨',
+                    '͜',
+                    '͡',
+                    '̀',
+
+                    '́',
+                    '̈',
+                    'ͣ',
+                    'ͤ',
+                    'ͥ',
+
+                    'ͦ',
+                    'ͧ'
+                ],
+                specialSingleChars: [
+                    'š',
+                    'Š',
+                    'ſ',
+                    'ə',
+                ],
+                inputString: ''
             }
         },
-        computed: mapState({
+      computed: {
+        activeAnswerIndex: {
+            get() {
+              return this.$store.state.settings.activeAnswerIndex;
+            },
+            set(value) {
+              this.$store.commit('settings/SET_INDEX', value);
+            }
+        },
+        ...mapState({
             specialChars: state => state.consts.specialChars,
             tasks: state => state.c3s.task.tasks,
             user: state => state.c3s.user.currentUser
         }),
+      },
         mounted() {
             setTimeout(() => {
                 const subQuery = {
@@ -185,14 +237,23 @@
                     }
                 })
             }, 200)
+          this.$store.commit('settings/SET_INDEX', 0);
         },
         components: {TaskResponseText, HelpPopup},
         methods: {
+            change(string) {
+                this.inputString = string;
+            },
             updateActiveIndex(val) {
                 this.activeAnswerIndex += val;
             },
-            insertChar(char) {
-                this.$refs.TaskResponseText.setChar(char);
+            /*
+            insertChar(index, char) {
+                this.$refs.TaskResponseText.setChar(index, char);
+            },
+            */
+            addChar( char ) {
+                this.$refs.TaskResponseText.addChar( char );
             },
             checkSubmissions() {
                 //subs-user for current user and subs-some for submissions not from current user
@@ -292,22 +353,46 @@
 
     .special-characters {
 
-        margin-bottom: $spacing-1;
-
         label {
             margin-right: $spacing-2;
             font-weight: 400;
-            color: $color-primary-shade-20;
+            color: $color-primary-shade-40;
             font-size: $font-size-small;
             font-style: italic;
         }
         .button.button-secondary {
-            height: 32px;
-            padding: $spacing-1;
-            border-color: white;
+            padding: 0 $spacing-1;
+            font-size: $font-size-normal;
             font-family: sans-serif;
             text-transform: lowercase;
+            border: 1px transparent solid;
+            height: 40px;
+
+            &:hover {
+                border: 1px $color-primary-shade-20 solid;
+                transform: scale(2);
+                background-color: white;
+            }
+
+            &.large {
+                font-size: $font-size-medium;
+            }
+
+            margin-right: $spacing-1;
+            &:last-child {
+                margin-right: 0;
+            }
         }
+
+
+        &.disabled {
+            opacity: 0.25;
+            pointer-events: none;
+        }
+    }
+
+    .rules {
+        margin-top: $spacing-3;
     }
 
     @media only screen and (min-width: $viewport-large) {

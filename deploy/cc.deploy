@@ -1,0 +1,6 @@
+export NAME=wenker-site
+export IMG=wenker
+export NS=c3s-prod
+export PORT=80
+export TAG=${TAG}
+export HOST=wenkerproject.citizenscience.ch

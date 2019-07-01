@@ -81,7 +81,7 @@ export function getMedia (self, task) {
   })
 }
 
-export function loadTask (self, count, media, routeComplete) {
+export function loadTask (self, count, media, routeComplete, random=true) {
   const taskQuery = {
     'select': {
       'fields': [
@@ -100,20 +100,66 @@ export function loadTask (self, count, media, routeComplete) {
     'limit': 1,
     'offset': count - 1
   }
+  if(!self.$route.query.hasOwnProperty('region')) {
+    if (random) {
+      taskQuery['select']['orderBy'] = {
+        'random()': ''
+      };
+    }else{
+      taskQuery['select']['orderBy'] = {
+        'created_at': ''
+      };
+    }
+  }
   if (self.$route.query.hasOwnProperty('region')) {
     const userRegion = self.$route.query['region']
     taskQuery['where']['info ->> \'SchoolState\''] = { 'op': 'e', 'val': userRegion, 'join': 'a' }
   }
-  console.log(self.$route.query.hasOwnProperty('town'))
   if (self.$route.query.hasOwnProperty('town') && self.$route.query.hasOwnProperty('town') !== 'Alles' && self.$route.query.hasOwnProperty('town')) {
     const userTown = self.$route.query['town']
     taskQuery['where']['info ->> \'SchoolPlace\''] = { 'op': 'e', 'val': userTown, 'join': 'a' }
   }
-  console.log(taskQuery);
   self.$store.dispatch('c3s/task/getTaskCount', taskQuery).then(c => {
-    console.log(c)
     self.taskCount = c.body
   })
+  self.$store.dispatch('c3s/task/getTasks', [taskQuery, 1]).then(t => {
+    if (t.body && t.body.length > 0) {
+      const task = t.body[0]
+      console.log('Got ' + task.id);
+
+      self.responses = []
+      for (let i = 0; i < task.content.answers.length; i++) {
+        self.responses.push({ text: '' })
+      }
+      createSubmission(self, self.user.id, task.id)
+      if (media) {
+        getMedia(self, task)
+      }
+//      self.$router.push({query: {count: count}})
+    } else {
+      self.$router.push({ 'name': routeComplete })
+    }
+  })
+}
+
+export function loadTaskID (self, id, media, routeComplete) {
+  const taskQuery = {
+    'select': {
+      'fields': [
+        '*'
+      ],
+      'tables': [
+        'tasks'
+      ]
+    },
+    'where': {
+      'id': {
+        'op': 'e',
+        'val': id
+      }
+    },
+    'limit': 1,
+  }
   self.$store.dispatch('c3s/task/getTasks', [taskQuery, 1]).then(t => {
     if (t.body && t.body.length > 0) {
       const task = t.body[0]
@@ -126,12 +172,13 @@ export function loadTask (self, count, media, routeComplete) {
       if (media) {
         getMedia(self, task)
       }
-      self.$router.push({query: {count: count}})
+      //self.$router.push({query: {count: count}})
     } else {
       self.$router.push({ 'name': routeComplete })
     }
   })
 }
+
 
 export function endTask (self, completeRoute) {
   const responded = checkResponses(self.responses)
@@ -149,8 +196,8 @@ export function submitTask (self, completeRoute, nextRoute) {
   const responded = checkResponses(self.responses)
   let qu = Object.assign({}, self.$route.query)
   qu['count'] = parseInt(qu['count']) + 1
-  console.log(self.taskCount)
-  if (responded && qu['count'] < self.taskCount) {
+  if (responded) {
+      // && qu['count'] < self.taskCount) {
     self.$store.commit('c3s/submission/SET_SUBMISSION_RESPONSES', self.responses)
     self.$store.dispatch('c3s/submission/createSubmission').then(s => {
       if (qu['count'] > self.taskCount) {
