@@ -25,7 +25,7 @@
   "answer-3-text-2": "Wenn Sie beispielsweise das Symbol ā verwenden möchten, geben Sie a ein und klicken Sie anschliessend auf das passende Zusatzzeichen (z.B. den hochgestellten Bindestrich) in der Liste der Sonderzeichen.",
   "answer-3-text-3": "Es gibt einige Sonderzeichen, die Sie direkt an der gewünschten Stelle einfügen können. Es handelt sich um die folgenden Symbole, die Sie am Ende der Sonderzeichenreihe finden.",
   "question-4":"Wie gehe ich beim Übersetzen vor?",
-  "answer-4-text-1": "Bitte geben Sie die Region und im Optimalfall das Dorf/den Ort, in dem Sie aufgewachsen sind (oder dem Sie sich sprachlich am ehesten zuordnen) und Ihr Alter an. Damit bestimmen wir Ihre dialektologische Herkunft. Falls Sie den gewünschten Ort nicht finden, vermerken Sie dies bitte in einem Kommentar.",
+  "answer-4-text-1": "Bitte geben Sie die Region und im Optimalfall das Dorf/den Ort, in dem Sie aufgewachsen sind (oder dem Sie sich sprachlich am ehesten zuordnen) und Ihr Alter an. Damit bestimmen wir Ihre dialektologische Herkunft. Falls Sie den gewünschten Ort nicht finden, wählen Sie 'anderer Ort' ('andere Region') und geben Sie den Namen des Ortes an.",
   "answer-4-text-2": "Wenn Sie auf einen Bogen in alter deutscher Schrift stossen, den Sie nicht lesen können, lassen Sie ihn aus. Vielleicht findet sich eine andere schriftkundige Person, die diesen Bogen transkribieren kann.",
   "answer-4-text-3": "Übersetzen Sie anschliessend die vorgegebenen Sätze in Ihren Dialekt. Es gibt dabei keine Vorschriften, wie Sie den Dialekt schreiben.",
   "transcription-rules-heading": "Transkriptionsregeln",
