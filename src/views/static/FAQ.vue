@@ -102,8 +102,8 @@
               <p class="reduced-bottom-margin" v-html="$t('answer-2-text-3')"></p>
               <p class="reduced-bottom-margin" v-html="$t('answer-2-text-4')"></p>
               <p class="reduced-bottom-margin" v-html="$t('answer-2-text-5')"></p>
-              <p v-html="$t('answer-2-text-6')"></p>
               <p v-html="$t('answer-2-text-7')"></p>
+              <p v-html="$t('answer-2-text-6')"></p>
               
               <h3 class="subheading">{{ $t('question-3') }}</h3>
               <p class="reduced-bottom-margin" v-html="$t('answer-3-text-1')"></p>
