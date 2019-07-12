@@ -1,5 +1,5 @@
 {
   "name": "wenker-staging",
-  "ns": "c3s-staging",
+  "namespace": "c3s-staging",
   "port": 80
 }
