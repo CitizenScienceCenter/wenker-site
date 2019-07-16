@@ -69,7 +69,7 @@
                   <a href="http://www.diwa.info/Geschichte/Kartierungsverfahren.aspx" target="_blank">Beschreibung des Kartierungsverfahrens des Deutschen Sprachatlas</a>
                 </li>
                 <li>
-                  <a href="pdf/Auszug_Raggenbass_E.pdf" target="_blank">Auszug aus der Masterarbeit von Carmen Raggenbass zu den Wenkermaterialien aus dem Appenzell (Deutsches Seminar der Universität Zürich 2018)</a>
+                  <a href="/pdf/Auszug_Raggenbass_E.pdf" target="_blank">Auszug aus der Masterarbeit von Carmen Raggenbass zu den Wenkermaterialien aus dem Appenzell (Deutsches Seminar der Universität Zürich 2018)</a>
                 </li>
               </ul>
 
