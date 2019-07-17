@@ -94,7 +94,7 @@
             </div>
         </app-content-section>
 
-        <comments-list v-if="tasks.length" :id="tasks[0].id"></comments-list>
+        <comments-list v-if="tasks.length" :id="tasks[0].id" :noSentenceNr="true"></comments-list>
 
         <app-footer></app-footer>
 

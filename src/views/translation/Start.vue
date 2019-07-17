@@ -96,7 +96,7 @@
             </div>
         </app-content-section>
 
-        <comments-list :id="id"></comments-list>
+        <comments-list :id="id" :noSentenceNr="true"></comments-list>
 
         <app-footer></app-footer>
 

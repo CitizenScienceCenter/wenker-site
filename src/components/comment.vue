@@ -17,7 +17,7 @@
     </button>
     -->
     <user-avatar class="avatar" :username="comment.info.username"></user-avatar>
-    <p class="username">{{comment.info.username}} <span v-if="!isNaN(comment.info.sentence)">({{ $t('label-sentence-number') }} {{comment.info.sentence+1}})</span></p>
+    <p class="username">{{comment.info.username}} <span v-if="!noSentenceNr && !isNaN(comment.info.sentence)">({{ $t('label-sentence-number') }} {{comment.info.sentence+1}})</span></p>
     <p class="text">{{comment.content.text}}</p>
   </div>
 </template>
@@ -39,6 +39,10 @@
       classes: {
         type: Number,
         default: 0
+      },
+      noSentenceNr: {
+        type: Boolean,
+        default: false
       }
     }
   }

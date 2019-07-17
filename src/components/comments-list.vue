@@ -32,6 +32,7 @@
                                     :comment="comment"
                                     :classes="index"
                                     :key="comment.text"
+                                    :noSentenceNr="noSentenceNr"
                             ></single-comment>
                         </div>
                         <div class="reply">
@@ -86,6 +87,10 @@
                 type: String,
                 default: undefined
             },
+            noSentenceNr: {
+                type: Boolean,
+                default: false
+            }
         },
         computed: mapState({
             user: state => state.c3s.user.currentUser,
