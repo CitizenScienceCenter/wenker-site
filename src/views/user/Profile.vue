@@ -24,7 +24,7 @@
 "heading": "Your Profile",
 "label-email": "Email",
 "label-api-key": "API Key",
-"submission-heading": "Transcripbed Sheets",
+"submission-heading": "Transcribed Sheets",
 "submission-transcription-prefix": "You have transcribed ",
 "submission-transcription-between": " sentences from ",
 "submission-transcription-suffix": " sheets.",

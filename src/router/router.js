@@ -85,7 +85,7 @@ router.beforeEach((to, from, next) => {
         if (s.body.length !== 0) {
           next();
         } else{
-          router.push('/login');
+          router.push('/');
         }
       });
     }
