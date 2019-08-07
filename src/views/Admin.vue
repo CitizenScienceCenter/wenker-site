@@ -76,15 +76,13 @@
               </div>
             </div>
 
-            <div class="content-subsection" v-if="submissions.length">
+            <div class="content-subsection" v-if="comments.length">
               <h3 class="subheading">{{ $t('submission-heading') }}</h3>
               <ul>
-                <li v-for="sub in submissions" v-bind:key="sub['submission_id']">
-                  <div v-if="sub['activity_id'] === activities.transcribe">
-                    <router-link tag="a" :to="{name:'TranscribeTask', query: { id: sub['task_id']}}">
-                      {{sub['info']['SchoolPlace']}}, {{sub['info']['SchoolState']}}<!-- (ID: {{sub['task_id']}}) -->
+                <li v-for="com in comments" v-bind:key="com['id']">
+                    <router-link tag="a" :to="{name:'TranscribeTask', query: { id: com['source_id']}}">
+                      {{com['username']}}, {{com['created_at']}}
                     </router-link>
-                  </div>
                 </li>
               </ul>
               <p class="lead">{{ $t('thanks') }}</p>
@@ -129,7 +127,7 @@ export default {
     return {
       userId: this.$route.params.id,
       submissions: [],
-      submissionStats: {},
+      comments: [],
       activities: {
         transcribe: 'e4b5ebc5-47a2-430b-84a9-a03b1d4dda34',
         translate: ''
@@ -143,7 +141,7 @@ export default {
       loading: state => state.settings.loading
     }),
     totalSubs: () => {
-      return this.submissions.length
+      return this.comments.length
     }
   },
   mounted () {
@@ -153,61 +151,30 @@ export default {
     const subQuery = {
       'select': {
         'fields': [
-          'submissions.created_at',
-          'submissions.id as submission_id',
-          'activities.name as activity_name',
-          'submissions.user_id',
-          'submissions.content',
-          'submissions.task_id',
-          'tasks.info',
-          'activities.id as activity_id'
+          'comments.content',
+          'comments.info->>\'username\' as username',
+          'comments.created_at :: DATE, \'dd/mm/yyyy\'',
+          'comments.source_id'
         ],
         'tables': [
-          'submissions',
-          'activities',
-          'tasks'
+          'comments'
         ],
         'orderBy': {
-          'submissions.created_at': 'DESC'
+          'comments.created_at': 'DESC'
         }
       },
       'where': {
-        'submissions.user_id': {
-          'op': 'e',
-          'val': this.user.id,
-          'join': 'a'
-        },
-        'submissions.task_id': {
-          'op': 'e',
-          'type': 'sql',
-          'val': 'tasks.id',
-          'join': 'a'
-        },
-        'tasks.activity_id': {
-          'op': 'e',
-          'type': 'sql',
-          'val': 'activities.id',
-          'join': 'a'
+        'comments.content->>\'text\'': {
+          'op': 'nl',
+          'val': '',
         }
       }
     }
-    this.$store.dispatch('c3s/submission/getSubmissions', [subQuery, 100]).then(s => {
+    this.$store.dispatch('c3s/activity/getActivities', [subQuery, 100]).then(s => {
+      // console.log(s)
       if (s.ok) {
-        this.submissions = s.body
-        let filteredSubmissions = [];
-        for (let index in this.submissions) {
-          const sub = this.submissions[index]
-          var count = 0;
-          filteredSubmissions.map(function(submission) {
-            if(submission['task_id'] === sub['task_id']) {
-              count += 1;
-            }
-          });
-          if(count === 0) {
-            filteredSubmissions.push(sub);
-          }
-        }
-        this.submissions = filteredSubmissions;
+        console.log(s.body)
+        this.comments = s.body
       }
     })
   },
