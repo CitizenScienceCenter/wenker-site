@@ -66,14 +66,15 @@
             <div class="content-subsection" v-if="comments.length">
               <h3 class="subheading">{{ $t('comments-heading') }}</h3>
               <ul>
-                <li v-for="com in comments" v-bind:key="com['id']">
+                <li v-for="com in comments" v-bind:key="com['comment_id']">
                   <router-link
                     tag="a"
-                    :to="{name:'TranscribeTask', query: { id: com['source_id']}}"
-                  >{{com['username']}}, {{com['created_at']}}</router-link>
+                    :to="{name:com['activity'], query: { id: com['source_id']}}"
+                  >{{com['username']}}, {{com['created_at']}} - {{com['content']['text']}}</router-link>
+
                 </li>
               </ul>
-              <p class="lead">{{ $t('thanks') }}</p>
+              <!-- <p class="lead">{{ $t('thanks') }}</p> -->
             </div>
           </div>
         </div>
@@ -170,12 +171,15 @@ export default {
     const subQuery = {
       select: {
         fields: [
-          "comments.content",
+          "comments.id as comment_id",
+          "comments.content as content",
           "comments.info->>'username' as username",
           "comments.created_at :: DATE, 'dd/mm/yyyy'",
-          "comments.source_id"
+          "comments.source_id as source_id",
+          "tasks.activity_id as activity_id",
+
         ],
-        tables: ["comments"],
+        tables: ["comments", "tasks"],
         orderBy: {
           "comments.created_at": "DESC"
         }
@@ -184,6 +188,12 @@ export default {
         "comments.content->>'text'": {
           op: "nl",
           val: ""
+        },
+        "comments.source_id": {
+          op: 'e',
+          val: 'tasks.id',
+          type: 'sql',
+          join: 'a'
         }
       }
     };
@@ -191,7 +201,21 @@ export default {
       .dispatch("c3s/activity/getActivities", [subQuery, 100])
       .then(s => {
         if (s.ok) {
-          console.log(s.body);
+          for(let ind in s.body) {
+            let com = s.body[ind];
+            switch(com['activity_id']) {
+              case this.activities.transcribe:
+                com['activity'] = 'TranscribeTask'
+                break;
+              case this.activities.translate:
+                com['activity'] = 'TranslateTask';
+                break;
+              default:
+                com['acitivity'] = 'TranslateTask'
+                break;
+            }
+            console.log(com)
+          }
           this.comments = s.body;
         }
       });
