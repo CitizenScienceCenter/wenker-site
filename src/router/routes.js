@@ -189,12 +189,14 @@ export const routes = [
                 component: User.Register,
                 meta: {i18n: 'navigation-register', nav: false}
             },
+            /*
             {
                 path: "admin",
                 name: "Admin",
                 component: ActivityAdmin,
                 meta: {i18n: 'navigation-terms', nav: true, requiresOwner: true}
             },
+            */
             {
                 path: "reset",
                 name: "ResetRequest",
