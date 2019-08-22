@@ -199,21 +199,14 @@
       </div>
     </app-content-section>
 
+    <section-feedback color="light-greyish" email="wenker@citizenscience.ch"></section-feedback>
 
-    <app-content-section color="greyish">
-      <div class="content-wrapper">
-        <div class="row row-centered">
-          <div class="col col-mobile-large-10">
-            <h2 class="heading centered">{{ $t('section-newsletter-heading') }}</h2>
-          </div>
-        </div>
-        <div class="row row-centered">
-          <div class="col col-mobile-large-10 col-tablet-portrait-8 col-large-12">
-            <app-newsletter-signup></app-newsletter-signup>
-          </div>
-        </div>
-      </div>
-    </app-content-section>
+    <section-s-d-g color="greyish">
+      This project supports the overall aim of the SDGs to engage “all people, everywhere” in a multiplicity of languages, by studying linguistic obstacles that could potentially stand in the way.
+    </section-s-d-g>
+
+
+    <section-newsletter-signup></section-newsletter-signup>
 
     <app-footer></app-footer>
 
@@ -226,10 +219,16 @@ import Cover from '@/components/shared/Cover.vue'
 import ContentSection from '@/components/shared/ContentSection.vue'
 import NewsletterSignup from '@/components/shared/NewsletterSignup.vue'
 import Footer from '@/components/shared/Footer.vue'
+import SectionNewsletterSignup from "../components/shared/SectionNewsletterSignup";
+import SectionSDG from "../components/shared/SectionSDG";
+import SectionFeedback from "../components/shared/SectionFeedback";
 
 export default {
   name: 'Home',
   components: {
+      SectionFeedback,
+      SectionSDG,
+      SectionNewsletterSignup,
     'app-cover': Cover,
     'app-content-section': ContentSection,
     'app-newsletter-signup': NewsletterSignup,

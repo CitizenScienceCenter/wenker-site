@@ -92,6 +92,9 @@
 
         <comments-list v-if="tasks.length" :id="tasks[0].id"></comments-list>
 
+
+        <section-feedback color="greyish" email="wenker@citizenscience.ch"></section-feedback>
+
         <app-footer></app-footer>
 
     </div>
@@ -107,6 +110,7 @@
   import ContentSection from '@/components/shared/ContentSection.vue'
   import Footer from '@/components/shared/Footer.vue'
   import * as taskUtils from '@/assets/scripts/tasks'
+  import SectionFeedback from "../../components/shared/SectionFeedback";
 
   export default {
     name: 'Task',
@@ -123,6 +127,7 @@
       }
     },
     components: {
+        SectionFeedback,
       TaskQuestionImage,
       TaskResponse,
       'app-content-section': ContentSection,

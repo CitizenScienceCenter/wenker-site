@@ -128,20 +128,10 @@
       </div>
     </app-content-section>
 
-    <app-content-section color="greyish">
-      <div class="content-wrapper">
-        <div class="row row-centered">
-          <div class="col col-mobile-large-10">
-            <h2 class="heading centered">Sign up for our Newsletter</h2>
-          </div>
-        </div>
-        <div class="row row-centered">
-          <div class="col col-mobile-large-10 col-tablet-portrait-8 col-large-12">
-            <app-newsletter-signup></app-newsletter-signup>
-          </div>
-        </div>
-      </div>
-    </app-content-section>
+
+    <section-feedback color="light-greyish" email="wenker@citizenscience.ch"></section-feedback>
+
+    <section-newsletter-signup></section-newsletter-signup>
 
     <app-footer></app-footer>
 
@@ -154,6 +144,8 @@ import Cover from '@/components/shared/Cover.vue'
 import ContentSection from '@/components/shared/ContentSection.vue'
 import NewsletterSignup from '@/components/shared/NewsletterSignup.vue'
 import Footer from '@/components/shared/Footer.vue'
+import SectionFeedback from "../../components/shared/SectionFeedback";
+import SectionNewsletterSignup from "../../components/shared/SectionNewsletterSignup";
 
 export default {
   name: 'Wenker',
@@ -170,6 +162,8 @@ export default {
       }
   },
   components: {
+      SectionNewsletterSignup,
+      SectionFeedback,
     'app-cover': Cover,
     'app-content-section': ContentSection,
     'app-newsletter-signup': NewsletterSignup,

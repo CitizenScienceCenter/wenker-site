@@ -104,7 +104,7 @@
               <p class="reduced-bottom-margin" v-html="$t('answer-2-text-5')"></p>
               <p v-html="$t('answer-2-text-7')"></p>
               <p v-html="$t('answer-2-text-6')"></p>
-              
+
               <h3 class="subheading">{{ $t('question-3') }}</h3>
               <p class="reduced-bottom-margin" v-html="$t('answer-3-text-1')"></p>
               <p class="reduced-bottom-margin" v-html="$t('answer-3-text-2')"></p>
@@ -141,20 +141,9 @@
       </div>
     </app-content-section>
 
-    <app-content-section color="greyish">
-      <div class="content-wrapper">
-        <div class="row row-centered">
-          <div class="col col-mobile-large-10">
-            <h2 class="heading centered">Sign up for our Newsletter</h2>
-          </div>
-        </div>
-        <div class="row row-centered">
-          <div class="col col-mobile-large-10 col-tablet-portrait-8 col-large-12">
-            <app-newsletter-signup></app-newsletter-signup>
-          </div>
-        </div>
-      </div>
-    </app-content-section>
+    <section-feedback color="light-greyish" email="wenker@citizenscience.ch"></section-feedback>
+
+    <section-newsletter-signup></section-newsletter-signup>
 
     <app-footer></app-footer>
 
@@ -167,6 +156,8 @@ import Cover from '@/components/shared/Cover.vue'
 import ContentSection from '@/components/shared/ContentSection.vue'
 import NewsletterSignup from '@/components/shared/NewsletterSignup.vue'
 import Footer from '@/components/shared/Footer.vue'
+import SectionNewsletterSignup from "../../components/shared/SectionNewsletterSignup";
+import SectionFeedback from "../../components/shared/SectionFeedback";
 
 export default {
   name: 'FAQ',
@@ -183,6 +174,8 @@ export default {
       }
   },
   components: {
+      SectionFeedback,
+      SectionNewsletterSignup,
     'app-cover': Cover,
     'app-content-section': ContentSection,
     'app-newsletter-signup': NewsletterSignup,

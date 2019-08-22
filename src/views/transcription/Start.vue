@@ -107,6 +107,8 @@
 
         <comments-list :id=id :noSentenceNr="true"></comments-list>
 
+        <section-feedback color="greyish" email="wenker@citizenscience.ch"></section-feedback>
+
         <app-footer></app-footer>
 
     </div>
@@ -119,6 +121,7 @@
     import SheetSelectionForm from '@/components/SheetSelectionForm'
     import ContentSection from '@/components/shared/ContentSection.vue'
     import Footer from '@/components/shared/Footer.vue'
+    import SectionFeedback from "../../components/shared/SectionFeedback";
 
     export default {
         name: 'Start',
@@ -157,6 +160,7 @@
             }
         },
         components: {
+            SectionFeedback,
             SheetSelectionForm,
             CommentsList,
             'app-content-section': ContentSection,

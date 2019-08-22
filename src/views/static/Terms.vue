@@ -83,20 +83,7 @@
 
         </app-content-section>
 
-        <app-content-section color="greyish">
-            <div class="content-wrapper">
-                <div class="row row-centered">
-                    <div class="col col-mobile-large-10">
-                        <h2 class="heading centered">{{ $t('section-newsletter-heading') }}</h2>
-                    </div>
-                </div>
-                <div class="row row-centered">
-                    <div class="col col-mobile-large-10 col-tablet-portrait-8 col-large-12">
-                        <app-newsletter-signup></app-newsletter-signup>
-                    </div>
-                </div>
-            </div>
-        </app-content-section>
+        <section-newsletter-signup></section-newsletter-signup>
 
         <app-footer></app-footer>
 
@@ -108,6 +95,8 @@
     import ContentSection from '@/components/shared/ContentSection.vue'
     import NewsletterSignup from '@/components/shared/NewsletterSignup.vue'
     import Footer from '@/components/shared/Footer.vue'
+    import SectionNewsletterSignup from "../../components/shared/SectionNewsletterSignup";
+    import SectionFeedback from "../../components/shared/SectionFeedback";
 
     export default {
         name: 'Terms',
@@ -124,6 +113,8 @@
             }
         },
         components: {
+            SectionFeedback,
+            SectionNewsletterSignup,
             'app-content-section': ContentSection,
             'app-newsletter-signup': NewsletterSignup,
             'app-footer': Footer
