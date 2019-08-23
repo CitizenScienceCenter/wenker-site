@@ -152,7 +152,9 @@
       }
     },
     mounted () {
-      if (this.activity && this.activity.id) {
+      if (this.taskID) {
+        taskUtils.loadTaskID(this, this.taskID, true, this.routes.start)
+      } else if (this.activity && this.activity.id) {
         taskUtils.loadTask(this, this.$route.query['count'], true, this.routes.complete, false)
       } else {
         console.log('No activity set in the store!')
@@ -165,6 +167,7 @@
         responses: [],
         task_help: '',
         nextTxt: 'Next',
+        taskID: this.$route.query['id'],
         activeAnswer: {},
         routes: {
           complete: 'TranslateComplete',

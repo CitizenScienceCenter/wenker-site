@@ -15,6 +15,7 @@
 "submission-translation-suffix": " Sätze übersetzt",
 "thanks": "Vielen Dank für Deine Hilfe!",
 "button-logout": "Ausloggen",
+"button-admin": "Admin Area",
 "button-reset": "Passwort zurücksetzen"
 },
 "en": {
@@ -32,6 +33,7 @@
 "submission-translation-suffix": " sentences.",
 "thanks": "Thanks for helping!",
 "button-logout": "Logout",
+"button-admin": "Admin Area",
 "button-reset": "Reset Password"
 }
 }
@@ -67,6 +69,9 @@
 
             <div class="content-subsection">
               <div class="button-group">
+                <router-link v-if="admin" tag="button" to="/admin" class="button button-primary">{{
+                  $t('button-admin') }}
+                </router-link>
                 <router-link tag="button" to="/logout" class="button button-secondary">{{
                   $t('button-logout') }}
                 </router-link>
@@ -129,6 +134,7 @@ export default {
     return {
       userId: this.$route.params.id,
       submissions: [],
+      admin: false,
       submissionStats: {},
       activities: {
         transcribe: 'e4b5ebc5-47a2-430b-84a9-a03b1d4dda34',
@@ -210,6 +216,7 @@ export default {
         this.submissions = filteredSubmissions;
       }
     })
+    this.checkOwner();
   },
   methods: {
     calcTaskResponse (sub) {
@@ -225,6 +232,30 @@ export default {
       } else {
         return count
       }
+    },
+    checkOwner() {
+      const getProjects = {
+        'select': {
+          'fields': [
+            'owned_by'
+          ],
+          'tables': [
+            'projects'
+          ],
+        },
+        'where': {
+          'owned_by': {
+            'op': 'e',
+            'val': this.$store.state.c3s.user.currentUser.id,
+          }
+        }
+      };
+      this.$store.dispatch('c3s/project/getProjects', [getProjects, 100]).then(s => {
+        console.log(s.body)
+        if (s.body.length !== 0) {
+          this.admin = true;
+        }
+      });
     }
   }
 }

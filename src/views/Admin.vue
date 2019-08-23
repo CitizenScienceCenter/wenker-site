@@ -9,7 +9,9 @@
 "label-api-key": "API Key",
 "comments-heading": "Kommentare",
 "button-logout": "Ausloggen",
-"button-reset": "Passwort zurücksetzen"
+"button-reset": "Passwort zurücksetzen",
+"transcribe": "Transkribieren: ",
+"translate": "Übersetzen: "
 },
 "en": {
 
@@ -21,7 +23,9 @@
 "comments-heading": "Comments",
 "thanks": "Thanks for helping!",
 "button-logout": "Logout",
-"button-reset": "Reset Password"
+"button-reset": "Reset Password",
+"transcribe": "Transcription: ",
+"translate": "Translation: "
 }
 }
 </i18n>
@@ -67,10 +71,14 @@
               <h3 class="subheading">{{ $t('comments-heading') }}</h3>
               <ul>
                 <li v-for="com in comments" v-bind:key="com['comment_id']">
-                  <router-link
+                  <router-link v-if="com['activity_id']===activities.translate" class="translate-comment"
                     tag="a"
                     :to="{name:com['activity'], query: { id: com['source_id']}}"
-                  >{{com['username']}}, {{com['created_at']}} - {{com['content']['text']}}</router-link>
+                  >{{ $t('translate')}}{{com['username']}}, {{com['created_at']}} - {{com['content']['text']}}</router-link>
+                  <router-link v-else
+                    tag="a"
+                    :to="{name:com['activity'], query: { id: com['source_id']}}"
+                  >{{ $t('transcribe')}}{{com['username']}}, {{com['created_at']}} _ {{com['content']['text']}}</router-link>
 
                 </li>
               </ul>
@@ -243,4 +251,8 @@ export default {
 <style lang="scss">
 @import "@/styles/theme.scss";
 @import "@/styles/shared/variables.scss";
+
+.translate-comment {
+  color: black !important;
+}
 </style>

@@ -82,6 +82,7 @@ router.beforeEach((to, from, next) => {
         }
       };
       store.dispatch('c3s/project/getProjects', [getProjects, 100]).then(s => {
+        console.log(s.body)
         if (s.body.length !== 0) {
           next();
         } else{

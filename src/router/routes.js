@@ -145,6 +145,16 @@ export const routes = [
                         }
                     },
                     {
+                        path: "task/:id",
+                        name: "TranslateTaskID",
+                        component: Translation.Task,
+                        meta: {
+                            requiresAuth: true,
+                            breadcrumb: "Translate Task",
+                            page: 'navigation-translate'
+                        }
+                    },
+                    {
                         path: "complete",
                         name: "TranslateComplete",
                         component: Translation.Complete,
