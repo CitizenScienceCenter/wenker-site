@@ -152,6 +152,9 @@
       }
     },
     mounted () {
+
+        this.$store.commit('settings/SET_INDEX', 0);
+
       if (this.taskID) {
         taskUtils.loadTaskID(this, this.taskID, true, this.routes.start)
       } else if (this.activity && this.activity.id) {
