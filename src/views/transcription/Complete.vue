@@ -6,7 +6,7 @@
 
     "heading": "Vielen Dank für deine Teilnahme",
     "sentence-part-1": "Du bist der ",
-    "sentence-part-2": ". Teinehmer",
+    "sentence-part-2": ". Teilnehmer",
     "heading-register": "Jetzt registrieren",
     "register-text": "Erstelle dein Profil für künfitige Teilnahmen an unseren Citizen Science Projekten."
     },
