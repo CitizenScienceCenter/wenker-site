@@ -189,6 +189,7 @@
                     'ͧ'
                 ],
                 specialSingleChars: [
+                    'ß',
                     'š',
                     'Š',
                     'ſ',

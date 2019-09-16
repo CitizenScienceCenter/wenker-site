@@ -54,6 +54,7 @@ export const i18n = new VueI18n({
   messages: {
     'de': {
 
+    "site-name": "Projekt Wenker",
     "site-title": "Projekt Wenker | Citizen Science Center Zürich",
     "site-description": "Schweizerdeutsch 1930 / 2020",
 
@@ -98,7 +99,7 @@ export const i18n = new VueI18n({
     },
       'en': {
 
-
+          "site-name": "Project Wenker",
           "site-title": "Project Wenker | Citizen Science Center Zurich",
           "site-description": "Swiss German 1930 / 2020",
 

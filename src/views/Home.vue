@@ -199,7 +199,7 @@
       </div>
     </app-content-section>
 
-    <section-feedback color="light-greyish" email="wenker@citizenscience.ch"></section-feedback>
+    <section-feedback color="light-greyish" email="help@citizenscience.ch" :subject="$t('site-name')"></section-feedback>
 
     <section-s-d-g color="greyish">
       This project supports the overall aim of the SDGs to engage “all people, everywhere” in a multiplicity of languages, by studying linguistic obstacles that could potentially stand in the way.

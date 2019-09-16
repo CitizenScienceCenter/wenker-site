@@ -130,7 +130,7 @@
       </div>
     </app-content-section>
 
-    <section-feedback color="light-greyish" email="wenker@citizenscience.ch"></section-feedback>
+    <section-feedback color="light-greyish" email="help@citizenscience.ch" :subject="$t('site-name')"></section-feedback>
 
     <section-newsletter-signup></section-newsletter-signup>
 

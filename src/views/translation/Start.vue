@@ -99,7 +99,7 @@
         <comments-list :id="id" :noSentenceNr="true"></comments-list>
 
 
-        <section-feedback color="greyish" email="wenker@citizenscience.ch"></section-feedback>
+        <section-feedback color="greyish" email="help@citizenscience.ch" :subject="$t('site-name')"></section-feedback>
 
         <app-footer></app-footer>
 
