@@ -51,7 +51,7 @@
                         <div class="col" v-if='taskRange.length !== parseInt(taskDropdown)'>
                             <div class="centered task-switch-bar margin-bottom" >
                               <button v-on:click="submitTask" :disabled="loading" class="button button-primary">
-                                Nächster Bogen
+                                Speichern und Weiter
                               </button>
                             </div>
                             <div class="centered task-switch-bar margin-bottom" >
@@ -74,7 +74,7 @@
                     <div class="col" v-if='taskRange.length === parseInt(taskDropdown)'>
                       <div class="centered task-switch-bar margin-bottom" >
                         <button v-on:click="submitTask(true)" tag="button" class="button button-primary">
-                          Zurück zur Regionsauswahl
+                          Speichern und Zurück
                         </button>
                       </div>
 
