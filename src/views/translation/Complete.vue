@@ -4,11 +4,11 @@
 
     "page-title": "Übersetzen",
 
-    "heading": "Vielen Dank für deine Teilnahme",
-    "sentence-part-1": "Du bist der ",
-    "sentence-part-2": ". Teilnehmer",
+    "heading": "Vielen Dank für Ihre Teilnahme",
+    "sentence-part-1": "Sie sind der/die ",
+    "sentence-part-2": ". Teilnehmer*in",
     "heading-register": "Jetzt registrieren",
-    "register-text": "Erstelle dein Profil für künfitige Teilnahmen an unseren Citizen Science Projekten."
+    "register-text": "Erstellen Sie ihr Profil für künfitige Teilnahmen an unseren Citizen Science Projekten."
     },
     "en": {
 
