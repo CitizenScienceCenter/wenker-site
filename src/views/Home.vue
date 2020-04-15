@@ -89,6 +89,12 @@
       </div>
     </app-cover>
 
+    <div class="blog-teaser-wrapper" :class="{show: showTeaser}">
+      <a href="https://citizensciencezurich.blog/2020/04/02/neues-aus-den-dialektologischen-untiefen/" target="_blank" class="blog-teaser">
+        <img src="/img/blog-teaser.png" />
+      </a>
+    </div>
+
     <app-content-section>
       <div class="content-wrapper">
         <div class="row row-centered row-middle">
@@ -245,11 +251,95 @@ export default {
               }
           ]
       }
+  },
+  data() {
+      return {
+          showTeaser: false
+      }
+  },
+  mounted() {
+    this.showTeaser = true;
   }
 }
 
 </script>
 
 <style lang="scss">
+
+
+  @import '@/styles/theme.scss';
+  @import '@/styles/shared/variables.scss';
+
+  .blog-teaser-wrapper {
+    position: absolute;
+    top: calc( 48px + #{$spacing-1});
+    left: -320px;
+    transition: left $transition-duration-super-long $transition-timing-function;
+    transition-delay: 600ms;
+    line-height: 0;
+    z-index: 1;
+    .blog-teaser {
+      display: block;
+      img {
+        height: 72px;
+      }
+      transition: opacity $transition-duration-short $transition-timing-function;
+      opacity: 0.9;
+      &:active, &:focus {
+        opacity: 1;
+      }
+      @media (hover: hover) {
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+    &.show {
+      left: 0;
+    }
+  }
+
+  @media only screen and (min-width: $viewport-mobile-large) {
+    .blog-teaser-wrapper {
+      top: calc( 64px + #{$spacing-1});
+      .blog-teaser {
+        img {
+          height: 72px;
+        }
+      }
+    }
+  }
+  @media only screen and (min-width: $viewport-tablet-portrait) {
+    .blog-teaser-wrapper {
+      top: calc( 64px + #{$spacing-1});
+      .blog-teaser {
+        img {
+          height: 88px;
+        }
+      }
+    }
+  }
+  @media only screen and (min-width: $viewport-large) {
+    .blog-teaser-wrapper {
+      top: calc( 80px + #{$spacing-3});
+      .blog-teaser {
+        img {
+          height: 112px;
+        }
+      }
+    }
+  }
+  @media only screen and (min-width: $viewport-xlarge) {
+    .blog-teaser-wrapper {
+      top: calc( 88px + #{$spacing-3});
+      .blog-teaser {
+        img {
+          height: 136px;
+        }
+      }
+    }
+  }
+
+
 
 </style>
