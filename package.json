@@ -6,8 +6,8 @@
     "serve": "vue-cli-service serve",
     "prebuild": "npm update caniuse-lite browserslist",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
-    //"test": "testcafe chromium src/test/e2e/wenker.testcafe.js"
+    "lint": "vue-cli-service lint",
+    "test": "testcafe chromium src/test/e2e/wenker.testcafe.js"
   },
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
