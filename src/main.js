@@ -34,7 +34,7 @@ Vue.use(Croppa)
 Vue.use(Vuex)
 Vue.use(Meta)
 
-const v = '1.0.7'
+const v = '1.0.8'
 if (window.localStorage.getItem(('vuex'))) {
   const ls = JSON.parse(window.localStorage.getItem('vuex')).settings.version
   if (ls === undefined || ls !== v) {
