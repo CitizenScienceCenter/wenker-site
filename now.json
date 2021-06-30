@@ -1,0 +1,13 @@
+{
+  "name": "wenker-site",
+  "version": 2,
+  "routes": [
+    {
+      "src": "/(js|css|img)/.*",
+      "headers": { "cache-control": "max-age=31536000, immutable" }
+    },
+    { "handle": "filesystem" },
+    { "src": "/.*", "dest": "/index.html" }
+  ],
+  "alias": "wenkerstatic.citizenscience.ch"
+}
