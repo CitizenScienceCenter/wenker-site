@@ -15,7 +15,7 @@
 
 <template>
   <div id="app">
-    <app-header :project-name="$t('project-title')"></app-header>
+    <app-header :project-name="$t('project-title')" :hideLogin="true"></app-header>
     <div class="content-area">
       <router-view></router-view>
     </div>

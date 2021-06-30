@@ -82,8 +82,8 @@
             <button class="button button-primary" v-scroll-to="'#projects'">{{ $t('cover-button-projects') }}</button>
             <button class="button button-primary" v-scroll-to="'#start-project'">{{ $t('cover-button-your-project') }}</button>
             -->
-            <router-link tag="button" to="/transcribe" class="button button-primary">{{ $t('cover-button-transcribe') }}</router-link>
-            <router-link tag="button" to="/translate" class="button button-primary">{{ $t('cover-button-translate') }}</router-link>
+            <!-- <router-link tag="button" to="/transcribe" class="button button-primary">{{ $t('cover-button-transcribe') }}</router-link>
+            <router-link tag="button" to="/translate" class="button button-primary">{{ $t('cover-button-translate') }}</router-link> -->
           </p>
         </div>
       </div>
@@ -137,9 +137,9 @@
             </div>
             <h3 class="subheading centered">{{ $t('section-contribute-1-heading') }}</h3>
             <p>{{ $t('section-contribute-1-text') }}</p>
-            <p class="centered">
+            <!-- <p class="centered">
               <router-link tag="button" to="/transcribe" class="button button-primary">{{ $t('section-contribute-1-button') }}</router-link>
-            </p>
+            </p> -->
           </div>
           <div class="col col-tablet-portrait-10 col-large-4 col-wrapping col-no-bottom-margin scroll-effect scroll-effect-delayed-3">
             <div class="row row-centered">
@@ -149,9 +149,9 @@
             </div>
             <h3 class="subheading centered">{{ $t('section-contribute-2-heading') }}</h3>
             <p>{{ $t('section-contribute-2-text') }}</p>
-            <p class="centered">
+            <!-- <p class="centered">
               <router-link tag="button" to="/translate" class="button button-primary">{{ $t('section-contribute-2-button') }}</router-link>
-            </p>
+            </p> -->
           </div>
 
         </div>

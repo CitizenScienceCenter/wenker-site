@@ -11,7 +11,7 @@ import Vuex from 'vuex'
 import {
   i18n
 } from './i18n.js'
-import c3s from 'vuex-c3s'
+// import c3s from 'vuex-c3s'
 import Croppa from 'vue-croppa'
 import Meta from 'vue-meta'
 
@@ -22,10 +22,10 @@ const swaggerURL = 'https://wenker.citizenscience.ch/api/v2/swagger.json'
 // }
 Vue.config.productionTip = false
 
-Vue.use(c3s.plugin, {
-  store,
-  swaggerURL
-})
+// Vue.use(c3s.plugin, {
+//   store,
+//   swaggerURL
+// })
 Vue.use(VueRouter)
 Vue.use(VueScrollTo, {
   offset: -32
@@ -44,7 +44,7 @@ if (window.localStorage.getItem(('vuex'))) {
   }
 }
 store.watch(
-  (state) => state.c3s && state.c3s.client,
+  // (state) => state.c3s && state.c3s.client,
   (value) => {
     if (value !== null) {
       console.log('loaded')
