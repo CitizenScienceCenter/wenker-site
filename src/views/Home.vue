@@ -5,21 +5,14 @@
     "page-title": "Projekt Wenker | Citizen Science Center Zürich",
 
     "cover-heading": "Schweizer­deutsch<br/>1930 / 2020",
-    "cover-subheading": "Finde deinen Dialekt in den 40 Wenker-Sätzen.",
-    "cover-button-transcribe": "Transkribieren",
-    "cover-button-translate": "Übersetzen",
+    "cover-subheading": "Ein Projekt in der Schweizer Dialektforschung",
 
     "section-explanation-heading": "Die 40 Wenker-Sätze",
-    "section-explanation-text": "Im Rahmen eines sprachwissenschaftlichen Forschungsprojekts wurden vor rund 100 Jahren 40 hochdeutsche Sätze in die lokalen Dialekte der Schweiz übersetzt. Diese Daten wurden jedoch nie umfassend ausgewertet. Hilf uns, diesen Schatz zu heben.",
+    "section-explanation-text": "Im Rahmen eines sprachwissenschaftlichen Forschungsprojekts wurden vor rund 100 Jahren 40 hochdeutsche Sätze in die lokalen Dialekte der Schweiz übersetzt. Diese Daten wurden jedoch nie umfassend ausgewertet. Das Wenker-Projekt hat daher zum Ziel, die rund 1700 handgeschriebenen Wenker-Bögen zu transkribieren sowie die 40 Wenker-Sätze in die heutigen Dialekte zu übersetzen.",
     "section-explanation-button": "Mehr zum Projekt",
 
-    "section-contribute-heading": "Deine Hilfe ist gefragt:",
-    "section-contribute-1-heading": "Transkribieren",
-    "section-contribute-1-text": "Die 1700 handgeschriebenen Schweizer Wenker-Bögen müssen genau abgeschrieben werden, um sie digital aufzubereiten. Dafür brauchen wir deine Unterstützung!",
-    "section-contribute-1-button": "Transkribieren",
-    "section-contribute-2-heading": "Übersetzen",
-    "section-contribute-2-text": "Übersetze die originalen Wenker-Sätze in deinen Dialekt, wie du ihn heute sprichst. So können wir das Schweizerdeutsch von heute mit dem der 1930er Jahre vergleichen.",
-    "section-contribute-2-button": "Übersetzen",
+    "section-contribute-heading": "Fortsetzung des Projekts",
+    "section-contribute-2-text": "Das Projekt wird auf unserem Citizen Science Project Builder weitergeführt. Mehr Informationen folgen.",
 
     "section-wenker-heading": "Die Geschichte eines Dialektliebhabers",
     "section-wenker-text": "Die Wenkersätze aus der Schweizer Sprachstudie haben eine interessante Vorgeschichte. Der junge Sprachwissenschaftler Georg Wenker hat sie aus einem ganz bestimmten Grund entwickelt.",
@@ -34,21 +27,14 @@
     "page-title": "Project Wenker | Citizen Science Center Zurich",
 
     "cover-heading": "Swiss German<br/>1930 / 2020",
-    "cover-subheading": "Find your own dialect in the 40 Wenker phrases.",
-    "cover-button-transcribe": "Transcribe",
-    "cover-button-translate": "Translate",
+    "cover-subheading": "A project in Swiss dialect research",
 
     "section-explanation-heading": "The 40 Wenker Phrases",
-    "section-explanation-text": "As part of a linguistic research project about 100 years ago, 40 sentences were translated from standard German into the local dialects of Switzerland. However, this data has never been evaluated. Help us to digitize this treasure.",
+    "section-explanation-text": "As part of a linguistic research project about 100 years ago, 40 sentences were translated from standard German into the local dialects of Switzerland. However, this data has never been evaluated. The Wenker project therefore aims to transcribe the approximately 1700 handwritten Wenker sheets as well as to translate the 40 Wenker sentences into today’s dialects.",
     "section-explanation-button": "More about the project",
 
-    "section-contribute-heading": "Your help is needed:",
-    "section-contribute-1-heading": "Transcription",
-    "section-contribute-1-text": "The 1700 hand-written swiss Wenker sheets must be accurately copied in order to process them digitally. For that we need your support!",
-    "section-contribute-1-button": "Transcribe",
-    "section-contribute-2-heading": "Translation",
-    "section-contribute-2-text": "Translate the original Wenker sentences into your own dialect. So we can compare today's Swiss German with the one spoken in the 1930ies.",
-    "section-contribute-2-button": "Translate",
+    "section-contribute-heading": "Continuation of the project",
+    "section-contribute-2-text": "The project will continue on our Citizen Science Project Builder. More information will follow.",
 
     "section-wenker-heading": "The Story of a Dialect Lover",
     "section-wenker-text": "The Wenker phrases from the Swiss dialect study have an interesting history. The young linguist Georg Wenker developed them for a certain reason.",
@@ -129,7 +115,7 @@
             <h2 class="heading centered">{{ $t('section-contribute-heading') }}</h2>
           </div>
 
-          <div class="col col-tablet-portrait-10 col-large-4 col-large-after-1 col-wrapping col-large-no-bottom-margin scroll-effect scroll-effect-delayed-2">
+          <!-- <div class="col col-tablet-portrait-10 col-large-4 col-large-after-1 col-wrapping col-large-no-bottom-margin scroll-effect scroll-effect-delayed-2">
             <div class="row row-centered">
               <div class="col col-6 col-tablet-portrait-4 col-large-6 extra-margin-bottom">
                 <img src="/img/graphic-transcribe.png"/>
@@ -137,17 +123,17 @@
             </div>
             <h3 class="subheading centered">{{ $t('section-contribute-1-heading') }}</h3>
             <p>{{ $t('section-contribute-1-text') }}</p>
-            <!-- <p class="centered">
+            <p class="centered">
               <router-link tag="button" to="/transcribe" class="button button-primary">{{ $t('section-contribute-1-button') }}</router-link>
-            </p> -->
-          </div>
+            </p> 
+          </div>-->
           <div class="col col-tablet-portrait-10 col-large-4 col-wrapping col-no-bottom-margin scroll-effect scroll-effect-delayed-3">
-            <div class="row row-centered">
+            <!-- <div class="row row-centered">
               <div class="col col-6 col-tablet-portrait-4 col-large-6 extra-margin-bottom">
                 <img src="/img/graphic-translate.png"/>
               </div>
             </div>
-            <h3 class="subheading centered">{{ $t('section-contribute-2-heading') }}</h3>
+            <h3 class="subheading centered">{{ $t('section-contribute-2-heading') }}</h3> -->
             <p>{{ $t('section-contribute-2-text') }}</p>
             <!-- <p class="centered">
               <router-link tag="button" to="/translate" class="button button-primary">{{ $t('section-contribute-2-button') }}</router-link>

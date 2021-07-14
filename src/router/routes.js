@@ -29,11 +29,11 @@ const Wenker = resolve => {
         resolve(require("../views/static/Wenker.vue"));
     });
 };
-const FAQ = resolve => {
-    require.ensure(["../views/static/FAQ.vue"], () => {
-        resolve(require("../views/static/FAQ.vue"));
-    });
-};
+// const FAQ = resolve => {
+//     require.ensure(["../views/static/FAQ.vue"], () => {
+//         resolve(require("../views/static/FAQ.vue"));
+//     });
+// };
 const Terms = resolve => {
     require.ensure(["../views/static/Terms.vue"], () => {
         resolve(require("../views/static/Terms.vue"));
@@ -177,11 +177,11 @@ export const routes = [
                 component: Wenker,
                 meta: {i18n: "navigation-wenker", nav: true}
             },
-            {
-                path: "faq",
-                component: FAQ,
-                meta: {i18n: "navigation-faq", nav: true}
-            },
+            // {
+            //     path: "faq",
+            //     component: FAQ,
+            //     meta: {i18n: "navigation-faq", nav: true}
+            // },
             {
                 path: "terms",
                 component: Terms,
